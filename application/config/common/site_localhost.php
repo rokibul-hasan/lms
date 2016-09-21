@@ -7,10 +7,10 @@
  */
 $root=$_SERVER['HTTP_HOST'];
 $config['SITE'] = array(
-    "name" => "DEBENHAMS BANGLADESH",
+    "name" => "SAC Online Library Management System",
     'website' => $root,
     'logo' => 'jamuna logo.gif');
-$config['SITETITLE'] = 'DEBENHAMS BANGLADESH';
+$config['SITETITLE'] = 'SAC Online Library Management System';
 
 $config['main_sidebar_title'] = "DEBENHAMS <br> BANGLADESH <br> MGMT";
 
