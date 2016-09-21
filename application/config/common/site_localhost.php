@@ -9,10 +9,10 @@ $root=$_SERVER['HTTP_HOST'];
 $config['SITE'] = array(
     "name" => "SAC Online Library Management System",
     'website' => $root,
-    'logo' => 'jamuna logo.gif');
+    'logo' => 'lms_logo.gif');
 $config['SITETITLE'] = 'SAC Online Library Management System';
 
-$config['main_sidebar_title'] = "DEBENHAMS <br> BANGLADESH <br> MGMT";
+$config['main_sidebar_title'] = "LMS";
 
 $config['DEVELOPER'] = array(
     "name" => "Friends IT",

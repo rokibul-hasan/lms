@@ -26,4 +26,18 @@ class Admin extends CI_Controller {
         $this->load->view($this->config->item('ADMIN_THEME') . 'starter', $data);
 //		$this->load->view('welcome_message');
     }
+    
+    
+    public function book(){
+         $crud = new grocery_CRUD();
+        $crud->set_table('book')
+                ->set_subject('Book')
+                ->order_by('BookId','desc');
+        $output = $crud->render();
+        $data['glosary'] = $output;
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Title'] = 'Book Section';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
+    }
 }
