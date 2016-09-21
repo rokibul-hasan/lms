@@ -20,9 +20,9 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= site_url('admin/book'); ?>"><i class="fa fa-book"></i> Book</a></li>       
-                    <li><a href="<?= site_url('admin/bookauthor'); ?>"><i class="fa fa-book"></i> Book Author</a></li>       
-                    <li><a href="<?= site_url('admin/book_category'); ?>"><i class="fa fa-list"></i> Book Category</a></li>
+                    <li><a href="<?= site_url('book'); ?>"><i class="fa fa-book"></i> Book</a></li>       
+                    <li><a href="<?= site_url('book/bookauthor'); ?>"><i class="fa fa-book"></i> Book Author</a></li>       
+                    <li><a href="<?= site_url('book/book_category'); ?>"><i class="fa fa-list"></i> Book Category</a></li>
                          
                 </ul>
             </li>
@@ -35,8 +35,8 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a href="<?= site_url('admin/aughor'); ?>"><i class="fa fa-pencil"></i> Author</a></li>
-            <li><a href="<?= site_url('admin/author_type'); ?>"><i class="fa fa-list-alt"></i> Author Type</a></li>            
+            <li><a href="<?= site_url('author'); ?>"><i class="fa fa-pencil"></i> Author</a></li>
+            <li><a href="<?= site_url('author/author_type'); ?>"><i class="fa fa-list-alt"></i> Author Type</a></li>            
         </ul>
     </li>
     
@@ -47,8 +47,8 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a href="<?= site_url('admin/journal'); ?>"><i class="fa fa-newspaper-o"></i> Journal</a></li>
-            <li><a href="<?= site_url('admin/journal_copy'); ?>"><i class="fa fa-copy"></i> Journal Copy</a></li>            
+            <li><a href="<?= site_url('journal'); ?>"><i class="fa fa-newspaper-o"></i> Journal</a></li>
+            <li><a href="<?= site_url('journal/journal_copy'); ?>"><i class="fa fa-copy"></i> Journal Copy</a></li>            
         </ul>
     </li>
     
@@ -60,8 +60,8 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a href="<?= site_url('admin/thesis'); ?>"><i class="fa fa-graduation-cap"></i> Thesis</a></li>
-            <li><a href="<?= site_url('admin/thesis_copy'); ?>"><i class="fa fa-copy"></i> Thesis Copy</a></li>            
+            <li><a href="<?= site_url('thesis'); ?>"><i class="fa fa-graduation-cap"></i> Thesis</a></li>
+            <li><a href="<?= site_url('thesis/thesis_copy'); ?>"><i class="fa fa-copy"></i> Thesis Copy</a></li>            
         </ul>
     </li>
     
@@ -73,8 +73,8 @@
             <i class="fa fa-angle-left pull-right"></i>
         </a> 
         <ul class="treeview-menu">
-            <li><a href="<?= site_url('admin/reports'); ?>"><i class="fa fa-graduation-cap"></i> Reports</a></li>
-            <li><a href="<?= site_url('admin/reports_copy'); ?>"><i class="fa fa-copy"></i> Reports Copy</a></li>           
+            <li><a href="<?= site_url('reports'); ?>"><i class="fa fa-graduation-cap"></i> Reports</a></li>
+            <li><a href="<?= site_url('reports/reports_copy'); ?>"><i class="fa fa-copy"></i> Reports Copy</a></li>           
         </ul>
     </li>
             
@@ -87,7 +87,7 @@
     <li><a href="<?= site_url('Admin'); ?>"><i class="fa fa-cogs"></i> <span>General Settings</span></a></li>
     
 
-    <li><a href="<?= site_url('publisher'); ?>"><i class="fa fa-cogs"></i> <span>Publishers</span></a></li>
+    <li><a href="<?= site_url('publisher'); ?>"><i class="fa fa-paperclip"></i> <span>Publishers</span></a></li>
 
 
     <li class="treeview">
