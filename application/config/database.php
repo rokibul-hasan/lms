@@ -94,3 +94,8 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+if ($_SERVER['HTTP_HOST'] == "lms.friendsitltd.com") {
+    $db['default']['username'] = 'thejamun_lms';
+    $db['default']['password'] = 'friendsitltd1234lms';
+    $db['default']['database'] = 'thejamun_lms';
+}

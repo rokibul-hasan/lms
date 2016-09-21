@@ -102,8 +102,11 @@ $autoload['helper'] = array('url', 'form', 'date');
 | NOTE: This item is intended for use ONLY if you have created custom
 | config files.  Otherwise, leave it blank.
 |
-*/
+*/if($_SERVER['HTTP_HOST'] =='http://lms.friendsitltd.com/'){
+    $autoload['config'] = array('common/site_friendsit');
+}else{
     $autoload['config'] = array('common/site_localhost');
+}
 
 /*
 | -------------------------------------------------------------------
