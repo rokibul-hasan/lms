@@ -1,4 +1,4 @@
-<?php include_once 'header_1.php'; ?>
+<?php include_once 'header.php'; ?>
 
 
 
@@ -29,4 +29,4 @@
   </div>
   <!-- /.content-wrapper -->
 
-<?php include_once 'footer_1.php'; ?>
+<?php include_once 'footer.php'; ?>
