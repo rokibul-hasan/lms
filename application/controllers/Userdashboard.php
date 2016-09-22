@@ -23,7 +23,7 @@ class Userdashboard extends CI_Controller {
     
     
     public function index(){
-        $this->load->helper('html');
+        $this->load->helper('html');  
         
         $this->load->model('Book_model');
         $data['all_book'] = $this->Book_model->get_all_book();
