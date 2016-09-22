@@ -23,8 +23,10 @@
                     <li><a href="<?= site_url('book'); ?>"><i class="fa fa-book"></i> Book</a></li>       
                     <li><a href="<?= site_url('book/bookauthor'); ?>"><i class="fa fa-pencil"></i> Book Author</a></li>       
                     <li><a href="<?= site_url('book/book_category'); ?>"><i class="fa fa-list"></i> Book Category</a></li>
+                    <li><a href="<?= site_url('book/book_type'); ?>"><i class="fa fa-repeat"></i> Book type</a></li>
                     <li><a href="<?= site_url('book/book_copy'); ?>"><i class="fa fa-copy"></i> Book Copy</a></li>
                     <li><a href="<?= site_url('book/book_include'); ?>"><i class="fa fa-adjust"></i> Book Include</a></li>
+                    <li><a href="<?= site_url('book/book_banner'); ?>"><i class="fa fa-image"></i> Book Banner</a></li>
                          
                 </ul>
             </li>
