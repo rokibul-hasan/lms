@@ -32,7 +32,8 @@ class Thesis extends CI_Controller{
         $output = $crud->render();
         $data['glosary'] = $output;
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
-        $data['Title'] = 'Book Section';
+        $data['Section'] = 'Thesis Section';
+        $data['Title'] = 'Thesis';
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
     }
@@ -40,11 +41,70 @@ class Thesis extends CI_Controller{
         public function thesis_copy(){
          $crud = new grocery_CRUD();
         $crud->set_table('thesiscopy')
-                ->set_subject('Thesis Copy');
+                ->set_subject('Thesis Copy')
+                ->display_as('ThesisID', 'Thesis Name')
+                ->set_relation('ThesisID', 'thesis', 'Title')
+                ;
         $output = $crud->render();
         $data['glosary'] = $output;
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
-        $data['Title'] = 'Thesis Section';
+        $data['Section'] = 'Thesis Section';
+        $data['Title'] = 'Thesis Copy';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
+    }
+        public function thesis_category(){
+         $crud = new grocery_CRUD();
+        $crud->set_table('thesissubject')
+                ->set_subject('Thesis Category')
+                ->display_as('Thesisid', 'Thesis Name')
+                ->set_relation('Thesisid', 'thesis', 'Title')
+                ->display_as('subjectID', 'Subject')
+                ->set_relation('subjectID', 'subject', 'Title')
+                ;
+        $output = $crud->render();
+        $data['glosary'] = $output;
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Section'] = 'Thesis Section';
+        $data['Title'] = 'Thesis Category';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
+    }
+        public function thesis_author(){
+         $crud = new grocery_CRUD();
+        $crud->set_table('thesisauthor')
+                ->set_subject('Thesis Author')
+                ->display_as('Thesisid', 'Thesis Name')
+                ->set_relation('Thesisid', 'thesis', 'Title')
+                ->display_as('AuthorID','Author Name')
+                ->display_as('AuthorTypeId','Author Type')
+                ->set_relation('AuthorID', 'author', 'AuthorCorporateName')
+                ->set_relation('AuthorTypeId', 'authortype', 'AuthorType')
+                ;
+        $output = $crud->render();
+        $data['glosary'] = $output;
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Section'] = 'Thesis Section';
+        $data['Title'] = 'Thesis Author';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
+    }
+        public function thesis_supervisor(){
+         $crud = new grocery_CRUD();
+        $crud->set_table('thesissupervisor')
+                ->set_subject('Thesis Supervisor')
+                ->display_as('Thesisid', 'Thesis Name')
+                ->set_relation('Thesisid', 'thesis', 'Title')
+//                ->display_as('AuthorID','Author Name')
+//                ->display_as('AuthorTypeId','Author Type')
+//                ->set_relation('AuthorID', 'author', 'AuthorCorporateName')
+//                ->set_relation('AuthorTypeId', 'authortype', 'AuthorType')
+                ;
+        $output = $crud->render();
+        $data['glosary'] = $output;
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Section'] = 'Thesis Section';
+        $data['Title'] = 'Thesis Supervisor';
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
     }

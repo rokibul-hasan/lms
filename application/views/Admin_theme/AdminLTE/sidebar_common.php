@@ -51,6 +51,8 @@
         <ul class="treeview-menu">
             <li><a href="<?= site_url('journal'); ?>"><i class="fa fa-newspaper-o"></i> Journal</a></li>
             <li><a href="<?= site_url('journal/journal_copy'); ?>"><i class="fa fa-copy"></i> Journal Copy</a></li>            
+            <li><a href="<?= site_url('journal/journal_category'); ?>"><i class="fa fa-list"></i> Journal Category</a></li>            
+            <li><a href="<?= site_url('journal/journal_include'); ?>"><i class="fa fa-adjust"></i> Journal Include</a></li>            
         </ul>
     </li>
     
@@ -64,19 +66,24 @@
         <ul class="treeview-menu">
             <li><a href="<?= site_url('thesis'); ?>"><i class="fa fa-graduation-cap"></i> Thesis</a></li>
             <li><a href="<?= site_url('thesis/thesis_copy'); ?>"><i class="fa fa-copy"></i> Thesis Copy</a></li>            
+            <li><a href="<?= site_url('thesis/thesis_category'); ?>"><i class="fa fa-list"></i> Thesis Category</a></li>            
+            <li><a href="<?= site_url('thesis/thesis_author'); ?>"><i class="fa fa-pencil"></i> Thesis Author</a></li>            
+            <li><a href="<?= site_url('thesis/thesis_supervisor'); ?>"><i class="fa fa-user"></i> Thesis Supervisor</a></li>            
         </ul>
     </li>
     
     
         <li class="treeview">
         <a href="#">
-            <i class="fa fa-file-pdf-o"></i>
-            <span>Reports</span>
-            <i class="fa fa-angle-left pull-right"></i>
+            <i class="fa fa-file-pdf-o"></i> <span>Reports</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
         </a> 
         <ul class="treeview-menu">
             <li><a href="<?= site_url('reports'); ?>"><i class="fa fa-graduation-cap"></i> Reports</a></li>
-            <li><a href="<?= site_url('reports/reports_copy'); ?>"><i class="fa fa-copy"></i> Reports Copy</a></li>           
+            <li><a href="<?= site_url('report/reportssubject'); ?>"><i class="fa fa-list"></i> Reports Category</a></li>           
+            <li><a href="<?= site_url('report/report_copy'); ?>"><i class="fa fa-copy"></i> Reports Copy</a></li>           
         </ul>
     </li>
             

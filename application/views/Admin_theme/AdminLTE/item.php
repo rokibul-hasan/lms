@@ -7,12 +7,15 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Page Header
-        <small>Optional description</small>
+        <?= $Title?>
+        <small><?= $Title?></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <?php if(isset($Section)){?>
+        <li class="active"><?= $Section?></li>
+        <?php }?>
+        <li class="active"><?= $Title?></li>
       </ol>
     </section>
 

@@ -30,7 +30,7 @@ class Book extends ci_controller{
         $crud->set_table('book')
                 ->set_subject('Book')
                 ->display_as('PublisherId','Publisher Name')
-                ->set_relation('PublisherId', 'Publisher', 'PublisherName')
+                ->set_relation('PublisherId', 'publisher', 'PublisherName')
                 ->order_by('BookId','desc');
         $output = $crud->render();
         $data['glosary'] = $output;
@@ -99,7 +99,7 @@ class Book extends ci_controller{
                 ->set_subject('Book Include')
                 ->display_as('BookId','Book Name')
                 ->set_relation('BookId', 'book', 'Title')
-                ->display_as('IncludeId','Book Name')
+                ->display_as('IncludeId','Include')
                 ->set_relation('IncludeId', 'include', 'Include')
                 ->order_by('BookIncludeId','desc');
         $output = $crud->render();
