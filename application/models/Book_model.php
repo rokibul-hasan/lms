@@ -17,7 +17,7 @@ class Book_model  extends CI_Model  {
     public function get_book_details($id=''){
         //$sql="SELECT * FROM `bookauthor` LEFT JOIN author ON author.AuthorId=bookauthor.AuthorId
 //LEFT JOIN book ON book.BookId=bookauthor.BookId WHERE book.BookId=1";
-        $this->db->select('*,subject.Title as Category')
+        $this->db->select('*,subject.Title as Category,book.Title as book_title')
                 ->from('bookauthor')
                 ->join('author' , 'author.AuthorId=bookauthor.AuthorId' , 'left')
                 ->join( 'book' , 'book.BookId=bookauthor.BookId' , 'left')

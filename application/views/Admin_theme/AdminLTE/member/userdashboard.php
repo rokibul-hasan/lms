@@ -47,7 +47,7 @@
                         
                         <?php if(isset($book_id)){ 
                              foreach($book_id as $book_info){
-                             $book_title =  $book_info->Title;
+                             $book_title =  $book_info->book_title;
                               $book_publisher_name =  $book_info->PublisherName;
                              $publish_year = $book_info->YearOfPublication;
                              $page = $book_info->Pagination;
