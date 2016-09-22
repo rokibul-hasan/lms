@@ -29,8 +29,8 @@ class Book extends ci_controller{
          $crud = new grocery_CRUD();
         $crud->set_table('book')
                 ->set_subject('Book')
-                ->display_as('PublisherId','Publisher Name')
-                ->set_relation('PublisherId', 'Publisher', 'PublisherName')
+                ->display_as('publisherId','Publisher Name')
+                ->set_relation('PublisherId', 'publisher', 'PublisherName')
                 ->order_by('BookId','desc');
         $output = $crud->render();
         $data['glosary'] = $output;

@@ -1,7 +1,7 @@
 <?php include 'header.php';  ?>
 
  <body class="hold-transition skin-blue sidebar-mini">
-    <div class="container">
+     <div class="container" style="margin-bottom: 100px">
         
         <div class="row">
             <div class="jumbotron">
@@ -113,47 +113,13 @@
                          <li class="active"><a href="#"><i class="fa fa-tachometer"></i> <span>Book Category</span></a></li>
                          
                            <li class="">
-                                    <a href="category.php?id_category=2" title="Well, reading books as a...">Arts &amp; Photography</a>
+                                    <a href="category.php?id_category=2" title="Well, reading books as a...">Book</a>
                                     </li> <li>
-                                    <a href="category.php?id_category=3" title="Well, reading books as a...">Audiobooks</a>
+                                    <a href="category.php?id_category=3" title="Well, reading books as a...">Journal</a>
                                     </li> <li>
-                                    <a href="category.php?id_category=4" title="For a long period of time...">Audible Audiobooks</a>
+                                    <a href="category.php?id_category=4" title="For a long period of time...">Thesis</a>
                                     </li> <li>
-                                    <a href="category.php?id_category=5" title="Well, reading books as a...">Biographies &amp; Memoirs</a>
-                                    </li> <li>
-                                    <a href="category.php?id_category=6" title="For a long period of time...">Business &amp; Investing</a>
-                                    </li> <li>
-                                    <span class="grower CLOSE"> </span><a href="category.php?id_category=7" title="Actually we do understand...">Calendars</a>
-                                    <ul style="display: none;">
-                                    <li>
-                                    <a href="category.php?id_category=17" title="Today you can find whatever...">Children's books</a>
-                                    </li> <li>
-                                    <a href="category.php?id_category=18" title="Each of us possesses their...">Science fiction</a>
-                                    </li> <li>
-                                    <a href="category.php?id_category=19" title="Infant Clothing Store is a...">Detective stories</a>
-                                    </li> <li>
-                                    <a href="category.php?id_category=20" title="Being created for the kids,...">Romance</a>
-                                    </li> <li class="last">
-                                    <a href="category.php?id_category=21" title="After the visit to such a...">Belles-lettres</a>
-                                    </li> </ul>
-                                    </li> <li>
-                                    <a href="category.php?id_category=8" title="Well, reading books as a...">Children's Books</a>
-                                    </li> <li>
-                                    <a href="category.php?id_category=9" title="Well, reading books as a...">Christian Books</a>
-                                    </li> <li>
-                                    <a href="category.php?id_category=10" title="For a long period of time...">Comics &amp; Graphic Novels</a>
-                                    </li> <li>
-                                    <a href="category.php?id_category=11" title="For a long period of time...">Computers &amp; Internet</a>
-                                    </li> <li>
-                                    <a href="category.php?id_category=12" title="Actually we do understand...">Cooking, Food &amp; Wine</a>
-                                    </li> <li>
-                                    <a href="category.php?id_category=13" title="Well, reading books as a...">Crafts &amp; Hobbies</a>
-                                    </li> <li>
-                                    <a href="category.php?id_category=14" title="Well, reading books as a...">Entertainment</a>
-                                    </li> <li>
-                                    <a href="category.php?id_category=15" title="For a long period of time...">Gay &amp; Lesbian</a>
-                                    </li> <li class="last">
-                                    <a href="category.php?id_category=16" title="Well, reading books as a...">Health, Mind &amp; Body</a>
+                                    <a href="category.php?id_category=5" title="Well, reading books as a...">Report Paper</a>
                                     </li> 
                         </ul>
                     </div>
