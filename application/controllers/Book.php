@@ -75,6 +75,18 @@ class Book extends ci_controller{
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
     }
+        public function book_type(){
+         $crud = new grocery_CRUD();
+        $crud->set_table('booktype')
+                ->set_subject('Book Type')
+                ->order_by('BookTypeId','desc');
+        $output = $crud->render();
+        $data['glosary'] = $output;
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Title'] = 'Book Type';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
+    }
     
     
     public function  book_copy(){
@@ -99,13 +111,30 @@ class Book extends ci_controller{
                 ->set_subject('Book Include')
                 ->display_as('BookId','Book Name')
                 ->set_relation('BookId', 'book', 'Title')
-                ->display_as('IncludeId','Book Name')
+                ->display_as('IncludeId','Include')
                 ->set_relation('IncludeId', 'include', 'Include')
                 ->order_by('BookIncludeId','desc');
         $output = $crud->render();
         $data['glosary'] = $output;
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
         $data['Title'] = 'Book Include';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
+    }
+    
+    public function book_banner(){
+        $crud = new grocery_CRUD();
+        $crud->set_table('bookbanner')
+                ->set_subject('Book Banner')
+                ->display_as('BookId','Book Name')
+                ->set_field_upload('BannerImage')
+                ->set_relation('BookId', 'book', 'Title')
+                ->order_by('BookBannerId','desc');
+        $output = $crud->render();
+        $data['glosary'] = $output;
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Section'] = 'Book Section';
+        $data['Title'] = 'Book Banner';
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
     }
