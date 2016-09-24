@@ -17,6 +17,8 @@ class Circulation_model extends CI_Model {
     public function issue() {
         $this->db->select('*');
         $this->db->from('issuereturn');
+        $this->db->join('users','issuereturn.UserId=users.id','left');
+        $this->db->join('book','issuereturn.BookId=book.BookId','left');
         return $this->db->get()->result();
     }
 
@@ -48,11 +50,11 @@ class Circulation_model extends CI_Model {
         $this->db->where('BookId', $book_id);
         $book_info = $this->db->get()->row();
         $data['BookId'] = $book_info->BookId;
-        $data['UserId'] = $_SESSION['user_id'];
+        $data['UserId'] = $this->input->post('UserId');
         $data['Title'] = $book_info->Title;
         $data['IssueDate'] = date('Y-m-d H:i:s');
         $data['ExpiryDate'] = date('Y-m-d H:i:s' . " +2 day");
-        $data['ReturnOrNot'] = '1';
+        $data['ReturnOrNot'] = '2';
         $this->db->insert('issuereturn',$data);
         return true;
     }
@@ -60,8 +62,27 @@ class Circulation_model extends CI_Model {
     function get_issue_book(){
         $this->db->select('*');
         $this->db->from('issuereturn');
-        $this->db->where('ReturnOrNot', '1');
+        $this->db->where('ReturnOrNot', '2');
+        $this->db->where('approval_status', '2');
         return $this->db->get()->result();
+    }
+    
+    function returned_book($book_id){
+        $this->db->select('*');
+        $this->db->from('issuereturn');
+        $this->db->where('BookId', $book_id);
+        $book_info = $this->db->get()->row();
+        $data['ReturnDate'] = date('Y-m-d h:i:s');
+        $data['ReturnOrNot'] = '1';
+        $this->db->where('BookId',$book_id);
+        $this->db->update('issuereturn',$data);
+        return true;
+    }
+    
+    function issue_approval($IssueReturnId,$data){
+        $this->db->where('IssueReturnId',$IssueReturnId);
+        $this->db->update('issuereturn',$data);
+        return true;
     }
 
 }

@@ -108,8 +108,10 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a href="<?= site_url('admin/circular_setting'); ?>"><i class="fa fa-cog"></i> Circulation Settings</a></li>
-            <li><a href="<?= site_url('admin/supplier'); ?>"><i class="fa fa-exchange"></i> Issue &amp; Return</a></li>            
+            <li><a href="<?= site_url('circulation/'); ?>"><i class="fa fa-cog"></i> Circulation Settings</a></li>
+            <li><a href="<?= site_url('circulation/book_issue'); ?>"><i class="fa fa-mail-forward"></i> Issue </a></li>            
+            <li><a href="<?= site_url('circulation/book_return'); ?>"><i class="fa fa-mail-reply"></i> Return</a></li>            
+            <li><a href="<?= site_url('circulation/issuetable'); ?>"><i class="fa fa-table"></i> Issue & Return Table</a></li>            
         </ul>
     </li>
     <li><a href="<?= site_url('admin/supplier'); ?>"><i class="fa fa-folder-open"></i> <span>Daily Read Books</span></a></li>
