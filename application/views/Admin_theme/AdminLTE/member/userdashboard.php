@@ -57,6 +57,9 @@
 
                       </form>
                 </div>
+                   <!-------------------------------------------- 
+   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\BOOK SEARCH///////////////////////////////////////////////////////////
+   ---------------------------------------->
                 
                 <div class="col-md-12">
                     <form action="" class="form" method="post" id="thesis_form" style="display: none">
@@ -80,6 +83,9 @@
 
                       </form>
                 </div>
+                   <!-------------------------------------------- 
+   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\THESIS SEARCH///////////////////////////////////////////////////////////
+   ---------------------------------------->
                 
                 <div class="col-md-12">
                     <form action="" class="form" method="post" id="journals_form" style="display: none">
@@ -103,6 +109,9 @@
 
                       </form>
                 </div>
+                   <!-------------------------------------------- 
+   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\JOURNAL SEARCH///////////////////////////////////////////////////////////
+   ---------------------------------------->
                 
                 <div class="col-md-12">
                     <form action="" class="form" method="post" id="reports_form" style="display: none">
@@ -126,9 +135,16 @@
 
                       </form>
                 </div>
+                   <!-------------------------------------------- 
+   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\REPORT SEARCH ///////////////////////////////////////////////////////////
+   ---------------------------------------->
                 
             </div>
                     <div class="col-md-offset-1 col-md-8">
+                        
+                                    <!-------------------------------------------- 
+   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\BOOK SECTION ///////////////////////////////////////////////////////////
+   ---------------------------------------->       
                         
                         <?php if(isset($book_id)){ 
                              foreach($book_id as $book_info){
@@ -139,9 +155,11 @@
                              $isbn = $book_info->ISBN;
                              $edition =  $book_info->Edition;
                              $book_category = $book_info->Category;
+                             $bookid = $book_info->BookId;
+                             
                              
                             }                   
-                            
+                            $user_id = '2'; //$_SESSION['userid'];
                             
                             ?>
                         <div class="box box-body">
@@ -212,7 +230,12 @@
 
                                 </div><br>
                                 <div class="row">
-                                    <a href="" class="btn btn-danger btn-flat btn-block">Lend</a>
+                                    <form class="form-horizontal" action="<?php echo site_url('circulation/new_issue'); ?>" method="post">
+                                        <input type="hidden" value="<?=$bookid;?>" name="BookId" />
+                                        <input type="hidden" value="<?=$user_id;?>" name="UserId" />
+                                        <input type="submit"  class="btn btn-danger btn-flat btn-block" name="btn" value="Lend"/>
+                                    
+                                    </form>
                                 </div>
                                
                             </div>
@@ -222,6 +245,10 @@
                         </div>
                         
                         <?php } ?>
+                                    
+                                                       <!-------------------------------------------- 
+   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\JOURNAL SECTION ///////////////////////////////////////////////////////////
+   ---------------------------------------->
                         
                         <?php if(isset($journal_id)){ 
                              foreach($journal_id as $journal_info){
@@ -309,6 +336,11 @@
                         
                         <?php } ?>
                         
+                        
+   <!-------------------------------------------- 
+   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\REPORT SECTION///////////////////////////////////////////////////////////
+   ---------------------------------------->
+                        
                         <?php if(isset($reportd_id)){ 
                              foreach($reportd_id as $report_info){
                              $book_title =  $report_info->book_title;
@@ -390,6 +422,10 @@
                         </div>
                         
                         <?php } ?>
+   
+      <!-------------------------------------------- 
+   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\THESIS SECTION///////////////////////////////////////////////////////////
+   ---------------------------------------->
                         
                         <?php if(isset($thesis_id)){ 
                              foreach($thesis_id as $thesis_info){
