@@ -47,18 +47,20 @@ class Userdashboard extends CI_Controller {
         if(isset($btn_journal)){
             $id = $this->input->post('bookid');
             $data['journal_id'] = $this->Book_model->get_journal_details($id); 
-//            echo '<pre>';
-//            print_r($data['journal_id']);
+
         }
         
         if(isset($btn_report)){
-            $id = $this->input->post('bookid');
-            $data['report_id'] = $this->Book_model->get_report_details($id); 
+            $id = $this->input->post('reportid');
+            $data['reportd_id'] = $this->Book_model->get_report_details($id); 
+
         }
         
         if(isset($btn_thesis)){
-            $id = $this->input->post('bookid');
+            $id = $this->input->post('thesisid');
             $data['thesis_id'] = $this->Book_model->get_thesis_details($id); 
+//            echo '<pre>';
+//            print_r($data['thesis_id']);
         }
         
         
