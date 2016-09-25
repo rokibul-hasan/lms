@@ -20,6 +20,7 @@ class Frontpage extends CI_Controller {
 //    }
 
     public function index() {
+        
         $this->load->helper('html');
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
         $data['Title'] = 'Dashboard';
@@ -27,6 +28,8 @@ class Frontpage extends CI_Controller {
         $this->load->view($this->config->item('ADMIN_THEME') . 'member/frontpage', $data);
 
     }
+    
+
     
     
 

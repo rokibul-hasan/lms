@@ -20,6 +20,10 @@ class Admin extends CI_Controller {
     }
 
     public function index() {
+        $this->load->model('report');
+        $data['short_report'] = $this->report->short_report();
+//        echo '<pre>';
+//        print_r($data);
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
         $data['Title'] = 'Dashboard';
         $data['base_url'] = base_url();

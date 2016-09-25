@@ -97,6 +97,8 @@ desired effect
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+            <li><a href="<?= site_url('frontpage'); ?>" target="_blank"><i class="fa fa-external-link"></i> <span>View Front Page</span></a></li>
+             <li><a href="<?= site_url('userdashboard'); ?>" target="_blank"><i class="fa fa-external-link"></i> <span>View User Panel</span></a></li>
 
 
           <!-- User Account Menu -->
