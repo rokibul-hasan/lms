@@ -74,21 +74,31 @@
 
 <?php include_once __DIR__ . '/../footer.php'; ?>
 <style type="text/css">
-    .list_unlist{
-        text-decoration: none;
-        list-style: none;
-        margin-top: 10px;
+    td{
+        background: #777777;
+        color:#fff;
+        font-weight: bold;
+    }
+    td:hover{
+        background: #fff;
+        color:#000;
+        font-weight: bold;
+        cursor:pointer;
     }
 </style>
 
 <script type="text/javascript">
     $('#book_preview').hide();
+    $('#option').change(function(){
+        $('#book').val('');
+        $('#banner').hide();
+    });
 //    book search 
 
     $('#book').keyup(function () {
         var book = $('#book').val();
         var option = $('#option').val();
-//        alert(book);
+//        alert(option);
         if (book != '') {
             $.ajax({
                 url: '<?php echo base_url(); ?>index.php/circulation/get_book_info',
@@ -123,7 +133,7 @@
                 type: 'POST',
                 success: function (data) {
 //                    alert(data);
-                    $('#book_preview').show();
+                    $('#banner').show();
                     var bookList = $.parseJSON(data);
                     $.each(bookList, function (i, bookname) {
                         var banner = '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Title</label><div class="col-sm-10"><span><b>' + bookname['Title'] + '</b></span></div></div><div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Banner</label><div class="col-sm-10">';
@@ -140,12 +150,13 @@
                     }else if(name == 'report'){
                         $('#id').val(bookname['ReportId']);
                     }else if(name == 'thesis'){
-                        $('#id').val(bookname['ThesisId']);
+                        $('#id').val(bookname['Thesisid']);
                     }
                     });
                 }
             });
         }
     });
+    
 
 </script>

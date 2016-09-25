@@ -32,47 +32,64 @@ class Circulation_model extends CI_Model {
             $this->db->where('BookId', $Info);
             $this->db->or_like('Title', $Info);
             $results = $this->db->get()->result();
-            $table = '<table class="table table-hover table-striped"><tbody>';
-            foreach ($results as $result) {
-                $table .='<tr><td id="type" name="book"><option value="' . $result->BookId . '">' . $result->Title . ' | Book id-' . $result->BookId . '</option></td></tr>';
+            if (empty($results)) {
+                $table = '<div class = "alert alert-danger">No Book found</div>';
+            } else {
+                $table = '<table class="table table-hover table-striped"><tbody>';
+                foreach ($results as $result) {
+                    $table .='<tr><td id="type" name="book"><option value="' . $result->BookId . '">' . $result->Title . ' | Book id-' . $result->BookId . '</option></td></tr>';
+                }
+                $table .= '</tbody></table>';
             }
-            $table .= '</tbody></table>';
         } elseif ($option == 'journel') {
             $this->db->select('*');
             $this->db->from('journal');
             $this->db->where('JournalId', $Info);
             $this->db->or_like('Title', $Info);
             $results = $this->db->get()->result();
-            $table = '<table class="table table-hover table-striped"><tbody>';
-            foreach ($results as $result) {
-                $table .='<tr><td id="type" name="journel"><option value="' . $result->JournalId . '">' . $result->Title . ' | Journal id-' . $result->JournalId . '</option></td></tr>';
+            if (empty($results)) {
+                $table = '<div class = "alert alert-danger">No Book found</div>';
+            } else {
+                $table = '<table class="table table-hover table-striped"><tbody>';
+                foreach ($results as $result) {
+                    $table .='<tr><td id="type" name="journel"><option value="' . $result->JournalId . '">' . $result->Title . ' | Journal id-' . $result->JournalId . '</option></td></tr>';
+                }
+                $table .= '</tbody></table>';
             }
-            $table .= '</tbody></table>';
         } elseif ($option == 'report') {
             $this->db->select('*');
             $this->db->from('report');
             $this->db->where('ReportlId', $Info);
             $this->db->or_like('Title', $Info);
             $results = $this->db->get()->result();
-            $table = '<table class="table table-hover table-striped"><tbody>';
-            foreach ($results as $result) {
-                $table .='<tr><td id="type" name="report"><option value="' . $result->ReportlId . '">' . $result->Title . ' | Report id-' . $result->ReportlId . '</option></td></tr>';
+            if (empty($results)) {
+                $table = '<div class = "alert alert-danger">No Book found</div>';
+            } else {
+                $table = '<table class="table table-hover table-striped"><tbody>';
+                foreach ($results as $result) {
+                    $table .='<tr><td id="type" name="report"><option value="' . $result->ReportlId . '">' . $result->Title . ' | Report id-' . $result->ReportlId . '</option></td></tr>';
+                }
+                $table .= '</tbody></table>';
             }
-            $table .= '</tbody></table>';
         } elseif ($option == 'thesis') {
             $this->db->select('*');
             $this->db->from('thesis');
-            $this->db->where('ThesislId', $Info);
+            $this->db->where('Thesisid', $Info);
             $this->db->or_like('Title', $Info);
             $results = $this->db->get()->result();
-            $table = '<table class="table table-hover table-striped"><tbody>';
-            foreach ($results as $result) {
-                $table .='<tr><td id="type" name="thesis"><option value="' . $result->ThesislId . '">' . $result->Title . ' | Thesis id-' . $result->ThesislId . '</option></td></tr>';
+            if (empty($results)) {
+                $table = '<div class = "alert alert-danger">No Book found</div>';
+            } else {
+                $table = '<table class="table table-hover table-striped"><tbody>';
+                foreach ($results as $result) {
+                    $table .='<tr><td id="type" name="thesis"><option value="' . $result->Thesisid . '">' . $result->Title . ' | Thesis id-' . $result->Thesisid . '</option></td></tr>';
+                }
+                $table .= '</tbody></table>';
             }
-            $table .= '</tbody></table>';
         } else {
-            $table = 'No type Selected';
+            $table = '<div class = "alert alert-danger">No Type Selected</div>';
         }
+
         return $table;
     }
 
@@ -90,7 +107,7 @@ class Circulation_model extends CI_Model {
         } elseif ($typeName == 'thesis') {
             $this->db->select('*');
             $this->db->from('thesis');
-            $this->db->where('ThesislId', $id);
+            $this->db->where('Thesisid', $id);
             return $this->db->get()->result();
         } elseif ($typeName == 'report') {
             $this->db->select('*');
@@ -101,6 +118,7 @@ class Circulation_model extends CI_Model {
             return false;
         }
     }
+
 //add new issue
     function new_issue($post_array) {
         $id = $this->input->post('Id');
@@ -108,7 +126,7 @@ class Circulation_model extends CI_Model {
         if ($type == 'book') {
             $this->db->select('*');
             $this->db->from('book');
-            $this->db->where('BookId', $book_id);
+            $this->db->where('BookId', $id);
             $info = $this->db->get()->row();
             $data['BookId'] = $info->BookId;
             $data['type'] = 'book';
@@ -122,7 +140,7 @@ class Circulation_model extends CI_Model {
         } elseif ($type == 'thesis') {
             $this->db->select('*');
             $this->db->from('thesis');
-            $this->db->where('ThesisId', $id);
+            $this->db->where('Thesisid', $id);
             $info = $this->db->get()->row();
             $data['BookId'] = $info->ThesisId;
             $data['type'] = 'thesis';
@@ -137,7 +155,7 @@ class Circulation_model extends CI_Model {
             return false;
         }
 
-        
+
         $data['UserId'] = $this->input->post('UserId');
         $data['Title'] = $info->Title;
         $data['IssueDate'] = date('Y-m-d H:i:s');
