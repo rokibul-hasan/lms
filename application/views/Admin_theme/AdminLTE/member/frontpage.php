@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <aside>
                    <div class="box box-info">
                        
@@ -54,49 +54,157 @@
                          <li class="active"><a href="#"><i class="fa fa-tachometer"></i> <span>Book Category</span></a></li>
                          
                            <li class="">
-                                    <a href="category.php?id_category=2" title="Well, reading books as a...">Book</a>
+                                    <a href="#books_list" title="Well, reading books as a...">Book</a>
                                     </li> <li>
-                                    <a href="category.php?id_category=3" title="Well, reading books as a...">Journal</a>
+                                    <a href="#journal_list" title="Well, reading books as a...">Journal</a>
                                     </li> <li>
-                                    <a href="category.php?id_category=4" title="For a long period of time...">Thesis</a>
+                                    <a href="#thesis_list" title="For a long period of time...">Thesis</a>
                                     </li> <li>
-                                    <a href="category.php?id_category=5" title="Well, reading books as a...">Report Paper</a>
+                                    <a href="#report_list" title="Well, reading books as a...">Report Paper</a>
                                     </li> 
                         </ul>
                     </div>
                 </aside>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="row margin-bottom">
-                    <div class="col-sm-6">
-                        <?php echo img(array('src'=>'images/2-5-home.jpg' ,'class' => 'img-responsive')); ?>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-sm-6">
-                      <div class="row">
-                        <div class="col-sm-6">
-                            <?php echo img(array('src'=>'images/3-9-home.jpg' ,'class' => 'img-responsive')); ?>
-                          
-                          <br>
-                          <?php echo img(array('src'=>'images/4-13-home.jpg' ,'class' => 'img-responsive')); ?>
-                          
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-6">
-                            <?php echo img(array('src'=>'images/5-17-home.jpg' ,'class' => 'img-responsive')); ?>
-                          
-                          <br>
-                          <?php echo img(array('src'=>'images/6-21-home.jpg' ,'class' => 'img-responsive')); ?>
-                          
-                        </div>
-                        <!-- /.col -->
-                      </div>
-                      <!-- /.row -->
-                    </div>
-                    <!-- /.col -->
-                  </div>
-                
+                    <div class="book_section">
+                        
+                        
+                        
+                        
+                        <div class="box-body" id="book_list"> 
+                          <table id="example" class="table table-bordered table-hover">
+                              <caption class="callout callout-success text-center">All Books</caption> 
+                              <thead>
+                            <tr>
+                              <th>Book Details</th>
+                            </tr>
+                            </thead>
+                           <tbody>
 
+   <?php //echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block'));  ?>
+ 
+        
+                           
+                        <?php if(isset($all_book)){ 
+                            foreach($all_book as $book_list){ ?>
+                            <tr>
+                                <td style="margin:0;padding:0; background-size:100% 100%;background-image: url(<?php echo base_url('images/nocover.jpg') ?>) ">
+                                    
+                                    <div class="book_wrapper">
+                                            <h5 class="text-center"><?=$book_list->Title?></h5>
+                                     </div> 
+
+                               </td>
+                            </tr>
+                          <?php  }
+                        }
+                        ?>
+                             </tbody>
+                          </table>   
+                    </div>
+                        
+                       <div class="box-body" id="journal_list">
+                          <table id="example1" class="table table-bordered table-hover">
+                              <caption class="callout callout-info btn-flat text-center">All Journal</caption>
+                              <thead>
+                            <tr>
+                              <th>Journal Details</th>
+                            </tr>
+                            </thead>
+                           <tbody>
+
+   <?php //echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block'));  ?>
+ 
+        
+                           
+                        <?php if(isset($all_journal)){ 
+                            foreach($all_journal as $journal_list){ ?>
+                            <tr>
+                                <td style="margin:0;padding:0; background-size:100% 100%;background-image: url(<?php echo base_url('images/nocover.jpg') ?>) ">
+                                    
+                                    <div class="book_wrapper">
+                                            <h5 class="text-center"><?=$journal_list->Title?></h5>
+                                     </div> 
+
+                               </td>
+                            </tr>
+                          <?php  }
+                        }
+                        ?>
+                             </tbody>
+                          </table>   
+                    </div>
+
+                        
+                         <div class="box-body" id="report_list">
+                          <table id="example1" class="table table-bordered table-hover">
+                              <caption class="callout callout-info btn-flat text-center">All Report</caption>
+                              <thead>
+                            <tr>
+                              <th>Report Details</th> 
+                            </tr>
+                            </thead>
+                           <tbody>
+
+   <?php //echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block'));  ?>
+ 
+        
+                           
+                        <?php if(isset($all_report)){ 
+                            foreach($all_report as $report_list){ ?>
+                            <tr>
+                                <td style="margin:0;padding:0; background-size:100% 100%;background-image: url(<?php echo base_url('images/nocover.jpg') ?>) ">
+                                    
+                                    <div class="book_wrapper">
+                                            <h5 class="text-center"><?=$report_list->Title?></h5>
+                                     </div> 
+
+                               </td>
+                            </tr>
+                          <?php  }
+                        }
+                        ?>
+                             </tbody>
+                          </table>   
+                    </div>
+
+                        
+                        <div class="box-body" id="thesis_list">
+                          <table id="example1" class="table table-bordered table-hover">
+                              <caption class="callout callout-info btn-flat text-center">All Thesis</caption>
+                              <thead>
+                            <tr>
+                              <th>Journal Details</th>
+                            </tr>
+                            </thead>
+                           <tbody>
+
+   <?php //echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block'));  ?>
+ 
+        
+                           
+                        <?php if(isset($all_thesis)){ 
+                            foreach($all_thesis as $thesis_list){ ?>
+                            <tr>
+                                <td style="margin:0;padding:0; background-size:100% 100%;background-image: url(<?php echo base_url('images/nocover.jpg') ?>) ">
+                                    
+                                    <div class="book_wrapper">
+                                            <h5 class="text-center"><?=$thesis_list->Title?></h5>
+                                     </div> 
+
+                               </td>
+                            </tr>
+                          <?php  }
+                        }
+                        ?>
+                             </tbody>
+                          </table>   
+                    </div>
+
+                        
+                </div>
             </div>
         </div>
     </div>
@@ -111,3 +219,50 @@
 </body>
 
 <?php   include 'footer.php';  ?>
+
+<style type="text/css">
+    tr {
+    width: 20%;
+    float: left;
+}
+td{
+    height: 200px;
+    width:170px;
+}
+thead {
+    display: none;
+}
+
+.book_wrapper {
+    background-color: rgba(0,0,0,.5);
+    width: 100%;
+    height: 100%;
+    margin-top: -10px;
+    padding: 0;
+}
+
+.book_wrapper:hover {
+    background-color: rgba(0,0,0,.9);
+    color: #fff;
+}
+.book_wrapper h5 {
+    padding: 10px;
+    color: #ddd;
+}
+</style>
+
+<script>
+  $(function () {
+
+     $("#example1").DataTable();
+    $('#example').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>
+
