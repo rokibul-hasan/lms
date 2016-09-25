@@ -29,6 +29,7 @@ class Journal extends CI_Controller {
         $crud = new grocery_CRUD();
         $crud->set_table('journal')
                 ->set_subject('Journal')
+                ->set_field_upload('Banner')
                 ->display_as('PublisherId', 'Publisher Name')
                 ->set_relation('PublisherId', 'publisher', 'PublisherName')
                 ->order_by('JournalId', 'desc');

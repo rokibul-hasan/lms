@@ -29,7 +29,7 @@ class Book extends ci_controller{
          $crud = new grocery_CRUD();
         $crud->set_table('book')
                 ->set_subject('Book')
-                ->set_field_upload('BookBanner')
+                ->set_field_upload('Banner')
                 ->display_as('publisherId','Publisher Name')
                 ->set_relation('PublisherId', 'publisher', 'PublisherName')
                 ->order_by('BookId','desc');
