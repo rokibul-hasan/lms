@@ -116,6 +116,10 @@
     </li>
     <li><a href="<?= site_url('admin/supplier'); ?>"><i class="fa fa-folder-open"></i> <span>Daily Read Books</span></a></li>
     <li><a href="<?= site_url('admin/supplier'); ?>"><i class="fa  fa-inbox"></i> <span>Requested Books</span></a></li>
+     <li><a href="<?= site_url('event'); ?>"><i class="fa  fa-calendar"></i> <span>Event</span></a></li>
+     <li><a href="<?= site_url('mynote'); ?>"><i class="fa  fa-edit"></i> <span>My Note</span></a></li>
+    
+    
     <li class="treeview">
         <a href="#"><i class="fa fa-user"></i> <span>Member</span>
             <span class="pull-right-container">

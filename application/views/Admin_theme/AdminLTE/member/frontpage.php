@@ -88,12 +88,27 @@
         
                            
                         <?php if(isset($all_book)){ 
-                            foreach($all_book as $book_list){ ?>
+                            foreach($all_book as $book_list){ 
+                                $book_cover = $book_list->Banner;                                
+                                
+                                   if(isset($book_cover) && !empty($book_cover)){
+                                    
+                                    $link = base_url('assets/uploads/files').'/'.$book_cover;
+                                    
+                                }else{
+                                    
+                                     $link = base_url('images/nocover.jpg');
+                                }
+                                
+                                
+                                
+                                ?>
                             <tr>
-                                <td style="margin:0;padding:0; background-size:100% 100%;background-image: url(<?php echo base_url('images/nocover.jpg') ?>) ">
+                                <td style="margin:0;padding:0; background-size:100% 100%;background-image: url(<?php echo $link ?>) ">
                                     
                                     <div class="book_wrapper">
                                             <h5 class="text-center"><?=$book_list->Title?></h5>
+
                                      </div> 
 
                                </td>
@@ -139,8 +154,8 @@
 
                         
                          <div class="box-body" id="report_list">
-                          <table id="example1" class="table table-bordered table-hover">
-                              <caption class="callout callout-info btn-flat text-center">All Report</caption>
+                          <table id="example2" class="table table-bordered table-hover">
+                              <caption class="callout callout-success btn-flat text-center">All Report</caption>
                               <thead>
                             <tr>
                               <th>Report Details</th> 
@@ -153,9 +168,11 @@
         
                            
                         <?php if(isset($all_report)){ 
-                            foreach($all_report as $report_list){ ?>
+                            foreach($all_report as $report_list){ 
+                                
+                                ?>
                             <tr>
-                                <td style="margin:0;padding:0; background-size:100% 100%;background-image: url(<?php echo base_url('images/nocover.jpg') ?>) ">
+                                <td style="margin:0;padding:0; background-size:100% 100%;background-image: url(<?php echo base_url('assets/uploads/files/') ?>) ">
                                     
                                     <div class="book_wrapper">
                                             <h5 class="text-center"><?=$report_list->Title?></h5>
@@ -172,8 +189,8 @@
 
                         
                         <div class="box-body" id="thesis_list">
-                          <table id="example1" class="table table-bordered table-hover">
-                              <caption class="callout callout-info btn-flat text-center">All Thesis</caption>
+                          <table id="example3" class="table table-bordered table-hover">
+                              <caption class="callout callout-danger btn-flat text-center">All Thesis</caption>
                               <thead>
                             <tr>
                               <th>Journal Details</th>
@@ -254,7 +271,33 @@ thead {
 <script>
   $(function () {
 
-     $("#example1").DataTable();
+         $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+    
+        $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+    
+        $('#example3').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+    
     $('#example').DataTable({
       "paging": true,
       "lengthChange": false,

@@ -156,6 +156,8 @@
                              $edition =  $book_info->Edition;
                              $book_category = $book_info->Category;
                              $bookid = $book_info->BookId;
+                             $book_cover = $book_info->Banner;
+                             
                              
                              
                             }                   
@@ -186,9 +188,12 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <?php if(isset($book_cover)){
-                                    echo img(array('src'=>'$book_cover' ,'class' => 'img-responsive')); 
+                                <?php if(isset($book_cover) && !empty($book_cover)){
+                                    
+                                    echo img(array('src'=>'assets/uploads/files/'.$book_cover ,'class' => 'img-responsive')); 
+                                    
                                 }else{
+                                    
                                      echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block')); 
                                 }
                                 ?>
