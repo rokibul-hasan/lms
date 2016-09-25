@@ -34,7 +34,8 @@
                 <table style="width:100%" class="table table-bordered table-zebra table-hover table-stripped background_white">
                     <tbody><tr>           
 
-                            <th>Book ID</th>
+                            <th>Title</th>
+                            <th>Type</th>
                             <th>Issue Date</th>
                             <th>Expiry Date</th>           
                             <th>Fine/Penalty - BDT</th>    
@@ -44,7 +45,8 @@
                         </tr>
                         <?php foreach ($get_issue_book as $issue) { ?>
                             <tr id="tr_379" class="display_row">
-                                <td><?php echo $issue->BookId; ?></td>
+                                <td><?php echo $issue->Title; ?></td>
+                                <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
                                 <td><?php echo date('Y-m-d', strtotime($issue->IssueDate)); ?></td>
                                 <td><?php echo date('Y-m-d', strtotime($issue->ExpiryDate)); ?></td>
                                 <td><?php echo $issue->Fine; ?></td>

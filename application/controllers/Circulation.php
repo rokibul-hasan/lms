@@ -74,7 +74,7 @@ class Circulation extends CI_Controller {
         $this->Circulation_model->returned_book($book_id);
         $sdata['message'] = '<div class = "alert alert-success" id="message"><button type = "button" class = "close" data-dismiss = "alert"><i class = " fa fa-times"></i></button><p><strong><i class = "ace-icon fa fa-check"></i></strong> Data is Successfully Saved!</p></div>';
         $this->session->set_userdata($sdata);
-        redirect('circulation/issue');
+        redirect('circulation/issuetable');
     }
 
     function new_issue() {
@@ -84,7 +84,7 @@ class Circulation extends CI_Controller {
         }
         $sdata['message'] = '<div class = "alert alert-success" id="message"><button type = "button" class = "close" data-dismiss = "alert"><i class = " fa fa-times"></i></button><p><strong><i class = "ace-icon fa fa-check"></i></strong> Data is Successfully Saved!</p></div>';
         $this->session->set_userdata($sdata);
-        redirect('circulation/issue');
+        redirect('circulation/issuetable');
     }
 
     function issue_approval() {
@@ -108,12 +108,15 @@ class Circulation extends CI_Controller {
 
     function get_book_info() {
         $bookInfo = $this->input->post('bookInfo');
-        echo $data = $this->Circulation_model->select_book_info($bookInfo);
+        $option = $this->input->post('option');
+        echo $data = $this->Circulation_model->select_book_info($bookInfo,$option);
     }
 
     function get_book_info_after_search() {
-        $bookId = $this->input->post('bookId');
-        $data = $this->Circulation_model->select_book_id($bookId);
+        $Id = $this->input->post('bookId');
+        $typeName = $this->input->post('typeName');
+//        print_r($typeName);exit();
+        $data = $this->Circulation_model->select_book_id($Id,$typeName);
         echo json_encode($data);
 //        }
     }

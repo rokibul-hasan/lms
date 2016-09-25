@@ -41,9 +41,9 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Book Title</th>
-                            <th>Member Name</th>
                             <th>Title</th>
+                            <th>Member Name</th>
+                            <th>Type</th>
                             <th>Issue Date</th>
                             <th>Expiry Date</th>
                             <th>Return Date</th>
@@ -58,7 +58,7 @@
                             <tr>
                                 <td><?php echo $issue->Title; ?></td>
                                 <td><?php echo $issue->username; ?></td>
-                                <td><?php echo $issue->Title; ?></td>
+                                <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
                                 <td><?php echo $issue->IssueDate; ?></td>
                                 <td><?php echo $issue->ExpiryDate; ?></td>
                                 <td><?php echo $issue->ReturnDate; ?></td>

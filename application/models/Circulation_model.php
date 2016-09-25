@@ -15,73 +15,161 @@ class Circulation_model extends CI_Model {
 
     //put your code here
     public function issue() {
+//  $sql = $this->db->query('Select type from `issuereturn`')->result();
+//  print_r($sql);exit();
         $this->db->select('*');
         $this->db->from('issuereturn');
-        $this->db->join('users','issuereturn.UserId=users.id','left');
-        $this->db->join('book','issuereturn.BookId=book.BookId','left');
+        $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
+//        $this->db->join('book', 'issuereturn.BookId=book.BookId', 'left');
+//        $this->db->join('journal', 'issuereturn.BookId=journal.JournalId', 'left');
         return $this->db->get()->result();
     }
 
-    function select_book_info($bookInfo) {
-        $this->db->select('*');
-        $this->db->from('book');
-        $this->db->where('BookId', $bookInfo);
-        $this->db->or_like('Title', $bookInfo);
-        $results = $this->db->get()->result();
-        $table = '<table class="table table-hover table-striped"><tbody>';
-        foreach ($results as $result) {
-            $table .='<tr value="' . $result->BookId . '"><td><option value="' . $result->BookId . '">' . $result->Title . ' | book id-' . $result->BookId . '</option></td></tr>';
+    function select_book_info($Info, $option) {
+        if ($option == 'book') {
+            $this->db->select('*');
+            $this->db->from('book');
+            $this->db->where('BookId', $Info);
+            $this->db->or_like('Title', $Info);
+            $results = $this->db->get()->result();
+            $table = '<table class="table table-hover table-striped"><tbody>';
+            foreach ($results as $result) {
+                $table .='<tr><td id="type" name="book"><option value="' . $result->BookId . '">' . $result->Title . ' | Book id-' . $result->BookId . '</option></td></tr>';
+            }
+            $table .= '</tbody></table>';
+        } elseif ($option == 'journel') {
+            $this->db->select('*');
+            $this->db->from('journal');
+            $this->db->where('JournalId', $Info);
+            $this->db->or_like('Title', $Info);
+            $results = $this->db->get()->result();
+            $table = '<table class="table table-hover table-striped"><tbody>';
+            foreach ($results as $result) {
+                $table .='<tr><td id="type" name="journel"><option value="' . $result->JournalId . '">' . $result->Title . ' | Journal id-' . $result->JournalId . '</option></td></tr>';
+            }
+            $table .= '</tbody></table>';
+        } elseif ($option == 'report') {
+            $this->db->select('*');
+            $this->db->from('report');
+            $this->db->where('ReportlId', $Info);
+            $this->db->or_like('Title', $Info);
+            $results = $this->db->get()->result();
+            $table = '<table class="table table-hover table-striped"><tbody>';
+            foreach ($results as $result) {
+                $table .='<tr><td id="type" name="report"><option value="' . $result->ReportlId . '">' . $result->Title . ' | Report id-' . $result->ReportlId . '</option></td></tr>';
+            }
+            $table .= '</tbody></table>';
+        } elseif ($option == 'thesis') {
+            $this->db->select('*');
+            $this->db->from('thesis');
+            $this->db->where('ThesislId', $Info);
+            $this->db->or_like('Title', $Info);
+            $results = $this->db->get()->result();
+            $table = '<table class="table table-hover table-striped"><tbody>';
+            foreach ($results as $result) {
+                $table .='<tr><td id="type" name="thesis"><option value="' . $result->ThesislId . '">' . $result->Title . ' | Thesis id-' . $result->ThesislId . '</option></td></tr>';
+            }
+            $table .= '</tbody></table>';
+        } else {
+            $table = 'No type Selected';
         }
-        $table .= '</tbody></table>';
         return $table;
     }
 
-    function select_book_id($book_id) {
-        $this->db->select('*');
-        $this->db->from('book');
-        $this->db->where('BookId', $book_id);
-        return $this->db->get()->result();
+    function select_book_id($id, $typeName) {
+        if ($typeName == 'book') {
+            $this->db->select('*');
+            $this->db->from('book');
+            $this->db->where('BookId', $id);
+            return $this->db->get()->result();
+        } elseif ($typeName == 'journel') {
+            $this->db->select('*');
+            $this->db->from('journal');
+            $this->db->where('JournalId', $id);
+            return $this->db->get()->result();
+        } elseif ($typeName == 'thesis') {
+            $this->db->select('*');
+            $this->db->from('thesis');
+            $this->db->where('ThesislId', $id);
+            return $this->db->get()->result();
+        } elseif ($typeName == 'report') {
+            $this->db->select('*');
+            $this->db->from('report');
+            $this->db->where('ReportId', $id);
+            return $this->db->get()->result();
+        } else {
+            return false;
+        }
     }
-    
-    function new_issue($post_array){
-        $book_id = $this->input->post('BookId');
-        $this->db->select('*');
-        $this->db->from('book');
-        $this->db->where('BookId', $book_id);
-        $book_info = $this->db->get()->row();
-        $data['BookId'] = $book_info->BookId;
+//add new issue
+    function new_issue($post_array) {
+        $id = $this->input->post('Id');
+        $type = $this->input->post('type');
+        if ($type == 'book') {
+            $this->db->select('*');
+            $this->db->from('book');
+            $this->db->where('BookId', $book_id);
+            $info = $this->db->get()->row();
+            $data['BookId'] = $info->BookId;
+            $data['type'] = 'book';
+        } elseif ($type == 'journel') {
+            $this->db->select('*');
+            $this->db->from('journal');
+            $this->db->where('JournalId', $id);
+            $info = $this->db->get()->row();
+            $data['BookId'] = $info->JournalId;
+            $data['type'] = 'journal';
+        } elseif ($type == 'thesis') {
+            $this->db->select('*');
+            $this->db->from('thesis');
+            $this->db->where('ThesisId', $id);
+            $info = $this->db->get()->row();
+            $data['BookId'] = $info->ThesisId;
+            $data['type'] = 'thesis';
+        } elseif ($type == 'report') {
+            $this->db->select('*');
+            $this->db->from('report');
+            $this->db->where('ReportId', $id);
+            $info = $this->db->get()->row();
+            $data['BookId'] = $info->ReportId;
+            $data['type'] = 'report';
+        } else {
+            return false;
+        }
+
+        
         $data['UserId'] = $this->input->post('UserId');
-        $data['Title'] = $book_info->Title;
+        $data['Title'] = $info->Title;
         $data['IssueDate'] = date('Y-m-d H:i:s');
         $data['ExpiryDate'] = date('Y-m-d H:i:s' . " +2 day");
         $data['ReturnOrNot'] = '2';
-        $this->db->insert('issuereturn',$data);
+        $this->db->insert('issuereturn', $data);
         return true;
     }
-    
-    function get_issue_book(){
+
+    function get_issue_book() {
         $this->db->select('*');
         $this->db->from('issuereturn');
         $this->db->where('ReturnOrNot', '2');
         $this->db->where('approval_status', '2');
         return $this->db->get()->result();
     }
-    
-    function returned_book($book_id){
+
+    function returned_book($book_id) {
         $this->db->select('*');
         $this->db->from('issuereturn');
         $this->db->where('BookId', $book_id);
         $book_info = $this->db->get()->row();
         $data['ReturnDate'] = date('Y-m-d h:i:s');
         $data['ReturnOrNot'] = '1';
-        $this->db->where('BookId',$book_id);
-        $this->db->update('issuereturn',$data);
+        $this->db->where('BookId', $book_id);
+        $this->db->update('issuereturn', $data);
         return true;
     }
-    
-    function issue_approval($IssueReturnId,$data){
-        $this->db->where('IssueReturnId',$IssueReturnId);
-        $this->db->update('issuereturn',$data);
+
+    function issue_approval($IssueReturnId, $data) {
+        $this->db->where('IssueReturnId', $IssueReturnId);
+        $this->db->update('issuereturn', $data);
         return true;
     }
 

@@ -28,6 +28,7 @@ class Thesis extends CI_Controller{
      public function index(){
          $crud = new grocery_CRUD();
         $crud->set_table('thesis')
+                ->set_field_upload('Banner')
                 ->set_subject('Thesis');
         $output = $crud->render();
         $data['glosary'] = $output;
