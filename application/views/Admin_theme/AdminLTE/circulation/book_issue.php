@@ -28,12 +28,23 @@
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">User</label>
                         <div class="col-sm-10">
+                            <?php 
+                                $username = $this->session->userdata('username');
+                                $user_id = $this->session->userdata('user_id');
+                                $user_type = $this->session->userdata('user_type');
+                                if($user_type == '1'){
+                            ?>
                             <select class="form-control  select2" name="UserId" id="select2">
                                 <option value="">Select User</option>
                                 <?php foreach ($get_users as $user) { ?>
                                     <option value="<?php echo $user->id; ?>"><?php echo $user->username; ?></option>
                                 <?php } ?>
                             </select>
+                            <?php }else{
+                                echo $username;?>
+                            <input type="hidden" name="UserId" value="<?php echo $user_id;?>" />
+                                    <?php
+                            } ?>
                         </div>
                     </div>
                     <div class="form-group">

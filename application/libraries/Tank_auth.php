@@ -57,7 +57,7 @@ class Tank_auth
 			}
 
 			if (!is_null($user = $this->ci->users->$get_user_func($login))) {	// login ok
-
+                            $user_type = $this->ci->db->where('UserId',$user->id)->get('user_type')->row();
 				// Does password match hash in database?
 				$hasher = new PasswordHash(
 						$this->ci->config->item('phpass_hash_strength', 'tank_auth'),
@@ -71,6 +71,7 @@ class Tank_auth
 						$this->ci->session->set_userdata(array(
 								'user_id'	=> $user->id,
 								'username'	=> $user->username,
+                                                                'user_type'     =>  $user_type->Type,
 								'status'	=> ($user->activated == 1) ? STATUS_ACTIVATED : STATUS_NOT_ACTIVATED,
 						));
 
@@ -113,7 +114,7 @@ class Tank_auth
 		$this->delete_autologin();
 
 		// See http://codeigniter.com/forums/viewreply/662369/ as the reason for the next line
-		$this->ci->session->set_userdata(array('user_id' => '', 'username' => '', 'status' => ''));
+		$this->ci->session->set_userdata(array('user_id' => '', 'username' => '','user_type'     =>  '', 'status' => ''));
 
 		$this->ci->session->sess_destroy();
 	}

@@ -23,7 +23,6 @@
     <section class="content">
 
                           <?php  
-
                        echo $glosary->output;
                     ?>
 

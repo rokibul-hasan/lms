@@ -30,8 +30,9 @@ class Circulation extends CI_Controller {
         $crud = new grocery_CRUD();
         $crud->set_table('circulation')
                 ->set_subject('Circulation Settings')
-                ->display_as('RoleId', 'Member Type')
-                ->set_relation('RoleId', 'role', 'Role')
+                ->display_as('UserTypeId', 'Member Type')
+//                ->set_relation('UserTypeId', 'user_type', 'Type')
+                ->field_type('UserTypeId','dropdown',array('1'=>'Super Admin','2'=>'IT Manager','3'=>'Employee','4'=>'User'))
                 ->order_by('CirculationId', 'desc');
         $output = $crud->render();
         $data['glosary'] = $output;
