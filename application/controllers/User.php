@@ -11,7 +11,8 @@
  *
  * @author sonjoy
  */
-class User extends CI_Controller{
+class User extends CI_Controller {
+
     //put your code here
     function __construct() {
         parent::__construct();
@@ -26,14 +27,13 @@ class User extends CI_Controller{
 //        }
         $this->load->library('grocery_CRUD');
         $this->load->model('User_model');
-        
     }
-    
+
     function index() {
         $crud = new grocery_CRUD();
         $crud->set_table('users')
                 ->set_subject('Member')
-                ->unset_columns('password','new_password_key','new_password_requested','new_email','new_email_key')
+                ->unset_columns('password', 'new_password_key', 'new_password_requested', 'new_email', 'new_email_key')
                 ->order_by('id', 'desc')
                 ->callback_column('banned', function($this) {
                     if ($this == 1) {
@@ -51,14 +51,14 @@ class User extends CI_Controller{
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'user_management', $data);
     }
-    
-    function user_type(){
+
+    function user_type() {
         $crud = new grocery_CRUD();
         $crud->set_table('user_type')
                 ->set_subject('Member Type')
-                ->display_as('UserId','Member Name')
-                ->set_relation('UserId','users','username')
-                ->field_type('Type', 'dropdown',array('1'=>'Super Admin','2'=>'IT Manager','3'=>'Employee','4'=>'User'))
+                ->display_as('UserId', 'Member Name')
+                ->set_relation('UserId', 'users', 'username')
+                ->field_type('Type', 'dropdown', array('1' => 'Super Admin', '2' => 'IT Manager', '3' => 'Employee', '4' => 'User'))
                 ->order_by('UserTypeId', 'desc');
         $output = $crud->render();
         $data['glosary'] = $output;
@@ -67,7 +67,7 @@ class User extends CI_Controller{
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
     }
-    
+
     function save_info() {
         $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|min_length[' . $this->config->item('username_min_length', 'tank_auth') . ']|max_length[' . $this->config->item('username_max_length', 'tank_auth') . ']|alpha_dash');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
@@ -107,10 +107,12 @@ class User extends CI_Controller{
             $user['email'] = $this->input->post('email');
         }
         $password = $this->input->post('password');
-        $hasher = new PasswordHash(
-                $this->config->item('phpass_hash_strength', 'tank_auth'), $this->config->item('phpass_hash_portable', 'tank_auth')
-        );
-        $user['password'] = $hasher->HashPassword($password);
+        if (!empty($password)) {
+            $hasher = new PasswordHash(
+                    $this->config->item('phpass_hash_strength', 'tank_auth'), $this->config->item('phpass_hash_portable', 'tank_auth')
+            );
+            $user['password'] = $hasher->HashPassword($password);
+        }
         $user['activated'] = $this->input->post('activated');
         $user['banned'] = $this->input->post('banned');
         $user['ban_reason'] = $this->input->post('banned_reason');
@@ -122,4 +124,5 @@ class User extends CI_Controller{
         $this->User_model->update_info('user_type', 'UserTypeId', $data, $id_user_type);
         redirect('user');
     }
+
 }

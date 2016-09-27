@@ -165,12 +165,14 @@ class Circulation_model extends CI_Model {
             return false;
         }
         $user_type = $this->session->userdata('user_type');
-        $circulation = $this->db->where('UserTypeId', $user_type)->get('circulation')->row();
-
+        $circulation = $this->db->where('UserType', $user_type)->get('circulation')->row();
+        
         $data['UserId'] = $this->input->post('UserId');
         $data['Title'] = $info->Title;
         $data['IssueDate'] = date('Y-m-d H:i:s');
-        $data['ExpiryDate'] = date('Y-m-d H:i:s' . " +" . $circulation->IssueLimitDays . " day");
+//        $data['ExpiryDate'] = date('Y-m-d H:i:s' . " +" . $circulation->IssueLimitDays . " day");
+        $data['ExpiryDate'] = date( "Y-m-d", strtotime( "+" . $circulation->IssueLimitDays . " day" ) ); 
+//        print_r($data['ExpiryDate']);exit();
         $data['ReturnOrNot'] = '2';
         if ($user_type == '1') {
             $data['approval_status'] = '2';

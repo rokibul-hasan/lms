@@ -101,13 +101,13 @@ $remember = array(
                 </div>
                 <?php echo form_open($this->uri->uri_string(), $form_attribute); ?>
                 <?php // echo form_input($login); ?>
-                <?php echo form_input($username); ?>
+                <?php echo form_input($username); ?> <br />
                 <span style="color: red;"><?php echo form_error($username['name']); ?><?php echo isset($errors[$username['name']])?$errors[$username['name']]:''; ?></span>
-                <?php echo form_input($email); ?>
+                <?php echo form_input($email); ?> <br />
                 <span style="color: red;"><?php echo form_error($email['name']); ?><?php echo isset($errors[$email['name']])?$errors[$email['name']]:''; ?></span>
-                <?php echo form_password($password); ?>
+                <?php echo form_password($password); ?> <br />
                 <span style="color: red;"><?php echo form_error($password['name']); ?></span>
-                <?php echo form_password($confirm_password); ?>
+                <?php echo form_password($confirm_password); ?> <br />
                 <span style="color: red;"><?php echo form_error($confirm_password['name']); ?></span>
                 <table>
                     <?php
