@@ -21,8 +21,8 @@ class Admin extends CI_Controller {
        
 //      
 //
-//        $this->load->model('role');
-//        $this->role->check_access();
+        $this->load->model('role');
+        $this->role->check_access();
 
     }
 

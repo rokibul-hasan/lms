@@ -31,7 +31,7 @@ class Checkuser  extends CI_Model  {
                 $this->load->library('tank_auth');
                 $this->tank_auth->logout();
                
-                echo('<script>alert("Your Acount Not Varified Yet. Please Contact with Librian ");window.location="'. site_url('frontpage').'";</script>');
+                echo('<script>alert("Your Acount Not Varified Yet. Please Contact with Admin ");window.location="'. site_url('frontpage').'";</script>');
                 
                                
             }

@@ -1,4 +1,7 @@
-<?php include_once 'header_user.php'; ?>
+<?php include_once 'header_user.php';
+ $user_id = $_SESSION['user_id'];
+
+?>
 
 
 
@@ -161,7 +164,7 @@
                              
                              
                             }                   
-                            $user_id = '2'; //$_SESSION['userid'];
+                           
                             
                             ?>
                         <div class="box box-body">
@@ -330,7 +333,12 @@
 
                                 </div><br>
                                 <div class="row">
-                                    <a href="" class="btn btn-danger btn-flat btn-block">Lend</a>
+                                    <form class="form-horizontal" action="<?php echo site_url('circulation/new_issue'); ?>" method="post">
+                                        <input type="hidden" value="<?=$bookid;?>" name="BookId" />
+                                        <input type="hidden" value="<?=$user_id;?>" name="UserId" />
+                                        <input type="submit"  class="btn btn-danger btn-flat btn-block" name="btn" value="Lend"/>
+                                    
+                                    </form>
                                 </div>
                                
                             </div>

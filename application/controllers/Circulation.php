@@ -23,7 +23,7 @@ class Circulation extends CI_Controller {
             return 0;
         }
         $this->load->library('grocery_CRUD');
-        $this->load->model('checkuser');
+        
         $this->load->model('Circulation_model');
     }
 
@@ -57,6 +57,17 @@ class Circulation extends CI_Controller {
         $data['Title'] = 'Issue & Return';
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'circulation/issue_table', $data);
+    }
+    
+    function userissuetable() {        
+        $data['users_info'] = $this->db->where('activated', '1')->get('users')->result();
+        $user_id = $_SESSION['user_id'];        
+            $data['issue_info'] = $this->Circulation_model->search_issue_info_by_user_id($user_id);        
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Section'] = 'Circulation Section';
+        $data['Title'] = 'Issue & Return';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'member/issue_table', $data);
     }
 
     function book_issue() {

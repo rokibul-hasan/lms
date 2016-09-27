@@ -50,8 +50,10 @@
                     <div class="col-md-12">
                         
                        <ul class="sidebar-menu nav nav-pills nav-stacked">
-                           <li class="active"><a href="http://lms.friendsitltd.com/lms/index.php/login" style="background:#3c8dbc"> <i class="fa fa-sign-in"></i> <span>Login Panel</span></a></li>
-                         <li class="active"><a href="#"><i class="fa fa-tachometer"></i> <span>Book Category</span></a></li>
+                           <li class="active"><a href="http://lms.friendsitltd.com/lms/index.php/login" style="background:#3c8dbc"> <i class="fa fa-sign-in"></i> <span>Login</span></a></li>
+                         <li class="active"><a href="http://lms.friendsitltd.com/lms/index.php/login/register" style="background:#3c8dbc"> <i class="fa fa-sign-in"></i> <span>Registration</span></a></li>
+                        
+                           <li class="active"><a href="#"><i class="fa fa-tachometer"></i> <span>Book Category</span></a></li>
                          
                            <li class="">
                                     <a href="#books_list" title="Well, reading books as a...">Book</a>
