@@ -20,8 +20,18 @@ class Circulation_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('issuereturn');
         $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
+        $this->db->order_by('IssueReturnId', 'desc');
 //        $this->db->join('book', 'issuereturn.BookId=book.BookId', 'left');
 //        $this->db->join('journal', 'issuereturn.BookId=journal.JournalId', 'left');
+        return $this->db->get()->result();
+    }
+
+    public function search_issue_info_by_user_id($user_id) {
+        $this->db->select('*');
+        $this->db->from('issuereturn');
+        $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
+        $this->db->order_by('IssueReturnId', 'desc');
+        $this->db->where('UserId', $user_id);
         return $this->db->get()->result();
     }
 
@@ -120,7 +130,7 @@ class Circulation_model extends CI_Model {
     }
 
 //add new issue
-    function new_issue($post_array) {
+    function save_new_issue($post_array) {
         $id = $this->input->post('Id');
         $type = $this->input->post('type');
         if ($type == 'book') {
@@ -155,14 +165,14 @@ class Circulation_model extends CI_Model {
             return false;
         }
         $user_type = $this->session->userdata('user_type');
-        $circulation = $this->db->where('UserTypeId',$user_type)->get('circulation')->row();
+        $circulation = $this->db->where('UserTypeId', $user_type)->get('circulation')->row();
 
         $data['UserId'] = $this->input->post('UserId');
         $data['Title'] = $info->Title;
         $data['IssueDate'] = date('Y-m-d H:i:s');
-        $data['ExpiryDate'] = date('Y-m-d H:i:s' . " +".$circulation->IssueLimitDays." day");
+        $data['ExpiryDate'] = date('Y-m-d H:i:s' . " +" . $circulation->IssueLimitDays . " day");
         $data['ReturnOrNot'] = '2';
-        if( $user_type == '1'){
+        if ($user_type == '1') {
             $data['approval_status'] = '2';
         }
         $this->db->insert('issuereturn', $data);
@@ -193,6 +203,35 @@ class Circulation_model extends CI_Model {
         $this->db->where('IssueReturnId', $IssueReturnId);
         $this->db->update('issuereturn', $data);
         return true;
+    }
+
+    function fine_calculation() {    
+        $data = array();
+        $this->db->select('*');
+        $this->db->from('issuereturn');
+        $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
+        $this->db->join('user_type', 'users.id=user_type.UserId', 'left');
+        $results = $this->db->get()->result();
+        foreach ($results as $result) {
+            $fine = $this->db->where('UserType', $result->Type)->get('circulation')->row();
+            $date1 = date_create($result->ExpiryDate);
+            $date2 = date_create(date('Y-m-d H:i:s'));
+            $diff = date_diff($date1, $date2);
+            $total_day = $diff->format('%d');
+            if (empty($fine)) {
+                $total_fine = 0;
+            } else {
+                $total_fine = $fine->Fine * $total_day;
+            }
+            $data[] = array('username'=>$result->username,'Title'=>$result->Title,'Fine'=>$total_fine ,'Find_paid'=>$result->Fine,'IssueReturnId'=>$result->IssueReturnId);//            
+        }
+//        print_r($data);exit();
+        return $data;
+    }
+
+    function get_all_request_issue() {
+        $userId = $this->session->userdata('user_id');
+        return $this->db->where('UserId', $userId)->get('issuereturn')->result();
     }
 
 }

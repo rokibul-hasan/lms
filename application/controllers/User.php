@@ -21,9 +21,9 @@ class User extends CI_Controller{
             redirect('login');
             return 0;
         }
-        if (!$this->session->userdata('user_type') or $this->session->userdata('user_type') != 1) {
-            redirect('admin');
-        }
+//        if (!$this->session->userdata('user_type') or $this->session->userdata('user_type') != 1) {
+//            redirect('admin');
+//        }
         $this->load->library('grocery_CRUD');
         $this->load->model('User_model');
         
@@ -32,7 +32,7 @@ class User extends CI_Controller{
     function index() {
         $crud = new grocery_CRUD();
         $crud->set_table('users')
-                ->set_subject('Users')
+                ->set_subject('Member')
                 ->unset_columns('password','new_password_key','new_password_requested','new_email','new_email_key')
                 ->order_by('id', 'desc')
                 ->callback_column('banned', function($this) {
@@ -47,9 +47,25 @@ class User extends CI_Controller{
         $user_id = $this->uri->segment('4');
         $data['all_users'] = $this->User_model->get_all_users_info_by_user_id($user_id);
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
-        $data['Title'] = 'Users';
+        $data['Title'] = 'Member';
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'user_management', $data);
+    }
+    
+    function user_type(){
+        $crud = new grocery_CRUD();
+        $crud->set_table('user_type')
+                ->set_subject('Member Type')
+                ->display_as('UserId','Member Name')
+                ->set_relation('UserId','users','username')
+                ->field_type('Type', 'dropdown',array('1'=>'Super Admin','2'=>'IT Manager','3'=>'Employee','4'=>'User'))
+                ->order_by('UserTypeId', 'desc');
+        $output = $crud->render();
+        $data['glosary'] = $output;
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Title'] = 'Member Type';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
     }
     
     function save_info() {
