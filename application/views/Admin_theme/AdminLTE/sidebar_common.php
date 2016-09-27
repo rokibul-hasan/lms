@@ -109,6 +109,7 @@
         </a>
         <ul class="treeview-menu">
             <li><a href="<?= site_url('circulation/'); ?>"><i class="fa fa-cog"></i> Circulation Settings</a></li>
+            <li><a href="<?= site_url('circulation/fine_calculation'); ?>"><i class="fa fa-calculator"></i> Fine Calculation</a></li>
             <li><a href="<?= site_url('circulation/book_issue'); ?>"><i class="fa fa-mail-forward"></i> Issue </a></li>            
             <li><a href="<?= site_url('circulation/book_return'); ?>"><i class="fa fa-mail-reply"></i> Return</a></li>            
             <li><a href="<?= site_url('circulation/issuetable'); ?>"><i class="fa fa-table"></i> Issue & Return Table</a></li>            
@@ -127,8 +128,8 @@
             </span>
         </a> 
         <ul class="treeview-menu">
-            <li><a href="http://lms.xeroneit.net/admin/config_member_type"><i class="fa fa-user"></i> <span>Member Type</span></a></li>
-            <li><a href="http://lms.xeroneit.net/admin/config_member"><i class="fa fa-group"></i> <span>Member</span></a></li>
+            <li><a href="<?= site_url('user/user_type'); ?>"><i class="fa fa-user"></i> <span>Member Type</span></a></li>
+            <li><a href="<?= site_url('user'); ?>"><i class="fa fa-group"></i> <span>Member</span></a></li>
             <li><a href="http://lms.xeroneit.net/admin/generate_id"><i class="fa fa-credit-card"></i> <span>Generate member ID</span></a></li>
         </ul>
     </li> 

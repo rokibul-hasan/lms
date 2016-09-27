@@ -25,7 +25,7 @@
 //                       echo $glosary->output;                          
         ?>
         <div class="box">
-            <div class="box-header">
+<!--            <div class="box-header">
                  <?php
                 $attributes = array(
                     'class' => 'form-horizontal',
@@ -58,10 +58,10 @@
                 </div>
 
                 <?= form_close(); ?>
-            </div>
+            </div>-->
             <div class="box-body">
-                <a href="<?php echo site_url('circulation/book_issue'); ?>" class="btn btn-warning"><i class="fa fa-mail-forward"></i> Issue </a>
-                <a href="<?php echo site_url('circulation/book_return'); ?>" class="btn btn-danger"><i class="fa  fa-mail-reply"></i> Return</a>
+<!--                <a href="<?php echo site_url('circulation/book_issue'); ?>" class="btn btn-warning"><i class="fa fa-mail-forward"></i> Issue </a>
+                <a href="<?php echo site_url('circulation/book_return'); ?>" class="btn btn-danger"><i class="fa  fa-mail-reply"></i> Return</a>-->
                 <?php
                 $message = $this->session->userdata('message');
                 if (isset($message)) {
@@ -72,36 +72,31 @@
                 <table class="table table-bordered table-striped datatable">
                     <thead>
                         <tr>
-                            <th style="display:none"></th>
                             <th>Title</th>
                             <th>Member Name</th>
-                            <th>Type</th>
-                            <th>Issue Date</th>
-                            <th>Expiry Date</th>
-                            <th>Return Date</th>
-                            <th>Fine/Penalty-BDT</th>
-                            <th>Is Returned</th>
-                            <th>Approval Status</th>
+                            <th>Fine</th>
+                            <th>Fine Payment</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <?php foreach ($issue_info as $issue) { ?>
+                        
+                        <?php
+//                                     echo '<pre>';   print_r($fine_calculation[0]);exit();
+                        foreach ($fine_calculation as $fine) { 
+//                            foreach ($fine as $cal)
+//                            echo '<pre>';   print_r($fine['Title']);exit();
+                            ?>
                             <tr>
-                                <td style="display:none;"><?php echo $issue->IssueReturnId; ?></td>
-                                <td><?php echo $issue->Title; ?></td>
-                                <td><?php echo $issue->username; ?></td>
-                                <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
-                                <td><?php echo $issue->IssueDate; ?></td>
-                                <td><?php echo $issue->ExpiryDate; ?></td>
-                                <td><?php echo $issue->ReturnDate; ?></td>
-                                <td><?php echo $issue->Fine; ?></td>
-                                <td><?php echo ($issue->ReturnOrNot == 1) ? '<span class="bg-green">Yes</span>' : '<span class="bg-red">No</span>'; ?></td>
+                                
+                                <td><?php echo $fine['Title']; ?></td>
+                                <td><?php echo $fine['username']; ?></td>
+                                <td><?php echo $fine['Fine']; ?></td>
                                 <td><?php
-                                    if ($issue->approval_status == 2) {
-                                        echo '<span class="bg-green">Accepted</span>';
-                                    } elseif ($issue->approval_status == 3) {
-                                        echo '<span class="bg-red">Canceled</span>';
+                                    if (!empty($fine['Find_paid'])) {
+                                        echo '<span class="bg-green">Paid</span>';
+                                    }elseif (empty($fine['Fine'])) {
+                                        echo '<span class="bg-purple">No Fine</span>';
                                     } else {
                                         ?> 
                                         <form class="formforstatus" method="post" action="<?php echo site_url('circulation/issue_approval'); ?>">
@@ -109,16 +104,8 @@
                                                <input type="hidden" name="account_number" value="<?php echo $row->id_bank_account; ?>"/>
                                                <input type="hidden" name="transaction_type" value="<?php echo $row->id_trnsaction_type; ?>"/>-->
 
-                                            <input type="hidden" name="IssueReturnId" value="<?php echo $issue->IssueReturnId; ?>">
-                                            Accepted <input type="radio" name="approval_status" value="2" <?php if ($issue->approval_status == 2) {
-                                            echo 'checked';
-                                        } ?> >
-                                            Canceled <input type="radio" name="approval_status" value="3"  <?php if ($issue->approval_status == 3) {
-                                            echo 'checked';
-                                        } ?>>
-                                            Pending <input type="radio" name="approval_status" value="1"  <?php if ($issue->approval_status == 1) {
-                                            echo 'checked';
-                                        } ?>>
+                                            <input type="hidden" name="IssueReturnId" value="<?php echo $fine['IssueReturnId']; ?>">
+                                            paid <input type="radio" name="payment" value="<?php echo $fine['Fine']; ?>" >
                                             <a href="#"  class="btn btn-warning save_status">Update</a>
                                         </form>
     <?php } ?>
@@ -138,7 +125,7 @@
 
 <?php include_once __DIR__ . '/../footer.php'; ?>
 <style type="text/css">
-    .bg-green,.bg-red{
+    .bg-green,.bg-red,.bg-purple{
         padding: 5px 10px;
         border-radius: 15px;
     }
@@ -151,7 +138,7 @@
     $('.save_status').click(function (ev) {
         var form = $(this).parents('form:first');
         $.ajax({
-            url: "<?php echo site_url('circulation/issue_approval'); ?>",
+            url: "<?php echo site_url('circulation/fine_payment'); ?>",
             type: "POST",
             data: form.serialize(),
             dataType: "json",
