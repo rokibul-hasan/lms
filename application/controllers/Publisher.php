@@ -22,6 +22,7 @@ class Publisher extends CI_Controller{
             return 0;
         }
         $this->load->library('grocery_CRUD');
+        $this->load->model('checkuser');
         
     }
     

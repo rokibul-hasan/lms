@@ -22,7 +22,7 @@ class Book extends ci_controller{
             return 0;
         }
         $this->load->library('grocery_CRUD');
-        
+        $this->load->model('checkuser');
     }
     
     public function index(){
