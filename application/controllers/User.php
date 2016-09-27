@@ -90,10 +90,10 @@ class User extends CI_Controller{
         }
         $user['created'] = date('Y-m-d H:i:s');
         $user_id = $this->User_model->save('users', $user);
-        $data['user_id'] = $user_id;
-        $data['type'] = $this->input->post('type');
+        $data['UserId'] = $user_id;
+        $data['Type'] = $this->input->post('type');
         $this->User_model->save('user_type', $data);
-        redirect('users_list');
+        redirect('user');
     }
 
     function update_info() {
@@ -117,9 +117,9 @@ class User extends CI_Controller{
         $user['modified'] = date('Y-m-d H:i:s');
         $user_id = $this->User_model->update_info('users', 'id', $user, $id);
         $id_user_type = $this->input->post('id_user_type');
-        $data['user_id'] = $user_id->id;
-        $data['type'] = $this->input->post('type');
-        $this->User_model->update_info('user_type', 'id_user_type', $data, $id_user_type);
-        redirect('users_list');
+        $data['UserId'] = $user_id->id;
+        $data['Type'] = $this->input->post('type');
+        $this->User_model->update_info('user_type', 'UserTypeId', $data, $id_user_type);
+        redirect('user');
     }
 }

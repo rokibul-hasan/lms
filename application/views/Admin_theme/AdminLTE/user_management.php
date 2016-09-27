@@ -26,7 +26,7 @@
                     'method' => 'get',
                     'name' => 'form',
                     'method' => 'post');
-                echo form_open('users_list/save_info', $attributes)
+                echo form_open('user/save_info', $attributes)
                 ?>
                 <div class="box-header">
                     <h2>Users Info</h2>
@@ -99,7 +99,7 @@
                         'method' => 'get',
                         'name' => 'form',
                         'method' => 'post');
-                    echo form_open('users_list/update_info', $attributes)
+                    echo form_open('user/update_info', $attributes)
                     ?>
                     <div class="box-header">
                         <h2>Users Info</h2>
@@ -116,12 +116,6 @@
                                     <input type="hidden" name="id_user_type" value="<?php echo $user->UserTypeId; ?>" />
                                 </div>
                             </div>
-<!--                            <div class="form-group ">
-                                <label class="col-md-3">Password:</label>
-                                <div class="col-md-9">
-                                    <input type="password" name="password" class="form-control" required/>
-                                </div>
-                            </div> -->
                             <div class="form-group ">
                                 <label class="col-md-3">Email:</label>
                                 <div class="col-md-9">
