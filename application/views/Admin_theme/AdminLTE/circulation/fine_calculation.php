@@ -25,19 +25,19 @@
 //                       echo $glosary->output;                          
         ?>
         <div class="box">
-<!--            <div class="box-header">
+           <div class="box-header">
                  <?php
                 $attributes = array(
-                    'class' => 'form-horizontal',
+                   // 'class' => 'form-horizontal',
                     'name' => 'form',
                     'method' => 'get');
                 echo form_open('', $attributes)
                 ?>
-                <div class="row col-md-offset-2">
-                    <div class="col-md-8 ">
+                <div class="row">
+                    <div class="col-md-5 ">
                         <div class="form-group ">
-                            <label class="col-md-3">Member Name:</label>
-                            <div class="col-md-9">
+                            <label>Member Name:</label>
+                            <div>
                                 <select name="member_id" id="" class="form-control select2">
                                     <option value="">Select Member Name</option>
                                     <?php
@@ -51,14 +51,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+					<div class="col-md-5 ">
+                        <div class="form-group ">
+                            <label>Payment:</label>
+                            <div >
+                                <select name="payment" id="" class="form-control select2">
+                                    <option value="1">Paid</option>
+                                    <option value="0">Unpaid</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="margin-top: 23px;">
                         <button type="submit" name="btn_submit" value="true" class="btn btn-primary"><i class="fa fa-search"></i></button>
                         <?= anchor(current_url() . '', '<i class="fa fa-refresh"></i>', ' class="btn btn-success"') ?>
                     </div>
                 </div>
 
                 <?= form_close(); ?>
-            </div>-->
+            </div>
             <div class="box-body">
 <!--                <a href="<?php echo site_url('circulation/book_issue'); ?>" class="btn btn-warning"><i class="fa fa-mail-forward"></i> Issue </a>
                 <a href="<?php echo site_url('circulation/book_return'); ?>" class="btn btn-danger"><i class="fa  fa-mail-reply"></i> Return</a>-->

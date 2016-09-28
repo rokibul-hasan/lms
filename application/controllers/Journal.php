@@ -32,6 +32,7 @@ class Journal extends CI_Controller {
         $crud->set_table('journal')
                 ->set_subject('Journal')
                 ->set_field_upload('Banner')
+				->set_field_upload('Ebook','asset/ebook/','pdf')
                 ->display_as('PublisherId', 'Publisher Name')
                 ->set_relation('PublisherId', 'publisher', 'PublisherName')
                 ->order_by('JournalId', 'desc');

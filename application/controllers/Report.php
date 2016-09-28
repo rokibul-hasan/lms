@@ -31,6 +31,7 @@ class Report extends CI_Controller {
         $crud = new grocery_CRUD();
         $crud->set_table('report')
                 ->set_field_upload('Banner')
+				->set_field_upload('Ebook','asset/ebook/','pdf')
                 ->set_subject('Report');
         $output = $crud->render();
         $data['glosary'] = $output;
