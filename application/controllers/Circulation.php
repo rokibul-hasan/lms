@@ -97,15 +97,20 @@ class Circulation extends CI_Controller {
     }
 
     function new_issue() {
+        
+        
         $btn = $this->input->post('btn');
         if (isset($btn)) {
+            
             $this->Circulation_model->save_new_issue($_POST);
         }
         $sdata['message'] = '<div class = "alert alert-success" id="message"><button type = "button" class = "close" data-dismiss = "alert"><i class = " fa fa-times"></i></button><p><strong><i class = "ace-icon fa fa-check"></i></strong> Data is Successfully Saved!</p></div>';
         $this->session->set_userdata($sdata);
         $user_type = $this->session->userdata('user_type');
-        if ($user_type = '1') {
+        if ($user_type == '1') {
+            $this->load->model('checkuser');
             redirect('circulation/issuetable');
+
         } else if ($user_type == '4') {
             redirect('circulation/userissuetable');
         }

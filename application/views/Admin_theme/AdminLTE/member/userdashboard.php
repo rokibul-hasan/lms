@@ -28,6 +28,8 @@ $user_id = $_SESSION['user_id'];
         <div class="box">
             <div class="box-body">
                 <div class="row">
+                    
+                    
             <div class="col-md-3 ">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -343,7 +345,7 @@ $user_id = $_SESSION['user_id'];
                                     <form class="form-horizontal" action="<?php echo site_url('circulation/new_issue'); ?>" method="post">
                                         <input type="hidden" value="<?=$bookid;?>" name="Id" />
                                         <input type="hidden" value="<?=$user_id;?>" name="UserId" />
-                                        <input type="hidden" value="journal" name="type"/>
+                                        <input type="hidden" value="journel" name="type"/>
                                         <input type="submit"  class="btn btn-danger btn-flat btn-block" name="btn" value="Lend"/>
                                     
                                     </form>
@@ -582,6 +584,10 @@ $user_id = $_SESSION['user_id'];
   <script>
   
   $(document).ready(function(){
+      
+
+    
+    
     $("#select_type_for_reservation").change(function(){
         if(this.value=='books_form'){
             $("#books_form").show();

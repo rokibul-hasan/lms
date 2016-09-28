@@ -25,7 +25,7 @@
 //                       echo $glosary->output;                          
         ?>
         <div class="box">
-            <div class="box-header">
+<!--            <div class="box-header">
                  <?php
                 $attributes = array(
                     'class' => 'form-horizontal',
@@ -58,7 +58,7 @@
                 </div>
 
                 <?= form_close(); ?>
-            </div>
+            </div>-->
             <div class="box-body">
                 
                 <?php
@@ -68,7 +68,7 @@
                 }
                 $this->session->unset_userdata('message');
                 ?>
-                <table class="table table-bordered table-striped datatable">
+                <table class="table table-bordered table-striped datatable" id="usertable">
                     <thead>
                         <tr>
                             <th style="display:none"></th>
@@ -85,9 +85,9 @@
                     </thead>
 
                     <tbody>
-                        <?php foreach ($issue_info as $issue) { ?>
+                        <?php $i=1;  foreach ($issue_info as $issue) { ?>
                             <tr>
-                                <td style="display:none;"><?php echo $issue->IssueReturnId; ?></td>
+                                <td style="display:none;"><?php echo $i ?></td>
                                 <td><?php echo $issue->Title; ?></td>
                                 <td><?php echo $issue->username; ?></td>
                                 <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
@@ -98,32 +98,15 @@
                                 <td><?php echo ($issue->ReturnOrNot == 1) ? '<span class="bg-green">Yes</span>' : '<span class="bg-red">No</span>'; ?></td>
                                 <td><?php
                                     if ($issue->approval_status == 2) {
-                                        echo '<span class="bg-green">Accepted</span>';
+                                        echo '<span class="btn bg-green">Approved</span>';
                                     } elseif ($issue->approval_status == 3) {
-                                        echo '<span class="bg-red">Canceled</span>';
+                                        echo '<span class="btn bg-red">Rejected</span>';
                                     } else {
-                                        ?> 
-                                        <form class="formforstatus" method="post" action="<?php echo site_url('circulation/issue_approval'); ?>">
-        <!--                                           <input type="hidden" name="amount_transaction" value="<?php echo $row->amount; ?>">
-                                               <input type="hidden" name="account_number" value="<?php echo $row->id_bank_account; ?>"/>
-                                               <input type="hidden" name="transaction_type" value="<?php echo $row->id_trnsaction_type; ?>"/>-->
-
-                                            <input type="hidden" name="IssueReturnId" value="<?php echo $issue->IssueReturnId; ?>">
-                                            Accepted <input type="radio" name="approval_status" value="2" <?php if ($issue->approval_status == 2) {
-                                            echo 'checked';
-                                        } ?> >
-                                            Canceled <input type="radio" name="approval_status" value="3"  <?php if ($issue->approval_status == 3) {
-                                            echo 'checked';
-                                        } ?>>
-                                            Pending <input type="radio" name="approval_status" value="1"  <?php if ($issue->approval_status == 1) {
-                                            echo 'checked';
-                                        } ?>>
-                                            <a href="#"  class="btn btn-warning save_status">Update</a>
-                                        </form>
-    <?php } ?>
+                                        echo '<span class="btn bg-yellow">Pending</span>';
+                                        }   ?>
                                 </td>
                             </tr>
-<?php } ?>
+<?php  $i++; }  ?>
                     </tbody>
 
                 </table>
@@ -145,35 +128,12 @@
     }
 </style>
 <script type="text/javascript">
-    setTimeout(function () {
-        $('#message').fadeOut();
-    }, 1000);
 
-    $('.save_status').click(function (ev) {
-        var form = $(this).parents('form:first');
-        $.ajax({
-            url: "<?php echo site_url('circulation/issue_approval'); ?>",
-            type: "POST",
-            data: form.serialize(),
-            dataType: "json",
-            success: function (data) {
-//                alert(data);
-                form.html(data);
-            },
-            error: function () {
-                alert('Error on updateing call');
-            }
-        });
-
-        ev.preventDefault();
-        //$(this).parent().html('updating...');
-
-
-    });
 
     $('.datatable').DataTable({
         bFilter: false,
-        "order": [[1, "desc"]]
+        "ordering": true,
+        //"order": [[1, "desc"]]
     });
 
 
