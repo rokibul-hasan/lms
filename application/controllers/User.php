@@ -30,12 +30,23 @@ class User extends CI_Controller {
     }
 
     function index() {
+        
+        $this->load->model('role');
+        $this->role->check_access();
+         $user_type = $this->session->userdata('user_type');
+         $id = $this->session->userdata('user_id');
+        
         $crud = new grocery_CRUD();
         $crud->set_table('users')
                 ->set_subject('Member')
                 ->unset_columns('password', 'new_password_key', 'new_password_requested', 'new_email', 'new_email_key')
-                ->order_by('id', 'desc')
-                ->callback_column('banned', function($this) {
+                ->order_by('id', 'desc');
+                if($user_type == '4' ){
+                    $crud->where('id',$id);
+                    $crud->unset_add()->unset_delete();
+                    
+                }
+                $crud->callback_column('banned', function($this) {
                     if ($this == 1) {
                         return 'Banned';
                     } else {
@@ -49,7 +60,20 @@ class User extends CI_Controller {
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
         $data['Title'] = 'Member';
         $data['base_url'] = base_url();
-        $this->load->view($this->config->item('ADMIN_THEME') . 'user_management', $data);
+        
+        
+        
+        if ($user_type == '1') {
+           
+           $this->load->view($this->config->item('ADMIN_THEME') . 'user_management', $data);
+
+        } else if ($user_type == '4') {
+            
+            $this->load->view($this->config->item('ADMIN_THEME') . 'member/user_management', $data);
+        }
+        
+        
+        
     }
 
     function user_type() {

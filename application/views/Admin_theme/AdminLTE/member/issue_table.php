@@ -1,4 +1,9 @@
-<?php include_once 'header_user.php'; ?>
+<?php include_once 'header_user.php'; 
+if(isset($_GET['link']) && $_GET['link'] == 'pending_request' ){
+    $link = 'pending_request';
+}
+
+?>
 
 
 <!-- Content Wrapper. Contains page content -->
@@ -130,11 +135,25 @@
 <script type="text/javascript">
 
 
+ 
+
+      var link = "<?php echo $link; ?>";
+     
+     if( link == 'pending_request'){
+         
+            $('td>.btn.bg-green').parent('td').parent('tr').hide();
+            
+            $('td>.btn.bg-red').parent('td').parent('tr').hide();
+        }
+
+
     $('.datatable').DataTable({
         bFilter: false,
         "ordering": true,
         //"order": [[1, "desc"]]
     });
+
+
 
 
 
