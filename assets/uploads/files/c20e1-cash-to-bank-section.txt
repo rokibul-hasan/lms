@@ -1,0 +1,26 @@
+Cash to Bank Transfer Section
+=================================================
+
+Story:
+------
+User will transfer cash to the bank account. Cash will be diducted from cash table and amount will be added to the bank balance.
+Hence it will update/insert : cash,bank_management,bank_management_status,bank_balance,cash_to_bank_register.
+
+Section Design:
+----------------
+	Section Name: Cash to Bank Transfer
+	------------
+	Section Tab: 
+		Transfer Log/Dashboard: all transfer will be shown here 
+		Transfer:Available cash will display, text box for transfer amount,dropdown for available bank accounts.
+
+Action List:
+--------------
+	Insert: cash_to_bank_register[new table],bank_management,bank_management_status
+	
+	Update: cash,bank_balance
+
+New Table Creation:
+-------------------
+	Name: cash_to_bank_register
+	Columns:id_cash_to_bank_register[int],id_bank_account[int],transfered_amount[float],date[dateTime]

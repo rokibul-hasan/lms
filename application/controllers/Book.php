@@ -26,10 +26,14 @@ class Book extends ci_controller{
     }
     
     public function index(){
+        $this->load->config('grocery_crud');
+        $this->config->set_item('Ebook',
+'pdf');
          $crud = new grocery_CRUD();
         $crud->set_table('book')
                 ->set_subject('Book')
-                ->set_field_upload('Banner')
+                ->set_field_upload('Banner')				
+                ->set_field_upload('Ebook','asset/ebook/','pdf')
                 ->display_as('publisherId','Publisher Name')
                 ->set_relation('PublisherId', 'publisher', 'PublisherName')
                 ->order_by('BookId','desc');
@@ -40,7 +44,8 @@ class Book extends ci_controller{
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
     }
-    
+	
+	    
      public function bookauthor(){
          $crud = new grocery_CRUD();
         $crud->set_table('bookauthor')
