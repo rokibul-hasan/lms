@@ -268,6 +268,9 @@ thead {
     padding: 10px;
     color: #ddd;
 }
+ul.sidebar-menu.nav.nav-pills.nav-stacked {
+    border: 1px solid #ddd;
+}
 </style>
 
 <script>

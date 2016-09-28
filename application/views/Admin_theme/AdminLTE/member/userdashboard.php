@@ -1,5 +1,9 @@
-<?php include_once 'header_user.php';
- $user_id = $_SESSION['user_id'];
+<?php  
+
+ 
+ include_once 'header_user.php';
+$user_id = $_SESSION['user_id'];
+
 
 ?>
 
@@ -205,7 +209,7 @@
                                 
                                 <div class="row">
                                     <button type="button" class="btn btn-primary btn-flat btn-block" data-toggle="modal" data-target="#myModal">
-                                        Red Now
+                                       Read Now
                                       </button>
                                     
                                          
@@ -218,8 +222,8 @@
                                                     <h4 class="modal-title"><?=$book_title?></h4>
                                                   </div>
                                                   <div class="modal-body">
-                                                     <?php if(isset($book_cover)){
-                                                            echo img(array('src'=>'$book_cover' ,'class' => 'img-responsive')); 
+                                                    <?php if(isset($book_cover) && !empty($book_cover)){
+                                                             echo img(array('src'=>'assets/uploads/files/'.$book_cover ,'class' => 'img-responsive'));  
                                                         }else{
                                                              echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block')); 
                                                         }
@@ -239,8 +243,9 @@
                                 </div><br>
                                 <div class="row">
                                     <form class="form-horizontal" action="<?php echo site_url('circulation/new_issue'); ?>" method="post">
-                                        <input type="hidden" value="<?=$bookid;?>" name="BookId" />
+                                        <input type="hidden" value="<?=$bookid;?>" name="Id" />
                                         <input type="hidden" value="<?=$user_id;?>" name="UserId" />
+                                        <input type="hidden" value="book" name="type"/>
                                         <input type="submit"  class="btn btn-danger btn-flat btn-block" name="btn" value="Lend"/>
                                     
                                     </form>
@@ -268,6 +273,8 @@
                              $isbn = $journal_info->ISSN;
                              $volume =  $journal_info->Volume;
                              $book_category = $journal_info->Category;
+                             $bookid = $journal_info->JournalId;
+                             $book_cover = $journal_info->Banner;
                              
                             }                   
                             
@@ -300,7 +307,7 @@
                                 
                                 <div class="row">
                                     <button type="button" class="btn btn-primary btn-flat btn-block" data-toggle="modal" data-target="#myModal">
-                                        Red Now
+                                       Read Now
                                       </button>
                                     
                                          
@@ -334,8 +341,9 @@
                                 </div><br>
                                 <div class="row">
                                     <form class="form-horizontal" action="<?php echo site_url('circulation/new_issue'); ?>" method="post">
-                                        <input type="hidden" value="<?=$bookid;?>" name="BookId" />
+                                        <input type="hidden" value="<?=$bookid;?>" name="Id" />
                                         <input type="hidden" value="<?=$user_id;?>" name="UserId" />
+                                        <input type="hidden" value="journal" name="type"/>
                                         <input type="submit"  class="btn btn-danger btn-flat btn-block" name="btn" value="Lend"/>
                                     
                                     </form>
@@ -362,6 +370,8 @@
                              $page = $report_info->Pagination;
                              $address =  $report_info->Address;
                              $book_category = $report_info->Category;
+                             $bookid = $report_info->ReportId;
+                             $book_cover = $report_info->Banner;
                              
                             }                   
                             
@@ -392,7 +402,7 @@
                                 
                                 <div class="row">
                                     <button type="button" class="btn btn-primary btn-flat btn-block" data-toggle="modal" data-target="#myModal">
-                                        Red Now
+                                       Read Now
                                       </button>
                                     
                                          
@@ -425,7 +435,13 @@
 
                                 </div><br>
                                 <div class="row">
-                                    <a href="" class="btn btn-danger btn-flat btn-block">Lend</a>
+                                    <form class="form-horizontal" action="<?php echo site_url('circulation/new_issue'); ?>" method="post">
+                                        <input type="hidden" value="<?=$bookid;?>" name="Id" />
+                                        <input type="hidden" value="<?=$user_id;?>" name="UserId" />
+                                        <input type="hidden" value="report" name="type"/>
+                                        <input type="submit"  class="btn btn-danger btn-flat btn-block" name="btn" value="Lend"/>
+                                    
+                                    </form>
                                 </div>
                                
                             </div>
@@ -448,7 +464,9 @@
                              $Address = $thesis_info->address;
                              $Abstract =  $thesis_info->abstract;
                              $book_category = $thesis_info->Category;
-                             $department  = $thesis_info->department;                            
+                             $department  = $thesis_info->department;
+                             $bookid = $thesis_info->ThesisId;
+                             $book_cover = $thesis_info->Banner;
                              
                             }                                               
                             
@@ -490,7 +508,7 @@
                                 
                                 <div class="row">
                                     <button type="button" class="btn btn-primary btn-flat btn-block" data-toggle="modal" data-target="#myModal">
-                                        Red Now
+                                       Read Now
                                       </button>
                                     
                                          
@@ -523,7 +541,13 @@
 
                                 </div><br>
                                 <div class="row">
-                                    <a href="" class="btn btn-danger btn-flat btn-block">Lend</a>
+                                    <form class="form-horizontal" action="<?php echo site_url('circulation/new_issue'); ?>" method="post">
+                                        <input type="hidden" value="<?=$bookid;?>" name="Id" />
+                                        <input type="hidden" value="<?=$user_id;?>" name="UserId" />
+                                        <input type="hidden" value="thesis" name="type"/>
+                                        <input type="submit"  class="btn btn-danger btn-flat btn-block" name="btn" value="Lend"/>
+                                    
+                                    </form>
                                 </div>
                                
                             </div>

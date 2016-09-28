@@ -107,7 +107,7 @@ class Circulation extends CI_Controller {
         if ($user_type = '1') {
             redirect('circulation/issuetable');
         } else if ($user_type == '4') {
-            redirect('circulation/requested_issue');
+            redirect('circulation/userissuetable');
         }
     }
 

@@ -16,6 +16,8 @@ class Userdashboard extends CI_Controller {
             return 0;
         }
         $this->load->library('grocery_CRUD');
+        $this->load->model('role');
+        $this->role->check_access();
         
     }
 
@@ -42,6 +44,7 @@ class Userdashboard extends CI_Controller {
         if(isset($btn_book)){
             $id = $this->input->post('bookid');
             $data['book_id'] = $this->Book_model->get_book_details($id); 
+          
         }
         
         if(isset($btn_journal)){

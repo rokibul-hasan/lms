@@ -131,7 +131,13 @@ class Circulation_model extends CI_Model {
 
 //add new issue
     function save_new_issue($post_array) {
+        
+//        print_r($post_array);
+//        print_r($_SESSION);
         $id = $this->input->post('Id');
+        
+//        echo $id;
+//        exit();
         $type = $this->input->post('type');
         if ($type == 'book') {
             $this->db->select('*');
