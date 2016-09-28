@@ -23,7 +23,7 @@ class Circulation extends CI_Controller {
             return 0;
         }
         $this->load->library('grocery_CRUD');
-        $this->load->model('checkuser');
+        
         $this->load->model('Circulation_model');
     }
 
@@ -59,6 +59,17 @@ class Circulation extends CI_Controller {
         $this->load->view($this->config->item('ADMIN_THEME') . 'circulation/issue_table', $data);
     }
 
+    function userissuetable() {        
+        $data['users_info'] = $this->db->where('activated', '1')->get('users')->result();
+        $user_id = $_SESSION['user_id'];        
+            $data['issue_info'] = $this->Circulation_model->search_issue_info_by_user_id($user_id);        
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Section'] = 'Circulation Section';
+        $data['Title'] = 'Issue & Return';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'member/issue_table', $data);
+    }
+
     function book_issue() {
         $data['get_users'] = $this->db->get('users')->result();
         $data['get_issue_book'] = $this->Circulation_model->get_issue_book();
@@ -86,18 +97,24 @@ class Circulation extends CI_Controller {
     }
 
     function new_issue() {
+        
+        
         $btn = $this->input->post('btn');
         if (isset($btn)) {
+            
+            print_r($_POST);
             $this->Circulation_model->save_new_issue($_POST);
         }
         $sdata['message'] = '<div class = "alert alert-success" id="message"><button type = "button" class = "close" data-dismiss = "alert"><i class = " fa fa-times"></i></button><p><strong><i class = "ace-icon fa fa-check"></i></strong> Data is Successfully Saved!</p></div>';
         $this->session->set_userdata($sdata);
         $user_type = $this->session->userdata('user_type');
-//        if ($user_type = '1') {
+        if ($user_type == '1') {
+            $this->load->model('checkuser');
         redirect('circulation/issuetable');
-//        } else if ($user_type == '4') {
-//            redirect('circulation/requested_issue');
-//        }
+
+        } else if ($user_type == '4') {
+            redirect('circulation/userissuetable');
+    }
     }
 
     function issue_approval() {
@@ -129,6 +146,7 @@ class Circulation extends CI_Controller {
                 . "WHERE `IssueReturnId`=$IssueReturnId");
         $data = '<span class="bg-green">Paid</span>';
         echo json_encode($data);
+        
     }
 
     function get_book_info() {
