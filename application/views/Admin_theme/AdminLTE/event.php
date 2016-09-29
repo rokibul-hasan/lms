@@ -7,9 +7,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-        <?=$Title;?>
-        <small>LMS <?=$Title;?></small>
-      </h1>
+            <?= $Title; ?>
+            <small>LMS <?= $Title; ?></small>
+        </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Level</a>
             </li>
@@ -20,183 +20,14 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-            <div class="col-md-4">
-            <div class="box box-solid bg-green-gradient">
-                <div class="box-header ui-sortable-handle" style="cursor: move;">
-                    <i class="fa fa-calendar"></i>
-
-                    <h3 class="box-title">Calendar</h3>
-                    <!-- tools box -->
-                    <div class="pull-right box-tools">
-                        <!-- button with a dropdown -->
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <ul class="dropdown-menu pull-right" role="menu">
-                                <li><a href="#">Add new event</a>
-                                </li>
-                                <li><a href="#">Clear events</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="#">View calendar</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i>
-                        </button>
-                    </div>
-                    <!-- /. tools -->
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body no-padding">
-                    <!--The calendar -->
-                    <div id="calendar" style="width: 100%">
-                        <div class="datepicker datepicker-inline">
-                            <div class="datepicker-days" style="display: block;">
-                                <table class="table table-condensed">
-                                    <thead>
-                                        <tr>
-                                            <th class="prev" style="visibility: visible;">«</th>
-                                            <th colspan="5" class="datepicker-switch">September 2016</th>
-                                            <th class="next" style="visibility: visible;">»</th>
-                                        </tr>
-                                        <tr>
-                                            <th class="dow">Su</th>
-                                            <th class="dow">Mo</th>
-                                            <th class="dow">Tu</th>
-                                            <th class="dow">We</th>
-                                            <th class="dow">Th</th>
-                                            <th class="dow">Fr</th>
-                                            <th class="dow">Sa</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="old day">28</td>
-                                            <td class="old day">29</td>
-                                            <td class="old day">30</td>
-                                            <td class="old day">31</td>
-                                            <td class="day">1</td>
-                                            <td class="day">2</td>
-                                            <td class="day">3</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="day">4</td>
-                                            <td class="day">5</td>
-                                            <td class="day">6</td>
-                                            <td class="day">7</td>
-                                            <td class="day">8</td>
-                                            <td class="day">9</td>
-                                            <td class="day">10</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="day">11</td>
-                                            <td class="active day">12</td>
-                                            <td class="day">13</td>
-                                            <td class="day">14</td>
-                                            <td class="day">15</td>
-                                            <td class="day">16</td>
-                                            <td class="day">17</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="day">18</td>
-                                            <td class="day">19</td>
-                                            <td class="day">20</td>
-                                            <td class="day">21</td>
-                                            <td class="day">22</td>
-                                            <td class="day">23</td>
-                                            <td class="day">24</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="day">25</td>
-                                            <td class="day">26</td>
-                                            <td class="day">27</td>
-                                            <td class="day">28</td>
-                                            <td class="day">29</td>
-                                            <td class="day">30</td>
-                                            <td class="new day">1</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="new day">2</td>
-                                            <td class="new day">3</td>
-                                            <td class="new day">4</td>
-                                            <td class="new day">5</td>
-                                            <td class="new day">6</td>
-                                            <td class="new day">7</td>
-                                            <td class="new day">8</td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th colspan="7" class="today" style="display: none;">Today</th>
-                                        </tr>
-                                        <tr>
-                                            <th colspan="7" class="clear" style="display: none;">Clear</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                            <div class="datepicker-months" style="display: none;">
-                                <table class="table table-condensed">
-                                    <thead>
-                                        <tr>
-                                            <th class="prev" style="visibility: visible;">«</th>
-                                            <th colspan="5" class="datepicker-switch">2016</th>
-                                            <th class="next" style="visibility: visible;">»</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="7"><span class="month">Jan</span><span class="month">Feb</span><span class="month">Mar</span><span class="month">Apr</span><span class="month">May</span><span class="month">Jun</span><span class="month">Jul</span><span class="month">Aug</span><span class="month active">Sep</span><span class="month">Oct</span><span class="month">Nov</span><span class="month">Dec</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th colspan="7" class="today" style="display: none;">Today</th>
-                                        </tr>
-                                        <tr>
-                                            <th colspan="7" class="clear" style="display: none;">Clear</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                            <div class="datepicker-years" style="display: none;">
-                                <table class="table table-condensed">
-                                    <thead>
-                                        <tr>
-                                            <th class="prev" style="visibility: visible;">«</th>
-                                            <th colspan="5" class="datepicker-switch">2010-2019</th>
-                                            <th class="next" style="visibility: visible;">»</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="7"><span class="year old">2009</span><span class="year">2010</span><span class="year">2011</span><span class="year">2012</span><span class="year">2013</span><span class="year">2014</span><span class="year">2015</span><span class="year active">2016</span><span class="year">2017</span><span class="year">2018</span><span class="year">2019</span><span class="year new">2020</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th colspan="7" class="today" style="display: none;">Today</th>
-                                        </tr>
-                                        <tr>
-                                            <th colspan="7" class="clear" style="display: none;">Clear</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.box-body -->
-                
-            </div>
-
-        </div>
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-body no-padding">
+                        <!-- THE CALENDAR -->
+                        <div id="calendar"></div>
+                    </div><!-- /.box-body -->
+                </div><!-- /. box -->
+            </div><!-- /.col -->
         </div>
 
 
@@ -209,3 +40,163 @@
 <!-- /.content-wrapper -->
 
 <?php include_once 'footer.php'; ?>
+<link rel="stylesheet" href="<?php echo $theme_asset_url ?>plugins/fullcalendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="<?php echo $theme_asset_url ?>plugins/fullcalendar/fullcalendar.print.css" media="print">
+ <script src="<?php echo $theme_asset_url ?>plugins/fullcalendar/fullcalendar.min.js"></script>
+<script>
+      $(function () {
+
+        /* initialize the external events
+         -----------------------------------------------------------------*/
+        function ini_events(ele) {
+          ele.each(function () {
+
+            // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+            // it doesn't need to have a start or end
+            var eventObject = {
+              title: $.trim($(this).text()) // use the element's text as the event title
+            };
+
+            // store the Event Object in the DOM element so we can get to it later
+            $(this).data('eventObject', eventObject);
+
+            // make the event draggable using jQuery UI
+            $(this).draggable({
+              zIndex: 1070,
+              revert: true, // will cause the event to go back to its
+              revertDuration: 0  //  original position after the drag
+            });
+
+          });
+        }
+        ini_events($('#external-events div.external-event'));
+		  
+
+        /* initialize the calendar
+         -----------------------------------------------------------------*/
+        //Date for the calendar events (dummy data)
+        var date = new Date();
+        var d = date.getDate(),
+                m = date.getMonth(),
+                y = date.getFullYear();
+        $('#calendar').fullCalendar({
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+          },
+          buttonText: {
+            today: 'today',
+            month: 'month',
+            week: 'week',
+            day: 'day'
+          },
+		  
+		
+		
+		
+		eventSources: [
+
+        // your event source
+        {
+            url: '<?php echo base_url(); ?>index.php/event/select_all_issue_return',
+            type: 'POST',
+			dataType: 'text',
+         //   data: {
+           ///     title: 'something',
+         ///       start: new Date(2016, 8, 5)
+           // },
+			success: function(date_info){	
+				//alert(date_info);
+				var bookList = $.parseJSON(date_info);
+                    $.each(bookList, function (i, bookname) {
+						//alert(bookname['username']);
+						var date = new Date(bookname['ExpiryDate']);
+						var d = date.getDate(),
+							m = date.getMonth(),
+							y = date.getFullYear();
+							title: bookname['username'];
+							start: new Date(y, m, d);
+						
+					});
+			},
+            error: function() {
+                alert('there was an error while fetching events!');
+            },
+            backgroundColor: "#f56954", //red
+            borderColor: "#f56954" //red
+        }
+
+        // any other sources...
+
+    ],
+		
+		
+		
+		
+		
+		
+		  
+          
+          editable: true,
+          droppable: true, // this allows things to be dropped onto the calendar !!!
+          drop: function (date, allDay) { // this function is called when something is dropped
+
+            // retrieve the dropped element's stored Event Object
+            var originalEventObject = $(this).data('eventObject');
+
+            // we need to copy it, so that multiple events don't have a reference to the same object
+            var copiedEventObject = $.extend({}, originalEventObject);
+
+            // assign it the date that was reported
+            copiedEventObject.start = date;
+            copiedEventObject.allDay = allDay;
+            copiedEventObject.backgroundColor = $(this).css("background-color");
+            copiedEventObject.borderColor = $(this).css("border-color");
+
+            // render the event on the calendar
+            // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+            $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+            // is the "remove after drop" checkbox checked?
+            if ($('#drop-remove').is(':checked')) {
+              // if so, remove the element from the "Draggable Events" list
+              $(this).remove();
+            }
+
+          }
+        });
+
+        /* ADDING EVENTS */
+        var currColor = "#3c8dbc"; //Red by default
+        //Color chooser button
+        var colorChooser = $("#color-chooser-btn");
+        $("#color-chooser > li > a").click(function (e) {
+          e.preventDefault();
+          //Save color
+          currColor = $(this).css("color");
+          //Add color effect to button
+          $('#add-new-event').css({"background-color": currColor, "border-color": currColor});
+        });
+        $("#add-new-event").click(function (e) {
+          e.preventDefault();
+          //Get value and make sure it is not null
+          var val = $("#new-event").val();
+          if (val.length == 0) {
+            return;
+          }
+
+          //Create events
+          var event = $("<div />");
+          event.css({"background-color": currColor, "border-color": currColor, "color": "#fff"}).addClass("external-event");
+          event.html(val);
+          $('#external-events').prepend(event);
+
+          //Add draggable funtionality
+          ini_events(event);
+
+          //Remove event from text input
+          $("#new-event").val("");
+        });
+      });
+    </script>

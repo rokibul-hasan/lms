@@ -30,6 +30,13 @@ class Event extends CI_Controller {
         $this->load->view($this->config->item('ADMIN_THEME') . 'event', $data);
 //		$this->load->view('welcome_message');
     }
+	
+	function select_all_issue_return(){
+		$this->load->model('Event_model');
+		$data = $this->Event_model->get_expiry_date();
+		//print_r($data);exit();
+		echo json_encode($data);
+	}
     
     
     

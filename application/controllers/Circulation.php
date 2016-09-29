@@ -161,6 +161,8 @@ class Circulation extends CI_Controller {
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'circulation/fine_calculation', $data);
     }
+	
+	
 
 //    user section
     function requested_issue() {
@@ -171,5 +173,7 @@ class Circulation extends CI_Controller {
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'circulation/requested_new_issue', $data);
     }
+	
+	
 
 }
