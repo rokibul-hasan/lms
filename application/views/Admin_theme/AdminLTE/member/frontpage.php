@@ -137,9 +137,21 @@
         
                            
                         <?php if(isset($all_journal)){ 
-                            foreach($all_journal as $journal_list){ ?>
+                            foreach($all_journal as $journal_list){ 
+                                $book_cover = $journal_list->Banner;                                
+                                
+                                   if(isset($book_cover) && !empty($book_cover)){
+                                    
+                                    $link = base_url('assets/uploads/files').'/'.$book_cover;
+                                    
+                                }else{
+                                    
+                                     $link = base_url('images/nocover.jpg');
+                                }
+                                
+                                ?>
                             <tr>
-                                <td style="margin:0;padding:0; background-size:100% 100%;background-image: url(<?php echo base_url('images/nocover.jpg') ?>) ">
+                                <td style="margin:0;padding:0; background-size:100% 100%;background-image: url(<?php echo $link ?>) ">
                                     
                                     <div class="book_wrapper">
                                             <h5 class="text-center"><?=$journal_list->Title?></h5>
@@ -172,9 +184,20 @@
                         <?php if(isset($all_report)){ 
                             foreach($all_report as $report_list){ 
                                 
+                                $book_cover = $report_list->Banner;                                
+                                
+                                   if(isset($book_cover) && !empty($book_cover)){
+                                    
+                                    $link = base_url('assets/uploads/files').'/'.$book_cover;
+                                    
+                                }else{
+                                    
+                                     $link = base_url('images/nocover.jpg');
+                                }
+                                
                                 ?>
                             <tr>
-                                <td style="margin:0;padding:0; background-size:100% 100%;background-image: url(<?php echo base_url('assets/uploads/files/') ?>) ">
+                                <td style="margin:0;padding:0; background-size:100% 100%;background-image: url(<?php echo $link ?>) ">
                                     
                                     <div class="book_wrapper">
                                             <h5 class="text-center"><?=$report_list->Title?></h5>
@@ -205,9 +228,21 @@
         
                            
                         <?php if(isset($all_thesis)){ 
-                            foreach($all_thesis as $thesis_list){ ?>
+                            foreach($all_thesis as $thesis_list){ 
+                                
+                                $book_cover = $thesis_list->Banner;                                
+                                
+                                   if(isset($book_cover) && !empty($book_cover)){
+                                    
+                                    $link = base_url('assets/uploads/files').'/'.$book_cover;
+                                    
+                                }else{
+                                    
+                                     $link = base_url('images/nocover.jpg');
+                                }
+                                ?>
                             <tr>
-                                <td style="margin:0;padding:0; background-size:100% 100%;background-image: url(<?php echo base_url('images/nocover.jpg') ?>) ">
+                                <td style="margin:0;padding:0; background-size:100% 100%;background-image: url(<?php echo $link ?>) ">
                                     
                                     <div class="book_wrapper">
                                             <h5 class="text-center"><?=$thesis_list->Title?></h5>
