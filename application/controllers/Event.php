@@ -1,9 +1,6 @@
-
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-
 
 class Event extends CI_Controller {
 
@@ -17,31 +14,22 @@ class Event extends CI_Controller {
             return 0;
         }
         $this->load->library('grocery_CRUD');
-        
     }
 
     public function index() {
-        
-        
-//        echo '<pre>';
-//        print_r($data);
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
         $data['Title'] = 'Dashboard';
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'event', $data);
 //		$this->load->view('welcome_message');
     }
-	
-	function select_all_issue_return(){
-		$this->load->model('Event_model');
-		$data = $this->Event_model->get_expiry_date();
-		//print_r($data);exit();
-//                return 
-		echo json_encode($data);
-	}
+
+    function select_all_issue_return() {
+        $this->load->model('Event_model');
+        $data = $this->Event_model->get_expiry_date();
+        echo json_encode($data);
+    }
+
     
-    
-    
-    
-    
+
 }
