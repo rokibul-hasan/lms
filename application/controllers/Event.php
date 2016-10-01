@@ -1,3 +1,4 @@
+
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -35,6 +36,7 @@ class Event extends CI_Controller {
 		$this->load->model('Event_model');
 		$data = $this->Event_model->get_expiry_date();
 		//print_r($data);exit();
+//                return 
 		echo json_encode($data);
 	}
     
