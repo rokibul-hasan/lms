@@ -1,4 +1,4 @@
-<?php include_once 'header_user.php'; ?>
+<?php include_once 'header_user.php'; ?><?php include_once 'header.php'; ?>
 
 
 
@@ -109,9 +109,10 @@
                         ?>
                         <div class="box-body">
                             <div class="form-group ">
-                                <label class="col-md-3">User Name: </label>
+                                <label class="col-md-3">User Name:</label>
+                                
                                 <div class="col-md-9">
-                                    <p><?php echo $user->username; ?></p>
+                                    <?php echo $user->username; ?>
                                     <input type="hidden" name="username" class="form-control" value="<?php echo $user->username; ?>"/>
                                     <input type="hidden" name="id" value="<?php echo $user->id; ?>" />
                                     <input type="hidden" name="id_user_type" value="<?php echo $user->UserTypeId; ?>" />
@@ -129,7 +130,7 @@
                                     <input type="email" name="email" class="form-control" value="<?php echo $user->email; ?>" />
                                 </div>
                             </div> 
-                            <div class="form-group " style="display: none">
+                            <div class="form-group hide" >
                                 <label class="col-md-3">Activation:</label>
                                 <div class="col-md-9">
                                     <select name="activated" id="" class="form-control">
@@ -138,7 +139,7 @@
                                     </select>
                                 </div>
                             </div> 
-                            <div class="form-group " style="display: none">
+                            <div class="form-group hide">
                                 <label class="col-md-3">Banned:</label>
                                 <div class="col-md-9">
                                     <select name="banned" id="banned" class="form-control">
@@ -156,13 +157,10 @@
                                 </div> 
                             </div> 
                             <div class="form-group ">
-                                <label class="col-md-3 disabled">User type: </label>
+                                <label class="col-md-3">User type:</label>
                                 <div class="col-md-9">
-                                    <select name="type" id="" class="form-control " disabled>
-                                        <option value="1">Super Admin</option>
-                                        <option value="2">IT Manager</option>
-                                        <option value="3">Employee</option>
-                                        <option value="4">User</option>
+                                    <select name="type" id="" class="form-control">
+                                        <option value="4" selected>User</option>
                                     </select>
                                 </div>
                             </div> 
@@ -186,6 +184,9 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+
+
 
 <?php include_once 'footer_user.php'; ?>
 <script type="text/javascript">

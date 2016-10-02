@@ -100,8 +100,7 @@ class Circulation extends CI_Controller {
 
         $btn = $this->input->post('btn');
         if (isset($btn)) {
-            
-            //print_r($_POST);
+//            print_r($_POST);
             $this->Circulation_model->save_new_issue($_POST);
         }
         $sdata['message'] = '<div class = "alert alert-success" id="message"><button type = "button" class = "close" data-dismiss = "alert"><i class = " fa fa-times"></i></button><p><strong><i class = "ace-icon fa fa-check"></i></strong> Data is Successfully Saved!</p></div>';

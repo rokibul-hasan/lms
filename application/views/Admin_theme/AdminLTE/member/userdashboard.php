@@ -166,6 +166,7 @@ $user_id = $_SESSION['user_id'];
                              $book_category = $book_info->Category;
                              $bookid = $book_info->BookId;
                              $book_cover = $book_info->Banner;
+                             $file_link = $book_info->Ebook;
                              
                              
                              
@@ -215,7 +216,7 @@ $user_id = $_SESSION['user_id'];
                                       </button>
                                     
                                          
-                                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                               <div class="modal-dialog">
                                                 <div class="modal-content">
                                                   <div class="modal-header">
@@ -224,15 +225,24 @@ $user_id = $_SESSION['user_id'];
                                                     <h4 class="modal-title"><?=$book_title?></h4>
                                                   </div>
                                                   <div class="modal-body">
-                                                    <?php if(isset($book_cover) && !empty($book_cover)){
-                                                             echo img(array('src'=>'assets/uploads/files/'.$book_cover ,'class' => 'img-responsive'));  
-                                                        }else{
-                                                             echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block')); 
+                                                    <?php if(isset($file_link) && !empty($file_link)){ 
+                                                    
+                                                        ?>
+                                                            <object data="<?=base_url('asset/ebook/'.$file_link.'')?>" type="application/pdf" width="100%" height="600px">
+                                                                <p>Alternative text - include a link <a href="<?=base_url('asset/ebook/'.$file_link.'')?>">to the PDF!</a></p>
+                                                            </object>
+                                                             
+                                                       <?php }else{
+                                                            // echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block')); 
+                                                             
+                                                              echo '<br><h2 class="text-center text-danger">Book Not Available</h2>';
                                                         }
                                                         ?>
+                                                    
+                                                      
                                                   </div>
                                                   <div class="modal-footer">
-                                                      <a style="font-size:3em" class="pull-left" href=""><i class="fa fa-download"></i></a>
+                                                      
                                                     <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
                                                     
                                                   </div>
@@ -277,6 +287,7 @@ $user_id = $_SESSION['user_id'];
                              $book_category = $journal_info->Category;
                              $bookid = $journal_info->JournalId;
                              $book_cover = $journal_info->Banner;
+                             $file_link = $journal_info->Ebook;
                              
                             }                   
                             
@@ -298,9 +309,12 @@ $user_id = $_SESSION['user_id'];
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <?php if(isset($book_cover)){
-                                    echo img(array('src'=>'$book_cover' ,'class' => 'img-responsive')); 
+                                <?php if(isset($book_cover) && !empty($book_cover)){
+                                                    
+                                    echo img(array('src'=>'assets/uploads/files/'.$book_cover ,'class' => 'img-responsive')); 
+
                                 }else{
+                                    
                                      echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block')); 
                                 }
                                 ?>
@@ -322,15 +336,22 @@ $user_id = $_SESSION['user_id'];
                                                     <h4 class="modal-title"><?=$book_title?></h4>
                                                   </div>
                                                   <div class="modal-body">
-                                                     <?php if(isset($book_cover)){
-                                                            echo img(array('src'=>'$book_cover' ,'class' => 'img-responsive')); 
-                                                        }else{
-                                                             echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block')); 
-                                                        }
-                                                        ?>
+                                                     <?php if(isset($file_link) && !empty($file_link)){ 
+                                                    
+                                                    ?>
+                                                        <object data="<?=base_url('asset/ebook/'.$file_link.'')?>" type="application/pdf" width="100%" height="600px">
+                                                            <p>Alternative text - include a link <a href="<?=base_url('asset/ebook/'.$file_link.'')?>">to the PDF!</a></p>
+                                                        </object>
+
+                                                   <?php }else{
+                                                         //echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block')); 
+
+                                                         echo '<br><h2 class="text-center text-danger">Book Not Available</h2>';
+                                                    }
+                                                    ?>
                                                   </div>
                                                   <div class="modal-footer">
-                                                      <a style="font-size:3em" class="pull-left" href=""><i class="fa fa-download"></i></a>
+                                                     
                                                     <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
                                                     
                                                   </div>
@@ -374,6 +395,7 @@ $user_id = $_SESSION['user_id'];
                              $book_category = $report_info->Category;
                              $bookid = $report_info->ReportId;
                              $book_cover = $report_info->Banner;
+                             $file_link = $report_info->Ebook;
                              
                             }                   
                             
@@ -393,9 +415,12 @@ $user_id = $_SESSION['user_id'];
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <?php if(isset($book_cover)){
-                                    echo img(array('src'=>'$book_cover' ,'class' => 'img-responsive')); 
+                                <?php if(isset($book_cover) && !empty($book_cover)){
+                                    
+                                    echo img(array('src'=>'assets/uploads/files/'.$book_cover ,'class' => 'img-responsive')); 
+                                    
                                 }else{
+                                    
                                      echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block')); 
                                 }
                                 ?>
@@ -417,15 +442,21 @@ $user_id = $_SESSION['user_id'];
                                                       <h4 class="modal-title"><?=$book_title?></h4>
                                                   </div>
                                                   <div class="modal-body">
-                                                     <?php if(isset($book_cover)){
-                                                            echo img(array('src'=>'$book_cover' ,'class' => 'img-responsive')); 
-                                                        }else{
-                                                             echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block')); 
+                                                     <?php if(isset($file_link) && !empty($file_link)){ 
+                                                    
+                                                        ?>
+                                                            <object data="<?=base_url('asset/ebook/'.$file_link.'')?>" type="application/pdf" width="100%" height="600px">
+                                                                <p>Alternative text - include a link <a href="<?=base_url('asset/ebook/'.$file_link.'')?>">to the PDF!</a></p>
+                                                            </object>
+                                                             
+                                                       <?php }else{
+                                                            // echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block')); 
+                                                             
+                                                              echo '<br><h2 class="text-center text-danger">Book Not Available</h2>';
                                                         }
                                                         ?>
                                                   </div>
                                                   <div class="modal-footer">
-                                                      <a style="font-size:3em" class="pull-left" href=""><i class="fa fa-download"></i></a>
                                                     <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
                                                     
                                                   </div>
@@ -467,8 +498,9 @@ $user_id = $_SESSION['user_id'];
                              $Abstract =  $thesis_info->abstract;
                              $book_category = $thesis_info->Category;
                              $department  = $thesis_info->department;
-                             $bookid = $thesis_info->ThesisId;
+                             $bookid = $thesis_info->Thesisid;
                              $book_cover = $thesis_info->Banner;
+                             $file_link = $thesis_info->Ebook;
                              
                             }                                               
                             
@@ -496,16 +528,8 @@ $user_id = $_SESSION['user_id'];
                                     <i class="fa fa-pencil"></i>&nbsp; <strong> Abstract  :</strong> <?=$Abstract?>&nbsp;                      
                                 </div>
                             </div>
-                            <!--
-                            <div class="col-md-3">
-                                <?php if(isset($book_cover)){
-                                    echo img(array('src'=>'$book_cover' ,'class' => 'img-responsive')); 
-                                }else{
-                                     echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block')); 
-                                }
-                                ?>
-                            </div>
-                            -->
+                            
+                            
                             <div class="col-md-4">
                                 
                                 <div class="row">
@@ -523,15 +547,21 @@ $user_id = $_SESSION['user_id'];
                                                     <h4 class="modal-title"><?=$book_title?></h4>
                                                   </div>
                                                   <div class="modal-body">
-                                                     <?php if(isset($book_cover)){
-                                                            echo img(array('src'=>'$book_cover' ,'class' => 'img-responsive')); 
-                                                        }else{
-                                                             echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block')); 
+                                                     <?php if(isset($file_link) && !empty($file_link)){ 
+                                                    
+                                                        ?>
+                                                            <object data="<?=base_url('asset/ebook/'.$file_link.'')?>" type="application/pdf" width="100%" height="600px">
+                                                                <p>Alternative text - include a link <a href="<?=base_url('asset/ebook/'.$file_link.'')?>">to the PDF!</a></p>
+                                                            </object>
+                                                             
+                                                       <?php }else{
+                                                             //echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block')); 
+                                                             
+                                                              echo '<br><h2 class="text-center text-danger">Book Not Available</h2>';
                                                         }
                                                         ?>
                                                   </div>
                                                   <div class="modal-footer">
-                                                      <a style="font-size:3em" class="pull-left" href=""><i class="fa fa-download"></i></a>
                                                     <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
                                                     
                                                   </div>
@@ -579,6 +609,10 @@ $user_id = $_SESSION['user_id'];
   <style>
       span.select2{
           width: 100%!important;
+      }
+      .modal-dialog{
+          width:100%;
+          height: 100vh;
       }
   </style>
   <script>

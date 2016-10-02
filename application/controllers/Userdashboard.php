@@ -44,6 +44,8 @@ class Userdashboard extends CI_Controller {
         if(isset($btn_book)){
             $id = $this->input->post('bookid');
             $data['book_id'] = $this->Book_model->get_book_details($id); 
+//            echo '<pre>';
+//            print_r($data['book_id']);
           
         }
         
