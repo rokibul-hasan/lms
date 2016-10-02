@@ -1,7 +1,6 @@
 <?php include_once 'header.php'; ?>
 
 
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -25,6 +24,7 @@
                     <div class="box-body no-padding">
                         <!-- THE CALENDAR -->
                         <div id="calendar"></div>
+                        <!--<a href="<?php echo site_url('event/count_book/1'); ?>">count</a>-->
                     </div><!-- /.box-body -->
                 </div><!-- /. box -->
             </div><!-- /.col -->
@@ -101,12 +101,11 @@
 //                        end: end.unix()
 //                    },
 //                    success: function (doc) {
-//                        
+//
 //                        var events = [];
 //                        $(doc).find('event').each(function (e) {
-//                            alert(e.attr('username'));
+////                            alert(e.attr('username'));
 //                            events.push({
-//                                
 //                                title: $(this).attr('username'),
 //                                start: $(this).attr('ExpiryDate') // will be parsed
 //                            });
@@ -114,9 +113,50 @@
 //                        callback(events);
 //                    }
 //                });
-//           },
+//            },
+//            events: {
+//                url: '<?php echo base_url(); ?>index.php/event/select_all_issue_return',
+//                type: 'POST',
+//                data: {
+//                    book: 'something',
+//                    title: 'somethingelse'
+//                },
+//                        dataType: 'text',
+//                        success: function(e){
+//                            var events = [];
+//                            var bookList = $.parseJSON(e);
+////                            console.log(bookList);
+//                    $.each(bookList, function (i, bookname) {
+////                            $(e).each(function(ev){
+////                                console.log(bookname['title']);
+//                                events.push({
+//                                title: bookname['title']+(bookname['book']),
+//                                start: new Date(bookname['start']) // will be parsed
+//                            });
+////                                var events = $(ev).attr('book');
+////                                alert(ev['book']);
+//                            });
+//                        },
+//                error: function () {
+//                    alert('there was an error while fetching events!');
+//                },
+//                color: 'yellow', // a non-ajax option
+//                textColor: 'black' // a non-ajax option
+//            },
+
 //            
-         events: '<?php echo base_url(); ?>index.php/event/select_all_issue_return',
+            events: '<?php echo base_url(); ?>index.php/event/select_all_issue_return',
+            eventAfterRender: function (event, element, view) {
+                var dataHoje = new Date();
+                if (event.start < dataHoje) {
+                    //event.color = "#FFB347"; //Em andamento
+                    element.css('background-color', '#BC4031');
+                    element.css('border-color', '#3A87AD');
+                }else{
+                    element.css('background-color', '#008D4D');
+                    element.css('border-color', '#008D4D');
+                }
+            },
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             drop: function (date, allDay) { // this function is called when something is dropped
