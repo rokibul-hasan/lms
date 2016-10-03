@@ -130,7 +130,7 @@
 
 						<div class="small-box bg-aqua">
 							<div class="inner">
-								<h3>91</h3>
+								<h3><?=$short_report['total_member']?></h3>
 								<p>Total Number of Members</p>
 							</div>
 							<div class="icon">
@@ -257,7 +257,7 @@
 
 						<div class="small-box bg-yellow">
 							<div class="inner">
-								<h3>24</h3>
+								<h3><?=$short_report['month_issued']?></h3>
 								<p>This Month's Issued Book</p>
 							</div>
 							<div class="icon">
@@ -273,7 +273,7 @@
 
 						<div class="small-box bg-aqua">
 							<div class="inner">
-								<h3>31</h3>
+								<h3><?=$short_report['month_returned']?></h3>
 								<p>This Month's Returned Book</p>
 							</div>
 							<div class="icon">
