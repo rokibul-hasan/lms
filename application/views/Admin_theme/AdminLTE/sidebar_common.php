@@ -137,11 +137,13 @@
         <a href="#">
             <i class="fa fa-file-pdf-o"></i>
             <span>Report</span>
-            <i class="fa fa-angle-left pull-right"></i>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
         </a> 
         <ul class="treeview-menu">
-            <li><a href="http://lms.xeroneit.net/report/index"><i class="fa fa-money"></i> <span>Fine/Penalty Report</span></a></li>
-            <li><a href="http://lms.xeroneit.net/report/notification_report"><i class="fa fa-envelope-o"></i> <span>Notification Report</span></a></li>         
+            <li><a href="<?= site_url('Admin_report'); ?>"><i class="fa fa-money"></i> <span>Fine Report</span></a></li>
+            <li><a href="<?= site_url('Admin_report/notification'); ?>"><i class="fa fa-envelope-o"></i> <span>Notification Report</span></a></li>         
         </ul>
     </li>
     <li><a href="<?= site_url('login/logout'); ?>"><i class="fa fa-power-off"></i> <span>Logout</span></a></li>

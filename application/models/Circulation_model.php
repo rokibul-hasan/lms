@@ -182,6 +182,7 @@ class Circulation_model extends CI_Model {
         $data['ReturnOrNot'] = '2';
         if ($user_type == '1') {
             $data['approval_status'] = '2';
+            $data['ApprovedBy'] = $_SESSION['user_id'];
         }
         $this->db->insert('issuereturn', $data);
         return true;
@@ -219,6 +220,7 @@ class Circulation_model extends CI_Model {
         $this->db->from('issuereturn');
         $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
         $this->db->join('user_type', 'users.id=user_type.UserId', 'left');
+//        $this->db->where('issuereturn.ReturnOrNot','2');
         $results = $this->db->get()->result();
         foreach ($results as $result) {
             $fine = $this->db->where('UserType', $result->Type)->get('circulation')->row();

@@ -15,11 +15,12 @@ class Counter_model extends CI_Model {
 
     //put your code here
 
-    public function count_read_book($id) {
-        $sql = 'SELECT * FROM `counter` WHERE BookId =' . $id;
+    public function count_read_book($id,$type) {
+        $sql = 'SELECT * FROM `counter` WHERE BookId =' . $id.',type ='.$type;
         $check = $this->db->query($sql)->row();
         if (empty($check)) {
             $data['BookId'] = $id;
+            $data['Type'] = $type;
             $data['TotalRead'] = '1';
             $this->db->insert('counter', $data);
         } else if (!empty($check)) {
@@ -31,11 +32,12 @@ class Counter_model extends CI_Model {
         }
         return true;
     }
-    public function count_download_book($id) {
-        $sql = 'SELECT * FROM `counter` WHERE BookId =' . $id;
+    public function count_download_book($id,$type) {
+        $sql = 'SELECT * FROM `counter` WHERE BookId =' . $id.',type ='.$type;
         $check = $this->db->query($sql)->row();
         if (empty($check)) {
             $data['BookId'] = $id;
+            $data['Type'] = $type;
             $data['TotalDownload'] = '1';
             $this->db->insert('counter', $data);
         } else if (!empty($check)) {
@@ -47,11 +49,12 @@ class Counter_model extends CI_Model {
         }
         return true;
     }
-    public function count_issue_book($id) {
-        $sql = 'SELECT * FROM `counter` WHERE BookId =' . $id;
+    public function count_issue_book($id,$type) {
+        $sql = 'SELECT * FROM `counter` WHERE BookId =' . $id.',type ='.$type;
         $check = $this->db->query($sql)->row();
         if (empty($check)) {
             $data['BookId'] = $id;
+            $data['Type'] = $type;
             $data['TotalIssue'] = '1';
             $this->db->insert('counter', $data);
         } else if (!empty($check)) {
