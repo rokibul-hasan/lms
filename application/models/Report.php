@@ -42,5 +42,10 @@ public function issue_rejected(){
         return $this->db->where('DATE(ReturnDate)=DATE(NOW()) AND ReturnOrNot=1')
                 ->count_all_results('issuereturn');         
      }  
-    
+    public function total_member(){
+         return $this->db->from('users')
+                 ->join( 'user_type' ,'user_type.UserId=users.id','left')
+                 ->where('users.activated=1')
+                ->count_all_results();     
+    }
 }

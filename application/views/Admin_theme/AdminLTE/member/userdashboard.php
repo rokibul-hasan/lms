@@ -93,21 +93,11 @@ $user_id = $_SESSION['user_id'];
       
       $('.read_now').click(function(){
           $.ajax({
-                url: '<?php echo base_url(); ?>index.php/count/get_book_info',
-                data: {'bookInfo': book,'option': option},
+                url: '<?php echo base_url(); ?>index.php/count/count_read_book',
+                data: {'type': book,'id': <?=$id?>},
                 dataType: 'text',
-                type: 'POST',
-                success: function (data) {
-//                    alert(data);
-                    $('#book_list').fadeIn();
-                    $('#book_list').html(data);
-                    if (data == '') {
-                        $('#book_list').html('<span class="bg-red">No Books Available</span>');
-                    }
-                },
-                error: function(){
-                    $('#book_list').html('<span class="bg-red">No Books Available</span>');
-                } 
+                type: 'POST'
+        });
       });
     
     
