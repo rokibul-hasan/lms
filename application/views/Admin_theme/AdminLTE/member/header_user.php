@@ -126,12 +126,12 @@ desired effect
     <section class="sidebar">
 
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel">
+      <div class="user-panel" style="height:50px">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          
         </div>
         <div class="pull-left info">
-          <p><?php //echo $_SESSION['username']; ?></p>
+          <p><?php echo $_SESSION['username']; ?></p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
