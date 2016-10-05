@@ -25,9 +25,18 @@ class Admin_report_model extends CI_Model {
             $this->db->from('issuereturn');
             $this->db->where('UserId',$result->id);
             $fines = $this->db->get()->row();
-            $data[] = array('name' => $result->username, 'email' => $result->email, 'fine' => $fines->fine, 'id_issue_return' => $fines->IssueReturnId);            
+            $data[] = array('name' => $result->username, 'email' => $result->email, 'fine' => $fines->fine, 'id_issue_return' => $fines->IssueReturnId, 'user_id' => $fines->UserId);            
         }
         return $data;
+    }
+    
+    function daily_read_book(){
+        $date = date('Y-m-d');
+        $this->db->select('*');
+        $this->db->from('counter');
+        $this->db->join('book','counter.BookId = book.BookId','left');
+        $this->db->where('ReadDate',$date);
+        return $this->db->get()->result();
     }
 
 }

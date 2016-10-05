@@ -25,6 +25,7 @@ class Circulation extends CI_Controller {
         $this->load->library('grocery_CRUD');
 
         $this->load->model('Circulation_model');
+        $this->load->model('Counter_model');
     }
 
     function index() {
@@ -102,6 +103,9 @@ class Circulation extends CI_Controller {
         if (isset($btn)) {
 //            print_r($_POST);
             $this->Circulation_model->save_new_issue($_POST);
+            $id = $this->input->post('Id');
+            $type = $this->input->post('type');
+            $this->Counter_model->count_issue_book($id, $type);
         }
         $sdata['message'] = '<div class = "alert alert-success" id="message"><button type = "button" class = "close" data-dismiss = "alert"><i class = " fa fa-times"></i></button><p><strong><i class = "ace-icon fa fa-check"></i></strong> Data is Successfully Saved!</p></div>';
         $this->session->set_userdata($sdata);
@@ -113,6 +117,7 @@ class Circulation extends CI_Controller {
             redirect('circulation/userissuetable');
         }
     }
+
     function issue_approval() {
         $approved_by = $_SESSION['user_id'];
         $status = $this->input->post('approval_status');

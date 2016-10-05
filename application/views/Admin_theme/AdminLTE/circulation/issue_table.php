@@ -93,9 +93,9 @@
                                     <td><?php echo $issue->Title; ?></td>
                                     <td><?php echo $issue->username; ?></td>
                                     <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
-                                    <td><?php echo $issue->IssueDate; ?></td>
-                                    <td><?php echo $issue->ExpiryDate; ?></td>
-                                    <td><?php echo $issue->ReturnDate; ?></td>
+                                    <td><?php echo date('Y-m-d',strtotime($issue->IssueDate)); ?></td>
+                                    <td><?php echo date('Y-m-d',strtotime($issue->ExpiryDate)); ?></td>
+                                    <td><?php echo date('Y-m-d',strtotime($issue->ReturnDate)); ?></td>
                                     <td><?php echo $issue->Fine; ?></td>
                                     <td><?php echo ($issue->ReturnOrNot == 1) ? '<span class="bg-green">Yes</span>' : '<span class="bg-red">No</span>'; ?></td>
                                     <td><?php

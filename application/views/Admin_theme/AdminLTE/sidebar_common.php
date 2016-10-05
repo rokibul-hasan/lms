@@ -115,7 +115,7 @@
             <li><a href="<?= site_url('circulation/issuetable'); ?>"><i class="fa fa-table"></i> Issue & Return Table</a></li>            
         </ul>
     </li>
-    <li><a href="<?= site_url('admin/supplier'); ?>"><i class="fa fa-folder-open"></i> <span>Daily Read Books</span></a></li>
+    <li><a href="<?= site_url('admin/daily_read_book'); ?>"><i class="fa fa-folder-open"></i> <span>Daily Read Books</span></a></li>
     <li><a href="<?= site_url('admin/supplier'); ?>"><i class="fa  fa-inbox"></i> <span>Requested Books</span></a></li>
      <li><a href="<?= site_url('event'); ?>"><i class="fa  fa-calendar"></i> <span>Event</span></a></li>
      <li><a href="<?= site_url('mynote'); ?>"><i class="fa  fa-edit"></i> <span>My Note</span></a></li>

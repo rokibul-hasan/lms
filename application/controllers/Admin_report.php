@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -28,10 +29,17 @@ class Admin_report extends CI_Controller{
     
     function index(){
         $data['get_fine_report'] = $this->Admin_report_model->get_fine_report();
+        $data['users_info'] = $this->db->where('activated', '1')->get('users')->result();
 //        echo '<pre>'; print_r($data);exit();           
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
         $data['Title'] = 'Fine Report';
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'report/fine_report', $data);
+    }
+    
+    function user_details(){
+        $id = $this->input->post('user_id');
+        $data = $this->db->where('UserId',$id)->get('issuereturn')->result();
+        echo json_encode($data);
     }
 }

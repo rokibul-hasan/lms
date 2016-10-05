@@ -69,7 +69,7 @@ class Circulation_model extends CI_Model {
         } elseif ($option == 'report') {
             $this->db->select('*');
             $this->db->from('report');
-            $this->db->where('ReportlId', $Info);
+            $this->db->where('ReportId', $Info);
             $this->db->or_like('Title', $Info);
             $results = $this->db->get()->result();
             if (empty($results)) {
@@ -77,7 +77,7 @@ class Circulation_model extends CI_Model {
             } else {
                 $table = '<table class="table table-hover table-striped"><tbody>';
                 foreach ($results as $result) {
-                    $table .='<tr><td id="type" name="report"><option value="' . $result->ReportlId . '">' . $result->Title . ' | Report id-' . $result->ReportlId . '</option></td></tr>';
+                    $table .='<tr><td id="type" name="report"><option value="' . $result->ReportId . '">' . $result->Title . ' | Report id-' . $result->ReportId . '</option></td></tr>';
                 }
                 $table .= '</tbody></table>';
             }
@@ -224,13 +224,17 @@ class Circulation_model extends CI_Model {
         $results = $this->db->get()->result();
         foreach ($results as $result) {
             $fine = $this->db->where('UserType', $result->Type)->get('circulation')->row();
+            $fine_exist = $this->db->where('IssueReturnId', $result->IssueReturnId)->get('issuereturn')->row();
+//            print_r($fine_exist);exit();
             $date1 = date_create($result->ExpiryDate);
             $date2 = date_create(date('Y-m-d H:i:s'));
             $diff = date_diff($date1, $date2);
             $total_day = $diff->format('%d');
             if (empty($fine)) {
                 $total_fine = 0;
-            } else {
+            }else if(!empty($fine_exist->Fine)){
+                $total_fine = $fine_exist->Fine;
+            }else {
                 $total_fine = $fine->Fine * $total_day;
             }
             $data[] = array('username' => $result->username, 'Title' => $result->Title, 'Fine' => $total_fine, 'Find_paid' => $result->Fine, 'IssueReturnId' => $result->IssueReturnId); //            

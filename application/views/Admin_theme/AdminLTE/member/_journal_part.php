@@ -45,10 +45,11 @@
                             <div class="col-md-4">
                                 
                                 <div class="row">
-                                    <button type="button" class="btn btn-primary btn-flat btn-block" data-toggle="modal" data-target="#myModal">
+                                    <button type="button" class="btn btn-primary btn-flat btn-block read_now" data-toggle="modal" data-target="#myModal">
                                        Read Now
                                       </button>
-                                    
+                                    <input type="hidden" value="journal" id="type">
+                <input type="hidden" value="<?= $bookid ?>" id="id">
                                          
                                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                               <div class="modal-dialog">
@@ -90,7 +91,7 @@
                                         <input type="hidden" value="<?=$bookid;?>" name="Id" />
                                         <input type="hidden" value="<?=$user_id;?>" name="UserId" />
                                         <input type="hidden" value="journel" name="type"/>
-                                        <input type="submit"  class="btn btn-danger btn-flat btn-block" name="btn" value="Lend"/>
+                                        <input type="submit"  class="btn btn-danger btn-flat btn-block" id="lend" name="btn" value="Lend"/>
                                     
                                     </form>
                                 </div>

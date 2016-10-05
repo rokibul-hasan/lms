@@ -1,26 +1,22 @@
-<?php  
-
- 
- include_once 'header_user.php';
+<?php
+include_once 'header_user.php';
 $user_id = $_SESSION['user_id'];
-
-
 ?>
 
 
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        <?=$Title?>
-        
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol>
+        <h1>
+<?= $Title ?>
+
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+            <li class="active">Here</li>
+        </ol>
     </section>
 
     <!-- Main content -->
@@ -28,106 +24,110 @@ $user_id = $_SESSION['user_id'];
         <div class="box">
             <div class="box-body">
                 <div class="row">
-                    
-                    
-                    <div class="col-lg-3 ">
-                        
-                        <?php                    include '_select_item.php';  ?>
-                        
-                    </div>
-                    
-                    
-           
-                    <div class="pull-right col-lg-8">
-                        
-                                    <!-------------------------------------------- 
-   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\BOOK SECTION ///////////////////////////////////////////////////////////
-   ---------------------------------------->       
-                        
-                                <?php                    include '_book_part.php';  ?>    
-                                                       <!-------------------------------------------- 
-   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\JOURNAL SECTION ///////////////////////////////////////////////////////////
-   ---------------------------------------->
-                        
-                        <?php                    include '_journal_part.php';  ?>
-                        
-   <!-------------------------------------------- 
-   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\REPORT SECTION///////////////////////////////////////////////////////////
-   ---------------------------------------->
-                        
-                        <?php                    include '_report_part.php';  ?>
-   
-      <!-------------------------------------------- 
-   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\THESIS SECTION///////////////////////////////////////////////////////////
-   ---------------------------------------->
-                        
-                        <?php                    include '_thesis_part.php';  ?>
-                    
-                    
-                    </div>
-        </div>
 
-        
+
+                    <div class="col-lg-3 ">
+
+<?php include '_select_item.php'; ?>
+
+                    </div>
+
+
+
+                    <div class="pull-right col-lg-8">
+
+                        <!-------------------------------------------- 
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\BOOK SECTION ///////////////////////////////////////////////////////////
+---------------------------------------->       
+
+<?php include '_book_part.php'; ?>    
+                        <!-------------------------------------------- 
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\JOURNAL SECTION ///////////////////////////////////////////////////////////
+---------------------------------------->
+
+<?php include '_journal_part.php'; ?>
+
+                        <!-------------------------------------------- 
+                        \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\REPORT SECTION///////////////////////////////////////////////////////////
+                        ---------------------------------------->
+
+<?php include '_report_part.php'; ?>
+
+                        <!-------------------------------------------- 
+                     \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\THESIS SECTION///////////////////////////////////////////////////////////
+                     ---------------------------------------->
+
+<?php include '_thesis_part.php'; ?>
+
+
+                    </div>
+                </div>
+
+
             </div>
         </div>
-                                
+
 
     </section>
     <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+</div>
+<!-- /.content-wrapper -->
 
 <?php include_once 'footer_user.php'; ?>
-  <style>
-      span.select2{
-          width: 100%!important;
-      }
-      .modal-dialog{
-          width:100%;
-          height: 100vh;
-      }
-  </style>
-  <script>
-  
-  $(document).ready(function(){
-      
-      $('.read_now').click(function(){
-          $.ajax({
+<style>
+    span.select2{
+        width: 100%!important;
+    }
+    .modal-dialog{
+        width:100%;
+        height: 100vh;
+    }
+</style>
+<script>
+
+    $(document).ready(function () {
+
+        $('.read_now').click(function () {
+            var type = $('#type').val();
+            var id = $('#id').val();
+            // alert(id);
+            $.ajax({
                 url: '<?php echo base_url(); ?>index.php/count/count_read_book',
-                data: {'type': book,'id': <?=$id?>},
-                dataType: 'text',
-                type: 'POST'
+                data: {'type': type, 'id': id},
+                //dataType: 'text',
+                type: 'post'
+
+            });
         });
-      });
-    
-    
-    $("#select_type_for_reservation").change(function(){
-        if(this.value=='books_form'){
-            $("#books_form").show();
-        }else{
-            $("#books_form").hide();
-        }
+
         
-         if(this.value=='journals_form'){
-            $("#journals_form").show();
-        }else{
-            $("#journals_form").hide();
-        }
-        
-        
-         if(this.value=='reports_form'){
-            $("#reports_form").show();
-        }else{
-            $("#reports_form").hide();
-        }
-        
-         if(this.value=='thesis_form'){
-            $("#thesis_form").show();
-        }else{
-            $("#thesis_form").hide();
-        }
-        
+        $("#select_type_for_reservation").change(function () {
+            if (this.value == 'books_form') {
+                $("#books_form").show();
+            } else {
+                $("#books_form").hide();
+            }
+
+            if (this.value == 'journals_form') {
+                $("#journals_form").show();
+            } else {
+                $("#journals_form").hide();
+            }
+
+
+            if (this.value == 'reports_form') {
+                $("#reports_form").show();
+            } else {
+                $("#reports_form").hide();
+            }
+
+            if (this.value == 'thesis_form') {
+                $("#thesis_form").show();
+            } else {
+                $("#thesis_form").hide();
+            }
+
+        });
+
     });
-        
-});
-  </script>
+</script>
