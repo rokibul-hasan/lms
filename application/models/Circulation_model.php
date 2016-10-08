@@ -39,8 +39,10 @@ class Circulation_model extends CI_Model {
         if ($option == 'book') {
             $this->db->select('*');
             $this->db->from('book');
-            $this->db->where('BookId', $Info);
-            $this->db->or_like('Title', $Info);
+            $this->db->join('bookcopy','book.BookId = bookcopy.BookId','left');
+            $this->db->where('book.BookId', $Info);
+            $this->db->or_like('book.Title', $Info);
+            $this->db->or_like('bookcopy.AccessionNumber', $Info);
             $results = $this->db->get()->result();
             if (empty($results)) {
                 $table = '<div class = "alert alert-danger">No Book found</div>';
@@ -54,8 +56,10 @@ class Circulation_model extends CI_Model {
         } elseif ($option == 'journel') {
             $this->db->select('*');
             $this->db->from('journal');
-            $this->db->where('JournalId', $Info);
-            $this->db->or_like('Title', $Info);
+            $this->db->join('journalcopy','journal.JournalId = journalcopy.JournalId','left');
+            $this->db->where('journal.JournalId', $Info);
+            $this->db->or_like('journal.Title', $Info);
+            $this->db->or_like('journalcopy.AccessionNumber', $Info);
             $results = $this->db->get()->result();
             if (empty($results)) {
                 $table = '<div class = "alert alert-danger">No Book found</div>';
@@ -69,23 +73,27 @@ class Circulation_model extends CI_Model {
         } elseif ($option == 'report') {
             $this->db->select('*');
             $this->db->from('report');
-            $this->db->where('ReportlId', $Info);
-            $this->db->or_like('Title', $Info);
+            $this->db->join('reportcopy','report.ReportId = reportcopy.ReportId','left');
+            $this->db->where('report.ReportId', $Info);
+            $this->db->or_like('report.Title', $Info);
+            $this->db->or_like('reportcopy.AccessionNumber', $Info);
             $results = $this->db->get()->result();
             if (empty($results)) {
                 $table = '<div class = "alert alert-danger">No Book found</div>';
             } else {
                 $table = '<table class="table table-hover table-striped"><tbody>';
                 foreach ($results as $result) {
-                    $table .='<tr><td id="type" name="report"><option value="' . $result->ReportlId . '">' . $result->Title . ' | Report id-' . $result->ReportlId . '</option></td></tr>';
+                    $table .='<tr><td id="type" name="report"><option value="' . $result->ReportId . '">' . $result->Title . ' | Report id-' . $result->ReportId . '</option></td></tr>';
                 }
                 $table .= '</tbody></table>';
             }
         } elseif ($option == 'thesis') {
             $this->db->select('*');
             $this->db->from('thesis');
-            $this->db->where('Thesisid', $Info);
-            $this->db->or_like('Title', $Info);
+            $this->db->join('thesiscopy','thesis.ThesisId = thesiscopy.ThesisId','left');
+            $this->db->where('thesis.Thesisid', $Info);
+            $this->db->or_like('thesis.Title', $Info);
+            $this->db->or_like('thesiscopy.AccessionNumber', $Info);
             $results = $this->db->get()->result();
             if (empty($results)) {
                 $table = '<div class = "alert alert-danger">No Book found</div>';
@@ -182,6 +190,7 @@ class Circulation_model extends CI_Model {
         $data['ReturnOrNot'] = '2';
         if ($user_type == '1') {
             $data['approval_status'] = '2';
+            $data['ApprovedBy'] = $_SESSION['user_id'];
         }
         $this->db->insert('issuereturn', $data);
         return true;
@@ -219,16 +228,21 @@ class Circulation_model extends CI_Model {
         $this->db->from('issuereturn');
         $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
         $this->db->join('user_type', 'users.id=user_type.UserId', 'left');
+//        $this->db->where('issuereturn.ReturnOrNot','2');
         $results = $this->db->get()->result();
         foreach ($results as $result) {
             $fine = $this->db->where('UserType', $result->Type)->get('circulation')->row();
+            $fine_exist = $this->db->where('IssueReturnId', $result->IssueReturnId)->get('issuereturn')->row();
+//            print_r($fine_exist);exit();
             $date1 = date_create($result->ExpiryDate);
             $date2 = date_create(date('Y-m-d H:i:s'));
             $diff = date_diff($date1, $date2);
             $total_day = $diff->format('%d');
             if (empty($fine)) {
                 $total_fine = 0;
-            } else {
+            }else if(!empty($fine_exist->Fine)){
+                $total_fine = $fine_exist->Fine;
+            }else {
                 $total_fine = $fine->Fine * $total_day;
             }
             $data[] = array('username' => $result->username, 'Title' => $result->Title, 'Fine' => $total_fine, 'Find_paid' => $result->Fine, 'IssueReturnId' => $result->IssueReturnId); //            

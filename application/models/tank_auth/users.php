@@ -131,9 +131,11 @@ class Users extends CI_Model {
 
         if ($this->db->insert($this->table_name, $data)) {
             $user_id = $this->db->insert_id();
+            
             $user_type['UserId'] = $user_id;
-            $user_type['Type'] = '4';
+            $user_type['Type'] = '4';            
             $this->db->insert('user_type', $user_type);
+            $user_type_id = $this->db->insert_id();
             if ($activated)
                 $this->create_profile($user_id);
             return array('user_id' => $user_id);

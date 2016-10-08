@@ -16,6 +16,8 @@
                     <form action="" class="form" method="post" id="books_form" style="display: none">
                         <div class="form-group">
                             <label for="">Book Name: </label>
+                            <!--<input class="form-control" id="book" placeholder="Type Id / Title" type="text">-->
+                            <div id="book_list"></div>
                             <select name="bookid" id="" class="form-control select2">
                                             <option value="">Select Your Book</option>
                                             <?php

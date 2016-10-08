@@ -126,4 +126,14 @@ class Userdashboard extends CI_Controller {
         $this->load->view($this->config->item('ADMIN_THEME') . 'member/userdashboard', $data);
     }
     
+    
+//    advance search
+    function get_book_info() {
+        $this->load->model('Book_model');
+        $bookInfo = $this->input->post('bookInfo');
+        $option = $this->input->post('option');
+//        print_r($option);exit();
+        echo $data = $this->Book_model->select_book_info($bookInfo, $option);
+    }
+    
 }
