@@ -68,9 +68,10 @@ if (isset($book_id)) {
                             <div class="modal-body">
     <?php if (isset($file_link) && !empty($file_link)) {
         ?>
-                                    <object data="<?= base_url('asset/ebook/' . $file_link . '') ?>" type="application/pdf" width="100%" height="600px">
+                                <iframe src="http://docs.google.com/gview?url=<?= base_url('asset/ebook/' . $file_link . '') ?>&embedded=true" style="width:100%; height:600px;" frameborder="0"></iframe>
+<!--                                    <object data="<?= base_url('asset/ebook/' . $file_link . '') ?>" type="application/pdf" width="100%" height="600px">
                                         <p>Alternative text - include a link <a href="<?= base_url('asset/ebook/' . $file_link . '') ?>">to the PDF!</a></p>
-                                    </object>
+                                    </object>-->
 
                                 <?php
                                 } else {
@@ -83,7 +84,7 @@ if (isset($book_id)) {
 
                             </div>
                             <div class="modal-footer">
-
+                                <a href="<?= base_url('asset/ebook/' . $file_link . '') ?>" target="blank"class="pull-left"><i class="fa fa-download text-danger"></i> Download The Book</a>
                                 <button type="button" class="btn btn-default pull-right " data-dismiss="modal" >Close</button>
 
                             </div>

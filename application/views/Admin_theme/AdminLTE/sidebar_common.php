@@ -99,6 +99,9 @@
     
 
     <li><a href="<?= site_url('publisher'); ?>"><i class="fa fa-paperclip"></i> <span>Publishers</span></a></li>
+    
+    
+    <li><a href="<?= site_url('about'); ?>"><i class="fa fa-comment"></i> <span>About</span></a></li>
 
 
     <li class="treeview">

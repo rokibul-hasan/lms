@@ -45,7 +45,7 @@
 
                                 </select>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-7">
                                 <div class="form-group ">
                                     <label>Search Item:</label>
                                     <div >
@@ -60,14 +60,44 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4" style="margin-top: 25px;">
+<!--                            <div class="col-md-4" style="margin-top: 25px;">
                                 <button type="submit" name="btn_submit" value="true" class="btn btn-primary"><i class="fa fa-search"></i></button>
                                 <?= anchor(current_url() . '', '<i class="fa fa-refresh"></i>', ' class="btn btn-success"') ?>
-                            </div>
+                            </div>-->
                         </div> 
                     </div>
-                    <div class="box-body">
+                    <div class="box-body">                        
                         <div id="banner">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-md-2 control-label">Title</label>
+                                <div class="col-md-10">
+                                    <span><b id="title"></b></span>
+                                </div>
+                            </div>
+<!--                            <div class="form-group">
+                                <label for="inputEmail3" class="col-md-2 control-label">Subtitle</label>
+                                <div class="col-md-10">
+                                    <span><b id="Subtitle"></b></span>
+                                </div>
+                            </div>-->
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-md-2 control-label">Total Read</label>
+                                <div class="col-md-10">
+                                    <span><b id="totalread"></b></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-md-2 control-label">Total Issue</label>
+                                <div class="col-md-10">
+                                    <span><b id="totalissue"></b></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-md-2 control-label">Total Download</label>
+                                <div class="col-md-10">
+                                    <span><b id="totaldownload"></b></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,9 +124,11 @@
     }
 </style>
 <script type="text/javascript">
+    $('#banner').hide();
     $('#option').change(function () {
         $('#book').val('');
         $('#banner').hide();
+        $('#book_list').hide();
     });
     $('#book').keyup(function () {
         var book = $('#book').val();
@@ -143,21 +175,13 @@
                         if (bookname == '') {
                             $('#banner').html('<h2>No Record Exist</h2>');
                         }
-                        var banner = '<div class="form-group">\n\
-                <label for="inputEmail3" class="col-sm-2 control-label">Title</label>\n\
-                    <div class="col-sm-10">\n\
-                        <span><b>' + bookname['Title'] + '</b></span>\n\
-                    </div>\n\
-                </div>\n\
-                <div class="form-group">\n\
-                    <label for="inputEmail3" class="col-sm-2 control-label">Banner</label>\n\
-                <div class="col-sm-10">';
-                        if (bookname['Banner'] == '') {
-                            banner += '<img class="img img-thumbnail" id="book_cover_preview" style="width:175px; height:275px;" src="<?php echo base_url(); ?>assets/uploads/files/default.jpg"></div></div>';
-                        } else {
-                            banner += '<img class="img img-thumbnail" id="book_cover_preview" style="width:175px; height:275px;" src="<?php echo base_url(); ?>assets/uploads/files/' + bookname['Banner'] + '"></div></div>';
-                        }
-                        $('#banner').html(banner);
+                        $('#title').html(bookname['Title']);
+//                        $('#subtitle').html(bookname['SubTitle']);
+                        $('#totalread').html(bookname['TotalRead']);
+                        $('#totalissue').html(bookname['TotalIssue']);
+                        $('#totaldownload').html(bookname['TotalDownload']);
+                        
+//                        $('#banner').html(banner);
                         if (name == 'book') {
                             $('#id').val(bookname['BookId']);
                         } else if (name == 'journel') {
