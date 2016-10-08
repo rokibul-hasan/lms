@@ -27,7 +27,7 @@
 </head>
 <body>
 <!-- header start -->
-<div id="templatemo_home_page">
+<div id="templatemo_home_page home">
   <div class="templatemo_topbar">
     <div class="container">
       <div class="row">
@@ -46,9 +46,9 @@
             <div id="top-menu">
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                  <li><a class="menu" href="#templatemo_home_page">Home</a></li>
-                  <li><a class="menu" href="#templatemo_team_page">About Us</a></li>
-                  <li><a class="menu" href="#templatemo_contact_page">Instruction</a></li>                  
+                  <li><a class="menu" href="#home">Home</a></li>
+                  <li><a class="menu" href="#about">About Us</a></li>
+                  <li><a class="menu" href="#instruction">Instruction</a></li>                  
                   <li><a class="menu" href="<?=  site_url('login')?>" target="_blank">Login</a></li>
                   <li><a class="menu" href="<?=  site_url('login')?>" target="_blank">Registration</a></li>
                 </ul>

@@ -20,10 +20,10 @@ class Frontpage extends CI_Controller {
         $data['all_thesis'] = $this->Book_model->get_all('thesis');
         
         $data['siteinfo'] = $this->Book_model->siteinfo();
-        echo '<pre>';
-        print_r($data['siteinfo']);
-        echo $data['siteinfo']
-        exit();
+//        echo '<pre>';
+//        print_r($data['siteinfo']);
+//        echo $data['siteinfo']
+//        exit();
         
         $this->load->helper('html');
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
