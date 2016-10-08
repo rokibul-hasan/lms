@@ -23,7 +23,7 @@
                             <label for="">Published Year: </label>
                             <input type="text" class="form-control" placeholder="Published Year" />
                             <div id="book_list"></div>
-<!--                            <select name="bookid" id="" class="form-control select2">
+                            <select name="bookid" id="" class="form-control select2">
                                             <option value="">Select Your Book</option>
                                             <?php
                                             foreach ($all_book as $book) {
@@ -32,7 +32,7 @@
                                                 <?php
                                             }
                                             ?>
-                                        </select>-->
+                                        </select>
 
                         </div>
                         <div class="form-group">
