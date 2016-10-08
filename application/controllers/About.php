@@ -25,7 +25,8 @@ class About extends CI_Controller {
         $crud = new grocery_CRUD();
         $crud->set_table('about')
                 ->set_subject('About')
-                ->order_by('AboutId','desc');
+                ->order_by('AboutId','desc')
+                ->unset_add()->unset_delete();
         $output = $crud->render();
         $data['glosary'] = $output;
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');

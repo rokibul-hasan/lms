@@ -19,11 +19,17 @@ class Frontpage extends CI_Controller {
         $data['all_report'] = $this->Book_model->get_all('report');
         $data['all_thesis'] = $this->Book_model->get_all('thesis');
         
+        $data['siteinfo'] = $this->Book_model->siteinfo();
+        echo '<pre>';
+        print_r($data['siteinfo']);
+        echo $data['siteinfo']
+        exit();
+        
         $this->load->helper('html');
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
         $data['Title'] = 'Dashboard';
         $data['base_url'] = base_url();
-        $this->load->view($this->config->item('ADMIN_THEME') . 'member/frontpage', $data);
+        $this->load->view( 'front/index', $data);
 
     }
     
