@@ -35,7 +35,7 @@ class Counter_model extends CI_Model {
         return true;
     }
     public function count_download_book($id,$type) {
-        $sql = 'SELECT * FROM `counter` WHERE `BookId`='.$id.' AND `Type` = "'.$type.'"';
+        $sql = 'SELECT * FROM `counter` WHERE `BookId`='.$id.' AND `Type` = "'.$type.'" AND `TotalDownload` != 0';
         $check = $this->db->query($sql)->row();
         if (empty($check)) {
             $data['BookId'] = $id;

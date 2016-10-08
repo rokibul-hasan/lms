@@ -36,4 +36,16 @@ class User_model extends ci_model{
         $this->db->where('users.id',$user_id);
         return $query = $this->db->get()->result();
     }
+    
+    function user_access_count($id){
+        $sql = 'SELECT * FROM `users` WHERE id = '.$id;
+        $check = $this->db->query($sql)->row();
+            $count = $check->user_access_counter;
+            $count_id = $id;
+            $download['user_access_counter'] = $count + 1;
+            $this->db->where('id', $count_id);
+            $this->db->update('users', $download);
+//        }
+        return true;
+    }
 }

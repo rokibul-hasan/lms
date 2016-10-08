@@ -21,6 +21,7 @@ class Admin extends CI_Controller {
        
         $this->load->model('role');
         $this->role->check_access();
+        $this->load->model('Admin_report_model');
 
     }
 
@@ -46,6 +47,17 @@ class Admin extends CI_Controller {
         $this->load->view($this->config->item('ADMIN_THEME') . 'daily_read_book', $data);
     }
     
+    
+    public function top_book(){
+        $data['get_top_read'] = $this->Admin_report_model->top_read();
+        $data['get_top_issue'] = $this->Admin_report_model->top_issue();
+        $data['get_top_download'] = $this->Admin_report_model->top_download();
+//        echo '<pre>';print_r($data);exit();
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Title'] = 'Top Books';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'top_book', $data);
+    }
     
     
     

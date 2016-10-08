@@ -72,5 +72,30 @@ class Admin_report_model extends CI_Model {
             return false;
         }
     }
+    
+    function top_read(){
+        $this->db->select('*');
+        $this->db->from('counter');
+        $this->db->join('book','counter.BookId = book.BookId','left');
+        $this->db->limit('5');
+        $this->db->order_by('TotalRead','desc');
+        return $this->db->get()->result();
+    }
+    function top_issue(){
+        $this->db->select('*');
+        $this->db->from('counter');
+        $this->db->join('book','counter.BookId = book.BookId','left');
+        $this->db->limit('5');
+        $this->db->order_by('TotalIssue','desc');
+        return $this->db->get()->result();
+    }
+    function top_download(){
+        $this->db->select('*');
+        $this->db->from('counter');
+        $this->db->join('book','counter.BookId = book.BookId','left');
+        $this->db->limit('5');
+        $this->db->order_by('TotalDownload','desc');
+        return $this->db->get()->result();
+    }
 
 }

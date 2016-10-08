@@ -28,6 +28,12 @@ class Count extends CI_Controller {
 		//return true;
     }
     
+    public function count_download_book(){
+        $id = $this->input->post('id');
+        $type = $this->input->post('type');
+        $this->Counter_model->count_download_book($id,$type);
+    }
+    
     
     
     

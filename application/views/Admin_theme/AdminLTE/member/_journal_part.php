@@ -74,7 +74,7 @@
                             </div>
                             <div class="modal-footer">
                                 <?php if (isset($file_link) && !empty($file_link)) {              ?>
-                                <a href="<?= base_url('asset/ebook/' . $file_link . '') ?>" target="blank"class="pull-left"><i class="fa fa-download text-info"></i> Download The Book</a>
+                                <a href="<?= base_url('asset/ebook/' . $file_link . '') ?>" id="download" target="blank"class="pull-left"><i class="fa fa-download text-info"></i> Download The Book</a>
                                 <?php }else{ echo '<p class="text-dengar pull-left">File not available</p>'; } ?>
                                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
                                                     
