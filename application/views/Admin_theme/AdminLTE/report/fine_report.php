@@ -64,7 +64,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Fine</th>
-                                <!--<th>Action</th>-->
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -73,9 +73,9 @@
                                     <td><?php echo $reports['name'] ?></td>
                                     <td><?php echo $reports['email'] ?></td>
                                     <td><?php echo $reports['fine'] ?></td>
-                                    <!--<td><a href="" id="details" value="<?php echo $reports['user_id']; ?>" type="button"  data-toggle="modal" data-target="#myModal"class="btn btn-info"><i class="fa fa-search"></i></a></td>-->
+                                    <td><a href="" id="details"  type="button"  data-toggle="modal" data-target="#myModal"class="btn btn-info"><i class="fa fa-search"></i><input type="text"  value="<?php echo $reports['user_id']; ?>"/></a></td>
                                 </tr>
-                            <input type="hidden" id="user"  />
+                            
                         <?php } ?>
                         </tbody>
                     </table>

@@ -38,5 +38,39 @@ class Admin_report_model extends CI_Model {
         $this->db->where('ReadDate',$date);
         return $this->db->get()->result();
     }
+    
+    function select_book_id($id, $typeName) {
+        if ($typeName == 'book') {
+            $this->db->select('*');
+            $this->db->from('counter');
+            $this->db->join('book','counter.BookId = book.BookId','left');
+            $this->db->where('counter.BookId', $id);
+            $this->db->where('counter.Type', $typeName);
+            return $this->db->get()->result();
+        } elseif ($typeName == 'journel') {
+            $this->db->select('*');
+            $this->db->from('counter');
+            $this->db->join('journal','counter.BookId = journal.journalId','left');
+            $this->db->where('counter.BookId', $id);
+            $this->db->where('counter.Type', $typeName);
+            return $this->db->get()->result();
+        } elseif ($typeName == 'thesis') {
+            $this->db->select('*');
+            $this->db->from('counter');
+            $this->db->join('thesis','counter.BookId = thesis.ThesisId','left');
+            $this->db->where('counter.BookId', $id);
+            $this->db->where('counter.Type', $typeName);
+            return $this->db->get()->result();
+        } elseif ($typeName == 'report') {
+            $this->db->select('*');
+            $this->db->from('counter');
+            $this->db->join('report','counter.BookId = report.ReportId','left');
+            $this->db->where('counter.BookId', $id);
+            $this->db->where('counter.Type', $typeName);
+            return $this->db->get()->result();
+        } else {
+            return false;
+        }
+    }
 
 }

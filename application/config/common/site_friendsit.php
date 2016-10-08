@@ -16,7 +16,8 @@ $config['main_sidebar_title'] = "DEBENHAMS <br> BANGLADESH <br> MGMT";
 
 $config['DEVELOPER'] = array(
     "name" => "Friends IT",
-    'website' => "http://friendsitltd.com/");
+    'website' => "http://friendsitltd.com/"
+    );
 
 
 

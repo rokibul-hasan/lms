@@ -1,4 +1,5 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -12,7 +13,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  * @author sonjoy
  */
-class Admin_report extends CI_Controller{
+class Admin_report extends CI_Controller {
+
     //put your code here
     function __construct() {
         parent::__construct();
@@ -26,8 +28,8 @@ class Admin_report extends CI_Controller{
         $this->load->model('checkuser');
         $this->load->model('Admin_report_model');
     }
-    
-    function index(){
+
+    function index() {
         $data['get_fine_report'] = $this->Admin_report_model->get_fine_report();
         $data['users_info'] = $this->db->where('activated', '1')->get('users')->result();
 //        echo '<pre>'; print_r($data);exit();           
@@ -36,10 +38,27 @@ class Admin_report extends CI_Controller{
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'report/fine_report', $data);
     }
-    
-    function user_details(){
+
+    function notification() {
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Title'] = 'Notification Report';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'report/notification_report', $data);
+    }
+
+    function user_details() {
         $id = $this->input->post('user_id');
-        $data = $this->db->where('UserId',$id)->get('issuereturn')->result();
+        $data = $this->db->where('UserId', $id)->get('issuereturn')->result();
         echo json_encode($data);
     }
+    
+    function get_book_info_after_search() {
+        $Id = $this->input->post('bookId');
+        $typeName = $this->input->post('typeName');
+//        print_r($typeName);exit();
+        $data = $this->Admin_report_model->select_book_id($Id, $typeName);
+        echo json_encode($data);
+//        }
+    }
+
 }

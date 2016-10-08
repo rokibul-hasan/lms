@@ -82,6 +82,17 @@ $user_id = $_SESSION['user_id'];
         width:100%;
         height: 100vh;
     }
+    td{
+        background: #777777;
+        color:#fff;
+        font-weight: bold;
+    }
+    td:hover{
+        background: #fff;
+        color:#000;
+        font-weight: bold;
+        cursor:pointer;
+    }
 </style>
 <script>
 
@@ -129,5 +140,30 @@ $user_id = $_SESSION['user_id'];
 
         });
 
+    });
+    
+    $('#book').keyup(function () {
+        var book = $('#book').val();
+        var option = $('#select_type_for_reservation').val();
+//        alert(option);
+        if (book != '') {
+            $.ajax({
+                url: '<?php echo base_url(); ?>index.php/userdashboard/get_book_info',
+                data: {'bookInfo': book, 'option': option},
+                dataType: 'text',
+                type: 'POST',
+                success: function (data) {
+//                    alert(data);
+                    $('#book_list').fadeIn();
+                    $('#book_list').html(data);
+                    if (data == '') {
+                        $('#book_list').html('<span class="bg-red">No Books Available</span>');
+                    }
+                },
+                error: function () {
+                    $('#book_list').html('<span class="bg-red">No Books Available</span>');
+                }
+            });
+        }
     });
 </script>

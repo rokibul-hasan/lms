@@ -39,8 +39,10 @@ class Circulation_model extends CI_Model {
         if ($option == 'book') {
             $this->db->select('*');
             $this->db->from('book');
-            $this->db->where('BookId', $Info);
-            $this->db->or_like('Title', $Info);
+            $this->db->join('bookcopy','book.BookId = bookcopy.BookId','left');
+            $this->db->where('book.BookId', $Info);
+            $this->db->or_like('book.Title', $Info);
+            $this->db->or_like('bookcopy.AccessionNumber', $Info);
             $results = $this->db->get()->result();
             if (empty($results)) {
                 $table = '<div class = "alert alert-danger">No Book found</div>';
@@ -54,8 +56,10 @@ class Circulation_model extends CI_Model {
         } elseif ($option == 'journel') {
             $this->db->select('*');
             $this->db->from('journal');
-            $this->db->where('JournalId', $Info);
-            $this->db->or_like('Title', $Info);
+            $this->db->join('journalcopy','journal.JournalId = journalcopy.JournalId','left');
+            $this->db->where('journal.JournalId', $Info);
+            $this->db->or_like('journal.Title', $Info);
+            $this->db->or_like('journalcopy.AccessionNumber', $Info);
             $results = $this->db->get()->result();
             if (empty($results)) {
                 $table = '<div class = "alert alert-danger">No Book found</div>';
@@ -69,8 +73,10 @@ class Circulation_model extends CI_Model {
         } elseif ($option == 'report') {
             $this->db->select('*');
             $this->db->from('report');
-            $this->db->where('ReportId', $Info);
-            $this->db->or_like('Title', $Info);
+            $this->db->join('reportcopy','report.ReportId = reportcopy.ReportId','left');
+            $this->db->where('report.ReportId', $Info);
+            $this->db->or_like('report.Title', $Info);
+            $this->db->or_like('reportcopy.AccessionNumber', $Info);
             $results = $this->db->get()->result();
             if (empty($results)) {
                 $table = '<div class = "alert alert-danger">No Book found</div>';
@@ -84,8 +90,10 @@ class Circulation_model extends CI_Model {
         } elseif ($option == 'thesis') {
             $this->db->select('*');
             $this->db->from('thesis');
-            $this->db->where('Thesisid', $Info);
-            $this->db->or_like('Title', $Info);
+            $this->db->join('thesiscopy','thesis.ThesisId = thesiscopy.ThesisId','left');
+            $this->db->where('thesis.Thesisid', $Info);
+            $this->db->or_like('thesis.Title', $Info);
+            $this->db->or_like('thesiscopy.AccessionNumber', $Info);
             $results = $this->db->get()->result();
             if (empty($results)) {
                 $table = '<div class = "alert alert-danger">No Book found</div>';
