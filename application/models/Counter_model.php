@@ -17,7 +17,7 @@ class Counter_model extends CI_Model {
 
     public function count_read_book($id,$type) {        
         $date =  date('Y-m-d');
-        $sql = 'SELECT * FROM `counter` WHERE `BookId`='.$id.' AND `Type` = "'.$type.'" AND `ReadDate` ="'.$date.'"';
+        $sql = 'SELECT * FROM `counter` WHERE `BookId`='.$id.' AND `Type` = "'.$type.'"';
         $check = $this->db->query($sql)->row();
         if (empty($check)) {
             $data['BookId'] = $id;
@@ -35,7 +35,7 @@ class Counter_model extends CI_Model {
         return true;
     }
     public function count_download_book($id,$type) {
-        $sql = 'SELECT * FROM `counter` WHERE `BookId`='.$id.' AND `Type` = "'.$type.'" AND `TotalDownload` != 0';
+        $sql = 'SELECT * FROM `counter` WHERE `BookId`='.$id.' AND `Type` = "'.$type.'"';
         $check = $this->db->query($sql)->row();
         if (empty($check)) {
             $data['BookId'] = $id;
@@ -52,9 +52,10 @@ class Counter_model extends CI_Model {
         return true;
     }
     public function count_issue_book($id,$type) {
-        $sql = 'SELECT * FROM `counter` WHERE `BookId`='.$id.' AND `Type` = "'.$type.'" AND `TotalIssue` != 0 ';
+        $sql = 'SELECT * FROM `counter` WHERE `BookId`='.$id.' AND `Type` = "'.$type.'"';
         $check = $this->db->query($sql)->row();
         if (empty($check)) {
+            $issue_count = 
             $data['BookId'] = $id;
             $data['Type'] = $type;
             $data['TotalIssue'] = '1';

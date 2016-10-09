@@ -106,9 +106,9 @@ if (isset($book_id)) {
                 </form>
             </div>
 
-            <div class="row">
+<!--            <div class="row">
                 <div class="alert text-center">Total Read : 50</div>
-            </div>
+            </div>-->
 
         </div>
 
