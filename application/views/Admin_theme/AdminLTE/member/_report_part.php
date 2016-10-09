@@ -9,6 +9,7 @@
                              $bookid = $report_info->ReportId;
                              $book_cover = $report_info->Banner;
                              $file_link = $report_info->Ebook;
+                             $Abstract = $report_info->Abstract;
                              
                             }                   
                             
@@ -24,7 +25,8 @@
                                     <i class="fa fa-university"></i>&nbsp; <strong>Organization :</strong><?=$Organization?><br>
                                     <i class="fa fa-book"></i>&nbsp; <strong>Page :</strong> <?=$page?><br>
                                     <i class="fa fa-book"></i>&nbsp; <strong>Year of Published  :</strong> <?=$publish_year?><br>
-                                    <i class="fa fa-map"></i>&nbsp; <strong> Address  :</strong> <?=$address?>&nbsp;                      
+                                    <i class="fa fa-map"></i>&nbsp; <strong> Address  :</strong> <?=$address?><br>
+                                     <i class="fa fa-book"></i>&nbsp;<strong>Abstract :</strong><?=$Abstract?>
                                 </div>
                             </div>
                             <div class="col-md-3">

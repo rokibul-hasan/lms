@@ -12,6 +12,7 @@ if (isset($book_id)) {
         $book_cover = $book_info->Banner;
         $file_link = $book_info->Ebook;
         $id = $book_info->BookId;
+        $Abstract = $book_info->Abstract;
     }
     ?>
     <div class="box box-body">
@@ -33,7 +34,8 @@ if (isset($book_id)) {
                 <i class="fa fa-folder-open"></i>&nbsp; <strong>Publisher  :</strong> <?= $book_publisher_name ?><br>
                 <i class="fa fa-book"></i>&nbsp; <strong>Page :</strong> <?= $page ?><br>
                 <i class="fa fa-book"></i>&nbsp; <strong>Year of Published  :</strong> <?= $publish_year ?><br>
-                <i class="fa fa-pencil"></i>&nbsp; <strong> Edition  :</strong> <?= $edition ?>&nbsp;                      
+                <i class="fa fa-pencil"></i>&nbsp; <strong> Edition  :</strong> <?= $edition ?><br>
+                <i class="fa fa-book"></i>&nbsp;<strong>Abstract :</strong><?=$Abstract?>
             </div>
         </div>
         <div class="col-md-3">

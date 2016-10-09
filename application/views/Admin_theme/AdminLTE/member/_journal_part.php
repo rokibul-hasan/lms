@@ -11,6 +11,7 @@
                              $bookid = $journal_info->JournalId;
                              $book_cover = $journal_info->Banner;
                              $file_link = $journal_info->Ebook;
+                             $Abstract = $journal_info->Abstract;
                              
                             }                   
                             
@@ -28,6 +29,7 @@
                                     <i class="fa fa-folder-open"></i>&nbsp; <strong>Publisher  :</strong> <?=$book_publisher_name?><br>
                                     <i class="fa fa-book"></i>&nbsp; <strong>Page :</strong> <?=$page?><br>
                                     <i class="fa fa-book"></i>&nbsp; <strong>Year of Published  :</strong> <?=$publish_year?><br>
+                                    <i class="fa fa-book"></i>&nbsp;<strong>Abstract :</strong><?=$Abstract?>
                                                   
                                 </div>
                             </div>
