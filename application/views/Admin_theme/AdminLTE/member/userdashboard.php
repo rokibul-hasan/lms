@@ -102,13 +102,18 @@ $user_id = $_SESSION['user_id'];
             var type = $('#type').val();
             var id = $('#id').val();
             // alert(id);
+            <?php
+                if(!empty($file_link)){
+            ?>
             $.ajax({
                 url: '<?php echo base_url(); ?>index.php/count/count_read_book',
                 data: {'type': type, 'id': id},
                 //dataType: 'text',
                 type: 'post'
-
             });
+            <?php
+                }
+            ?>
         });
         $('#download').click(function () {
             var type = $('#type').val();
