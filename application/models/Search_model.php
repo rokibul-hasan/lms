@@ -16,7 +16,6 @@ class Search_model extends CI_Model {
      * @param   string  $bookTitle
      * @param   array  $Publisher    (array of integer)
      * @param   array  $year    (array of integer . size 2)   (Ex : array(1999,2016)) (Ex : array(2013,2013))
-     * @param   array  $BookCategory    (array of integer)
      * @param   array  $keyword    (array of string)
      * @param   array  $Author    (array of integer)
      * @param   array  $subject    (array of integer)
@@ -24,7 +23,7 @@ class Search_model extends CI_Model {
      * @return  array   (db 2D array as object)
      */
 
-    function search_book($bookTitle, $Publisher, $year, $BookCategory, $keyword, $Author, $subject) {
+    function search_book($bookTitle, $Publisher, $year, $keyword, $Author, $subject) {
         $result = $this->db->get("book")->result();
         if (empty($result)) {
             return FALSE;
