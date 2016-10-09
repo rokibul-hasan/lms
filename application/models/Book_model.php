@@ -161,8 +161,8 @@ class Book_model extends CI_Model {
         foreach ($query as $row){
             $data['sitetitle'] = $row['SiteTitle'];
             $data['AboutUs'] = $row['AboutUs'];
-            $data['logininfo'] =  $row['LoginInstruction'];
-            $data['registrationinfo'] = $row['RegistrationInstraction'];
+            $data['LoginInstruction'] =  $row['LoginInstruction'];
+            $data['RegistrationInstraction'] = $row['RegistrationInstraction'];
         }
         
         return $data;

@@ -7,6 +7,16 @@
 <meta name="viewport" content="initial-scale=1">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700,800' rel='stylesheet' type='text/css'>
 <!-- Style Sheets -->
+
+        <link rel="stylesheet" href="<?php echo $theme_asset_url ?>plugins/select2/select2.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="<?php echo $theme_asset_url ?>dist/css/AdminLTE.min.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+             folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="<?php echo $theme_asset_url ?>dist/css/skins/_all-skins.min.css">
+        
+        
+        
 <link rel="stylesheet" href="<?=  base_url('asset/front')?>/css/animate.css">
 <link rel="stylesheet" href="<?=  base_url('asset/front')?>/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?=  base_url('asset/front')?>/css/font-awesome.min.css">
@@ -46,9 +56,10 @@
             <div id="top-menu">
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                  <li><a class="menu" href="#home">Home</a></li>
+                  <li><a class="menu" href="<?=site_url('frontpage')?>"><i class="fa fa-home"></i></a></li>
                   <li><a class="menu" href="#about">About Us</a></li>
-                  <li><a class="menu" href="#instruction">Instruction</a></li>                  
+                  <li><a class="menu" href="#instruction">User Instruction</a></li> 
+                  <li><a class="menu" href="#books">Books</a></li>   
                   <li><a class="menu" href="<?=  site_url('login')?>" target="_blank">Login</a></li>
                   <li><a class="menu" href="<?=  site_url('login')?>" target="_blank">Registration</a></li>
                 </ul>
@@ -62,7 +73,7 @@
       </div>
     </div>
   </div>
-  <div class="templatemo_headerimage">
+    <div class="templatemo_headerimage" id="about">
     <div class="flexslider">
       <ul class="slides">
         <li><img src="<?=  base_url('asset/front')?>/images/slider/1.jpg" alt="Slide 1"></li>
@@ -79,54 +90,43 @@
   </div>
 </div>
 <!-- header end -->
-<div class="clear"></div>
+<div class="clear" id="instruction"></div>
 <!-- service start -->
-<div class="templatemo_servicewrapper" id="templatemo_service_page">
-  <div class="container">
+<div class="templatemo_servicewrapper" id="templatemo_service_page" style="margin-top: 50px;">
+    <div class="container" >
     <div class="row">
-      <h1>Services</h1>
-      <div class="col-md-12 templatemo_marginbot">You can easily <strong>change icons</strong> by looking at guidelines from <a rel="nofollow" href="http://fontawesome.info/font-awesome-icon-world-map/">Font Awesome</a>. Example: <strong>&lt;i class=&quot;fa fa-camera&quot;&gt;&lt;/i&gt;</strong> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam dapibus leo quis nisl. In lectus. Vivamus consectetuer pede in nisl. Mauris cursus pretium mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</div>
-      <div class="col-md-3 col-sm-6">
-        <div class="templatemo_servicebox margin_bottom_1col margin_bottom_2col">
-          <div class="templatemo_serviceicon"><span class="fa fa-pencil-square-o"></span></div>
-          <div class="templatemo_service_title">Phasellus sed metus</div>
-          <p>Donec euismod, justo sed convallis blandit, ipsum erat mattis lectus, vel pharetra neque enim tristique risus.</p>
+        <h1 class="page-header" style="border-bottom: 1px solid #d5d5d5">User Instruction</h1>        
+        <div class="col-md-6"style="border-bottom: 1px solid #d5d5d5">            
+            <div class="col-md-12 templatemo_marginbot">
+                <h3 class="alert alert-info">Login Instruction</h3><hr>
+                <?=$siteinfo['LoginInstruction']?>
+            </div>
         </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="templatemo_servicebox margin_bottom_1col margin_bottom_2col">
-          <div class="templatemo_serviceicon"><span class="fa fa-home"></span></div>
-          <div class="templatemo_service_title">Web Design</div>
-          <p>Conquer is free HTML5 template by <span class="blue">template</span><span class="green">mo</span>. Feel free to download, edit and use this template for any purpose.</p>
+        <div class="col-md-6"style="border-bottom: 1px solid #d5d5d5">            
+            <div class="col-md-12 templatemo_marginbot">
+                <h3 class="alert alert-info">Registration Instruction</h3><hr>
+                <?=$siteinfo['RegistrationInstraction']?>
+            </div>
         </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="templatemo_servicebox margin_bottom_1col">
-          <div class="templatemo_serviceicon"><span class="fa fa-download"></span></div>
-          <div class="templatemo_service_title">Free Download</div>
-          <p>Credit goes to <a rel="nofollow" href="http://unsplash.com">Unsplash</a> for images used in this template. Curabitur rhoncus felis quis nibh pulvinar.</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="templatemo_servicebox">
-          <div class="templatemo_serviceicon"><span class="fa fa-random"></span></div>
-          <div class="templatemo_service_title">Mobile Friendly</div>
-          <p>Donec euismod, justo sed convallis blandit, ipsum erat mattis lectus, vel pharetra neque enim tristique risus.</p>
-        </div>
-      </div>
+
     </div>
   </div>
 </div>
 <!-- service end -->
-<div class="clear"></div>
+<div class="clear" id="books" style="margin-top:50px;"></div>
 <!-- work start -->
-<div class="templatemo_workwrapper" id="templatemo_work_page">
+<div class="templatemo_workwrapper" >
   <div class="container">
     <div class="row">
-      <h1>Current Projects</h1>
-      <div class="col-md-12 templatemo_workmargin">Donec leo sem, commodo in, bibendum iaculis, euismod vitae, risus. Suspendisse a erat id urna dapibus varius. Proin facilisis, nisi eget rutrum rutrum, sapien arcu molestie sem, eget gravida sapien nisi in ante.</div>
+      <h1 class="page-header" style="border-bottom: 1px solid #d5d5d5">Our Books</h1>
+      <div class="col-md-12 templatemo_workmargin">
+          
+          <?php include_once __DIR__ . '/../Admin_theme/AdminLTE/member/frontpage.php'; ?>
+          
+      </div>
     </div>
-  </div>
+ </div>
+    <!-- 
   <div>
     <div class="templatemo_workbox">
       <div class="gallery-item"><img src="<?=  base_url('asset/front')?>/images/work/1.jpg" alt="work 1">
@@ -208,10 +208,11 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 </div>
 <!--work end-->
 <div class="clear"></div>
+<noscript>
 <!-- team start -->
 <div class="templatemo_team_wrapper" id="templatemo_team_page">
   <div class="container">
@@ -324,6 +325,7 @@
     </script>
   </div>
 </div>
+
 <!-- team end -->
 <div class="clear"></div>
 <!-- contact start -->
@@ -375,6 +377,7 @@
     </div>
   </div>
 </div>
+</noscript>
 <!-- contact end --> 
 <!-- footer start -->
 <div class="templatemo_footerwrapper">
@@ -385,6 +388,13 @@
   </div>
 </div>
 <!-- footer end --> 
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<!--datatable-->
+<script src="<?php echo $theme_asset_url ?>plugins/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="<?php echo $theme_asset_url ?>plugins/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
+
 <script>
 <!-- scroll to specific id when click on menu -->
 // Cache selectors
