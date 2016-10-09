@@ -55,6 +55,10 @@ class Users extends CI_Model {
 
         $query = $this->db->get($this->table_name);
         if ($query->num_rows() == 1)
+            $id = $query->row()->id;
+//            print_r($id);exit();
+            $this->load->model('User_model');
+            $this->User_model->user_access_count($id);
             return $query->row();
         return NULL;
     }

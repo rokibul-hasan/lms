@@ -9,6 +9,7 @@
                              $bookid = $report_info->ReportId;
                              $book_cover = $report_info->Banner;
                              $file_link = $report_info->Ebook;
+                             $Abstract = $report_info->Abstract;
                              
                             }                   
                             
@@ -24,7 +25,8 @@
                                     <i class="fa fa-university"></i>&nbsp; <strong>Organization :</strong><?=$Organization?><br>
                                     <i class="fa fa-book"></i>&nbsp; <strong>Page :</strong> <?=$page?><br>
                                     <i class="fa fa-book"></i>&nbsp; <strong>Year of Published  :</strong> <?=$publish_year?><br>
-                                    <i class="fa fa-map"></i>&nbsp; <strong> Address  :</strong> <?=$address?>&nbsp;                      
+                                    <i class="fa fa-map"></i>&nbsp; <strong> Address  :</strong> <?=$address?><br>
+                                     <i class="fa fa-book"></i>&nbsp;<strong>Abstract :</strong><?=$Abstract?>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -55,23 +57,25 @@
                                                       <span aria-hidden="true">×</span></button>
                                                       <h4 class="modal-title"><?=$book_title?></h4>
                                                   </div>
-                                                  <div class="modal-body">
-                                                     <?php if(isset($file_link) && !empty($file_link)){ 
-                                                    
+                                                  
+                                                      <div class="modal-body">
+                                                    <?php if (isset($file_link) && !empty($file_link)) {
                                                         ?>
-                                                            <object data="<?=base_url('asset/ebook/'.$file_link.'')?>" type="application/pdf" width="100%" height="600px">
-                                                                <p>Alternative text - include a link <a href="<?=base_url('asset/ebook/'.$file_link.'')?>">to the PDF!</a></p>
-                                                            </object>
-                                                             
-                                                       <?php }else{
-                                                            // echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block')); 
-                                                             
-                                                              echo '<br><h2 class="text-center text-danger">Book Not Available</h2>';
-                                                        }
-                                                        ?>
-                                                  </div>
-                                                  <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+                                                                    <iframe src="http://docs.google.com/gview?url=<?= base_url('asset/ebook/' . $file_link . '') ?>&embedded=true" style="width:100%; height:600px;" frameborder="0"></iframe>
+
+                                                                    <?php
+                                                                    } else {
+                                                                        echo '<br><h2 class="text-center text-danger">Book Not Available</h2>';
+                                                                    }
+                                                                    ?>
+
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                <?php if (isset($file_link) && !empty($file_link)) {              ?>
+                                <a href="<?= base_url('asset/ebook/' . $file_link . '') ?>" id="download"  target="blank"class="pull-left"><i class="fa fa-download text-info"></i> Download The Book</a>
+                                <?php }else{ echo '<p class="text-dengar pull-left">File not available</p>'; } ?>
+                                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
                                                     
                                                   </div>
                                                 </div>

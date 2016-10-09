@@ -154,5 +154,18 @@ class Book_model extends CI_Model {
 
         return $table;
     }
+    
+    
+    function siteinfo(){
+        $query=  $this->db->get('about')->result_array();
+        foreach ($query as $row){
+            $data['sitetitle'] = $row['SiteTitle'];
+            $data['AboutUs'] = $row['AboutUs'];
+            $data['LoginInstruction'] =  $row['LoginInstruction'];
+            $data['RegistrationInstraction'] = $row['RegistrationInstraction'];
+        }
+        
+        return $data;
+    }
 
 }

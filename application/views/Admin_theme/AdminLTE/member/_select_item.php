@@ -17,6 +17,11 @@
                         <div class="form-group">
                             <label for="">Book Name: </label>
                             <!--<input class="form-control" id="book" placeholder="Type Id / Title" type="text">-->
+                            <input type="text" class="form-control" placeholder="Title" />
+                            <label for="">Edition: </label>
+                            <input type="text" class="form-control" placeholder="Edition" />
+                            <label for="">Published Year: </label>
+                            <input type="text" class="form-control" placeholder="Published Year" />
                             <div id="book_list"></div>
                             <select name="bookid" id="" class="form-control select2">
                                             <option value="">Select Your Book</option>

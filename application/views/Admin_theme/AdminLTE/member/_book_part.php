@@ -12,6 +12,7 @@ if (isset($book_id)) {
         $book_cover = $book_info->Banner;
         $file_link = $book_info->Ebook;
         $id = $book_info->BookId;
+        $Abstract = $book_info->Abstract;
     }
     ?>
     <div class="box box-body">
@@ -23,29 +24,30 @@ if (isset($book_id)) {
                 <i class="fa fa-book"></i>&nbsp; <strong>Title :</strong> <?= $book_title ?><br>
                 <i class="fa fa-user"></i>&nbsp; <strong>Author :</strong>
 
-    <?php
-    foreach ($book_id as $book_info) {
-        echo " $book_info->AuthorFirstName  $book_info->AuthorMiddleName  $book_info->AuthorLastName  ,";
-    }
-    ?>         
+                <?php
+                foreach ($book_id as $book_info) {
+                    echo " $book_info->AuthorFirstName  $book_info->AuthorMiddleName  $book_info->AuthorLastName  ,";
+                }
+                ?>         
                 <br>
                 <i class="fa fa-sort-numeric-asc"></i>&nbsp; <strong>ISBN :</strong><?= $isbn ?><br>
                 <i class="fa fa-folder-open"></i>&nbsp; <strong>Publisher  :</strong> <?= $book_publisher_name ?><br>
                 <i class="fa fa-book"></i>&nbsp; <strong>Page :</strong> <?= $page ?><br>
                 <i class="fa fa-book"></i>&nbsp; <strong>Year of Published  :</strong> <?= $publish_year ?><br>
-                <i class="fa fa-pencil"></i>&nbsp; <strong> Edition  :</strong> <?= $edition ?>&nbsp;                      
+                <i class="fa fa-pencil"></i>&nbsp; <strong> Edition  :</strong> <?= $edition ?><br>
+                <i class="fa fa-book"></i>&nbsp;<strong>Abstract :</strong><?=$Abstract?>
             </div>
         </div>
         <div class="col-md-3">
-    <?php
-    if (isset($book_cover) && !empty($book_cover)) {
+            <?php
+            if (isset($book_cover) && !empty($book_cover)) {
 
-        echo img(array('src' => 'assets/uploads/files/' . $book_cover, 'class' => 'img-responsive'));
-    } else {
+                echo img(array('src' => 'assets/uploads/files/' . $book_cover, 'class' => 'img-responsive'));
+            } else {
 
-        echo img(array('src' => 'images/nocover.jpg', 'class' => 'img-responsive center-block'));
-    }
-    ?>
+                echo img(array('src' => 'images/nocover.jpg', 'class' => 'img-responsive center-block'));
+            }
+            ?>
         </div>
         <div class="col-md-4">
 
@@ -66,15 +68,11 @@ if (isset($book_id)) {
                                 <h4 class="modal-title"><?= $book_title ?></h4>
                             </div>
                             <div class="modal-body">
-    <?php if (isset($file_link) && !empty($file_link)) {
-        ?>
-                                    <object data="<?= base_url('asset/ebook/' . $file_link . '') ?>" type="application/pdf" width="100%" height="600px">
-                                        <p>Alternative text - include a link <a href="<?= base_url('asset/ebook/' . $file_link . '') ?>">to the PDF!</a></p>
-                                    </object>
-
-                                <?php
+                                <?php if (isset($file_link) && !empty($file_link)) {
+                                    ?>
+                                    <iframe src="http://docs.google.com/gview?url=<?= base_url('asset/ebook/' . $file_link . '') ?>&embedded=true" style="width:100%; height:600px;" frameborder="0"></iframe>
+                                    <?php
                                 } else {
-                                    // echo img(array('src'=>'images/nocover.jpg' ,'class' => 'img-responsive center-block')); 
 
                                     echo '<br><h2 class="text-center text-danger">Book Not Available</h2>';
                                 }
@@ -83,7 +81,11 @@ if (isset($book_id)) {
 
                             </div>
                             <div class="modal-footer">
-
+                                <?php if (isset($file_link) && !empty($file_link)) { ?>
+                                    <a href="<?= base_url('asset/ebook/' . $file_link . '') ?>" id="download" target="blank"class="pull-left"><i class="fa fa-download text-info"></i> Download The Book</a>
+                                <?php } else {
+                                    echo '<p class="text-dengar pull-left">File not available</p>';
+                                } ?>
                                 <button type="button" class="btn btn-default pull-right " data-dismiss="modal" >Close</button>
 
                             </div>

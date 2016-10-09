@@ -110,6 +110,18 @@ $user_id = $_SESSION['user_id'];
 
             });
         });
+        $('#download').click(function () {
+            var type = $('#type').val();
+            var id = $('#id').val();
+             alert(id);
+            $.ajax({
+                url: '<?php echo base_url(); ?>index.php/count/count_download_book',
+                data: {'type': type, 'id': id},
+                //dataType: 'text',
+                type: 'post'
+
+            });
+        });
 
         
         $("#select_type_for_reservation").change(function () {
