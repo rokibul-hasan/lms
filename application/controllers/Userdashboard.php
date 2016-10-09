@@ -28,6 +28,7 @@ class Userdashboard extends CI_Controller {
         $this->load->helper('html');  
         
         $this->load->model('Book_model');
+        $this->load->model('Search_model');
         
         $btn_book = $this->input->post('btn_book');
         $btn_journal = $this->input->post('btn_journal');
@@ -39,18 +40,29 @@ class Userdashboard extends CI_Controller {
          
         $data['all_report'] = $this->Book_model->get_all('report');
         $data['all_thesis'] = $this->Book_model->get_all('thesis');
+        
+        
+        $data['all_publisher'] = $this->Book_model->get_all('publisher');
+        $data['all_author'] = $this->Book_model->get_all('author');
 
         
         if(isset($btn_book)){
-            $id = $this->input->post('bookid');
-            $data['book_id'] = $this->Book_model->get_book_details($id); 
+            $bookTitle = $this->input->post('name');
+            $Publisher = $this->input->post('publisher');
+            $from = $this->input->post('from');
+            $to = $this->input->post('to');
+            $year = $from .'-'.$to;
+            $keyword = $this->input->post('keywords');
+            $Author = $this->input->post('author');
+            $subject = $this->input->post('subject');
+            $data['book_id'] = $this->Search_model-> search_book($bookTitle, $Publisher, $year, 0, $keyword, $Author, $subject); 
 //            echo '<pre>';
 //            print_r($data['book_id']);
           
         }
         
         if(isset($btn_journal)){
-            $id = $this->input->post('bookid');
+            
             $data['journal_id'] = $this->Book_model->get_journal_details($id); 
 
         }
