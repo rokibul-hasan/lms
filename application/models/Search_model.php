@@ -23,8 +23,8 @@ class Search_model extends CI_Model {
      * @return  array   (db 2D array as object)
      */
 
-    function search_book($bookTitle, $Publisher, $year, $keyword, $Author, $subject) {
-        $result = $this->db->get("book")->result();
+    function search_book($bookTitle, $Publisher, $year, $keyword, $Author, $subject, $limitFrom = 0, $limitTo = 20) {
+        $result = $this->db->order_by('BookId', 'asc')->get("book", $limitTo, $limitFrom)->result();
         if (empty($result)) {
             return FALSE;
         } else {
@@ -45,8 +45,8 @@ class Search_model extends CI_Model {
      * @return  array   (db 2D array as object)
      */
 
-    function search_journal($bookTitle, $Publisher, $year, $subject) {
-        $result = $this->db->get("journal")->result();
+    function search_journal($bookTitle, $Publisher, $year, $subject, $limitFrom = 0, $limitTo = 20) {
+        $result = $this->db->get("journal", $limitTo, $limitFrom)->result();
         if (empty($result)) {
             return FALSE;
         } else {
@@ -68,8 +68,8 @@ class Search_model extends CI_Model {
      * @return  array   (db 2D array as object)
      */
 
-    function search_report($reportTitle, $Organization, $year, $keyword, $subject) {
-        $result = $this->db->get("report")->result();
+    function search_report($reportTitle, $Organization, $year, $keyword, $subject, $limitFrom = 0, $limitTo = 20) {
+        $result = $this->db->get("report", $limitTo, $limitFrom)->result();
         if (empty($result)) {
             return FALSE;
         } else {
@@ -91,8 +91,8 @@ class Search_model extends CI_Model {
      * @return  array   (db 2D array as object)
      */
 
-    function search_thesis($thesisTitle, $year, $department, $Author, $subject) {
-        $result = $this->db->get("thesis")->result();
+    function search_thesis($thesisTitle, $year, $department, $Author, $subject, $limitFrom = 0, $limitTo = 20) {
+        $result = $this->db->get("thesis", $limitTo, $limitFrom)->result();
         if (empty($result)) {
             return FALSE;
         } else {
