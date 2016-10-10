@@ -1,5 +1,32 @@
 <?php
-if (isset($book_id)) {
+if (isset($book_list)) {
+    ?>
+    <table>
+        <tr>
+            <th>Book ID</th>
+            <th>Book Title</th>
+            <th>ISBN</th>
+            <th>Keywords</th>
+            <th>Year of Publication</th>
+            <th>Place of Publication</th>
+            <th>Publisher Name</th>
+        </tr>
+        <?php
+        foreach ($book_list as $book_info) {
+            echo "<tr>";
+            echo "<td>{$book_info->BookId}</td>";
+            echo "<td>{$book_info->Title}</td>";
+            echo "<td>{$book_info->ISBN}</td>";
+            echo "<td>{$book_info->BookKeywords}</td>";
+            echo "<td>{$book_info->YearOfPublication}</td>";
+            echo "<td>{$book_info->PlaceOfPublication}</td>";
+            echo "<td>{$book_info->PublisherName}</td>";
+            echo "</tr>";
+        }
+        ?>
+    </table>
+    <?php
+} else if (isset($book_id)) {
     foreach ($book_id as $book_info) {
         $book_title = $book_info->book_title;
         $book_publisher_name = $book_info->PublisherName;
@@ -35,7 +62,7 @@ if (isset($book_id)) {
                 <i class="fa fa-book"></i>&nbsp; <strong>Page :</strong> <?= $page ?><br>
                 <i class="fa fa-book"></i>&nbsp; <strong>Year of Published  :</strong> <?= $publish_year ?><br>
                 <i class="fa fa-pencil"></i>&nbsp; <strong> Edition  :</strong> <?= $edition ?><br>
-                <i class="fa fa-book"></i>&nbsp;<strong>Abstract :</strong><?=$Abstract?>
+                <i class="fa fa-book"></i>&nbsp;<strong>Abstract :</strong><?= $Abstract ?>
             </div>
         </div>
         <div class="col-md-3">
@@ -83,9 +110,11 @@ if (isset($book_id)) {
                             <div class="modal-footer">
                                 <?php if (isset($file_link) && !empty($file_link)) { ?>
                                     <a href="<?= base_url('asset/ebook/' . $file_link . '') ?>" id="download" target="blank"class="pull-left"><i class="fa fa-download text-info"></i> Download The Book</a>
-                                <?php } else {
+                                    <?php
+                                } else {
                                     echo '<p class="text-dengar pull-left">File not available</p>';
-                                } ?>
+                                }
+                                ?>
                                 <button type="button" class="btn btn-default pull-right " data-dismiss="modal" >Close</button>
 
                             </div>
@@ -106,9 +135,9 @@ if (isset($book_id)) {
                 </form>
             </div>
 
-<!--            <div class="row">
-                <div class="alert text-center">Total Read : 50</div>
-            </div>-->
+            <!--            <div class="row">
+                            <div class="alert text-center">Total Read : 50</div>
+                        </div>-->
 
         </div>
 

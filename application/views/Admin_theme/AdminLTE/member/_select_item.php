@@ -19,9 +19,9 @@
             <input type="text" name="book_name" class="form-control" placeholder="Title" />
             <label for="">Publisher: </label>
             <select name="publisher[]"class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select publisher" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                <?php foreach ($all_publisher as $publisher){?>
-                <option value="<?php echo $publisher->PublisherId;?>"><?php echo $publisher->PublisherName;?></option>
-                <?php }?>
+                <?php foreach ($all_publisher as $publisher) { ?>
+                    <option value="<?php echo $publisher->PublisherId; ?>"><?php echo $publisher->PublisherName; ?></option>
+                <?php } ?>
             </select>            
             <label for="">Published Year: </label>
             <div class="row">
@@ -30,8 +30,9 @@
                     <select name="from" id="" class="form-control select2">
                         <?php
                         $now = date('Y');
-                        for($i=$now;$i>1700;$i--){
-                            echo '<option value="'.$i.'">'.$i.'</option>';
+                        echo '<option value=""></option>';
+                        for ($i = $now; $i > 1700; $i--) {
+                            echo '<option value="' . $i . '">' . $i . '</option>';
                         }
                         ?>
                     </select>
@@ -41,34 +42,56 @@
                     <select name="to" id="" class="form-control select2">
                         <?php
                         $now = date('Y');
-                        for($i=$now;$i>1700;$i--){
-                            echo '<option value="'.$i.'">'.$i.'</option>';
+                        echo '<option value=""></option>';
+                        for ($i = $now; $i > 1700; $i--) {
+                            echo '<option value="' . $i . '">' . $i . '</option>';
                         }
                         ?>
                     </select>
                 </div>
             </div>
             <label for="">keywords: </label>
-                <input type="text" class="form-control" name="keywords"/>
+            <select name="keywords[]"class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select keywords" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                <option value="">Not Select</option>
+                <?php
+                $sql = "SELECT DISTINCT  `BookKeywords` FROM  `view_book_details`";
+                $BookKeywords = $this->db->query($sql)->result();
+                foreach ($BookKeywords as $BookKeyword) {
+                    $tmpBookKeywords = explode(',', $BookKeyword->BookKeywords);
+                    foreach ($tmpBookKeywords as $tmpBookKeyword) {
+                        $tmpBookKeyword = trim($tmpBookKeyword);
+                        echo '<option value="' . $tmpBookKeyword . '">' . $tmpBookKeyword . '</option>';
+                    }
+                }
+                ?>
+            </select>     
             <label for="">Author: </label>
             <select name="author[]" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select author" style="width: 100%;" tabindex="-1" aria-hidden="true">
                 <option value="">Not Select</option>
-                <?php foreach ($all_author as $author){?>
-                <option value="<?php echo $author->AuthorId;?>"><?php echo $author->AuthorFirstName .' '. $author->AuthorLastName;?></option>
-                <?php }?>
+                <?php foreach ($all_author as $author) { ?>
+                    <option value="<?php echo $author->AuthorId; ?>"><?php echo $author->AuthorFirstName . ' ' . $author->AuthorLastName; ?></option>
+                <?php } ?>
             </select>
             <label for="">Subject: </label>
-            <input type="text" class="form-control" name="subject" placeholder="subject" />
+            <select name="subject[]"class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select publisher" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                <?php
+                $sql = "SELECT DISTINCT  `SubjectId` ,  `subject_title` FROM  `view_book_details`";
+                $subject_rows = $this->db->query($sql)->result();
+                foreach ($subject_rows as $subject) {
+                    ?>
+                    <option value="<?php echo $subject->SubjectId; ?>"><?php echo $subject->subject_title; ?></option>
+                <?php } ?>
+            </select>       
             <!--<div id="book_list"></div>-->
 <!--            <select name="bookid" id="" class="form-control select2">
                 <option value="">Select Your Book</option>
-                <?php
-                foreach ($all_book as $book) {
-                    ?>
-                    <option value="<?php echo $book->BookId; ?>"><?php echo $book->BookId . '-' . $book->Title; ?></option>
-                    <?php
-                }
+            <?php
+            foreach ($all_book as $book) {
                 ?>
+                                                                                                                <option value="<?php echo $book->BookId; ?>"><?php echo $book->BookId . '-' . $book->Title; ?></option>
+                <?php
+            }
+            ?>
             </select>-->
 
         </div>

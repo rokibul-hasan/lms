@@ -32,7 +32,7 @@ class Search_model extends CI_Model {
             $Publisher = implode(",", $Publisher);
             array_push($conditions, "`PublisherId` IN ($Publisher)");
         }
-        if (!empty($year)) {
+        if (!empty($year[0])&&!empty($year[1])) {
             array_push($conditions, "`YearOfPublication` BETWEEN  {$year[0]} AND {$year[1]}");
         }
         if (!empty($keywords)) {
@@ -92,7 +92,7 @@ class Search_model extends CI_Model {
             $Publisher = implode(",", $Publisher);
             array_push($conditions, "`PublisherId` IN ($Publisher)");
         }
-        if (!empty($year)) {
+        if (!empty($year[0])&&!empty($year[1])) {
             array_push($conditions, "`Year` BETWEEN  {$year[0]} AND {$year[1]}");
         }
         if (!empty($subject)) {
@@ -143,7 +143,7 @@ class Search_model extends CI_Model {
                 array_push($conditions, implode(" OR ", $Organization_coditions));
             }
         }
-        if (!empty($year)) {
+        if (!empty($year[0])&&!empty($year[1])) {
             array_push($conditions, "`Year` BETWEEN  {$year[0]} AND {$year[1]}");
         }
         if (!empty($keywords)) {
@@ -195,7 +195,7 @@ class Search_model extends CI_Model {
         if (!empty($thesisTitle)) {
             array_push($conditions, "`Title` LIKE  '%$thesisTitle%'");
         }
-        if (!empty($year)) {
+        if (!empty($year[0])&&!empty($year[1])) {
             array_push($conditions, "`yearofaward` BETWEEN  {$year[0]} AND {$year[1]}");
         }
         if (!empty($departments)) {
