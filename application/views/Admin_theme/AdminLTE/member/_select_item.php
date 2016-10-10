@@ -27,45 +27,32 @@
             <div class="row">
                 <div class="col-md-6">
                     From:
-                    <select name="from" id="" class="form-control">
-                        <option value="2016">2016</option>
-                        <option value="2017">2017</option>
-                        <option value="2018">2018</option>
-                        <option value="2019">2019</option>
-                        <option value="2020">2020</option>
-                        <option value="2021">2021</option>
-                        <option value="2022">2022</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
+                    <select name="from" id="" class="form-control select2">
+                        <?php
+                        $now = date('Y');
+                        for($i=$now;$i>1700;$i--){
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                        }
+                        ?>
                     </select>
                 </div>
                 <div class="col-md-6">
                     To:
-                    <select name="to" id="" class="form-control">
-                        <option value="2016">2016</option>
-                        <option value="2017">2017</option>
-                        <option value="2018">2018</option>
-                        <option value="2019">2019</option>
-                        <option value="2020">2020</option>
-                        <option value="2021">2021</option>
-                        <option value="2022">2022</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
+                    <select name="to" id="" class="form-control select2">
+                        <?php
+                        $now = date('Y');
+                        for($i=$now;$i>1700;$i--){
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                        }
+                        ?>
                     </select>
                 </div>
             </div>
             <label for="">keywords: </label>
-            <select name="keywords[]" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select keywords" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                <option value="Alabama">Alabama</option>
-                <option value="Alaska">Alaska</option>
-                <option value="California">California</option>
-                <option value="Delaware">Delaware</option>
-                <option value="Tennessee">Tennessee</option>
-                <option value="Texas">Texas</option>
-                <option value="Washington">Washington</option>
-            </select>
+                <input type="text" class="form-control" name="keywords"/>
             <label for="">Author: </label>
             <select name="author[]" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select author" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                <option value="">Not Select</option>
                 <?php foreach ($all_author as $author){?>
                 <option value="<?php echo $author->AuthorId;?>"><?php echo $author->AuthorFirstName .' '. $author->AuthorLastName;?></option>
                 <?php }?>

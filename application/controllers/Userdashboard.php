@@ -41,19 +41,30 @@ class Userdashboard extends CI_Controller {
 
 
         if (isset($btn_book)) {
+            
+               
+            
             $bookTitle = $this->input->post('name');
             $Publisher = $this->input->post('publisher');
             $from = $this->input->post('from');
             $to = $this->input->post('to');
-            $year = $from . '-' . $to;
+            $year[0] = $from;
+            $year[1] = $to;
             $keyword = $this->input->post('keywords');
+            $keyword = explode(",", $keyword);
             $Author = $this->input->post('author');
             $subject = $this->input->post('subject');
-            $data['book_id'] = $this->Search_model->search_book($bookTitle, $Publisher, $year, 0, $keyword, $Author, $subject);
-//            echo '<pre>';
-//            print_r($data['book_id']);
-//            exit();
+            $data['book_list'] = $this->Search_model->search_book($bookTitle, $Publisher, $year, 0, $keyword, $Author, $subject);
+                                 echo '<pre>';
+                        print_r($data['book_list']);   
+                        exit();
+
         }
+        
+//        if($isset($btn_book_search)){
+//            $id = $this->input->post('bookid');
+//            $data['book_id'] = $this->Book_model->get_book_details($id); 
+//        }
 
         if (isset($btn_journal)) {
 
