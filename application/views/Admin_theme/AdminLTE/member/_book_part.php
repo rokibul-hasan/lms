@@ -1,30 +1,32 @@
 <?php
 if (isset($book_list)) {
     ?>
-    <table>
+<div style="width:90%;margin:0 auto;overflow-x:scroll">
+<table class="table table-bordered table-responsive table-striped">
         <tr>
             <th>Book ID</th>
             <th>Book Title</th>
-            <th>ISBN</th>
             <th>Keywords</th>
             <th>Year of Publication</th>
-            <th>Place of Publication</th>
+<!--            <th>Place of Publication</th>-->
             <th>Publisher Name</th>
+            <th>Action</th>
         </tr>
         <?php
         foreach ($book_list as $book_info) {
             echo "<tr>";
             echo "<td>{$book_info->BookId}</td>";
             echo "<td>{$book_info->Title}</td>";
-            echo "<td>{$book_info->ISBN}</td>";
             echo "<td>{$book_info->BookKeywords}</td>";
             echo "<td>{$book_info->YearOfPublication}</td>";
-            echo "<td>{$book_info->PlaceOfPublication}</td>";
+//            echo "<td>{$book_info->PlaceOfPublication}</td>";
             echo "<td>{$book_info->PublisherName}</td>";
+            echo '<td><a class="btn btn-sm btn-primary">Details</a>';
             echo "</tr>";
         }
         ?>
     </table>
+</div>
     <?php
 } else if (isset($book_id)) {
     foreach ($book_id as $book_info) {

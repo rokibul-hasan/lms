@@ -83,8 +83,8 @@ $user_id = $_SESSION['user_id'];
         height: 100vh;
     }
     td{
-        background: #777777;
-        color:#fff;
+/*        background: #777777;*/
+        color:#000;
         font-weight: bold;
     }
     td:hover{
