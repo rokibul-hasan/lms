@@ -21,7 +21,10 @@ if (isset($book_list)) {
             echo "<td>{$book_info->YearOfPublication}</td>";
 //            echo "<td>{$book_info->PlaceOfPublication}</td>";
             echo "<td>{$book_info->PublisherName}</td>";
-            echo '<td><a class="btn btn-sm btn-primary">Details</a>';
+            echo '<td><form action="'.site_url('userdashboard').'" method="post">';
+            echo '<button type="submit" name="btn_book_search" class="btn btn-sm btn-primary">Details</button>';
+            echo '<input type="hidden"  name="bookid" value="'.$book_info->BookId.'" />';
+            echo '</form></td>';
             echo "</tr>";
         }
         ?>

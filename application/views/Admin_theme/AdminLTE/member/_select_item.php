@@ -56,6 +56,7 @@
                 <?php
                 $sql = "SELECT DISTINCT  `BookKeywords` FROM  `view_book_details`";
                 $BookKeywords = $this->db->query($sql)->result();
+//                print_r($BookKeywords);exit();
                 foreach ($BookKeywords as $BookKeyword) {
                     $tmpBookKeywords = explode(',', $BookKeyword->BookKeywords);
                     foreach ($tmpBookKeywords as $tmpBookKeyword) {
