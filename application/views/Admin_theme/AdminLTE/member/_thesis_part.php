@@ -1,5 +1,43 @@
 <?php
-if (isset($thesis_id)) {
+if (isset($thesis_list)) {
+    ?>
+    <div style="width:90%;margin:0 auto;overflow-x:scroll">
+        <?php
+        if (empty($thesis_list)) {
+            echo '<h2>No Records Found</h2>';
+        } else {
+            ?>
+            <table class="table table-bordered table-responsive table-striped">
+                <tr>
+                    <th>Journal ID</th>
+                    <th>Journal Title</th>
+                    <!--<th>Keywords</th>-->
+                    <th>Year of Publication</th>
+        <!--            <th>Place of Publication</th>-->
+                    <th>Department</th>
+                    <th>Action</th>
+                </tr>
+                <?php
+                foreach ($thesis_list as $thesis_info) {
+                    echo "<tr>";
+                    echo "<td>{$thesis_info->Thesisid}</td>";
+                    echo "<td>{$thesis_info->Title}</td>";
+//            echo "<td>{$journal_info->BookKeywords}</td>";
+                    echo "<td>{$thesis_info->yearofaward}</td>";
+//            echo "<td>{$book_info->PlaceOfPublication}</td>";
+                    echo "<td>{$thesis_info->department}</td>";
+                    echo '<td><form action="' . site_url('userdashboard') . '" method="post">';
+                    echo '<button type="submit" name="btn_thesis_search" class="btn btn-sm btn-primary">Details</button>';
+                    echo '<input type="hidden"  name="Thesisid" value="' . $thesis_info->Thesisid . '" />';
+                    echo '</form></td>';
+                    echo "</tr>";
+                }
+            }
+            ?>
+        </table>
+    </div>
+    <?php
+} else if (isset($thesis_id)) {
     foreach ($thesis_id as $thesis_info) {
         $book_title = $thesis_info->book_title;
         $publish_year = $thesis_info->yearofaward;

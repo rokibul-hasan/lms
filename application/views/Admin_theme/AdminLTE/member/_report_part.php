@@ -1,4 +1,43 @@
-<?php if(isset($reportd_id)){ 
+<?php
+if (isset($report_list)) {
+    ?>
+    <div style="width:90%;margin:0 auto;overflow-x:scroll">
+        <?php
+        if (empty($report_list)) {
+            echo '<h2>No Records Found</h2>';
+        } else {
+            ?>
+            <table class="table table-bordered table-responsive table-striped">
+                <tr>
+                    <th>Journal ID</th>
+                    <th>Journal Title</th>
+                    <!--<th>Keywords</th>-->
+                    <th>Year of Publication</th>
+        <!--            <th>Place of Publication</th>-->
+                    <th>Organization Name</th>
+                    <th>Action</th>
+                </tr>
+                <?php
+                foreach ($report_list as $report_info) {
+                    echo "<tr>";
+                    echo "<td>{$report_info->ReportId}</td>";
+                    echo "<td>{$report_info->Title}</td>";
+//            echo "<td>{$journal_info->BookKeywords}</td>";
+                    echo "<td>{$report_info->Year}</td>";
+//            echo "<td>{$book_info->PlaceOfPublication}</td>";
+                    echo "<td>{$report_info->Organization}</td>";
+                    echo '<td><form action="' . site_url('userdashboard') . '" method="post">';
+                    echo '<button type="submit" name="btn_report_search" class="btn btn-sm btn-primary">Details</button>';
+                    echo '<input type="hidden"  name="ReportId" value="' . $report_info->ReportId . '" />';
+                    echo '</form></td>';
+                    echo "</tr>";
+                }
+            }
+            ?>
+        </table>
+    </div>
+    <?php
+} else if(isset($reportd_id)){ 
                              foreach($reportd_id as $report_info){
                              $book_title =  $report_info->book_title;
                               $Organization =  $report_info->Organization;

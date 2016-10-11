@@ -108,6 +108,7 @@ class Search_model extends CI_Model {
         $sql = "SELECT DISTINCT  `JournalId`, `ISSN`, `Title`, `Year`,`PublisherName`  FROM `view_journal_details` $conditions LIMIT $limit_offset , $limit_size";
 //        die($sql);
         $result = $this->db->query($sql)->result();
+//        print_r($result);exit();
         if (empty($result)) {
             return FALSE;
         } else {
@@ -129,15 +130,16 @@ class Search_model extends CI_Model {
      * @return  array   (db 2D array as object)
      */
 
-    function search_report($reportTitle = null, $Organization = null, $year = null, $keywords = null, $subject = null, $limit_offset = 0, $limit_size = 20) {
+    function search_report($reportTitle = null, $Organizations = null, $year = null, $keywords = null, $subject = null, $limit_offset = 0, $limit_size = 20) {
+//         print_r($Organizations);exit();
         $conditions = array();
         if (!empty($reportTitle)) {
             array_push($reportTitle, "`Title` LIKE  '%$reportTitle%'");
         }
-        if (!empty($Organization)) {
+        if (!empty($Organizations)) {
             $Organization_coditions = array();
             foreach ($Organizations as $Organization) {
-                array_push($Organization_coditions, "`Keywords` LIKE  '%$Organization%'");
+                array_push($Organization_coditions, "`Organization` LIKE  '%$Organization%'");
             }
             if (!empty($Organization_coditions)) {
                 array_push($conditions, implode(" OR ", $Organization_coditions));
