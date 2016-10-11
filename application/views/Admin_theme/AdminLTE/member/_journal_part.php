@@ -1,4 +1,38 @@
 <?php
+if (isset($journal_list)) {
+    ?>
+<div style="width:90%;margin:0 auto;overflow-x:scroll">
+<table class="table table-bordered table-responsive table-striped">
+        <tr>
+            <th>Journal ID</th>
+            <th>Journal Title</th>
+            <th>Year of Publication</th>
+            <!--<th>Place of Publication</th>-->
+            <th>Publisher Name</th>
+            <th>Action</th>
+        </tr>
+        <?php
+        foreach ($journal_list as $book_info) {
+            echo "<tr>";
+            echo "<td>{$book_info->JournalId}</td>";
+            echo "<td>{$book_info->Title}</td>";
+//            echo "<td>{$book_info->BookKeywords}</td>";
+            echo "<td>{$book_info->Year}</td>";
+//            echo "<td>{$book_info->PlaceOfPublication}</td>";
+            echo "<td>{$book_info->PublisherName}</td>";
+            echo '<td><form action="'.site_url('userdashboard').'" method="post">';
+            echo '<input type="submit" value="Details" name="btn_journal_search" class="btn btn-primary">';
+            echo '<input type="hidden"  name="JournalId" value="'.$book_info->JournalId.'" />';
+            echo '</form></td>';
+            echo "</tr>";
+        }
+        ?>
+    </table>
+</div>
+    <?php
+}
+
+
 if (isset($journal_id)) {
     foreach ($journal_id as $journal_info) {
         $book_title = $journal_info->journal_title;

@@ -23,24 +23,54 @@ class Userdashboard extends CI_Controller {
 
         $this->load->model('Book_model');
         $this->load->model('Search_model');
+        
+        $type_book= $this->input->post('type_book');
+        
+        if($type_book){
+            if($type_book=='book'){                
+                $data['type_book']=true;
+             }
+             if($type_book=='journal'){                
+                $data['type_journal']=true;
+             }
+              if($type_book=='report'){                
+                $data['type_report']=true;
+             }
+             if($type_book=='thesis'){                
+                $data['type_thesis']=true;
+             }
+        }
 
-        $btn_book = $this->input->post('btn_book');
-        $btn_book_search = $this->input->post('btn_book_search');
-        $btn_journal = $this->input->post('btn_journal');
+        
+       
+        
         $btn_report = $this->input->post('btn_report');
         $btn_thesis = $this->input->post('btn_thesis');
-
-        $data['all_book'] = $this->Book_model->get_all('book');
-        $data['all_journal'] = $this->Book_model->get_all('journal');
-
-        $data['all_report'] = $this->Book_model->get_all('report');
-        $data['all_thesis'] = $this->Book_model->get_all('thesis');
-
+        
 
         $data['all_publisher'] = $this->Book_model->get_all('publisher');
         $data['all_author'] = $this->Book_model->get_all('author');
-
-
+        
+        
+        $btn_journal = $this->input->post('btn_journal');
+        if(isset($btn_journal)){
+            
+            $bookTitle = $this->input->post('book_name');  
+            $Publisher = $this->input->post('publisher');
+            $from = $this->input->post('from');
+            $to = $this->input->post('to');
+            $year[0] = $from;
+            $year[1] = $to;
+            $subject = $this->input->post('subject');
+            $data['journal_list'] = $this->Search_model->search_journal($bookTitle, $Publisher, $year, $subject,0,100);
+//            echo '<pre>';
+//            print_r($data['journal_list']);
+//            exit();
+        }
+        
+        
+        
+        $btn_book = $this->input->post('btn_book');
         if (isset($btn_book)) {
 
             $bookTitle = $this->input->post('book_name');
@@ -53,20 +83,20 @@ class Userdashboard extends CI_Controller {
             $keyword = $this->input->post('keywords');
             $Author = $this->input->post('author');
             $subject = $this->input->post('subject');
-            $data['book_list'] = $this->Search_model->search_book($bookTitle, $Publisher, $year, $keyword, $Author, $subject);
-//            echo "<pre>";
-//            print_r($data['book_list']);
-//            exit();
-        }
-
-        if(isset($btn_book_search)){
-            $id = $this->input->post('bookid');
-            $data['book_id'] = $this->Book_model->get_book_details($id); 
+            $data['book_list'] = $this->Search_model->search_book($bookTitle, $Publisher, $year, $keyword, $Author, $subject,0,100);
 
         }
+        
+         $btn_book_search = $this->input->post('btn_book_search');
+            if(isset($btn_book_search)){
+                $id = $this->input->post('bookid');
+                $data['book_id'] = $this->Book_model->get_book_details($id); 
 
-        if (isset($btn_journal)) {
-
+            }
+         
+        $btn_book_search = $this->input->post('btn_journal_search');
+        if (isset($btn_book_search)) {
+            $id = $this->input->post('JournalId');
             $data['journal_id'] = $this->Book_model->get_journal_details($id);
         }
 
@@ -88,7 +118,14 @@ class Userdashboard extends CI_Controller {
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'member/userdashboard', $data);
     }
-
+    
+    
+    public function book_form(){
+        $this->load->model('Search_model');
+                $data['all_publisher'] = $this->Book_model->get_all('publisher');
+                $data['all_author'] = $this->Book_model->get_all('author');
+        $this->load->view('_load_book_form' , $data);
+    }
     public function journal() {
         $this->load->helper('html');
 

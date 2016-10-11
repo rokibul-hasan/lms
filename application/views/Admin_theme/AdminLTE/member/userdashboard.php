@@ -27,6 +27,7 @@ $user_id = $_SESSION['user_id'];
 
 
                     <div class="col-lg-12 ">
+                        
 
 <?php include '_select_item.php'; ?>
 
@@ -93,10 +94,14 @@ $user_id = $_SESSION['user_id'];
         font-weight: bold;
         cursor:pointer;
     }
+
 </style>
+
 <script>
 
     $(document).ready(function () {
+        
+        $(".loding").fadeOut("slow");
 
         $('.read_now').click(function () {
             var type = $('#type').val();
@@ -127,33 +132,39 @@ $user_id = $_SESSION['user_id'];
 
             });
         });
+        
+        
 
         
         $("#select_type_for_reservation").change(function () {
-            if (this.value == 'books_form') {
-                $("#books_form").show();
-            } else {
-                $("#books_form").hide();
-            }
-
-            if (this.value == 'journals_form') {
-                $("#journals_form").show();
-            } else {
-                $("#journals_form").hide();
-            }
-
-
-            if (this.value == 'reports_form') {
-                $("#reports_form").show();
-            } else {
-                $("#reports_form").hide();
-            }
-
-            if (this.value == 'thesis_form') {
-                $("#thesis_form").show();
-            } else {
-                $("#thesis_form").hide();
-            }
+        
+        $( ".type_form" ).submit();
+        
+//        
+//            if (this.value == 'books_form') {
+//                $("#books_form").show();
+//            } else {
+//                $("#books_form").hide();
+//            }
+//
+//            if (this.value == 'journals_form') {
+//                $("#journals_form").show();
+//            } else {
+//                $("#journals_form").hide();
+//            }
+//
+//
+//            if (this.value == 'reports_form') {
+//                $("#reports_form").show();
+//            } else {
+//                $("#reports_form").hide();
+//            }
+//
+//            if (this.value == 'thesis_form') {
+//                $("#thesis_form").show();
+//            } else {
+//                $("#thesis_form").hide();
+//            }
 
         });
 
