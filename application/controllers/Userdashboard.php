@@ -42,10 +42,6 @@ class Userdashboard extends CI_Controller {
 
 
         if (isset($btn_book)) {
-//                                             echo '<pre>';
-//                        print_r($_POST);   
-//                        exit();
-
 
             $bookTitle = $this->input->post('book_name');
 //            die($bookTitle);
@@ -66,6 +62,7 @@ class Userdashboard extends CI_Controller {
         if(isset($btn_book_search)){
             $id = $this->input->post('bookid');
             $data['book_id'] = $this->Book_model->get_book_details($id); 
+
         }
 
         if (isset($btn_journal)) {

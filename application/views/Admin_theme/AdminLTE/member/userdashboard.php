@@ -26,7 +26,7 @@ $user_id = $_SESSION['user_id'];
                 <div class="row">
 
 
-                    <div class="col-lg-3 ">
+                    <div class="col-lg-12 ">
 
 <?php include '_select_item.php'; ?>
 
@@ -34,7 +34,7 @@ $user_id = $_SESSION['user_id'];
 
 
 
-                    <div class="pull-right col-lg-8">
+                    <div class="pull-right col-lg-12">
 
                         <!-------------------------------------------- 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\BOOK SECTION ///////////////////////////////////////////////////////////

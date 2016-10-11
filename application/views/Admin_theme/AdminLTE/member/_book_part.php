@@ -22,7 +22,7 @@ if (isset($book_list)) {
 //            echo "<td>{$book_info->PlaceOfPublication}</td>";
             echo "<td>{$book_info->PublisherName}</td>";
             echo '<td><form action="'.site_url('userdashboard').'" method="post">';
-            echo '<button type="submit" name="btn_book_search" class="btn btn-sm btn-primary">Details</button>';
+            echo '<input type="submit" value="Details" name="btn_book_search" class="btn btn-primary">';
             echo '<input type="hidden"  name="bookid" value="'.$book_info->BookId.'" />';
             echo '</form></td>';
             echo "</tr>";
@@ -31,7 +31,8 @@ if (isset($book_list)) {
     </table>
 </div>
     <?php
-} else if (isset($book_id)) {
+}
+if (isset($book_id)) {
     foreach ($book_id as $book_info) {
         $book_title = $book_info->book_title;
         $book_publisher_name = $book_info->PublisherName;
