@@ -15,7 +15,7 @@
             <li class="active">Here</li>
         </ol>
     </section>
-
+    <?php if($_SESSION['user_type'] != 3) { ?>
     <!-- Main content -->
     <section class="content">
         <div class="box">
@@ -460,6 +460,7 @@
 
     </section>
     <!-- /.content -->
+    <?php } ?>
 </div>
 <!-- /.content-wrapper -->
 

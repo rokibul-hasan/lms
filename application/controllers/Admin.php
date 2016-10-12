@@ -26,6 +26,7 @@ class Admin extends CI_Controller {
     }
 
     public function index() {
+        
         $this->load->model('report');
         $data['short_report'] = $this->report->short_report();
         

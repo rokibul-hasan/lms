@@ -93,7 +93,7 @@
         </ul>
     </li>
     
-    
+    <?php if($_SESSION['user_type'] != 3) { ?>
     
     <li><a href="<?= site_url('Admin'); ?>"><i class="fa fa-cogs"></i> <span>General Settings</span></a></li>
     
@@ -150,6 +150,7 @@
             <li><a href="<?= site_url('Admin_report/notification'); ?>"><i class="fa fa-envelope-o"></i> <span>Notification Report</span></a></li>         
         </ul>
     </li>
+    <?php } ?>
     <li><a href="<?= site_url('login/logout'); ?>"><i class="fa fa-power-off"></i> <span>Logout</span></a></li>
 </ul>
 <!-- /.sidebar-menu -->
