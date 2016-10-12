@@ -93,7 +93,7 @@ desired effect
 -->
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="loding">
-        <p>Loding........</p>        
+        <p>Loading........</p>        
     </div>
 <div class="wrapper">
 

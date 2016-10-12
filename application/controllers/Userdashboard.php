@@ -84,7 +84,8 @@ class Userdashboard extends CI_Controller {
             $Author = $this->input->post('author');
             $subject = $this->input->post('subject');
             $data['book_list'] = $this->Search_model->search_book($bookTitle, $Publisher, $year, $keyword, $Author, $subject,0,100);
-
+//            echo '<pre>';
+//            print_r($data['book_list']);
         }
         
          $btn_book_search = $this->input->post('btn_book_search');

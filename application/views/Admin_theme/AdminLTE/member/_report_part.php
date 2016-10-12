@@ -1,4 +1,38 @@
-<?php if(isset($reportd_id)){ 
+<?php
+if (isset($report_list)) {
+    ?>
+<div style="width:90%;margin:0 auto;overflow-x:scroll">
+<table class="table table-bordered table-responsive table-striped">
+        <tr>
+            <th>Book ID</th>
+            <th>Book Title</th>
+            <th>Keywords</th>
+            <th>Year of Publication</th>
+<!--            <th>Place of Publication</th>-->
+            <th>Publisher Name</th>
+            <th>Action</th>
+        </tr>
+        <?php
+        foreach ($report_list as $book_info) {
+            echo "<tr>";
+            echo "<td>{$book_info->reportid}</td>";
+            echo "<td>{$book_info->book_title}</td>";
+            echo "<td>{$book_info->BookKeywords}</td>";
+            echo "<td>{$book_info->YearOfPublication}</td>";
+//            echo "<td>{$book_info->PlaceOfPublication}</td>";
+            echo "<td>{$book_info->PublisherName}</td>";
+            echo '<td><form action="'.site_url('userdashboard').'" method="post">';
+            echo '<input type="submit" value="Details" name="btn_book_search" class="btn btn-primary">';
+            echo '<input type="hidden"  name="bookid" value="'.$book_info->BookId.'" />';
+            echo '</form></td>';
+            echo "</tr>";
+        }
+        ?>
+    </table>
+</div>
+    <?php
+}
+if(isset($reportd_id)){ 
                              foreach($reportd_id as $report_info){
                              $book_title =  $report_info->book_title;
                               $Organization =  $report_info->Organization;
