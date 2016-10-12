@@ -1,5 +1,43 @@
 <?php
-if (isset($thesis_id)) {
+if (isset($thesis_list)) {
+    ?>
+    <div style="width:90%;margin:0 auto;overflow-x:scroll">
+        <?php
+        if (empty($thesis_list)) {
+            echo '<h2>No Records Found</h2>';
+        } else {
+            ?>
+            <table class="table table-bordered table-responsive table-striped">
+                <tr>
+                    <th>Journal ID</th>
+                    <th>Journal Title</th>
+                    <!--<th>Keywords</th>-->
+                    <th>Year of Publication</th>
+        <!--            <th>Place of Publication</th>-->
+                    <th>Department</th>
+                    <th>Action</th>
+                </tr>
+                <?php
+                foreach ($thesis_list as $thesis_info) {
+                    echo "<tr>";
+                    echo "<td>{$thesis_info->Thesisid}</td>";
+                    echo "<td>{$thesis_info->Title}</td>";
+//            echo "<td>{$journal_info->BookKeywords}</td>";
+                    echo "<td>{$thesis_info->yearofaward}</td>";
+//            echo "<td>{$book_info->PlaceOfPublication}</td>";
+                    echo "<td>{$thesis_info->department}</td>";
+                    echo '<td><form action="' . site_url('userdashboard') . '" method="post">';
+                    echo '<button type="submit" name="btn_thesis_search" class="btn btn-sm btn-primary">Details</button>';
+                    echo '<input type="hidden"  name="Thesisid" value="' . $thesis_info->Thesisid . '" />';
+                    echo '</form></td>';
+                    echo "</tr>";
+                }
+            }
+            ?>
+        </table>
+    </div>
+    <?php
+}if (isset($thesis_id)) {
     foreach ($thesis_id as $thesis_info) {
         $book_title = $thesis_info->book_title;
         $publish_year = $thesis_info->yearofaward;
@@ -55,11 +93,11 @@ if (isset($thesis_id)) {
                                 <h4 class="modal-title"><?= $book_title ?></h4>
                             </div>
                             <div class="modal-body">
-                               <?php if (isset($file_link) && !empty($file_link)) {
-                                   ?>
-                                <iframe src="http://docs.google.com/gview?url=<?= base_url('asset/ebook/' . $file_link . '') ?>&embedded=true" style="width:100%; height:600px;" frameborder="0"></iframe>
+                                <?php if (isset($file_link) && !empty($file_link)) {
+                                    ?>
+                                    <iframe src="http://docs.google.com/gview?url=<?= base_url('asset/ebook/' . $file_link . '') ?>&embedded=true" style="width:100%; height:600px;" frameborder="0"></iframe>
 
-                                <?php
+                                    <?php
                                 } else {
 
                                     echo '<br><h2 class="text-center text-danger">Book Not Available</h2>';
@@ -69,9 +107,11 @@ if (isset($thesis_id)) {
 
                             </div>
                             <div class="modal-footer">
-                                <?php if (isset($file_link) && !empty($file_link)) {              ?>
-                                <a href="<?= base_url('asset/ebook/' . $file_link . '') ?>"  id="download"  target="blank"class="pull-left"><i class="fa fa-download text-info"></i> Download The Book</a>
-                                <?php }else{ echo '<p class="text-dengar pull-left">File not available</p>'; } ?>
+                                <?php if (isset($file_link) && !empty($file_link)) { ?>
+                                    <a href="<?= base_url('asset/ebook/' . $file_link . '') ?>"  id="download"  target="blank"class="pull-left"><i class="fa fa-download text-info"></i> Download The Book</a>
+                                <?php } else {
+                                    echo '<p class="text-dengar pull-left">File not available</p>';
+                                } ?>
                                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
 
                             </div>

@@ -96,9 +96,9 @@ $user_id = $_SESSION['user_id'];
     }
 
 </style>
-
 <script>
-
+    
+    
     $(document).ready(function () {
         
         $(".loding").fadeOut("slow");
@@ -169,7 +169,14 @@ $user_id = $_SESSION['user_id'];
         });
 
     });
-    
+    $('.list').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
     $('#book').keyup(function () {
         var book = $('#book').val();
         var option = $('#select_type_for_reservation').val();
@@ -194,4 +201,5 @@ $user_id = $_SESSION['user_id'];
             });
         }
     });
+     
 </script>

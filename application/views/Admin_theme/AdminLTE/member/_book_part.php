@@ -29,6 +29,7 @@ if (isset($book_list)) {
         }
         ?>
     </table>
+    
 </div>
     <?php
 }

@@ -132,6 +132,7 @@ class Search_model extends CI_Model {
 
     function search_report($reportTitle = null, $Organizations = null, $year = null, $keywords = null, $subject = null, $limit_offset = 0, $limit_size = 20) {
 //         print_r($Organizations);exit();
+//        die($limit_offset);
         $conditions = array();
         if (!empty($reportTitle)) {
             array_push($reportTitle, "`Title` LIKE  '%$reportTitle%'");
@@ -168,7 +169,7 @@ class Search_model extends CI_Model {
         } else {
             $conditions = "";
         }
-        $sql = "SELECT DISTINCT  `ReportId`, `Title`, `Organization`, `Year`, `Keywords`  FROM `view_report_details` $conditions LIMIT $limit_offset , $limit_size";
+        $sql = "SELECT DISTINCT  `ReportId`, `Title`, `Organization`, `Year`, `Keywords`  FROM `view_report_details` $conditions ";
 //        die($sql);
         $result = $this->db->query($sql)->result();
         if (empty($result)) {
