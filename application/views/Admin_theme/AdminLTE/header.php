@@ -98,7 +98,9 @@ desired effect
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
             <li><a href="<?= site_url('frontpage'); ?>" target="_blank"><i class="fa fa-external-link"></i> <span>View Front Page</span></a></li>
+                <?php if($_SESSION['user_type'] != 3) { ?>
              <li><a href="<?= site_url('userdashboard'); ?>" target="_blank"><i class="fa fa-external-link"></i> <span>View User Panel</span></a></li>
+                <?php } ?>
 
 
           <!-- User Account Menu -->
