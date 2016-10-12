@@ -49,9 +49,9 @@ class Book_model extends CI_Model {
 
     public function get_thesis_details($id = '') {
         $this->db->select('*,subject.Title as Category,thesis.Title as book_title')
-                ->from('thesisauthor')
-                ->join('author', 'author.AuthorId=thesisauthor.AuthorId', 'left')
-                ->join('thesis', 'thesis.ThesisId=thesisauthor.ThesisId', 'left')
+                ->from('thesis')
+                ->join('thesisauthor', 'thesis.ThesisId=thesisauthor.ThesisId', 'left')
+                ->join('author', 'author.AuthorId=thesisauthor.AuthorId', 'left')                
                 ->join('thesissubject', 'thesissubject.Thesisid=thesis.Thesisid', 'left')
                 ->join('subject', 'thesissubject.SubjectID=subject.SubjectId', 'left')
                 ->where('thesis.Thesisid', $id);
