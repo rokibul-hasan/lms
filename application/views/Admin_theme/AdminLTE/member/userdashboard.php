@@ -169,22 +169,6 @@ $user_id = $_SESSION['user_id'];
         });
 
     });
-//    $('#list').DataTable({
-//      "paging": true,
-//      "lengthChange": true,
-//      "searching": false,
-//      "ordering": true,
-//      "info": true,
-//      "autoWidth": false,
-//    });
-    $('.list').DataTable({
-        bFilter: false,
-        "bPaginate": $('.list tbody tr').length>10,
-        "iDisplayLength": 10,
-        "order": [[3, "desc"]],
-        "lengthChange": false,
-        "autoWidth": true,
-    });
     $('#book').keyup(function () {
         var book = $('#book').val();
         var option = $('#select_type_for_reservation').val();

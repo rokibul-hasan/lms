@@ -28,7 +28,7 @@ if (isset($thesis_list)) {
                     echo "<td>{$thesis_info->department}</td>";
                     echo '<td><form action="' . site_url('userdashboard') . '" method="post">';
                     echo '<button type="submit" name="btn_thesis_search" class="btn btn-sm btn-primary">Details</button>';
-                    echo '<input type="hidden"  name="Thesisid" value="' . $thesis_info->Thesisid . '" />';
+                    echo '<input type="hidden"  name="thesisid" value="' . $thesis_info->Thesisid . '" />';
                     echo '</form></td>';
                     echo "</tr>";
                 }

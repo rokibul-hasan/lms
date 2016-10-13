@@ -38,8 +38,7 @@ if (isset($report_list)) {
                 }
             }
             ?>
-        </table>
-        <p><?php echo $paginate; ?></p>        
+        </table>     
     </div>
     <?php
 }
