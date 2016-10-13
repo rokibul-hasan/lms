@@ -134,6 +134,7 @@
 <script>
      $(".select2").select2();
   $(function () {
+       $(".loding").fadeOut("slow");
     //Initialize Select2 Elements
     $(".select2").select2();
 

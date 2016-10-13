@@ -101,7 +101,7 @@ $user_id = $_SESSION['user_id'];
     
     $(document).ready(function () {
         
-        $(".loding").fadeOut("slow");
+       
 
         $('.read_now').click(function () {
             var type = $('#type').val();
