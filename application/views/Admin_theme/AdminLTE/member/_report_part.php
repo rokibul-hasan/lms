@@ -7,62 +7,39 @@ if (isset($report_list)) {
             echo '<h2>No Records Found</h2>';
         } else {
             ?>
-            <table  class="table table-bordered table-responsive table-striped list">
-                <thead>
-                    <tr>
-                        <th>Report ID</th>
-                        <th>Report Title</th>
-                        <!--<th>Keywords</th>-->
-                        <th>Year of Publication</th>
-            <!--            <th>Place of Publication</th>-->
-                        <th>Organization Name</th>
-                        <th>Action</th>
-                    </tr>
+        <table id="list"  class="table table-bordered table-responsive table-striped list">
+            <thead>
+                <tr>
+                    <th>Report ID</th>
+                    <th>Report Title</th>
+                    <!--<th>Keywords</th>-->
+                    <th>Year of Publication</th>
+        <!--            <th>Place of Publication</th>-->
+                    <th>Organization Name</th>
+                    <th>Action</th>
+                </tr>
                 </thead>
-                <tbody>
-                    <?php
-                    foreach ($report_list as $report_info) {
-                        ?>
-                        <tr>
-                            <td><?php echo $report_info->ReportId;?></td>
-                            <td><?php echo $report_info->Title;?></td>
-                            <td><?php echo $report_info->Year;?></td>
-                            <td><?php echo $report_info->Organization;?></td>
-                            <td><?php echo $report_info->ReportId;?></td>
-                            <td>
-                                <form action="' . site_url('userdashboard') . '" method="post">
-                                    <button type="submit" name="btn_report_search" class="btn btn-sm btn-primary">Details</button>
-                                    <input type="hidden"  name="ReportId" value="<?php echo $report_info->ReportId;?>" />
-                                </form>
-                            </td>
-                        </tr>
-                        <?php
-                    }
-                    ?>
-                </tbody>
                 <?php
-        }
-//                foreach ($report_list as $report_info) {
-//                    echo "<tbody>";
-//                    echo "<tr>";
-//                    echo "<td>{$report_info->ReportId}</td>";
-//                    echo "<td>{$report_info->Title}</td>";
-////            echo "<td>{$journal_info->BookKeywords}</td>";
-//                    echo "<td>{$report_info->Year}</td>";
-////            echo "<td>{$book_info->PlaceOfPublication}</td>";
-//                    echo "<td>{$report_info->Organization}</td>";
-//                    echo '<td><form action="' . site_url('userdashboard') . '" method="post">';
-//                    echo '<button type="submit" name="btn_report_search" class="btn btn-sm btn-primary">Details</button>';
-//                    echo '<input type="hidden"  name="ReportId" value="' . $report_info->ReportId . '" />';
-//                    echo '</form></td>';
-//                    echo "</tr>";
-//                    echo "</tbody>";
-//                }
-//            }
+                foreach ($report_list as $report_info) {
+                    echo "<tbody>";
+                    echo "<tr>";
+                    echo "<td>{$report_info->ReportId}</td>";
+                    echo "<td>{$report_info->Title}</td>";
+//            echo "<td>{$journal_info->BookKeywords}</td>";
+                    echo "<td>{$report_info->Year}</td>";
+//            echo "<td>{$book_info->PlaceOfPublication}</td>";
+                    echo "<td>{$report_info->Organization}</td>";
+                    echo '<td><form action="' . site_url('userdashboard') . '" method="post">';
+                    echo '<button type="submit" name="btn_report_search" class="btn btn-sm btn-primary">Details</button>';
+                    echo '<input type="hidden"  name="ReportId" value="' . $report_info->ReportId . '" />';
+                    echo '</form></td>';
+                    echo "</tr>";
+                    echo "</tbody>";
+                }
+            }
             ?>
         </table>
-    <!--        <p><?php echo $paginate; ?></p>
-        <div style="margin:0;padding:0;background-size: contain;background-repeat:no-repeat;background-position:center;background-image: url(<?php echo $link ?>) ">-->
+        <p><?php echo $paginate; ?></p>        
     </div>
     <?php
 }
@@ -95,15 +72,15 @@ if (isset($reportd_id)) {
             </div>
         </div>
         <div class="col-md-3">
-            <?php
-            if (isset($book_cover) && !empty($book_cover)) {
+    <?php
+    if (isset($book_cover) && !empty($book_cover)) {
 
-                echo img(array('src' => 'assets/uploads/files/' . $book_cover, 'class' => 'img-responsive'));
-            } else {
+        echo img(array('src' => 'assets/uploads/files/' . $book_cover, 'class' => 'img-responsive'));
+    } else {
 
-                echo img(array('src' => 'images/nocover.jpg', 'class' => 'img-responsive center-block'));
-            }
-            ?>
+        echo img(array('src' => 'images/nocover.jpg', 'class' => 'img-responsive center-block'));
+    }
+    ?>
         </div>
         <div class="col-md-4">
 
@@ -124,8 +101,8 @@ if (isset($reportd_id)) {
                             </div>
 
                             <div class="modal-body">
-                                <?php if (isset($file_link) && !empty($file_link)) {
-                                    ?>
+    <?php if (isset($file_link) && !empty($file_link)) {
+        ?>
                                     <iframe src="http://docs.google.com/gview?url=<?= base_url('asset/ebook/' . $file_link . '') ?>&embedded=true" style="width:100%; height:600px;" frameborder="0"></iframe>
 
                                     <?php
@@ -137,13 +114,11 @@ if (isset($reportd_id)) {
 
                             </div>
                             <div class="modal-footer">
-                                <?php if (isset($file_link) && !empty($file_link)) { ?>
+    <?php if (isset($file_link) && !empty($file_link)) { ?>
                                     <a href="<?= base_url('asset/ebook/' . $file_link . '') ?>" id="download"  target="blank"class="pull-left"><i class="fa fa-download text-info"></i> Download The Book</a>
-                                <?php
-                                } else {
+                                <?php } else {
                                     echo '<p class="text-dengar pull-left">File not available</p>';
-                                }
-                                ?>
+                                } ?>
                                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
 
                             </div>

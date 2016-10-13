@@ -30,9 +30,9 @@
                     Current Circulation - Member : Member        </h3>
             </div>
             <div class="box-body" id="display_div">
-                
-                <table style="width:100%" class="table table-bordered table-zebra table-hover table-stripped background_white">
-                    <tbody><tr>           
+
+                <table style="width:100%" class="table table-bordered table-zebra table-hover table-stripped background_white datatable">
+                    <thead> <tr>           
 
                             <th>Title</th>
                             <th>Type</th>
@@ -43,6 +43,8 @@
 
 
                         </tr>
+                    </thead>
+                    <tbody>
                         <?php foreach ($get_issue_book as $issue) { ?>
                             <tr id="tr_379" class="display_row">
                                 <td><?php echo $issue->Title; ?></td>
@@ -50,13 +52,13 @@
                                 <td><?php echo date('Y-m-d', strtotime($issue->IssueDate)); ?></td>
                                 <td><?php echo date('Y-m-d', strtotime($issue->ExpiryDate)); ?></td>
                                 <td><?php echo $issue->Fine; ?></td>
-                                <td><a href="<?php echo site_url('circulation/returned_book/'.$issue->BookId);?>" onlclick="confirm()" class="btn btn-warning return"><i class="fa fa-reply"></i> Return
+                                <td><a href="<?php echo site_url('circulation/returned_book/' . $issue->BookId); ?>" onlclick="confirm()" class="btn btn-warning return"><i class="fa fa-reply"></i> Return
                                     </a></td></tr>
                         <?php } ?>
                     </tbody></table> 
 
                 <br>
-                <a href="<?php echo site_url('circulation/book_issue');?>" class="btn btn-warning btn-lg" id="new_issue_btn" ><i class="fa fa-plus"></i> New Issue</a>
+                <a href="<?php echo site_url('circulation/book_issue'); ?>" class="btn btn-warning btn-lg" id="new_issue_btn" ><i class="fa fa-plus"></i> New Issue</a>
             </div>
         </div>
 
@@ -66,4 +68,11 @@
 <!-- /.content-wrapper -->
 
 <?php include_once __DIR__ . '/../footer.php'; ?>
-
+<script type="text/javascript">
+    $('.datatable').DataTable({
+        bFilter: false,
+        "order": [[3, "desc"]],
+//        "ordering": [true,"desc"],
+        "autoWidth": true,
+    });
+</script>

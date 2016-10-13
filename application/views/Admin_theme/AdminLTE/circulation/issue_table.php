@@ -95,7 +95,7 @@
                                     <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
                                     <td><?php echo date('Y-m-d',strtotime($issue->IssueDate)); ?></td>
                                     <td><?php echo date('Y-m-d',strtotime($issue->ExpiryDate)); ?></td>
-                                    <td><?php echo date('Y-m-d',strtotime($issue->ReturnDate)); ?></td>
+                                    <td><?php echo $issue->ReturnDate; ?></td>
                                     <td><?php echo $issue->Fine; ?></td>
                                     <td><?php echo ($issue->ReturnOrNot == 1) ? '<span class="bg-green">Yes</span>' : '<span class="bg-red">No</span>'; ?></td>
                                     <td><?php
@@ -180,7 +180,9 @@
 
     $('.datatable').DataTable({
         bFilter: false,
-        "order": [[1, "desc"]]
+        "order": [[1, "desc"]],
+//        "ordering": [true,"desc"],
+        "autoWidth": true,
     });
 
 

@@ -136,21 +136,22 @@ class Userdashboard extends CI_Controller {
 
 //            $Author = $this->input->post('author');
             $subject = $this->input->post('subject');
-            $data['report_list'] = $this->Search_model->search_report($reportTitle, $Organization, $year, $keyword, $subject, 0, 100);
-//            $this->load->library('pagination');
-//            $config['base_url'] = site_url('userdashboard/index');
-//
-//            $config['total_rows'] = count($data['report_list']);
-//            $config['per_page'] = '8';
-//            $config['num_links'] = 5;
-//            $config['full_tag_open'] = '<p>';
-//            $config['full_tag_close'] = '</p>';
-//            $config['attributes'] = array('class' => 'btn btn-default  active');
-//            $config['cur_tag_open'] = "<b class='btn btn-primary active'>";
-//            $config['cur_tag_close'] = '</b>';
-//            $this->pagination->initialize($config);
-//
-//            $data['paginate'] = $this->pagination->create_links();
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $data['report_list'] = $this->Search_model->search_report($reportTitle, $Organization, $year, $keyword, $subject, $page, 100);
+            $this->load->library('pagination');
+            $config['base_url'] = site_url('userdashboard/index');
+
+            $config['total_rows'] = count($data['report_list']);
+            $config['per_page'] = '8';
+            $config['num_links'] = "5";
+            $config['full_tag_open'] = '<p>';
+            $config['full_tag_close'] = '</p>';
+            $config['attributes'] = array('class' => 'btn btn-default  active');
+            $config['cur_tag_open'] = "<b class='btn btn-primary active'>";
+            $config['cur_tag_close'] = '</b>';
+            $this->pagination->initialize($config);
+
+            $data['paginate'] = $this->pagination->create_links();
 //            echo "<pre>";
 //            print_r($data['journal_list']);
 //            exit();
