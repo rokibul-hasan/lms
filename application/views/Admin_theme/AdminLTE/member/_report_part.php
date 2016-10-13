@@ -30,7 +30,7 @@ if (isset($report_list)) {
 //            echo "<td>{$book_info->PlaceOfPublication}</td>";
                     echo "<td>{$report_info->Organization}</td>";
                     echo '<td><form action="' . site_url('userdashboard') . '" method="post">';
-                    echo '<button type="submit" name="btn_report_search" class="btn btn-sm btn-primary">Details</button>';
+                    echo '<button type="submit" value="Details" name="btn_report_search" class="btn btn-sm btn-primary">Details</button>';
                     echo '<input type="hidden"  name="ReportId" value="' . $report_info->ReportId . '" />';
                     echo '</form></td>';
                     echo "</tr>";
