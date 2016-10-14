@@ -64,16 +64,18 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Fine</th>
-                                <th>Action</th>
+                                <!--<th>Action</th>-->
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($get_fine_report as $reports) { ?>
+                            <?php
+//                            print_r($get_fine_report);exit();
+                            foreach ($get_fine_report as $reports) { ?>
                                 <tr>
                                     <td><?php echo $reports['name'] ?></td>
                                     <td><?php echo $reports['email'] ?></td>
                                     <td><?php echo $reports['fine'] ?></td>
-                                    <td><a href="" id="details"  type="button"  data-toggle="modal" data-target="#myModal"class="btn btn-info"><i class="fa fa-search"></i><input type="text"  value="<?php echo $reports['user_id']; ?>"/></a></td>
+                                    <!--<td><a href="" id="details"  type="button"  data-toggle="modal" data-target="#myModal"class="btn btn-info"><i class="fa fa-search"></i><input type="text"  value="<?php echo $reports['user_id']; ?>"/></a></td>-->
                                 </tr>
                             
                         <?php } ?>

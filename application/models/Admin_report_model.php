@@ -25,7 +25,7 @@ class Admin_report_model extends CI_Model {
             $this->db->from('issuereturn');
             $this->db->where('UserId',$result->id);
             $fines = $this->db->get()->row();
-            $data[] = array('name' => $result->username, 'email' => $result->email, 'fine' => $fines->fine, 'id_issue_return' => $fines->IssueReturnId, 'user_id' => $fines->UserId);            
+            $data[] = array('name' => $result->username, 'email' => $result->email, 'fine' => $fines->fine, 'id_issue_return' => $fines->IssueReturnId, 'issue_id' => $fines->UserId);            
         }
         return $data;
     }
