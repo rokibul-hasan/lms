@@ -90,7 +90,7 @@ class Userdashboard extends CI_Controller {
 
         $btn_book_search = $this->input->post('btn_book_search');
         if (isset($btn_book_search)) {
-            $id = $this->input->post('bookid');
+            $id = $this->input->post('bookid'); 
             $data['book_id'] = $this->Book_model->get_book_details($id);
         }
 
