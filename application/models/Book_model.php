@@ -14,10 +14,10 @@ class Book_model extends CI_Model {
     }
 
     public function get_book_details($id = '') {
-        $this->db->select('*,subject.Title as Category,book.Title as book_title')
-                ->from('bookauthor')
-                ->join('author', 'author.AuthorId=bookauthor.AuthorId', 'left')
-                ->join('book', 'book.BookId=bookauthor.BookId', 'left')
+        $this->db->select('*,subject.Title as Category,book.Title as book_title,book.BookId as ID')
+                ->from('book')
+                ->join('bookauthor', 'bookauthor.BookId=book.BookId', 'left')
+                ->join('author', 'bookauthor.AuthorId=author.AuthorId', 'left')
                 ->join('publisher', 'publisher.PublisherId=book.PublisherId', 'left')
                 ->join('booksubject', 'booksubject.BookId=book.BookId', 'left')
                 ->join('subject', 'booksubject.SubjectId=subject.SubjectId', 'left')

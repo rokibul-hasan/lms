@@ -74,7 +74,6 @@ class Userdashboard extends CI_Controller {
         if (isset($btn_book)) {
 
             $bookTitle = $this->input->post('book_name');
-//            die($bookTitle);
             $Publisher = $this->input->post('publisher');
             $from = $this->input->post('from');
             $to = $this->input->post('to');

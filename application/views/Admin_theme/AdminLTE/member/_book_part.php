@@ -34,6 +34,7 @@ if (isset($book_list)) {
     <?php
 }
 if (isset($book_id)) {
+//    print_r($book_id);exit();
     foreach ($book_id as $book_info) {
         $book_title = $book_info->book_title;
         $book_publisher_name = $book_info->PublisherName;
@@ -42,10 +43,10 @@ if (isset($book_id)) {
         $isbn = $book_info->ISBN;
         $edition = $book_info->Edition;
         $book_category = $book_info->Category;
-        $bookid = $book_info->BookId;
+        $bookid = $book_info->ID;
         $book_cover = $book_info->Banner;
         $file_link = $book_info->Ebook;
-        $id = $book_info->BookId;
+        $id = $book_info->ID;
         $Abstract = $book_info->Abstract;
     }
     ?>
