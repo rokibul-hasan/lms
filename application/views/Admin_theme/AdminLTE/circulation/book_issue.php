@@ -49,14 +49,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Type</label>
+                        <label for="inputEmail3" class="col-sm-2 control-label">Resource Type</label>
                         <div class="col-sm-10">
                             <select class="form-control  select2" name="type" id="option">
                                 <option value="">Select Type</option>
                                 <option value="book">Book</option>
                                 <option value="journel">Journal</option>
                                 <option value="report">Report</option>
-                                <option value="thesis">Thesis</option>
+                                <option value="thesis">Thesis</option>  
 
                             </select>
                         </div>

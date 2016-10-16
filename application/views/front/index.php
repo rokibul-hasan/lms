@@ -59,7 +59,7 @@
                   <li><a class="menu" href="<?=site_url('frontpage')?>"><i class="fa fa-home"></i></a></li>
                   <li><a class="menu" href="#about">About Us</a></li>
                   <li><a class="menu" href="#instruction">User Instruction</a></li> 
-                  <li><a class="menu" href="#books">Books</a></li>   
+                  <li><a class="menu" href="#books">Resources</a></li>   
                   <li><a class="menu" href="<?=  site_url('login')?>" target="_blank">Login</a></li>
                   <li><a class="menu" href="<?=  site_url('login')?>" target="_blank">Registration</a></li>
                 </ul>
@@ -383,7 +383,7 @@
 <div class="templatemo_footerwrapper">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">Copyright &copy; 2016 <a href="#"><?=$siteinfo['sitetitle']?></a> Developed By FriendsIT</div>
+        <div class="col-md-12">Copyright &copy; 2016 <a href="#"><?=$siteinfo['sitetitle']?></a>. Developed By <a href="http://friendsitltd.com">FriendsIT</a></div>
     </div>
   </div>
 </div>

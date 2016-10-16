@@ -4,6 +4,7 @@
     <!-- Optionally, you can add icons to the links -->
 
     <li class="active"><a href="<?= site_url('Admin'); ?>"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
+    <li><a href="<?= site_url('about'); ?>"><i class="fa fa-cogs"></i> <span>Front Page Settings</span></a></li>
 
         <li class="treeview">
         <a href="#"><i class="fa fa-book"></i> <span>Libraries Essentials</span>
@@ -13,23 +14,7 @@
         </a>
         <ul class="treeview-menu">
             
-             <li class="treeview">
-                <a href="#"><i class="fa fa-book"></i> <span>Book</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="<?= site_url('book'); ?>"><i class="fa fa-book"></i> Book</a></li>       
-                    <li><a href="<?= site_url('book/bookauthor'); ?>"><i class="fa fa-pencil"></i> Book Author</a></li>       
-                    <li><a href="<?= site_url('book/book_category'); ?>"><i class="fa fa-list"></i> Book Category</a></li>
-                    <li><a href="<?= site_url('book/book_type'); ?>"><i class="fa fa-repeat"></i> Book type</a></li>
-                    <li><a href="<?= site_url('book/book_copy'); ?>"><i class="fa fa-copy"></i> Book Copy</a></li>
-                    <li><a href="<?= site_url('book/book_include'); ?>"><i class="fa fa-adjust"></i> Book Include</a></li>
-                    <li><a href="<?= site_url('book/book_banner'); ?>"><i class="fa fa-image"></i> Book Banner</a></li>
-                         
-                </ul>
-            </li>
+
             
             
     <li class="treeview">
@@ -44,6 +29,24 @@
         </ul>
     </li>
     
+    <li><a href="<?= site_url('publisher'); ?>"><i class="fa fa-paperclip"></i> <span>Publishers</span></a></li>
+                 <li class="treeview">
+                <a href="#"><i class="fa fa-book"></i> <span>Book</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?= site_url('book'); ?>"><i class="fa fa-book"></i> Book</a></li>       
+                    <li><a href="<?= site_url('book/bookauthor'); ?>"><i class="fa fa-pencil"></i> Book Author</a></li>       
+                    <li><a href="<?= site_url('book/book_category'); ?>"><i class="fa fa-list"></i> Book Category</a></li>
+                    <li><a href="<?= site_url('book/book_type'); ?>"><i class="fa fa-repeat"></i> Book type</a></li>
+                    <li><a href="<?= site_url('book/book_copy'); ?>"><i class="fa fa-copy"></i> Book Copy</a></li>
+                    <li><a href="<?= site_url('book/book_include'); ?>"><i class="fa fa-adjust"></i> Book Include</a></li>                  
+                         
+                </ul>
+            </li>
+            
         <li class="treeview">
         <a href="#"><i class="fa fa-newspaper-o"></i> <span>Journal</span>
             <span class="pull-right-container">
@@ -83,7 +86,7 @@
             </span>
         </a> 
         <ul class="treeview-menu">
-            <li><a href="<?= site_url('reports'); ?>"><i class="fa fa-graduation-cap"></i> Reports</a></li>
+            <li><a href="<?= site_url('report'); ?>"><i class="fa fa-graduation-cap"></i> Reports</a></li>
             <li><a href="<?= site_url('report/reportssubject'); ?>"><i class="fa fa-list"></i> Reports Category</a></li>           
             <li><a href="<?= site_url('report/report_copy'); ?>"><i class="fa fa-copy"></i> Reports Copy</a></li>           
         </ul>
@@ -95,14 +98,7 @@
     
     <?php if($_SESSION['user_type'] != 3) { ?>
     
-    <li><a href="<?= site_url('Admin'); ?>"><i class="fa fa-cogs"></i> <span>General Settings</span></a></li>
-    
-
-    <li><a href="<?= site_url('publisher'); ?>"><i class="fa fa-paperclip"></i> <span>Publishers</span></a></li>
-    
-    
-    <li><a href="<?= site_url('about'); ?>"><i class="fa fa-comment"></i> <span>About</span></a></li>
-
+   
 
     <li class="treeview">
         <a href="#"><i class="fa fa-retweet"></i> <span>Circulation</span>
@@ -120,7 +116,6 @@
     </li>
     <li><a href="<?= site_url('admin/daily_read_book'); ?>"><i class="fa fa-folder-open"></i> <span>Daily Read Books</span></a></li>
     <li><a href="<?= site_url('admin/top_book'); ?>"><i class="fa fa-book"></i> <span>Top Books</span></a></li>
-    <li><a href="<?= site_url('admin/supplier'); ?>"><i class="fa  fa-inbox"></i> <span>Requested Books</span></a></li>
      <li><a href="<?= site_url('event'); ?>"><i class="fa  fa-calendar"></i> <span>Event</span></a></li>
      <li><a href="<?= site_url('mynote'); ?>"><i class="fa  fa-edit"></i> <span>My Note</span></a></li>
     
