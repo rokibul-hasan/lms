@@ -253,7 +253,7 @@
 
 
 
-                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class=" col-md-offset-2 col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
                             <div class="small-box bg-yellow">
                                 <div class="inner">
@@ -263,13 +263,13 @@
                                 <div class="icon">
                                     <i class="fa fa-book"></i><i class="fa fa-mail-forward"></i>
                                 </div>
-                                <a target="_blank" href="#" class="small-box-footer">
+                                <a target="_blank" href="<?=site_url('circulation/issuetable')?>" class="small-box-footer">
                                     More Information <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
                         </div>
 
-                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+<!--                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
                             <div class="small-box bg-aqua">
                                 <div class="inner">
@@ -283,7 +283,7 @@
                                     More Information <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
-                        </div>
+                        </div>-->
 
 
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -296,7 +296,7 @@
                                 <div class="icon">
                                     <i class="fa fa-book"></i>
                                 </div>
-                                <a target="_blank" href="#" class="small-box-footer">
+                                <a target="_blank" href="<?=site_url('circulation/issuetable')?>" class="small-box-footer">
                                     More Information <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -331,12 +331,12 @@
                             <div class="small-box bg-yellow">
                                 <div class="inner">
                                     <h3><?= $short_report['today_issued'] ?></h3>
-                                    <p>Today's Issued Books</p>
+                                    <p>Today's Total Issue</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fa fa-book"></i><i class="fa fa-mail-forward"></i>
                                 </div>
-                                <a target="_blank" href="http://lms.xeroneit.net/admin/circulation" class="small-box-footer">
+                                <a target="_blank" href="<?=site_url('circulation/issuetable')?>" class="small-box-footer">
                                     More Information <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -347,12 +347,12 @@
                             <div class="small-box bg-aqua">
                                 <div class="inner">
                                     <h3><?= $short_report['today_returned'] ?></h3>
-                                    <p>Today's Returned Books</p>
+                                    <p>Today's Total Return</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fa fa-book"></i><i class="fa fa-mail-reply"></i>
                                 </div>
-                                <a target="_blank" href="http://lms.xeroneit.net/admin/circulation" class="small-box-footer">
+                                <a target="_blank" href="<?=site_url('circulation/issuetable')?>" class="small-box-footer">
                                     More Information <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -401,12 +401,12 @@
                             <div class="small-box bg-yellow">
                                 <div class="inner">
                                     <h3>24</h3>
-                                    <p>This Month's Issued Book</p>
+                                    <p>This Month's Total Issue</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fa fa-book"></i><i class="fa fa-mail-forward"></i>
                                 </div>
-                                <a target="_blank" href="http://lms.xeroneit.net/admin/circulation" class="small-box-footer">
+                                <a target="_blank" href="<?=site_url('circulation/issuetable')?>" class="small-box-footer">
                                     More Information <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -417,12 +417,12 @@
                             <div class="small-box bg-aqua">
                                 <div class="inner">
                                     <h3>31</h3>
-                                    <p>This Month's Returned Book</p>
+                                    <p>This Month's Total Return</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fa fa-book"></i><i class="fa fa-mail-reply"></i>
                                 </div>
-                                <a target="_blank" href="http://lms.xeroneit.net/admin/circulation" class="small-box-footer">
+                                <a target="_blank" href="<?=site_url('circulation/issuetable')?>" class="small-box-footer">
                                     More Information <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
