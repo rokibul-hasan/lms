@@ -27,7 +27,7 @@ class Book_model extends CI_Model {
     }
 
     public function get_journal_details($id = '') {
-        $this->db->select('*,subject.Title as Category,journal.Title as journal_title')
+        $this->db->select('*,subject.Title as Category,journal.Title as journal_title,journal.JournalId as ID')
                 ->from('journal')
                 ->join('publisher', 'publisher.PublisherId=journal.PublisherId', 'left')
                 ->join('journalsubject', 'journalsubject.JournalId=journal.JournalId', 'left')
@@ -38,7 +38,7 @@ class Book_model extends CI_Model {
     }
 
     public function get_report_details($id = '') {
-        $this->db->select('*,subject.Title as Category,report.Title as book_title')
+        $this->db->select('*,subject.Title as Category,report.Title as book_title,report.ReportId as ID')
                 ->from('report')
                 ->join('reportsubject', 'reportsubject.ReportId=report.ReportId', 'left')
                 ->join('subject', 'reportsubject.SubjectId=subject.SubjectId', 'left')
@@ -48,7 +48,7 @@ class Book_model extends CI_Model {
     }
 
     public function get_thesis_details($id = '') {
-        $this->db->select('*,subject.Title as Category,thesis.Title as book_title')
+        $this->db->select('*,subject.Title as Category,thesis.Title as book_title,thesis.Thesisid as ID')
                 ->from('thesis')
                 ->join('thesisauthor', 'thesis.ThesisId=thesisauthor.ThesisId', 'left')
                 ->join('author', 'author.AuthorId=thesisauthor.AuthorId', 'left')                

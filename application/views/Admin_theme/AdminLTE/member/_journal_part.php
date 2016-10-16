@@ -43,7 +43,7 @@ if (isset($journal_id)) {
         $isbn = $journal_info->ISSN;
         $volume = $journal_info->Volume;
         $book_category = $journal_info->Category;
-        $bookid = $journal_info->JournalId;
+        $bookid = $journal_info->ID;
         $book_cover = $journal_info->Banner;
         $file_link = $journal_info->Ebook;
         $Abstract = $journal_info->Abstract;

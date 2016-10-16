@@ -50,7 +50,7 @@ if (isset($reportd_id)) {
         $page = $report_info->Pagination;
         $address = $report_info->Address;
         $book_category = $report_info->Category;
-        $bookid = $report_info->ReportId;
+        $bookid = $report_info->ID;
         $book_cover = $report_info->Banner;
         $file_link = $report_info->Ebook;
         $Abstract = $report_info->Abstract;

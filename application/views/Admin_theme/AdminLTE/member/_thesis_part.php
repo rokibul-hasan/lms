@@ -46,7 +46,7 @@ if (isset($thesis_list)) {
         $Abstract = $thesis_info->abstract;
         $book_category = $thesis_info->Category;
         $department = $thesis_info->department;
-        $bookid = $thesis_info->Thesisid;
+        $bookid = $thesis_info->ID;
         $book_cover = $thesis_info->Banner;
         $file_link = $thesis_info->Ebook;
     }
