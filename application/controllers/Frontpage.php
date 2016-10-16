@@ -8,7 +8,7 @@ class Frontpage extends CI_Controller {
 
     //put your code here
     function __construct() {
-        parent::__construct();        
+        parent::__construct();
     }
 
     public function index() {
