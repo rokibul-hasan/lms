@@ -1,8 +1,8 @@
-<?php include_once 'header_user.php'; 
-if(isset($_GET['link']) && $_GET['link'] == 'pending_request' ){
+<?php
+include_once 'header_user.php';
+if (isset($_GET['link']) && $_GET['link'] == 'pending_request') {
     $link = 'pending_request';
 }
-
 ?>
 
 
@@ -25,99 +25,106 @@ if(isset($_GET['link']) && $_GET['link'] == 'pending_request' ){
 
     <!-- Main content -->
     <section class="content">
-
-        <?php
+        <div class="row">
+            <div class="col-md-12">
+                <?php
 //                       echo $glosary->output;                          
-        ?>
-        <div class="box">
-<!--            <div class="box-header">
-                 <?php
-                $attributes = array(
-                    'class' => 'form-horizontal',
-                    'name' => 'form',
-                    'method' => 'get');
-                echo form_open('', $attributes)
                 ?>
-                <div class="row col-md-offset-2">
-                    <div class="col-md-8 ">
-                        <div class="form-group ">
-                            <label class="col-md-3">Member Name:</label>
-                            <div class="col-md-9">
-                                <select name="member_id" id="" class="form-control select2">
-                                    <option value="">Select Member Name</option>
-                                    <?php
-                                    foreach ($users_info as $user) {
-                                        ?>
-                                        <option value="<?php echo $user->id; ?>"><?php echo $user->username; ?></option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
+                <div class="box">
+                    <!--            <div class="box-header">
+                    <?php
+                    $attributes = array(
+                        'class' => 'form-horizontal',
+                        'name' => 'form',
+                        'method' => 'get');
+                    echo form_open('', $attributes)
+                    ?>
+                                    <div class="row col-md-offset-2">
+                                        <div class="col-md-8 ">
+                                            <div class="form-group ">
+                                                <label class="col-md-3">Member Name:</label>
+                                                <div class="col-md-9">
+                                                    <select name="member_id" id="" class="form-control select2">
+                                                        <option value="">Select Member Name</option>
+                    <?php
+                    foreach ($users_info as $user) {
+                        ?>
+                                                                <option value="<?php echo $user->id; ?>"><?php echo $user->username; ?></option>
+                        <?php
+                    }
+                    ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button type="submit" name="btn_submit" value="true" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    <?= anchor(current_url() . '', '<i class="fa fa-refresh"></i>', ' class="btn btn-success"') ?>
+                                        </div>
+                                    </div>
+                    
+                    <?= form_close(); ?>
+                                </div>-->
+                    <div class="box-body">
+
+                        <?php
+                        $message = $this->session->userdata('message');
+                        if (isset($message)) {
+                            echo $message;
+                        }
+                        $this->session->unset_userdata('message');
+                        ?>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped datatable" id="usertable">
+                                <thead>
+                                    <tr>
+                                        <th style="display:none"></th>
+                                        <th>Title</th>
+                                        <th>Member Name</th>
+                                        <th>Type</th>
+                                        <th>Issue Date</th>
+                                        <th>Expiry Date</th>
+                                        <th>Return Date</th>
+                                        <th>Fine/Penalty-BDT</th>
+                                        <th>Is Returned</th>
+                                        <th>Approval Status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <?php $i = 1;
+                                    foreach ($issue_info as $issue) { ?>
+                                        <tr>
+                                            <td style="display:none;"><?php echo $i ?></td>
+                                            <td><?php echo $issue->Title; ?></td>
+                                            <td><?php echo $issue->username; ?></td>
+                                            <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
+                                            <td><?php echo $issue->IssueDate; ?></td>
+                                            <td><?php echo $issue->ExpiryDate; ?></td>
+                                            <td><?php echo $issue->ReturnDate; ?></td>
+                                            <td><?php echo $issue->Fine; ?></td>
+                                            <td><?php echo ($issue->ReturnOrNot == 1) ? '<span class="bg-green">Yes</span>' : '<span class="bg-red">No</span>'; ?></td>
+                                            <td><?php
+                                                if ($issue->approval_status == 2) {
+                                                    echo '<span class="btn bg-green">Approved</span>';
+                                                } elseif ($issue->approval_status == 3) {
+                                                    echo '<span class="btn bg-red">Rejected</span>';
+                                                } else {
+                                                    echo '<span class="btn bg-yellow">Pending</span>';
+                                                }
+                                                ?>
+                                            </td>
+                                        </tr>
+    <?php $i++;
+} ?>
+                                </tbody>
+
+                            </table>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <button type="submit" name="btn_submit" value="true" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                        <?= anchor(current_url() . '', '<i class="fa fa-refresh"></i>', ' class="btn btn-success"') ?>
-                    </div>
                 </div>
-
-                <?= form_close(); ?>
-            </div>-->
-            <div class="box-body">
-                
-                <?php
-                $message = $this->session->userdata('message');
-                if (isset($message)) {
-                    echo $message;
-                }
-                $this->session->unset_userdata('message');
-                ?>
-                <table class="table table-bordered table-striped datatable" id="usertable">
-                    <thead>
-                        <tr>
-                            <th style="display:none"></th>
-                            <th>Title</th>
-                            <th>Member Name</th>
-                            <th>Type</th>
-                            <th>Issue Date</th>
-                            <th>Expiry Date</th>
-                            <th>Return Date</th>
-                            <th>Fine/Penalty-BDT</th>
-                            <th>Is Returned</th>
-                            <th>Approval Status</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <?php $i=1;  foreach ($issue_info as $issue) { ?>
-                            <tr>
-                                <td style="display:none;"><?php echo $i ?></td>
-                                <td><?php echo $issue->Title; ?></td>
-                                <td><?php echo $issue->username; ?></td>
-                                <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
-                                <td><?php echo $issue->IssueDate; ?></td>
-                                <td><?php echo $issue->ExpiryDate; ?></td>
-                                <td><?php echo $issue->ReturnDate; ?></td>
-                                <td><?php echo $issue->Fine; ?></td>
-                                <td><?php echo ($issue->ReturnOrNot == 1) ? '<span class="bg-green">Yes</span>' : '<span class="bg-red">No</span>'; ?></td>
-                                <td><?php
-                                    if ($issue->approval_status == 2) {
-                                        echo '<span class="btn bg-green">Approved</span>';
-                                    } elseif ($issue->approval_status == 3) {
-                                        echo '<span class="btn bg-red">Rejected</span>';
-                                    } else {
-                                        echo '<span class="btn bg-yellow">Pending</span>';
-                                        }   ?>
-                                </td>
-                            </tr>
-<?php  $i++; }  ?>
-                    </tbody>
-
-                </table>
             </div>
         </div>
-
     </section>
     <!-- /.content -->
 </div>
@@ -135,16 +142,16 @@ if(isset($_GET['link']) && $_GET['link'] == 'pending_request' ){
 <script type="text/javascript">
 
 
- 
 
-      var link = "<?php echo $link; ?>";
-     
-     if( link == 'pending_request'){
-         
-            $('td>.btn.bg-green').parent('td').parent('tr').hide();
-            
-            $('td>.btn.bg-red').parent('td').parent('tr').hide();
-        }
+
+    var link = "<?php echo $link; ?>";
+
+    if (link == 'pending_request') {
+
+        $('td>.btn.bg-green').parent('td').parent('tr').hide();
+
+        $('td>.btn.bg-red').parent('td').parent('tr').hide();
+    }
 
 
     $('.datatable').DataTable({

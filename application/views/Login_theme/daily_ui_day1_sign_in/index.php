@@ -72,7 +72,7 @@ $captcha = array(
             <?php
             $message = $this->session->userdata('message');
             if(isset($message)){ 
-                echo  $message;
+                echo '<p style="">'. $message;
             } $this->session->unset_userdata('message');?>
             <div class="login-box animated fadeInUp">
                 <div class="box-header">

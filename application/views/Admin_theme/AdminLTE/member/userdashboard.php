@@ -26,7 +26,7 @@ $user_id = $_SESSION['user_id'];
                 <div class="row">
 
 
-                    <div class="col-lg-12 ">
+                    <div class="col-lg-12 col-sm-6">
                         
 
 <?php include '_select_item.php'; ?>
@@ -35,7 +35,7 @@ $user_id = $_SESSION['user_id'];
 
 
 
-                    <div class="pull-right col-lg-12">
+                    <div class="pull-right col-lg-12 col-sm-6">
 
                         <!-------------------------------------------- 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\BOOK SECTION ///////////////////////////////////////////////////////////
@@ -93,6 +93,9 @@ $user_id = $_SESSION['user_id'];
         color:#000;
         font-weight: bold;
         cursor:pointer;
+    }
+    .select2-search__field{
+        border: none!important;
     }
 
 </style>
