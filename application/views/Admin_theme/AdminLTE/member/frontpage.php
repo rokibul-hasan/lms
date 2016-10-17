@@ -41,7 +41,9 @@
                                 ?>
                             <tr>
                                 
+                                
                                 <td >
+                                    <span style="display:none"><?=$book_list->BookId;?></span>
                                     <div class="book_titl">
                                         <h5 class="text-center" style="font-size:10px"><?=$book_list->Title?></h5>
                                     </div>
@@ -91,7 +93,9 @@
                                 
                                 ?>
                             <tr>
+                                
                                 <td >
+                                    <span style="display:none"><?=$journal_list->JournalId;?></span>
                                     <div class="book_titl">
                                         <h5 class="text-center" style="font-size:10px"><?=$journal_list->Title?></h5>
                                     </div>
@@ -144,6 +148,7 @@
                                 ?>
                             <tr>
                                 <td >
+                                    <span style="display:none"><?=$report_list->ReportId;?></span>
                                     <div class="book_titl">
                                         <h5 class="text-center" style="font-size:10px"><?=$report_list->Title?></h5>
                                     </div>
@@ -195,6 +200,7 @@
                                 ?>
                             <tr>
                                 <td >
+                                    <span style="display:none"><?=$thesis_list->Thesisid;?></span>
                                     <div class="book_titl">
                                         <h5 class="text-center" style="font-size:10px"><?=$thesis_list->Title?></h5>
                                     </div>
@@ -271,16 +277,17 @@ tr{
       "paging": true,
       "lengthChange": false,
       "searching": false,
-      "ordering": true,
+      "ordering":  false,
       "info": true,
-      "autoWidth": false
+      "autoWidth": false,
+      
     });
     
         $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": false,
-      "ordering": true,
+      "ordering": false,
       "info": true,
       "autoWidth": false
     });
@@ -289,7 +296,7 @@ tr{
       "paging": true,
       "lengthChange": false,
       "searching": false,
-      "ordering": true,
+      "ordering": false,
       "info": true,
       "autoWidth": false
     });
@@ -298,7 +305,7 @@ tr{
       "paging": true,
       "lengthChange": false,
       "searching": false,
-      "ordering": true,
+      "ordering": false,
       "info": true,
       "autoWidth": false
     });

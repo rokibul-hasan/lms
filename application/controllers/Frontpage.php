@@ -13,11 +13,11 @@ class Frontpage extends CI_Controller {
 
     public function index() {
         $this->load->model('Book_model');
-        $data['all_book'] = $this->Book_model->get_all('book');
-        $data['all_journal'] = $this->Book_model->get_all('journal');       
+        $data['all_book'] = $this->Book_model->get_all('book','BookId');
+        $data['all_journal'] = $this->Book_model->get_all('journal','JournalId');       
          
-        $data['all_report'] = $this->Book_model->get_all('report');
-        $data['all_thesis'] = $this->Book_model->get_all('thesis');
+        $data['all_report'] = $this->Book_model->get_all('report','ReportId');
+        $data['all_thesis'] = $this->Book_model->get_all('thesis','Thesisid');
         
         $data['siteinfo'] = $this->Book_model->siteinfo();
 //        echo '<pre>';
