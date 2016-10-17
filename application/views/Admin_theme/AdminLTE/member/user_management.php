@@ -1,4 +1,5 @@
-<?php include_once 'header_user.php'; ?><?php include_once 'header.php'; ?>
+<?php include_once 'header_user.php'; ?>
+    <?php // include_once 'header.php'; ?>
 
 
 
@@ -189,6 +190,11 @@
 
 
 <?php include_once 'footer_user.php'; ?>
+<style type="text/css">
+    .loding{
+        display: none!important;
+    }
+</style>
 <script type="text/javascript">
     $('#ban_reason').hide();
     $('#banned').change(function () {

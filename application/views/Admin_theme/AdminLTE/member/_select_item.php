@@ -21,20 +21,17 @@
 
     <div class="col-md-8">
         <form action="" class="form" method="post" id="books_form">
-
             <div class="form-group col-md-6">
                 <label for="">Book Name: </label>
                 <input type="text" name="book_name" class="form-control" placeholder="Title" />
             </div>
             <div class="form-group col-md-6">
-                <div class="row">
-                    <label for="">Publisher: </label>
-                    <select name="publisher[]"class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select publisher" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <?php foreach ($all_publisher as $publisher) { ?>
-                            <option value="<?php echo $publisher->PublisherId; ?>"><?php echo $publisher->PublisherName; ?></option>
-                        <?php } ?>
-                    </select> 
-                </div>
+                <label for="">Publisher: </label>
+                <select name="publisher[]"class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select publisher" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                    <?php foreach ($all_publisher as $publisher) { ?>
+                        <option value="<?php echo $publisher->PublisherId; ?>"><?php echo $publisher->PublisherName; ?></option>
+                    <?php } ?>
+                </select> 
             </div>
             <div class="form-group col-md-12">            
 
@@ -95,7 +92,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="">Subject: </label>
-                <select name="subject[]"class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select publisher" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                <select name="subject[]"class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select subject" style="width: 100%;" tabindex="-1" aria-hidden="true">
                     <?php
                     $sql = "SELECT DISTINCT  `SubjectId` ,  `subject_title` FROM  `view_book_details`";
                     $subject_rows = $this->db->query($sql)->result();
@@ -120,23 +117,19 @@
 ---------------------------------------->
 
 <?php if (isset($type_journal)) { ?>
-
     <div class="col-md-8">
         <form action="" class="form" method="post" id="books_form">
-
             <div class="form-group col-md-6">
                 <label for="">Book Name: </label>
                 <input type="text" name="book_name" class="form-control" placeholder="Title" />
             </div>
             <div class="form-group col-md-6">
-                <div class="row">
-                    <label for="">Publisher: </label>
-                    <select name="publisher[]"class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select publisher" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <?php foreach ($all_publisher as $publisher) { ?>
-                            <option value="<?php echo $publisher->PublisherId; ?>"><?php echo $publisher->PublisherName; ?></option>
-                        <?php } ?>
-                    </select> 
-                </div>
+                <label for="">Publisher: </label>
+                <select name="publisher[]"class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select publisher" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                    <?php foreach ($all_publisher as $publisher) { ?>
+                        <option value="<?php echo $publisher->PublisherId; ?>"><?php echo $publisher->PublisherName; ?></option>
+                    <?php } ?>
+                </select> 
             </div>
             <div class="form-group col-md-12">            
 
@@ -171,7 +164,7 @@
 
             <div class="form-group col-md-6">
                 <label for="">Subject: </label>
-                <select name="subject[]"class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select publisher" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                <select name="subject[]"class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select subject" style="width: 100%;" tabindex="-1" aria-hidden="true">
                     <?php
                     $sql = "SELECT DISTINCT  `SubjectId` ,  `subject_title` FROM  `view_book_details`";
                     $subject_rows = $this->db->query($sql)->result();
@@ -370,4 +363,5 @@
 <!-------------------------------------------- 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\REPORT SEARCH ///////////////////////////////////////////////////////////
 ---------------------------------------->
+
 
