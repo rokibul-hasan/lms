@@ -8,7 +8,7 @@
 
 class Book_model extends CI_Model {
 
-    public function get_all($table,$id) {
+    public function get_all($table,$id='') {
         $this->db->order_by($id,'desc');
         return $this->db->get($table)->result();
     }
