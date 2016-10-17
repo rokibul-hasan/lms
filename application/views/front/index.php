@@ -99,7 +99,7 @@
         <div class="col-md-6"style="border-bottom: 1px solid #d5d5d5">            
             <div class="col-md-12 templatemo_marginbot">
                 <h3 class="alert alert-info">Login Instruction</h3><hr>
-                <div style="text-align: left">
+                <div style="text-align: left;text-transform: none;">
                     <?=$siteinfo['LoginInstruction']?>
                 </div>
                 
@@ -108,7 +108,7 @@
         <div class="col-md-6"style="border-bottom: 1px solid #d5d5d5">            
             <div class="col-md-12 templatemo_marginbot">
                 <h3 class="alert alert-info">Registration Instruction</h3><hr>
-                <div style="text-align: left">
+                <div style="text-align: left;text-transform: none;">
                     <?=$siteinfo['RegistrationInstraction']?>
                 </div>
                 
