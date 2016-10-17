@@ -16,7 +16,12 @@
         <link rel="stylesheet" href="<?php echo $theme_asset_url ?>dist/css/skins/_all-skins.min.css">
         
         
-        
+        <style type="text/css">
+            
+            .login_button,.registration_button{
+                cursor: pointer;
+            }
+        </style>     
 <link rel="stylesheet" href="<?=  base_url('asset/front')?>/css/animate.css">
 <link rel="stylesheet" href="<?=  base_url('asset/front')?>/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?=  base_url('asset/front')?>/css/font-awesome.min.css">
@@ -96,19 +101,19 @@
     <div class="container" >
     <div class="row">
         <h1 class="page-header" style="border-bottom: 1px solid #d5d5d5">User Instruction</h1>        
-        <div class="col-md-6"style="border-bottom: 1px solid #d5d5d5">            
+        <div class="col-md-6"style="border-bottom: 0px solid #d5d5d5">            
             <div class="col-md-12 templatemo_marginbot">
-                <h3 class="alert alert-info">Login Instruction</h3><hr>
-                <div style="text-align: left;text-transform: none;">
+                <h3 class="alert alert-info login_button">Click Here For Login Instruction</h3>
+                <div style="text-align: left;text-transform: none;display: none" class="login_box">
                     <?=$siteinfo['LoginInstruction']?>
                 </div>
                 
             </div>
         </div>
-        <div class="col-md-6"style="border-bottom: 1px solid #d5d5d5">            
+        <div class="col-md-6" style="border-bottom: 0px solid #d5d5d5">            
             <div class="col-md-12 templatemo_marginbot">
-                <h3 class="alert alert-info">Registration Instruction</h3><hr>
-                <div style="text-align: left;text-transform: none;">
+                <h3 class="alert alert-info registration_button">Click Here For Registration Instruction</h3>
+                <div style="text-align: left;text-transform: none;display: none" class="registration_box">
                     <?=$siteinfo['RegistrationInstraction']?>
                 </div>
                 
@@ -445,6 +450,18 @@ $(window).scroll(function() {
             .parent().removeClass("active")
             .end().filter("[href=#" + id + "]").parent().addClass("active");
     }
+});
+</script>
+
+<script type="text/javascript">
+$(function(){
+   $('.login_button').click(function(){
+      $('.login_box').toggle(); 
+   }); 
+   
+   $('.registration_button').click(function(){
+      $('.registration_box').toggle(); 
+   }); 
 });
 </script>
 </body>

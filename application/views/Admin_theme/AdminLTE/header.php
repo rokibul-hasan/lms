@@ -35,6 +35,9 @@
             body {
                 text-transform: capitalize;
             }
+            input[type="text"] {
+                width: 100%!important;
+            }
         </style>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
