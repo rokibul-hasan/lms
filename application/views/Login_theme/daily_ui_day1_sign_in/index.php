@@ -72,7 +72,7 @@ $captcha = array(
             <?php
             $message = $this->session->userdata('message');
             if(isset($message)){ 
-                echo '<p style="">'. $message;
+                echo '<p style="color: #fff;text-align: center; font-weight: bold;">'. $message.'</p>';
             } $this->session->unset_userdata('message');?>
             <div class="login-box animated fadeInUp">
                 <div class="box-header">
@@ -137,7 +137,7 @@ $captcha = array(
                 
                 <?php echo form_checkbox($remember); ?>
                             <?php echo form_label('Remember me', $remember['id']); ?>
-                <p class="login-help"><?php echo anchor('login/forgot_password/', 'Forgot password'); ?></p>
+                <p class="login-help"><?php echo anchor('login/forgot_password/', 'Forget User Name/Password'); ?></p>
                 <p class="login-help"><?php echo anchor('login/register', 'Registration'); ?></p>
                 <?php echo form_close(); ?>
             </div>
