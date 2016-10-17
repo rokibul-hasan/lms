@@ -2,7 +2,7 @@
 <div class="col-md-4">
     <form action="" method="post" class="form-inline type_form">
         <div class="form-group col-md-12">
-            <label for="" >Select Type Of Item: </label>
+            <label for="" >Select Resource Type: </label>
         </div>       
         <div class="form-group col-md-8">
 

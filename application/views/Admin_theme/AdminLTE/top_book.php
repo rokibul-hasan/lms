@@ -26,88 +26,95 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h2>Top Read</h2>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Position</th>
-                                    <th>Book Name</th>
-                                    <th>Total Read</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $i = 1;
-                                foreach ($get_top_read as $read) {
-                                    ?>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td><?php echo $i; ?></td>
-                                        <td><?php echo $read->Title; ?></td>
-                                        <td><?php echo $read->TotalRead; ?></td>
+                                        <th>Position</th>
+                                        <th>Book Name</th>
+                                        <th>Total Read</th>
                                     </tr>
+                                </thead>
+                                <tbody>
                                     <?php
-                                    $i++;
-                                }
-                                ?>
-                            </tbody>
-                        </table>
+                                    $i = 1;
+                                    foreach ($get_top_read as $read) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $i; ?></td>
+                                            <td><?php echo $read->Title; ?></td>
+                                            <td><?php echo $read->TotalRead; ?></td>
+                                        </tr>
+                                        <?php
+                                        $i++;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+
+                        </div>
                     </div>
                     <hr />
                     <hr />
                     <hr />
                     <div class="col-md-12">
                         <h2>Top Issued</h2>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Position</th>
-                                    <th>Book Name</th>
-                                    <th>Total Issued</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $i = 1;
-                                foreach ($get_top_issue as $read) {
-                                    ?>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td><?php echo $i; ?></td>
-                                        <td><?php echo $read->Title; ?></td>
-                                        <td><?php echo $read->TotalIssue; ?></td>
+                                        <th>Position</th>
+                                        <th>Book Name</th>
+                                        <th>Total Issued</th>
                                     </tr>
+                                </thead>
+                                <tbody>
                                     <?php
-                                    $i++;
-                                }
-                                ?>
-                            </tbody>
-                        </table>
+                                    $i = 1;
+                                    foreach ($get_top_issue as $read) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $i; ?></td>
+                                            <td><?php echo $read->Title; ?></td>
+                                            <td><?php echo $read->TotalIssue; ?></td>
+                                        </tr>
+                                        <?php
+                                        $i++;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <hr />
                     <div class="col-md-12">
                         <h2>Top Download</h2>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Position</th>
-                                    <th>Book Name</th>
-                                    <th>Total Download</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $i = 1;
-                                foreach ($get_top_download as $read) {
-                                    ?>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td><?php echo $i; ?></td>
-                                        <td><?php echo $read->Title; ?></td>
-                                        <td><?php echo $read->TotalDownload; ?></td>
+                                        <th>Position</th>
+                                        <th>Book Name</th>
+                                        <th>Total Download</th>
                                     </tr>
+                                </thead>
+                                <tbody>
                                     <?php
-                                    $i++;
-                                }
-                                ?>
-                            </tbody>
-                        </table>
+                                    $i = 1;
+                                    foreach ($get_top_download as $read) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $i; ?></td>
+                                            <td><?php echo $read->Title; ?></td>
+                                            <td><?php echo $read->TotalDownload; ?></td>
+                                        </tr>
+                                        <?php
+                                        $i++;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

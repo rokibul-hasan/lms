@@ -114,8 +114,9 @@
             <li><a href="<?= site_url('circulation/issuetable'); ?>"><i class="fa fa-table"></i> Issue & Return Table</a></li>            
         </ul>
     </li>
-    <li><a href="<?= site_url('admin/daily_read_book'); ?>"><i class="fa fa-folder-open"></i> <span>Daily Read Books</span></a></li>
-    <li><a href="<?= site_url('admin/top_book'); ?>"><i class="fa fa-book"></i> <span>Top Books</span></a></li>
+    <li><a href="<?= site_url('admin/daily_read_book'); ?>"><i class="fa fa-folder-open"></i> <span>Daily Read Resources</span></a></li>
+    <li><a href="<?= site_url('admin/top_book'); ?>"><i class="fa fa-book"></i> <span>Top Resources</span></a></li>
+    <!--<li><a href="<?= site_url('admin/supplier'); ?>"><i class="fa  fa-inbox"></i> <span>Requested Resources</span></a></li>-->
      <li><a href="<?= site_url('event'); ?>"><i class="fa  fa-calendar"></i> <span>Event</span></a></li>
      <li><a href="<?= site_url('mynote'); ?>"><i class="fa  fa-edit"></i> <span>My Note</span></a></li>
     
@@ -132,19 +133,9 @@
 <!--            <li><a href="http://lms.xeroneit.net/admin/generate_id"><i class="fa fa-credit-card"></i> <span>Generate member ID</span></a></li>-->
         </ul>
     </li> 
-    <li class="treeview">
-        <a href="#">
-            <i class="fa fa-file-pdf-o"></i>
-            <span>Report</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a> 
-        <ul class="treeview-menu">
-            <li><a href="<?= site_url('Admin_report'); ?>"><i class="fa fa-money"></i> <span>Fine Report</span></a></li>
-            <li><a href="<?= site_url('Admin_report/notification'); ?>"><i class="fa fa-envelope-o"></i> <span>Notification Report</span></a></li>         
-        </ul>
-    </li>
+	<li><a href="<?= site_url('Admin_report'); ?>"><i class="fa fa-money"></i> <span>Fine Report</span></a></li>
+
+    <li><a href="<?= site_url('Admin_report/notification'); ?>"><i class="fa fa-envelope-o"></i> <span>Notification Report</span></a></li>
     <?php } ?>
     <li><a href="<?= site_url('login/logout'); ?>"><i class="fa fa-power-off"></i> <span>Logout</span></a></li>
 </ul>

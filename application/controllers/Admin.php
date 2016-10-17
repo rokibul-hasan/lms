@@ -44,7 +44,7 @@ class Admin extends CI_Controller {
         $data['get_daily_read_book'] = $this->Admin_report_model->daily_read_book();
 //        echo '<pre>';print_r($data);exit();
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
-        $data['Title'] = 'Daily Read Books';
+        $data['Title'] = 'Daily Read Resources';
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'daily_read_book', $data);
     }
@@ -56,7 +56,7 @@ class Admin extends CI_Controller {
         $data['get_top_download'] = $this->Admin_report_model->top_download();
 //        echo '<pre>';print_r($data);exit();
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
-        $data['Title'] = 'Top Books';
+        $data['Title'] = 'Top Resources';
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'top_book', $data);
     }

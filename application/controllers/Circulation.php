@@ -52,6 +52,7 @@ class Circulation extends CI_Controller {
             $data['issue_info'] = $this->Circulation_model->search_issue_info_by_user_id($user_id);
         } else {
             $data['issue_info'] = $this->Circulation_model->issue();
+//echo'<pre>';print_r($data);exit();
         }
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
         $data['Section'] = 'Circulation Section';
