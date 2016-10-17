@@ -99,13 +99,19 @@
         <div class="col-md-6"style="border-bottom: 1px solid #d5d5d5">            
             <div class="col-md-12 templatemo_marginbot">
                 <h3 class="alert alert-info">Login Instruction</h3><hr>
-                <?=$siteinfo['LoginInstruction']?>
+                <div style="text-align: left">
+                    <?=$siteinfo['LoginInstruction']?>
+                </div>
+                
             </div>
         </div>
         <div class="col-md-6"style="border-bottom: 1px solid #d5d5d5">            
             <div class="col-md-12 templatemo_marginbot">
                 <h3 class="alert alert-info">Registration Instruction</h3><hr>
-                <?=$siteinfo['RegistrationInstraction']?>
+                <div style="text-align: left">
+                    <?=$siteinfo['RegistrationInstraction']?>
+                </div>
+                
             </div>
         </div>
 
