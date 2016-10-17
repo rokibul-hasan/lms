@@ -93,7 +93,7 @@
                             <tr>
                                 <td >
                                     <div class="book_titl">
-                                        <h5 class="text-center" style="font-size:10px"><?=$book_list->Title?></h5>
+                                        <h5 class="text-center" style="font-size:10px"><?=$journal_list->Title?></h5>
                                     </div>
                                     <div style="margin:0;padding:0;background-size: contain;background-repeat:no-repeat;background-position:center;background-image: url(<?php echo $link ?>) ">
                                         
@@ -145,7 +145,7 @@
                             <tr>
                                 <td >
                                     <div class="book_titl">
-                                        <h5 class="text-center" style="font-size:10px"><?=$book_list->Title?></h5>
+                                        <h5 class="text-center" style="font-size:10px"><?=$report_list->Title?></h5>
                                     </div>
                                     <div style="margin:0;padding:0;background-size: contain;background-repeat:no-repeat;background-position:center;background-image: url(<?php echo $link ?>) ">
                                         
@@ -196,7 +196,7 @@
                             <tr>
                                 <td >
                                     <div class="book_titl">
-                                        <h5 class="text-center" style="font-size:10px"><?=$book_list->Title?></h5>
+                                        <h5 class="text-center" style="font-size:10px"><?=$thesis_list->Title?></h5>
                                     </div>
                                     <div style="margin:0;padding:0;background-size: contain;background-repeat:no-repeat;background-position:center;background-image: url(<?php echo $link ?>) ">
                                         
