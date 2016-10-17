@@ -18,50 +18,55 @@
             <li class="active"><?= $Title ?></li>
         </ol>
     </section>
+    
+    
 
     <!-- Main content -->
     <section class="content">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
 
-        <div class="box box-info custom_box">
-            <div class="box-header bg-green">
-                <h3 class="box-title">
-                    <i class="fa fa-retweet"></i>          
+                <div class="box box-info custom_box">
+                    <div class="box-header bg-green">
+                        <h3 class="box-title">
+                            <i class="fa fa-retweet"></i>          
 
-                    Current Circulation - Member : Member        </h3>
-            </div>
-            <div class="box-body" id="display_div">
+                            Current Circulation - Member : Member        </h3>
+                    </div>
+                    <div class="box-body table-responsive" id="display_div">
 
-                <table style="width:100%" class="table table-bordered table-zebra table-hover table-stripped background_white datatable">
-                    <thead> <tr>           
+                        <table  class="table table-bordered  table-zebra table-hover table-stripped background_white datatable">
+                            <thead> <tr>           
 
-                            <th>Title</th>
-                            <th>Type</th>
-                            <th>Issue Date</th>
-                            <th>Expiry Date</th>           
-                            <th>Fine/Penalty - BDT</th>    
-                            <th>Return</th>  
+                                    <th>Title</th>
+                                    <th>Resource Type</th>
+                                    <th>Issue Date</th>
+                                    <th>Expiry Date</th>           
+                                    <th>Fine/Penalty - BDT</th>    
+                                    <th>Return</th>  
 
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($get_issue_book as $issue) { ?>
-                            <tr id="tr_379" class="display_row">
-                                <td><?php echo $issue->Title; ?></td>
-                                <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
-                                <td><?php echo date('Y-m-d', strtotime($issue->IssueDate)); ?></td>
-                                <td><?php echo date('Y-m-d', strtotime($issue->ExpiryDate)); ?></td>
-                                <td><?php echo $issue->Fine; ?></td>
-                                <td><a href="<?php echo site_url('circulation/returned_book/' . $issue->BookId); ?>" onlclick="confirm()" class="btn btn-warning return"><i class="fa fa-reply"></i> Return
-                                    </a></td></tr>
-                        <?php } ?>
-                    </tbody></table> 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($get_issue_book as $issue) { ?>
+                                    <tr id="tr_379" class="display_row">
+                                        <td><?php echo $issue->Title; ?></td>
+                                        <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
+                                        <td><?php echo date('Y-m-d', strtotime($issue->IssueDate)); ?></td>
+                                        <td><?php echo date('Y-m-d', strtotime($issue->ExpiryDate)); ?></td>
+                                        <td><?php echo $issue->Fine; ?></td>
+                                        <td><a href="<?php echo site_url('circulation/returned_book/' . $issue->BookId); ?>" onlclick="confirm()" class="btn btn-warning return"><i class="fa fa-reply"></i> Return
+                                            </a></td></tr>
+                                <?php } ?>
+                            </tbody></table> 
 
-                <br>
-                <a href="<?php echo site_url('circulation/book_issue'); ?>" class="btn btn-warning btn-lg" id="new_issue_btn" ><i class="fa fa-plus"></i> New Issue</a>
+                        <br>
+                        <a href="<?php echo site_url('circulation/book_issue'); ?>" class="btn btn-warning btn-lg" id="new_issue_btn" ><i class="fa fa-plus"></i> New Issue</a>
+                    </div>
+                </div>
             </div>
         </div>
-
     </section>
     <!-- /.content -->
 </div>

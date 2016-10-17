@@ -21,66 +21,73 @@
 
     <!-- Main content -->
     <section class="content">
-        <div class="box">
-            <div class="box-header">
-                <?php
-                $attributes = array(
-                    'class' => 'form-horizontal',
-                    'name' => 'form',
-                    'method' => 'get');
-                echo form_open('', $attributes)
-                ?>
-<!--                <div class="row col-md-offset-2">
-                    <div class="col-md-8 ">
-                        <div class="form-group ">
-                            <label class="col-md-3">Member Name:</label>
-                            <div class="col-md-9">
-                                <select name="member_id" id="" class="form-control select2">
-                                    <option value="">Select Member Name</option>
-                                    <?php
-                                    foreach ($users_info as $user) {
-                                        ?>
-                                        <option value="<?php echo $user->id; ?>"><?php echo $user->username; ?></option>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header">
+                        <?php
+                        $attributes = array(
+                            'class' => 'form-horizontal',
+                            'name' => 'form',
+                            'method' => 'get');
+                        echo form_open('', $attributes)
+                        ?>
+                        <!--                <div class="row col-md-offset-2">
+                                            <div class="col-md-8 ">
+                                                <div class="form-group ">
+                                                    <label class="col-md-3">Member Name:</label>
+                                                    <div class="col-md-9">
+                                                        <select name="member_id" id="" class="form-control select2">
+                                                            <option value="">Select Member Name</option>
+                        <?php
+                        foreach ($users_info as $user) {
+                            ?>
+                                                                    <option value="<?php echo $user->id; ?>"><?php echo $user->username; ?></option>
+                            <?php
+                        }
+                        ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="submit" name="btn_submit" value="true" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        <?= anchor(current_url() . '', '<i class="fa fa-refresh"></i>', ' class="btn btn-success"') ?>
+                                            </div>
+                                        </div>-->
+
+                        <?= form_close(); ?>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Fine</th>
+                                            <!--<th>Action</th>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                         <?php
-                                    }
-                                    ?>
-                                </select>
+//                            print_r($get_fine_report);exit();
+                                        foreach ($get_fine_report as $reports) {
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $reports['name'] ?></td>
+                                                <td><?php echo $reports['email'] ?></td>
+                                                <td><?php echo $reports['fine'] ?></td>
+                                                <!--<td><a href="" id="details"  type="button"  data-toggle="modal" data-target="#myModal"class="btn btn-info"><i class="fa fa-search"></i><input type="text"  value="<?php echo $reports['user_id']; ?>"/></a></td>-->
+                                            </tr>
+
+<?php } ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <button type="submit" name="btn_submit" value="true" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                        <?= anchor(current_url() . '', '<i class="fa fa-refresh"></i>', ' class="btn btn-success"') ?>
-                    </div>
-                </div>-->
-
-                <?= form_close(); ?>
-            </div>
-            <div class="box-body">
-                <div class="col-md-12">
-                    <table class="table table-bordered table-striped datatable">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Fine</th>
-                                <!--<th>Action</th>-->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-//                            print_r($get_fine_report);exit();
-                            foreach ($get_fine_report as $reports) { ?>
-                                <tr>
-                                    <td><?php echo $reports['name'] ?></td>
-                                    <td><?php echo $reports['email'] ?></td>
-                                    <td><?php echo $reports['fine'] ?></td>
-                                    <!--<td><a href="" id="details"  type="button"  data-toggle="modal" data-target="#myModal"class="btn btn-info"><i class="fa fa-search"></i><input type="text"  value="<?php echo $reports['user_id']; ?>"/></a></td>-->
-                                </tr>
-                            
-                        <?php } ?>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
@@ -127,15 +134,15 @@
             data: {'user_id': id},
             dataType: 'text',
             type: 'POST',
-            success: function(data){
-                
+            success: function (data) {
+
                 var bookList = $.parseJSON(data);
-                    var title = '<ul>';
-                    $.each(bookList, function (i, bookname) {
-                        title += '<li>'+bookname['Title']+'</li>';
-                        $('#issued').html(title);
-                    });
-                    title += '</ul>';
+                var title = '<ul>';
+                $.each(bookList, function (i, bookname) {
+                    title += '<li>' + bookname['Title'] + '</li>';
+                    $('#issued').html(title);
+                });
+                title += '</ul>';
             }
         });
     });

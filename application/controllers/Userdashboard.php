@@ -157,7 +157,7 @@ class Userdashboard extends CI_Controller {
 
 
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
-        $data['Title'] = 'Dashboard';
+        $data['Title'] = 'Search Your Resource';
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'member/userdashboard', $data);
     }

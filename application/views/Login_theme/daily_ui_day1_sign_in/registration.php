@@ -152,7 +152,7 @@ $remember = array(
                 </table>
                 <?php // echo form_input($captcha); ?><br />
                 <span style="color: red;"><?php echo form_error($captcha['name']); ?></span>
-                <?php echo form_submit('submit', 'Let me in', $submit_attr); ?> <br />
+                <?php echo form_submit('submit', 'Register', $submit_attr); ?> <br />
 
                 <?php echo form_checkbox($remember); ?>
                 <?php echo form_label('Remember me', $remember['id']); ?>

@@ -21,63 +21,68 @@
 
     <!-- Main content -->
     <section class="content">
-        <div class="box">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
 
-            <div class="box-body">
-                <form class="form-horizontal" action="<?php echo site_url('circulation/new_issue'); ?>" method="post">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">User</label>
-                        <div class="col-sm-10">
-                            <?php
-                            $username = $this->session->userdata('username');
-                            $user_id = $this->session->userdata('user_id');
-                            $user_type = $this->session->userdata('user_type');
-                            if ($user_type == '1') {
-                                ?>
-                                <select class="form-control  select2" name="UserId" id="select2">
-                                    <option value="">Select User</option>
-                                    <?php foreach ($get_users as $user) { ?>
-                                        <option value="<?php echo $user->id; ?>"><?php echo $user->username; ?></option>
-                                    <?php } ?>
-                                </select>
-                            <?php } else {
-                                echo $username;
-                                ?>
-                                <input type="hidden" name="UserId" value="<?php echo $user_id; ?>" />
-                                <?php }
-                            ?>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Resource Type</label>
-                        <div class="col-sm-10">
-                            <select class="form-control  select2" name="type" id="option">
-                                <option value="">Select Type</option>
-                                <option value="book">Book</option>
-                                <option value="journel">Journal</option>
-                                <option value="report">Report</option>
-                                <option value="thesis">Thesis</option>  
-
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Search</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="book" placeholder="Type Id / Title / Accession Number" type="text">
-                            <div id="book_list"></div>
-                            <!--search result-->
-                            <div id="book_preview" class="text-center" style="margin-top: 20px;">
-                                <div style="margin-bottom:5px;">
-                                    <input type="hidden" id="id" name="Id" />
+                    <div class="box-body">
+                        <form class="form-horizontal" action="<?php echo site_url('circulation/new_issue'); ?>" method="post">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-md-2 control-label">User</label>
+                                <div class="col-md-10">
+                                    <?php
+                                    $username = $this->session->userdata('username');
+                                    $user_id = $this->session->userdata('user_id');
+                                    $user_type = $this->session->userdata('user_type');
+                                    if ($user_type == '1') {
+                                        ?>
+                                        <select class="form-control  select2" name="UserId" id="select2">
+                                            <option value="">Select User</option>
+                                            <?php foreach ($get_users as $user) { ?>
+                                                <option value="<?php echo $user->id; ?>"><?php echo $user->username; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    <?php
+                                    } else {
+                                        echo $username;
+                                        ?>
+                                        <input type="hidden" name="UserId" value="<?php echo $user_id; ?>" />
+                                    <?php }
+                                    ?>
                                 </div>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-md-2 control-label">Resource Type</label>
+                                <div class="col-md-10">
+                                    <select class="form-control  select2" name="type" id="option">
+                                        <option value="">Select Type</option>
+                                        <option value="book">Book</option>
+                                        <option value="journel">Journal</option>
+                                        <option value="report">Report</option>
+                                        <option value="thesis">Thesis</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-md-2 col-sm-2 control-label">Search</label>
+                                <div class="col-md-10 col-sm-10">
+                                    <input class="form-control" id="book" placeholder="Type Id / Title / Accession Number" type="text">
+                                    <div id="book_list"></div>
+                                    <!--search result-->
+                                    <div id="book_preview" class="text-center" style="margin-top: 20px;">
+                                        <div style="margin-bottom:5px;">
+                                            <input type="hidden" id="id" name="Id" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="banner">
+                            </div>
+                            <input id="new_issue_submit" name="btn" class="btn btn-success btn-lg pull-right" data-dismiss="modal" value="Issue" style="display:bock;" type="submit">
+                        </form>
                     </div>
-                    <div id="banner">
-                    </div>
-                    <input id="new_issue_submit" name="btn" class="btn btn-success btn-lg pull-right" data-dismiss="modal" value="Issue" style="display:bock;" type="submit">
-                </form>
+                </div>
             </div>
         </div>
     </section>

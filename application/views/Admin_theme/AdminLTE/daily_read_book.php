@@ -26,26 +26,28 @@
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-body">
-                        <table class="table table-bordered table-stripped datatable">
-                            <thead>
-                                <tr>
-                                    <td>Book Name</td>
-                                    <td>ISBN</td>
-                                    <td>Subtitle</td>
-                                    <td>Number of Reading</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($get_daily_read_book as $read) { ?>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-stripped datatable">
+                                <thead>
                                     <tr>
-                                        <td><?php echo $read->Title; ?></td>
-                                        <td><?php echo $read->ISBN; ?></td>
-                                        <td><?php echo $read->Subtitle; ?></td>
-                                        <td><?php echo $read->TotalRead; ?></td>
+                                        <td>Book Name</td>
+                                        <td>ISBN</td>
+                                        <td>Subtitle</td>
+                                        <td>Number of Reading</td>
                                     </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($get_daily_read_book as $read) { ?>
+                                        <tr>
+                                            <td><?php echo $read->Title; ?></td>
+                                            <td><?php echo $read->ISBN; ?></td>
+                                            <td><?php echo $read->Subtitle; ?></td>
+                                            <td><?php echo $read->TotalRead; ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
