@@ -20,6 +20,7 @@
     <section class="content">
         <div class="box">
             <div class="box-body">
+                <div class="text-center"><h2 style="font-weight:900;">Overall Resources</h2></div>
 
 
                 <div class="col-lg-3 col-xs-6">
@@ -28,7 +29,7 @@
                         <div class="inner">
                             <h3><?= $short_report['book'] ?></h3>
 
-                            <p>Total Number Of Books</p>
+                            <p>Total Number Of Book Item</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
@@ -47,7 +48,7 @@
                         <div class="inner">
                             <h3><?= $short_report['journal'] ?></h3>
 
-                            <p>Total Journal's</p>
+                            <p>Total Number Of Journal Item</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
@@ -64,7 +65,7 @@
                         <div class="inner">
                             <h3><?= $short_report['report'] ?></h3>
 
-                            <p>Total  Number Of Report's</p>
+                            <p>Total  Number Of Report Item</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
@@ -81,7 +82,7 @@
                         <div class="inner">
                             <h3><?= $short_report['thesis'] ?></h3>
 
-                            <p>Total  Number Of Thesis Paper</p>
+                            <p>Total  Number Of Thesis Paper Item</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
@@ -100,14 +101,14 @@
                 <div class="col-xs-12">
                     <!--total issued-->
                     <div class="row">
-                        <div class="text-center"><h2 style="font-weight:900;">Total Issued</h2></div>
+                        <div class="text-center"><h2 style="font-weight:900;">Total Issued + Expired But Not Returned</h2></div>
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
                             <div class="small-box bg-green">
                                 <div class="inner">
                                     <h3><?= $short_report['total_issued_book'] ?></h3>
 
-                                    <p>Total Number Of Book Issued</p>
+                                    <p>Book</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
@@ -126,7 +127,7 @@
                                 <div class="inner">
                                     <h3><?= $short_report['total_issued_journal'] ?></h3>
 
-                                    <p>Total Number Of Journal Issued</p>
+                                    <p>Journal </p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
@@ -143,7 +144,7 @@
                                 <div class="inner">
                                     <h3><?= $short_report['total_issued_report'] ?></h3>
 
-                                    <p>Total Number Of Report Issued</p>
+                                    <p>Report </p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
@@ -160,7 +161,7 @@
                                 <div class="inner">
                                     <h3><?= $short_report['total_issued_thesis'] ?></h3>
 
-                                    <p>Total Number Of Thesis Issued</p>
+                                    <p> Thesis </p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
@@ -174,14 +175,14 @@
                     </div>
                     <!--total rejected-->
                     <div class="row">
-                        <div class="text-center"><h2 style="font-weight:900;">Total Rejected</h2></div>
+                        <div class="text-center"><h2 style="font-weight:900;">Total Rejected Request</h2></div>
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
                             <div class="small-box bg-green">
                                 <div class="inner">
                                     <h3><?= $short_report['total_rejected_book'] ?></h3>
 
-                                    <p>Total Number Of Book Rejected</p>
+                                    <p>Book </p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
@@ -200,7 +201,7 @@
                                 <div class="inner">
                                     <h3><?= $short_report['total_rejected_journal'] ?></h3>
 
-                                    <p>Total Number Of Journal Rejected</p>
+                                    <p> Journal </p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
@@ -217,7 +218,7 @@
                                 <div class="inner">
                                     <h3><?= $short_report['total_rejected_report'] ?></h3>
 
-                                    <p>Total Number Of Report Rejected</p>
+                                    <p> Report </p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
@@ -234,7 +235,7 @@
                                 <div class="inner">
                                     <h3><?= $short_report['total_rejected_thesis'] ?></h3>
 
-                                    <p>Total Number Of Thesis Rejected</p>
+                                    <p> Thesis </p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>

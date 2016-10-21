@@ -44,6 +44,22 @@ class Journal extends CI_Controller {
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
     }
+    
+    public function article() {
+        $crud = new grocery_CRUD();
+        $crud->set_table('article')
+                ->set_subject('Article')
+                ->display_as('JournalId', 'Journal Name')
+                ->set_relation('JournalId', 'journal', 'Title')
+                ->order_by('ArticleId', 'desc');
+        $output = $crud->render();
+        $data['glosary'] = $output;
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Section'] = 'Article';
+        $data['Title'] = 'Article';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
+    }
 
     public function journal_copy() {
         $crud = new grocery_CRUD();

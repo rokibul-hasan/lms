@@ -6,30 +6,29 @@
     <li class="active"><a href="<?= site_url('Admin'); ?>"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
     <li><a href="<?= site_url('about'); ?>"><i class="fa fa-cogs"></i> <span>Front Page Settings</span></a></li>
 
-        <li class="treeview">
+        <li class="">
         <a href="#"><i class="fa fa-book"></i> <span>Libraries Essentials</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
         </a>
-        <ul class="treeview-menu">
-            
-
-            
-            
-    <li class="treeview">
-        <a href="#"><i class="fa fa-pencil"></i> <span>Author</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li><a href="<?= site_url('author'); ?>"><i class="fa fa-pencil"></i> Author</a></li>
-            <li><a href="<?= site_url('author/author_type'); ?>"><i class="fa fa-list-alt"></i> Author Type</a></li>            
-        </ul>
-    </li>
+            <ul class="treeview-menu menu-open" style="display: block">
+            <li class="treeview">
+                <a href="#"><i class="fa fa-pencil"></i> <span>Resource Author</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?= site_url('author'); ?>"><i class="fa fa-pencil"></i> Author Name</a></li>
+                    <li><a href="<?= site_url('author/author_type'); ?>"><i class="fa fa-list-alt"></i> Author Type</a></li>            
+                </ul>
+            </li>
     
-    <li><a href="<?= site_url('publisher'); ?>"><i class="fa fa-paperclip"></i> <span>Publishers</span></a></li>
+    <li><a href="<?= site_url('publisher'); ?>"><i class="fa fa-pencil"></i> <span> Resource Publisher</span></a></li>
+    <li><a href="<?= site_url('subject'); ?>"><i class="fa fa-pencil"></i> <span>Resource Subject</span></a></li>
+    <li><a href="<?= site_url('location'); ?>"><i class="fa fa-pencil"></i> <span>Resource Location</span></a></li>
+    <li><a href="<?= site_url('include_section'); ?>"><i class="fa fa-pencil"></i> <span>Resource Include</span></a></li>
                  <li class="treeview">
                 <a href="#"><i class="fa fa-book"></i> <span>Book</span>
                     <span class="pull-right-container">
@@ -37,10 +36,11 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
+                    <li><a href="<?= site_url('book/book_type'); ?>"><i class="fa fa-repeat"></i> Book type</a></li>
                     <li><a href="<?= site_url('book'); ?>"><i class="fa fa-book"></i> Book</a></li>       
                     <li><a href="<?= site_url('book/bookauthor'); ?>"><i class="fa fa-pencil"></i> Book Author</a></li>       
                     <li><a href="<?= site_url('book/book_category'); ?>"><i class="fa fa-list"></i> Book Category</a></li>
-                    <li><a href="<?= site_url('book/book_type'); ?>"><i class="fa fa-repeat"></i> Book type</a></li>
+                    
                     <li><a href="<?= site_url('book/book_copy'); ?>"><i class="fa fa-copy"></i> Book Copy</a></li>
                     <li><a href="<?= site_url('book/book_include'); ?>"><i class="fa fa-adjust"></i> Book Include</a></li>                  
                          
@@ -55,6 +55,7 @@
         </a>
         <ul class="treeview-menu">
             <li><a href="<?= site_url('journal'); ?>"><i class="fa fa-newspaper-o"></i> Journal</a></li>
+             <li><a href="<?= site_url('journal/article'); ?>"><i class="fa fa-copy"></i>Article</a></li>  
             <li><a href="<?= site_url('journal/journal_copy'); ?>"><i class="fa fa-copy"></i> Journal Copy</a></li>            
             <li><a href="<?= site_url('journal/journal_category'); ?>"><i class="fa fa-list"></i> Journal Category</a></li>            
             <li><a href="<?= site_url('journal/journal_include'); ?>"><i class="fa fa-adjust"></i> Journal Include</a></li>            

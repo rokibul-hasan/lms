@@ -67,7 +67,7 @@ $captcha = array(
     <body>
         <div class="container">
             <div class="top">
-                <h1 id="title" class="hidden" style="text-align: center"><span id="logo"><?= $SITE['name'] ?><span></span></span></h1>
+                <h1 id="title" class="hidden" style="text-align: center;"><span id="logo"><?= $SITE['name'] ?><span></span></span></h1>
             </div>
             <?php
             $message = $this->session->userdata('message');

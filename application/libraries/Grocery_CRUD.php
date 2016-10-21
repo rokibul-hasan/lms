@@ -759,7 +759,7 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types
 				$validation_result->error_message = $form_validation->error_string();
 				$validation_result->error_fields = $form_validation->_error_array;
 			}
-		}
+		} 
 		else
 		{
 			$validation_result->success = true;

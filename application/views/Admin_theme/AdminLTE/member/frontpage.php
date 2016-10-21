@@ -238,7 +238,7 @@
 
 
 td{
-    height: 200px;
+    height: 220px;
     width:190px;
     display: block;
     margin: 0 auto!important;
@@ -253,7 +253,7 @@ tr{
 .book_wrapper {
 /*    background-color: rgba(0,0,0,.5);*/
     width: 100%;
-    height: 150px;
+    height: 130px;
     margin-top: -10px;
     padding: 0;
 }

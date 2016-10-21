@@ -21,6 +21,12 @@
             .login_button,.registration_button{
                 cursor: pointer;
             }
+            .body_text p{
+                color: #fff;
+            }
+           .templatemo_topbar .navbar-default .navbar-nav>li>a {
+            font-size: 20px;
+        }
         </style>     
 <link rel="stylesheet" href="<?=  base_url('asset/front')?>/css/animate.css">
 <link rel="stylesheet" href="<?=  base_url('asset/front')?>/css/bootstrap.min.css">
@@ -62,11 +68,11 @@
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                   <li><a class="menu" href="<?=site_url('frontpage')?>"><i class="fa fa-home"></i></a></li>
-                  <li><a class="menu" href="#about">About Us</a></li>
+                  <li><a class="menu" href="#about">About Library</a></li>
                   <li><a class="menu" href="#instruction">User Instruction</a></li> 
                   <li><a class="menu" href="#books">Resources</a></li>   
                   <li><a class="menu" href="<?=  site_url('login')?>" target="_blank">Login</a></li>
-                  <li><a class="menu" href="<?=  site_url('login')?>" target="_blank">Registration</a></li>
+                  <li><a class="menu" href="<?=  site_url('login/register')?>" target="_blank">Registration</a></li>
                 </ul>
               </div>
             </div>
@@ -89,7 +95,7 @@
   </div>
   <div class="slider-caption">
     <div class="templatemo_homewrapper">
-      <div class="templatemo_hometitle">About Us</div>
+      <div class="templatemo_hometitle">About Library</div>
       <div class="templatemo_hometext"><?=$siteinfo['AboutUs']?> </div>
     </div>
   </div>
@@ -103,19 +109,56 @@
         <h1 class="page-header" style="border-bottom: 1px solid #d5d5d5">User Instruction</h1>        
         <div class="col-md-6"style="border-bottom: 0px solid #d5d5d5">            
             <div class="col-md-12 templatemo_marginbot">
-                <h3 class="alert alert-info login_button">Click Here For Login Instruction</h3>
-                <div style="text-align: left;text-transform: none;display: none" class="login_box">
-                    <?=$siteinfo['LoginInstruction']?>
-                </div>
+                                <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary btn-lg btn-flat btn-block" data-toggle="modal" data-target="#myModal">
+                          Login Instruction
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Login Instruction</h4>
+                              </div>
+                              <div class="modal-body text-left body_text btn-primary">
+                               <?=$siteinfo['LoginInstruction']?>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
                 
             </div>
         </div>
         <div class="col-md-6" style="border-bottom: 0px solid #d5d5d5">            
-            <div class="col-md-12 templatemo_marginbot">
-                <h3 class="alert alert-info registration_button">Click Here For Registration Instruction</h3>
-                <div style="text-align: left;text-transform: none;display: none" class="registration_box">
-                    <?=$siteinfo['RegistrationInstraction']?>
-                </div>
+            <div class="pull-right col-md-12 templatemo_marginbot">
+                
+                        <button type="button" class="btn btn-primary btn-lg btn-flat btn-block" data-toggle="modal" data-target="#myModal1">
+                          New User Registration Instruction
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">New User Registration Instruction</h4>
+                              </div>
+                              <div class="modal-body text-left body-box body_text btn-primary">
+                              <?=$siteinfo['RegistrationInstraction']?>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                 
             </div>
         </div>
@@ -129,7 +172,7 @@
 <div class="templatemo_workwrapper" >
   <div class="container">
     <div class="row">
-      <h1 class="page-header" style="border-bottom: 1px solid #d5d5d5">Our Books</h1>
+      <h1 class="page-header" style="border-bottom: 1px solid #d5d5d5">Our Resources</h1>
       <div class="col-md-12 templatemo_workmargin">
           
           <?php include_once __DIR__ . '/../Admin_theme/AdminLTE/member/frontpage.php'; ?>
@@ -394,13 +437,13 @@
 <div class="templatemo_footerwrapper">
   <div class="container">
     <div class="row">
-        <div class="col-md-12">Copyright &copy; 2016 <a href="#"><?=$siteinfo['sitetitle']?></a>. Developed By <a href="http://friendsitltd.com">FriendsIT</a></div>
+        <div class="col-md-12">Copyright &copy; 2016 <a href="#"><?=$siteinfo['sitetitle']?></a>. Developed By <a href="http://friendsitltd.com">Friends IT</a></div>
     </div>
   </div>
 </div>
 <!-- footer end --> 
 
-
+<script src="<?php echo $theme_asset_url ?>bootstrap/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <!--datatable-->
 <script src="<?php echo $theme_asset_url ?>plugins/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
@@ -454,15 +497,15 @@ $(window).scroll(function() {
 </script>
 
 <script type="text/javascript">
-$(function(){
-   $('.login_button').click(function(){
-      $('.login_box').toggle(); 
-   }); 
-   
-   $('.registration_button').click(function(){
-      $('.registration_box').toggle(); 
-   }); 
-});
+//$(function(){
+//   $('.login_button').click(function(){
+//      $('.login_box').toggle(); 
+//   }); 
+//   
+//   $('.registration_button').click(function(){
+//      $('.registration_box').toggle(); 
+//   }); 
+//});
 </script>
 </body>
 </html>

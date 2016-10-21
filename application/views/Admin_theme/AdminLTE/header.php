@@ -38,6 +38,12 @@
             input[type="text"] {
                 width: 100%!important;
             }
+            .tools a {
+                display: inline-block;
+            }
+            input#search_text {
+                width: 300px!important;
+            }
         </style>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

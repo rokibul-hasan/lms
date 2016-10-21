@@ -97,7 +97,7 @@ $remember = array(
             </div>
             <div class="login-box animated fadeInUp" style="max-width: 510px;">
                 <div class="box-header">
-                    <h2>Registration</h2>
+                    <h2>User Registration</h2>
                 </div>
                 <?php echo form_open($this->uri->uri_string(), $form_attribute); ?>
                 <?php // echo form_input($login); ?>

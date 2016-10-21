@@ -136,7 +136,7 @@ Media Queries
 	.templatemo_titlewrappersmall{display:none;}
 	.templatemo_topbar .navbar{position:relative; top:-35px;}
 	.templatemo_workbox{width:50%;}
-	.templatemo_topbar .navbar-default .navbar-nav>li>a{color:#ffffff; font-size:14px; padding:5px 25px;}
+	.templatemo_topbar .navbar-default .navbar-nav>li>a{color:#ffffff; font-size:14px; padding:5px 20px;}
 	.slidernav a.previous{left:2%;}
 	.slidernav a.next{right:1%;}
 	}
@@ -152,7 +152,7 @@ Media Queries
 	.templatemo_homebutton{margin:40px auto 0 auto; padding:10px 0; font-size:18px; width:130px;}
 	.templatemo_workbox{width:25%;}
 	.templatemo_topbar .navbar{position:relative; top:-45px;}
-	.templatemo_topbar .navbar-default .navbar-nav>li>a{color:#ffffff; font-size:14px; padding:10px 25px;}
+	.templatemo_topbar .navbar-default .navbar-nav>li>a{color:#ffffff; font-size:14px; padding:10px 20px;}
 	.slidernav a.previous{left:3%;}
 	.slidernav a.next{right:2%;}
 	.templatemo_worktitle{margin-top:5%; font-size:16px; font-weight:bold; color:#ffffff;}
@@ -165,7 +165,7 @@ Media Queries
 	.templatemo_hometext{text-align:center; font-size:16px; margin:0 auto; width:80%; line-height:30px;}
 	.templatemo_homebutton{margin:40px auto 20px auto; font-size:18px;}
 	.templatemo_topbar .navbar{position:relative; top:-55px;}
-	.templatemo_topbar .navbar-default .navbar-nav>li>a{color:#ffffff; font-size:16px; padding:15px 25px;}
+	.templatemo_topbar .navbar-default .navbar-nav>li>a{color:#ffffff; font-size:16px; padding:15px 20px;}
 	.slidernav a.previous{left:11%;}
 	.slidernav a.next{right:10%;}
 	.templatemo_worktitle{margin-top:15%; font-size:18px; font-weight:bold; color:#ffffff;}
