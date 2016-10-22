@@ -81,7 +81,6 @@
                         <div class="col-md-9">
                             <select name="type" id="" class="form-control">
                                 <option value="1">Super Admin</option>
-                                <option value="2">IT Manager</option>
                                 <option value="3">Employee</option>
                                 <option value="4">User</option>
                             </select>
@@ -159,7 +158,6 @@
                                 <div class="col-md-9">
                                     <select name="type" id="" class="form-control">
                                         <option value="1">Super Admin</option>
-                                        <option value="2">IT Manager</option>
                                         <option value="3">Employee</option>
                                         <option value="4">User</option>
                                     </select>

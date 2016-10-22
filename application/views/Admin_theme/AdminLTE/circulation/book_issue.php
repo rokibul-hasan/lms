@@ -161,9 +161,7 @@
                     $('#banner').show();
                     var bookList = $.parseJSON(data);
                     $.each(bookList, function (i, bookname) {
-                        var banner = '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Title</label><div class="col-sm-10"><span><b>' + bookname['Title'] + '</b></span></div></div>';
-                        
-                        
+                        var banner = '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Title</label><div class="col-sm-10"><span><b>' + bookname['Title'] + '</b></span></div></div>';                                                
                         if (name == 'book') {
                             banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy</label><div class="col-sm-10"><span><b>' + bookname['BookCopyStatus'] + '</b></span></div></div>';
                             $('#id').val(bookname['BookId']);

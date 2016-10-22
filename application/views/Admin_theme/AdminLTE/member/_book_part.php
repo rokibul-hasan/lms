@@ -7,34 +7,38 @@ if (isset($book_list)) {
             echo '<h2 class="text-center">No Records Found</h2>';
         } else {
             ?>
-            <div class="table-responsive">
-                <table class="table table-bordered table-responsive table-striped">
-                    <tr>
-                        <th>Book ID</th>
-                        <th>Book Title</th>
-                        <th>Keywords</th>
-                        <th>Year of Publication</th>
-            <!--            <th>Place of Publication</th>-->
-                        <th>Publisher Name</th>
-                        <th>Action</th>
-                    </tr>
-                    <?php
-                    foreach ($book_list as $book_info) {
-                        echo "<tr>";
-                        echo "<td>{$book_info->BookId}</td>";
-                        echo "<td>{$book_info->Title}</td>";
-                        echo "<td>{$book_info->BookKeywords}</td>";
-                        echo "<td>{$book_info->YearOfPublication}</td>";
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-responsive table-striped">
+                            <tr>
+                                <th>Book ID</th>
+                                <th>Book Title</th>
+                                <th>Keywords</th>
+                                <th>Year of Publication</th>
+                    <!--            <th>Place of Publication</th>-->
+                                <th>Publisher Name</th>
+                                <th>Action</th>
+                            </tr>
+                            <?php
+                            foreach ($book_list as $book_info) {
+                                echo "<tr>";
+                                echo "<td>{$book_info->BookId}</td>";
+                                echo "<td>{$book_info->Title}</td>";
+                                echo "<td>{$book_info->BookKeywords}</td>";
+                                echo "<td>{$book_info->YearOfPublication}</td>";
 //            echo "<td>{$book_info->PlaceOfPublication}</td>";
-                        echo "<td>{$book_info->PublisherName}</td>";
-                        echo '<td><form action="' . site_url('userdashboard') . '" method="post">';
-                        echo '<input type="submit" value="Details" name="btn_book_search" class="btn btn-primary">';
-                        echo '<input type="hidden"  name="bookid" value="' . $book_info->BookId . '" />';
-                        echo '</form></td>';
-                        echo "</tr>";
-                    }
-                    ?>
-                </table>     
+                                echo "<td>{$book_info->PublisherName}</td>";
+                                echo '<td><form action="' . site_url('userdashboard') . '" method="post">';
+                                echo '<input type="submit" value="Details" name="btn_book_search" class="btn btn-primary">';
+                                echo '<input type="hidden"  name="bookid" value="' . $book_info->BookId . '" />';
+                                echo '</form></td>';
+                                echo "</tr>";
+                            }
+                            ?>
+                        </table>     
+                    </div>
+                </div>
             </div>
         <?php }
         ?>
@@ -59,8 +63,8 @@ if (isset($book_id)) {
         $Abstract = $book_info->Abstract;
     }
     ?>
-
-    <div class="box box-body">
+    <div class="col-md-12">
+    <div class="box">
         <h3 class="page-header">Book Details</h3>
         <h4 class="callout callout-info btn-flat text-center"><strong><?= $book_title ?></strong></h4>
         <div class="col-md-5">
@@ -161,6 +165,7 @@ if (isset($book_id)) {
 
 
 
+    </div>
     </div>
 
 <?php } ?>

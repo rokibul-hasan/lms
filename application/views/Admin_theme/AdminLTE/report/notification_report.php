@@ -48,7 +48,7 @@
                             <div class="col-md-7">
                                     <label>Search Item:</label>
                                     <div >
-                                        <input type="text" id="book" class="form-control" placeholder = "Type Id / Title"/>
+                                        <input type="text" id="book" class="form-control" placeholder = "Type Id / Title" autocomplete="off"/>
                                         <div id="book_list"></div>
                                         <!--search result-->
                                         <div id="book_preview" class="text-center" style="margin-top: 20px;">
@@ -133,6 +133,8 @@
         $('#book').val('');
         $('#banner').hide();
         $('#book_list').hide();
+        $(".loding").show();
+        $(".loding").fadeOut(2000);
     });
     $('#book').keyup(function () {
         var book = $('#book').val();
@@ -144,6 +146,7 @@
                 data: {'bookInfo': book, 'option': option},
                 dataType: 'text',
                 type: 'POST',
+                cache: false,
                 success: function (data) {
 //                    alert(data);
                     $('#book_list').fadeIn();

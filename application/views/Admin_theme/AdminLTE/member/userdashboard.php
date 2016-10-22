@@ -10,7 +10,7 @@ $user_id = $_SESSION['user_id'];
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-<?= $Title ?>
+            <?= $Title ?>
 
         </h1>
         <ol class="breadcrumb">
@@ -26,45 +26,46 @@ $user_id = $_SESSION['user_id'];
                 <div class="row">
 
 
-                    <div class="col-lg-12 col-sm-6">
-                        
+                    <div class="col-lg-12">
 
-<?php include '_select_item.php'; ?>
 
+                        <?php include '_select_item.php'; ?>
+
+
+
+
+
+                        <div class="result col-lg-12">
+
+                            <!-------------------------------------------- 
+    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\BOOK SECTION ///////////////////////////////////////////////////////////
+    ---------------------------------------->       
+
+                            <?php include '_book_part.php'; ?>    
+                            <!-------------------------------------------- 
+    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\JOURNAL SECTION ///////////////////////////////////////////////////////////
+    ---------------------------------------->
+
+                            <?php include '_journal_part.php'; ?>
+
+                            <!-------------------------------------------- 
+                            \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\REPORT SECTION///////////////////////////////////////////////////////////
+                            ---------------------------------------->
+
+                            <?php include '_report_part.php'; ?>
+
+                            <!-------------------------------------------- 
+                         \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\THESIS SECTION///////////////////////////////////////////////////////////
+                         ---------------------------------------->
+
+                            <?php include '_thesis_part.php'; ?>
+
+
+                        </div>
                     </div>
 
 
-
-                    <div class="pull-right col-lg-12 col-sm-6">
-
-                        <!-------------------------------------------- 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\BOOK SECTION ///////////////////////////////////////////////////////////
----------------------------------------->       
-
-<?php include '_book_part.php'; ?>    
-                        <!-------------------------------------------- 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\JOURNAL SECTION ///////////////////////////////////////////////////////////
----------------------------------------->
-
-<?php include '_journal_part.php'; ?>
-
-                        <!-------------------------------------------- 
-                        \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\REPORT SECTION///////////////////////////////////////////////////////////
-                        ---------------------------------------->
-
-<?php include '_report_part.php'; ?>
-
-                        <!-------------------------------------------- 
-                     \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\THESIS SECTION///////////////////////////////////////////////////////////
-                     ---------------------------------------->
-
-<?php include '_thesis_part.php'; ?>
-
-
-                    </div>
                 </div>
-
-
             </div>
         </div>
 
@@ -84,7 +85,7 @@ $user_id = $_SESSION['user_id'];
         height: 100vh;
     }
     td{
-/*        background: #777777;*/
+        /*        background: #777777;*/
         color:#000;
         font-weight: bold;
     }
@@ -97,28 +98,35 @@ $user_id = $_SESSION['user_id'];
     .select2-search__field{
         border: none!important;
     }
-
+    .result{
+        float: right;
+    }
+    @media all and (max-width: 770px) {
+        .result{
+            float: none;
+        }
+    }
 </style>
 <script>
-    
-    
+
+
     $(document).ready(function () {
         $('.read_now').click(function () {
             var type = $('#type').val();
             var id = $('#id').val();
             // alert(id);
-            <?php
-                if(!empty($file_link)){
-            ?>
-            $.ajax({
-                url: '<?php echo base_url(); ?>index.php/count/count_read_book',
-                data: {'type': type, 'id': id},
-                //dataType: 'text',
-                type: 'post'
-            });
-            <?php
-                }
-            ?>
+<?php
+if (!empty($file_link)) {
+    ?>
+                $.ajax({
+                    url: '<?php echo base_url(); ?>index.php/count/count_read_book',
+                    data: {'type': type, 'id': id},
+                    //dataType: 'text',
+                    type: 'post'
+                });
+    <?php
+}
+?>
         });
         $('#download').click(function () {
             var type = $('#type').val();
@@ -132,14 +140,14 @@ $user_id = $_SESSION['user_id'];
 
             });
         });
-        
-        
 
-        
+
+
+
         $("#select_type_for_reservation").change(function () {
-        
-        $( ".type_form" ).submit();
-        
+
+            $(".type_form").submit();
+
 //        
 //            if (this.value == 'books_form') {
 //                $("#books_form").show();
@@ -193,5 +201,5 @@ $user_id = $_SESSION['user_id'];
             });
         }
     });
-     
+
 </script>
