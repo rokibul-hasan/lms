@@ -44,6 +44,22 @@
             input#search_text {
                 width: 300px!important;
             }
+            .loding {
+                background: rgba(0,0,0,.5);
+                position: absolute;
+                z-index: 9999;
+                display: block;
+                width:100%;
+                min-height: 100%;
+            }
+            .loding p{
+                color: #000;
+                font-size: 50px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                z-index: 9999999;
+            }
         </style>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -65,6 +81,9 @@
     </head>
     
 <body class="hold-transition skin-blue sidebar-mini">
+    <div class="loding">
+        <p>Loading........</p>        
+    </div>
 <div class="wrapper">
 
   <!-- Main Header -->

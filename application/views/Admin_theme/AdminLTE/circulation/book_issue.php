@@ -4,6 +4,7 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -21,6 +22,7 @@
 
     <!-- Main content -->
     <section class="content">
+
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
@@ -42,7 +44,7 @@
                                                 <option value="<?php echo $user->id; ?>"><?php echo $user->username; ?></option>
                                             <?php } ?>
                                         </select>
-                                    <?php
+                                        <?php
                                     } else {
                                         echo $username;
                                         ?>
@@ -67,7 +69,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-md-2 col-sm-2 control-label">Search</label>
                                 <div class="col-md-10 col-sm-10">
-                                    <input class="form-control" id="book" placeholder="Type Id / Title / Accession Number" type="text">
+                                    <input class="form-control" id="book" placeholder="Type Id / Title / Accession Number" type="text" autocomplete="off">
                                     <div id="book_list"></div>
                                     <!--search result-->
                                     <div id="book_preview" class="text-center" style="margin-top: 20px;">
@@ -85,6 +87,7 @@
                 </div>
             </div>
         </div>
+
     </section>
     <!-- /.content -->
 </div><!-- /.content-wrapper -->
@@ -105,11 +108,15 @@
 </style>
 
 <script type="text/javascript">
+    
     $('#book_preview').hide();
     $('#option').change(function () {
         $('#book').val('');
         $('#banner').hide();
+        $(".loding").show();
+        $(".loding").fadeOut(2000);
     });
+    
 //    book search 
 
     $('#book').keyup(function () {
@@ -122,6 +129,7 @@
                 data: {'bookInfo': book, 'option': option},
                 dataType: 'text',
                 type: 'POST',
+                cache: false,
                 success: function (data) {
 //                    alert(data);
                     $('#book_list').fadeIn();
@@ -153,22 +161,28 @@
                     $('#banner').show();
                     var bookList = $.parseJSON(data);
                     $.each(bookList, function (i, bookname) {
-                        var banner = '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Title</label><div class="col-sm-10"><span><b>' + bookname['Title'] + '</b></span></div></div><div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Banner</label><div class="col-sm-10">';
-                        if (bookname['Banner'] == '') {
-                            banner += '<img class="img img-thumbnail" id="book_cover_preview" style="width:175px; height:275px;" src="<?php echo base_url(); ?>assets/uploads/files/default.jpg"></div></div>';
-                        } else {
-                            banner += '<img class="img img-thumbnail" id="book_cover_preview" style="width:175px; height:275px;" src="<?php echo base_url(); ?>assets/uploads/files/' + bookname['Banner'] + '"></div></div>';
-                        }
-                        $('#banner').html(banner);
+                        var banner = '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Title</label><div class="col-sm-10"><span><b>' + bookname['Title'] + '</b></span></div></div>';
+                        
+                        
                         if (name == 'book') {
+                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy</label><div class="col-sm-10"><span><b>' + bookname['BookCopyStatus'] + '</b></span></div></div>';
                             $('#id').val(bookname['BookId']);
                         } else if (name == 'journel') {
+                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy</label><div class="col-sm-10"><span><b>' + bookname['JournalCopyStatus'] + '</b></span></div></div>';
                             $('#id').val(bookname['JournalId']);
                         } else if (name == 'report') {
+                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy</label><div class="col-sm-10"><span><b>' + bookname['ReportCopyStatus'] + '</b></span></div></div>';
                             $('#id').val(bookname['ReportId']);
                         } else if (name == 'thesis') {
+                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy</label><div class="col-sm-10"><span><b>' + bookname['ThesisCopyStatus'] + '</b></span></div></div>';
                             $('#id').val(bookname['Thesisid']);
                         }
+                        if (bookname['Banner'] == '') {
+                            banner += '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Banner</label><div class="col-sm-10"><img class="img img-thumbnail" id="book_cover_preview" style="width:175px; height:275px;" src="<?php echo base_url(); ?>assets/uploads/files/default.jpg"></div></div>';
+                        } else {
+                            banner += '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Banner</label><div class="col-sm-10"><img class="img img-thumbnail" id="book_cover_preview" style="width:175px; height:275px;" src="<?php echo base_url(); ?>assets/uploads/files/' + bookname['Banner'] + '"></div></div>';
+                        }
+                        $('#banner').html(banner);
                     });
                 }
             });

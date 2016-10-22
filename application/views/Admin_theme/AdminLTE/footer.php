@@ -74,7 +74,11 @@
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
+<style type="text/css">
+    .sidebar-menu li:hover > ul{
+	display: block;
+}
+</style>
 
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo $theme_asset_url ?>plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -120,7 +124,9 @@
 <script>
      $(".select2").select2();
   $(function () {
+      $(".loding").hide();
     //Initialize Select2 Elements
+    
     $(".select2").select2();
 
     //Datemask dd/mm/yyyy

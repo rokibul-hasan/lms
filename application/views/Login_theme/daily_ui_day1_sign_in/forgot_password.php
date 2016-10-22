@@ -6,8 +6,8 @@
  */
 
 
-$form_attribute = array('class' => 'login','method' =>'post');
-$submit_attr = array('class' => 'login-submit','name' =>'btn','value'=>'submit');
+$form_attribute = array('class' => 'login', 'method' => 'post');
+$submit_attr = array('class' => 'login-submit', 'name' => 'btn', 'value' => 'submit');
 
 $login = array(
     'name' => 'email',
@@ -46,24 +46,21 @@ $login = array(
             </div>
             <div class="login-box animated fadeInUp">
                 <div class="box-header">
-                    <h2>Forget Password</h2>
+                    <h2>Forgotten Account</h2>
                 </div>
-                <p>An email has been sent to the address provided.</p>
-<?php
-echo form_open('login/forgot_password', $form_attribute);
-echo form_input($login);
-?><br />
-                <?php echo form_submit('btn', 'SEND',$submit_attr); ?> <br />
-                    <?php echo form_close(); ?>
+                <p>An email will be sent to your provided <br />
+                    address if you are a registered active user.</p>
+                <?php
+                echo form_open('login/forgot_password', $form_attribute);
+                echo form_input($login);
+                ?><br />
+                <?php echo form_submit('btn', 'SEND', $submit_attr); ?> <br />
+                <?php echo form_close(); ?>
             </div>
 
             <section class="about">
-                <p class="about-links">
-                    <?= anchor($SITE['website'], "Main Site", 'target="_blank"') ?>
-                    <?php if ($this->config->item('allow_registration', 'tank_auth')) echo anchor('#', 'Register'); ?>       
-                </p>
                 <p class="about-author">
-                    &copy; <?= date("Y") ?> <?= anchor($SITE['website'], $SITE['name'], 'target="_blank"') ?>
+                    &copy; <?= date("Y") ?> <?= $SITE['name'] ?> <br />
                     Developed by <?= anchor($DEVELOPER['website'], $DEVELOPER['name'], 'target="_blank"') ?>  
                 </p>
             </section>

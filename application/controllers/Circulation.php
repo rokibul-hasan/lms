@@ -160,7 +160,7 @@ class Circulation extends CI_Controller {
         $Id = $this->input->post('bookId');
         $typeName = $this->input->post('typeName');
 //        print_r($typeName);exit();
-        $data = $this->Circulation_model->select_book_id($Id, $typeName);
+        $data = $this->Circulation_model->get_resource_info($Id, $typeName);
         echo json_encode($data);
 //        }
     }

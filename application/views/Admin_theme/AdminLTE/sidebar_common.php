@@ -6,13 +6,13 @@
     <li class="active"><a href="<?= site_url('Admin'); ?>"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
     <li><a href="<?= site_url('about'); ?>"><i class="fa fa-cogs"></i> <span>Front Page Settings</span></a></li>
 
-        <li class="">
+        <li class="treeview">
         <a href="#"><i class="fa fa-book"></i> <span>Libraries Essentials</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
         </a>
-            <ul class="treeview-menu menu-open" style="display: block">
+            <ul class="treeview-menu menu-open">
             <li class="treeview">
                 <a href="#"><i class="fa fa-pencil"></i> <span>Resource Author</span>
                     <span class="pull-right-container">

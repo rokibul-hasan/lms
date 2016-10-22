@@ -20,10 +20,25 @@ class Circulation_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('issuereturn');
         $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
+        $this->db->join('bookcopy', 'issuereturn.BookId=bookcopy.BookId', 'left');
         $this->db->order_by('IssueReturnId', 'desc');
 //        $this->db->join('book', 'issuereturn.BookId=book.BookId', 'left');
 //        $this->db->join('journal', 'issuereturn.BookId=journal.JournalId', 'left');
-        return $this->db->get()->result();
+        return $results = $this->db->get()->result();
+//        foreach ($results as $result){
+//            $book_id = $result->BookId;
+//            $type = $result->type;
+//            if($type == 'book'){
+//                $this->db->select('*');
+//                $this->db->from('bookcopy');
+//                $this->db->where('BookId', $book_id);
+//                $copy = $this->db->get()->row();
+//                $sql[] = array('Title' => $result->Title,'username'=> $result->username,'IssueReturnId' => $result->IssueReturnId,'type' => $result->type, 'IssueDate' => $result->IssueDate
+//                        ,'ExpiryDate' => $result->ExpiryDate, 'ReturnDate',$result->ReturnDate, 'Fine' => $result->Fine ,'ReturnOrNot' => $result->ReturnOrNot,'total_copy'=>$copy->BookCopyStatus
+//                        ,'approval_status'=> $result->approval_status);
+//            }
+//        }
+//        return $sql;
     }
 
     public function search_issue_info_by_user_id($user_id) {
@@ -111,26 +126,31 @@ class Circulation_model extends CI_Model {
         return $table;
     }
 
-    function select_book_id($id, $typeName) {
+    function get_resource_info($id, $typeName) {
         if ($typeName == 'book') {
             $this->db->select('*');
             $this->db->from('book');
-            $this->db->where('BookId', $id);
-            return $this->db->get()->result();
+            $this->db->join('bookcopy','book.BookId = bookcopy.BookId','left');
+            $this->db->where('book.BookId', $id);
+            $this->db->get()->result();
+            return $this->db->last_query();
         } elseif ($typeName == 'journel') {
             $this->db->select('*');
             $this->db->from('journal');
-            $this->db->where('JournalId', $id);
+            $this->db->join('journalcopy','journal.JournalId = journalcopy.JournalId','left');
+            $this->db->where('journal.JournalId', $id);
             return $this->db->get()->result();
         } elseif ($typeName == 'thesis') {
             $this->db->select('*');
             $this->db->from('thesis');
-            $this->db->where('Thesisid', $id);
+            $this->db->join('thesiscopy','thesis.Thesisid = thesiscopy.ThesisID','left');
+            $this->db->where('thesis.Thesisid', $id);
             return $this->db->get()->result();
         } elseif ($typeName == 'report') {
             $this->db->select('*');
             $this->db->from('report');
-            $this->db->where('ReportId', $id);
+            $this->db->join('reportcopy','report.ReportId = reportcopy.ReportId','left');
+            $this->db->where('report.ReportId', $id);
             return $this->db->get()->result();
         } else {
             return false;

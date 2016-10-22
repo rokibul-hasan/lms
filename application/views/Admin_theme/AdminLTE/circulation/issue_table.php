@@ -85,6 +85,7 @@
                                             <th>Resource Type</th>
                                             <th>Issue Date</th>
                                             <th>Expiry Date</th>
+                                            <th>Total Number of Copy</th>
                                             <th>Return Date</th>
                                             <th>Fine/Penalty-BDT</th>
                                             <th>Is Returned</th>
@@ -93,7 +94,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php foreach ($issue_info as $issue) { ?>
+                                        <?php
+//                                                                    echo '<pre>'; print_r($issue_info);exit();
+                                        foreach ($issue_info as $issue) {
+                                            ?>
                                             <tr>
                                                 <td><?php echo $issue->Title; ?></td>
                                                 <td><?php echo $issue->username; ?></td>
@@ -101,6 +105,7 @@
                                                 <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
                                                 <td><?php echo date('Y-m-d', strtotime($issue->IssueDate)); ?></td>
                                                 <td><?php echo date('Y-m-d', strtotime($issue->ExpiryDate)); ?></td>
+                                                <td><?php echo $issue->BookCopyStatus; ?></td>
                                                 <td><?php echo $issue->ReturnDate; ?></td>
                                                 <td><?php echo $issue->Fine; ?></td>
                                                 <td><?php echo ($issue->ReturnOrNot == 1) ? '<span class="bg-green">Yes</span>' : '<span class="bg-red">No</span>'; ?></td>
@@ -134,10 +139,10 @@
                                                             ?>>
                                                             <a href="#"  class="btn btn-warning save_status">Update</a>
                                                         </form>
-                                                    <?php } ?>
+    <?php } ?>
                                                 </td>
                                             </tr>
-                                        <?php } ?>
+<?php } ?>
                                     </tbody>
 
                                 </table>

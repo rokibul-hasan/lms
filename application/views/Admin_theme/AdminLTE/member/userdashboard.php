@@ -103,9 +103,6 @@ $user_id = $_SESSION['user_id'];
     
     
     $(document).ready(function () {
-        
-       
-
         $('.read_now').click(function () {
             var type = $('#type').val();
             var id = $('#id').val();

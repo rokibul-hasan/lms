@@ -56,12 +56,8 @@ $submit_attr = 'class="login-submit"';
             </div>
 
             <section class="about">
-                <p class="about-links">
-                    <?= anchor($SITE['website'], "Main Site", 'target="_blank"') ?>
-                    <?php if ($this->config->item('allow_registration', 'tank_auth')) echo anchor('#', 'Register'); ?>       
-                </p>
                 <p class="about-author">
-                    &copy; <?= date("Y") ?> <?= anchor($SITE['website'], $SITE['name'], 'target="_blank"') ?>
+                    &copy; <?= date("Y") ?> <?=$SITE['name']?> <br />
                     Developed by <?= anchor($DEVELOPER['website'], $DEVELOPER['name'], 'target="_blank"') ?>  
                 </p>
             </section>
