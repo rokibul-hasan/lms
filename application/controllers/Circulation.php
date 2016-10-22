@@ -48,8 +48,12 @@ class Circulation extends CI_Controller {
     function issuetable() {
         $data['users_info'] = $this->db->where('activated', '1')->get('users')->result();
         $user_id = $this->input->get('member_id');
-        if (isset($user_id)) {
-            $data['issue_info'] = $this->Circulation_model->search_issue_info_by_user_id($user_id);
+        $issue_return = $this->input->get('issue_return');
+        $date_from = $this->input->get('date_from');
+        $date_to = $this->input->get('date_to');
+        $btn_submit = $this->input->get('btn_submit');
+        if (isset($btn_submit)) {
+            $data['search_issue_info'] = $this->Circulation_model->search_issue_info($user_id,$issue_return,$date_from,$date_to);
         } else {
             $data['issue_info'] = $this->Circulation_model->issue();
 //echo'<pre>';print_r($data);exit();

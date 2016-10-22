@@ -20,7 +20,7 @@ class Circulation_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('issuereturn');
         $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
-        $this->db->join('bookcopy', 'issuereturn.BookId=bookcopy.BookId', 'left');
+//        $this->db->join('bookcopy', 'issuereturn.BookId=bookcopy.BookId', 'left');
         $this->db->order_by('IssueReturnId', 'desc');
 //        $this->db->join('book', 'issuereturn.BookId=book.BookId', 'left');
 //        $this->db->join('journal', 'issuereturn.BookId=journal.JournalId', 'left');
@@ -41,12 +41,26 @@ class Circulation_model extends CI_Model {
 //        return $sql;
     }
 
-    public function search_issue_info_by_user_id($user_id) {
+    public function search_issue_info($user_id = null, $issue_return = null, $from = null, $to = null) {
+        $date_from = date('Y-m-d H:i:s', strtotime($from));
+        $date_to = date('Y-m-d H:i:s', strtotime($to));
         $this->db->select('*');
         $this->db->from('issuereturn');
         $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
         $this->db->order_by('IssueReturnId', 'desc');
-        $this->db->where('UserId', $user_id);
+        if (!empty($user_id)) {
+            $this->db->where('issuereturn.UserId', $user_id);
+        }
+        if (!empty($issue_return)) {
+            if ($issue_return == 1) {
+                $this->db->where('issuereturn.approval_status', $issue_return);
+            } else if ($issue_return == 2) {
+                $this->db->where('issuereturn.ReturnOrNot', $issue_return);
+            }
+        }if($date_from != '1970-01-01'){
+            $condition = "DATE(party_advance_payment_register.date_payment) BETWEEN '$date_from'  AND  '$date_to'";
+            $this->db->where($condition);
+        }
         return $this->db->get()->result();
     }
 
@@ -54,7 +68,7 @@ class Circulation_model extends CI_Model {
         if ($option == 'book') {
             $this->db->select('*');
             $this->db->from('book');
-            $this->db->join('bookcopy','book.BookId = bookcopy.BookId','left');
+            $this->db->join('bookcopy', 'book.BookId = bookcopy.BookId', 'left');
             $this->db->where('book.BookId', $Info);
             $this->db->or_like('book.Title', $Info);
             $this->db->or_like('bookcopy.AccessionNumber', $Info);
@@ -71,7 +85,7 @@ class Circulation_model extends CI_Model {
         } elseif ($option == 'journel') {
             $this->db->select('*');
             $this->db->from('journal');
-            $this->db->join('journalcopy','journal.JournalId = journalcopy.JournalId','left');
+            $this->db->join('journalcopy', 'journal.JournalId = journalcopy.JournalId', 'left');
             $this->db->where('journal.JournalId', $Info);
             $this->db->or_like('journal.Title', $Info);
             $this->db->or_like('journalcopy.AccessionNumber', $Info);
@@ -88,7 +102,7 @@ class Circulation_model extends CI_Model {
         } elseif ($option == 'report') {
             $this->db->select('*');
             $this->db->from('report');
-            $this->db->join('reportcopy','report.ReportId = reportcopy.ReportId','left');
+            $this->db->join('reportcopy', 'report.ReportId = reportcopy.ReportId', 'left');
             $this->db->where('report.ReportId', $Info);
             $this->db->or_like('report.Title', $Info);
             $this->db->or_like('reportcopy.AccessionNumber', $Info);
@@ -105,7 +119,7 @@ class Circulation_model extends CI_Model {
         } elseif ($option == 'thesis') {
             $this->db->select('*');
             $this->db->from('thesis');
-            $this->db->join('thesiscopy','thesis.ThesisId = thesiscopy.ThesisId','left');
+            $this->db->join('thesiscopy', 'thesis.ThesisId = thesiscopy.ThesisId', 'left');
             $this->db->where('thesis.Thesisid', $Info);
             $this->db->or_like('thesis.Title', $Info);
             $this->db->or_like('thesiscopy.AccessionNumber', $Info);
@@ -130,26 +144,26 @@ class Circulation_model extends CI_Model {
         if ($typeName == 'book') {
             $this->db->select('*');
             $this->db->from('book');
-            $this->db->join('bookcopy','book.BookId = bookcopy.BookId','left');
+            $this->db->join('bookcopy', 'book.BookId = bookcopy.BookId', 'left');
             $this->db->where('book.BookId', $id);
             $this->db->get()->result();
             return $this->db->last_query();
         } elseif ($typeName == 'journel') {
             $this->db->select('*');
             $this->db->from('journal');
-            $this->db->join('journalcopy','journal.JournalId = journalcopy.JournalId','left');
+            $this->db->join('journalcopy', 'journal.JournalId = journalcopy.JournalId', 'left');
             $this->db->where('journal.JournalId', $id);
             return $this->db->get()->result();
         } elseif ($typeName == 'thesis') {
             $this->db->select('*');
             $this->db->from('thesis');
-            $this->db->join('thesiscopy','thesis.Thesisid = thesiscopy.ThesisID','left');
+            $this->db->join('thesiscopy', 'thesis.Thesisid = thesiscopy.ThesisID', 'left');
             $this->db->where('thesis.Thesisid', $id);
             return $this->db->get()->result();
         } elseif ($typeName == 'report') {
             $this->db->select('*');
             $this->db->from('report');
-            $this->db->join('reportcopy','report.ReportId = reportcopy.ReportId','left');
+            $this->db->join('reportcopy', 'report.ReportId = reportcopy.ReportId', 'left');
             $this->db->where('report.ReportId', $id);
             return $this->db->get()->result();
         } else {
@@ -260,9 +274,9 @@ class Circulation_model extends CI_Model {
             $total_day = $diff->format('%d');
             if (empty($fine)) {
                 $total_fine = 0;
-            }else if(!empty($fine_exist->Fine)){
+            } else if (!empty($fine_exist->Fine)) {
                 $total_fine = $fine_exist->Fine;
-            }else {
+            } else {
                 $total_fine = $fine->Fine * $total_day;
             }
             $data[] = array('username' => $result->username, 'Title' => $result->Title, 'Fine' => $total_fine, 'Find_paid' => $result->Fine, 'IssueReturnId' => $result->IssueReturnId); //            
