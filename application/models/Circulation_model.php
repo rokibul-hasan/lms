@@ -20,25 +20,9 @@ class Circulation_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('issuereturn');
         $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
-//        $this->db->join('bookcopy', 'issuereturn.BookId=bookcopy.BookId', 'left');
+        $this->db->where('issuereturn.approval_status', 2);
         $this->db->order_by('IssueReturnId', 'desc');
-//        $this->db->join('book', 'issuereturn.BookId=book.BookId', 'left');
-//        $this->db->join('journal', 'issuereturn.BookId=journal.JournalId', 'left');
         return $results = $this->db->get()->result();
-//        foreach ($results as $result){
-//            $book_id = $result->BookId;
-//            $type = $result->type;
-//            if($type == 'book'){
-//                $this->db->select('*');
-//                $this->db->from('bookcopy');
-//                $this->db->where('BookId', $book_id);
-//                $copy = $this->db->get()->row();
-//                $sql[] = array('Title' => $result->Title,'username'=> $result->username,'IssueReturnId' => $result->IssueReturnId,'type' => $result->type, 'IssueDate' => $result->IssueDate
-//                        ,'ExpiryDate' => $result->ExpiryDate, 'ReturnDate',$result->ReturnDate, 'Fine' => $result->Fine ,'ReturnOrNot' => $result->ReturnOrNot,'total_copy'=>$copy->BookCopyStatus
-//                        ,'approval_status'=> $result->approval_status);
-//            }
-//        }
-//        return $sql;
     }
 
     public function search_issue_info($user_id = null, $issue_return = null, $from = null, $to = null) {
@@ -47,7 +31,8 @@ class Circulation_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('issuereturn');
         $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
-        $this->db->order_by('IssueReturnId', 'desc');
+        $this->db->where('issuereturn.approval_status', 2);
+        $this->db->order_by('IssueReturnId', 'desc');        
         if (!empty($user_id)) {
             $this->db->where('issuereturn.UserId', $user_id);
         }
@@ -58,7 +43,7 @@ class Circulation_model extends CI_Model {
                 $this->db->where('issuereturn.ReturnOrNot', 1);
             }
         }if ($date_from != '1970-01-01') {
-            $condition = "DATE(party_advance_payment_register.date_payment) BETWEEN '$date_from'  AND  '$date_to'";
+            $condition = "DATE(issuereturn.IssueDate) BETWEEN '$date_from'  AND  '$date_to'";
             $this->db->where($condition);
         }
         return $this->db->get()->result();
@@ -292,7 +277,7 @@ class Circulation_model extends CI_Model {
 
         $data['UserId'] = $this->input->post('UserId');
         $data['Title'] = $info->Title;
-        $data['IssueDate'] = date('Y-m-d H:i:s');
+//        $data['IssueDate'] = date('Y-m-d H:i:s');
 //        $data['ExpiryDate'] = date('Y-m-d H:i:s' . " +" . $circulation->IssueLimitDays . " day");
         $data['ExpiryDate'] = date("Y-m-d", strtotime("+" . $circulation->IssueLimitDays . " day"));
 //        print_r($data['ExpiryDate']);exit();

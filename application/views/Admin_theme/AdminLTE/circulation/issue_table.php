@@ -127,7 +127,7 @@
                                                 <th>Return Date</th>
                                                 <th>Fine/Penalty-BDT</th>
                                                 <th>Is Returned</th>
-                                                <th>Approval Status</th>
+                                                <!--<th>Approval Status</th>-->
                                             </tr>
                                         </thead>
 
@@ -147,7 +147,7 @@
                                                     <td><?php echo $issue->ReturnDate; ?></td>
                                                     <td><?php echo $issue->Fine; ?></td>
                                                     <td><?php echo ($issue->ReturnOrNot == 1) ? '<span class="bg-green">Yes</span>' : '<span class="bg-red">No</span>'; ?></td>
-                                                    <td><?php
+                                                    <!--<td><?php
                                                         if ($issue->approval_status == 2) {
                                                             echo '<span class="bg-green">Accepted</span>';
                                                         } elseif ($issue->approval_status == 3) {
@@ -159,7 +159,7 @@
                                                                    <input type="hidden" name="account_number" value="<?php echo $row->id_bank_account; ?>"/>
                                                                    <input type="hidden" name="transaction_type" value="<?php echo $row->id_trnsaction_type; ?>"/>-->
 
-                                                                <input type="hidden" name="IssueReturnId" value="<?php echo $issue->IssueReturnId; ?>">
+                                                          <!--       <input type="hidden" name="IssueReturnId" value="<?php echo $issue->IssueReturnId; ?>">
                                                                 Accepted <input type="radio" name="approval_status" value="2" <?php
                                                                 if ($issue->approval_status == 2) {
                                                                     echo 'checked';
@@ -178,7 +178,7 @@
                                                                 <a href="#"  class="btn btn-warning save_status">Update</a>
                                                             </form>
                                                         <?php } ?>
-                                                    </td>
+                                                    </td>-->
                                                 </tr>
                                             <?php } ?>
                                         </tbody>

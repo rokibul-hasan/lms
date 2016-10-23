@@ -135,12 +135,19 @@ class Circulation extends CI_Controller {
     function issue_approval() {
         $approved_by = $_SESSION['user_id'];
         $status = $this->input->post('approval_status');
+        $data['site_name'] = $this->config->item('website_name', 'tank_auth');
+        if($status == 2){
+             $this->_send_email('Success_email', $data['new_email'], $data);
+        }else if($status == 3){
+             $this->_send_email('cancel_email', $data['new_email'], $data);
+        }
+        
         $IssueReturnId = $this->input->post('IssueReturnId');
-        $sql = $this->db->query("UPDATE `issuereturn` "
-                . "SET "
-                . "`approval_status`='$status',"
-                . "`ApprovedBy`=$approved_by "
-                . "WHERE `IssueReturnId`=$IssueReturnId");
+        $this->db->set('approval_status',$status);
+        $this->db->set('ApprovedBy',$approved_by);
+        $this->db->set('IssueDate',Date('Y-m-d H:i:s'));
+        $this->db->where('IssueReturnId',$IssueReturnId);
+        $this->db->update('issuereturn');
         if ($status == 2) {
             $data = '<span class="bg-green">Accepted</span>';
         } elseif ($status == 3) {
@@ -202,6 +209,25 @@ class Circulation extends CI_Controller {
         $data['Title'] = 'Issue';
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'circulation/requested_new_issue', $data);
+    }
+    
+    /**
+     * Send email message of given type (activate, forgot_password, etc.)
+     *
+     * @param	string
+     * @param	string
+     * @param	array
+     * @return	void
+     */
+    function _send_email($type, $email, &$data) {
+        $this->load->library('email');
+        $this->email->from($this->config->item('webmaster_email', 'tank_auth'), $this->config->item('website_name', 'tank_auth'));
+        $this->email->reply_to($this->config->item('webmaster_email', 'tank_auth'), $this->config->item('website_name', 'tank_auth'));
+        $this->email->to($email);
+        $this->email->subject(sprintf($this->lang->line('auth_subject_' . $type), $this->config->item('website_name', 'tank_auth')));
+        $this->email->message($this->load->view('email/' . $type . '-html', $data, TRUE));
+        $this->email->set_alt_message($this->load->view('email/' . $type . '-txt', $data, TRUE));
+        $this->email->send();
     }
 
 }
