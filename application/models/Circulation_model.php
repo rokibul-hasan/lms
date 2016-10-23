@@ -53,17 +53,92 @@ class Circulation_model extends CI_Model {
         }
         if (!empty($issue_return)) {
             if ($issue_return == 1) {
-                $this->db->where('issuereturn.approval_status', $issue_return);
+                $this->db->where('issuereturn.approval_status', 2);
             } else if ($issue_return == 2) {
-                $this->db->where('issuereturn.ReturnOrNot', $issue_return);
+                $this->db->where('issuereturn.ReturnOrNot', 1);
             }
-        }if($date_from != '1970-01-01'){
+        }if ($date_from != '1970-01-01') {
             $condition = "DATE(party_advance_payment_register.date_payment) BETWEEN '$date_from'  AND  '$date_to'";
             $this->db->where($condition);
         }
         return $this->db->get()->result();
     }
 
+////////////////////////issue confirmation///////////////////////////
+    function issue_confirmation() {
+        $this->db->select('*');
+        $this->db->from('issuereturn');
+        $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
+//        $this->db->join('bookcopy', 'issuereturn.BookId=bookcopy.BookId', 'left');
+        $this->db->order_by('IssueReturnId', 'desc');
+//        $this->db->join('book', 'issuereturn.BookId=book.BookId', 'left');
+//        $this->db->join('journal', 'issuereturn.BookId=journal.JournalId', 'left');
+        $results = $this->db->get()->result();
+        foreach ($results as $result) {
+            $book_id = $result->BookId;
+            $type = $result->type;
+            if ($type == 'book') {
+                $this->db->select('*');
+                $this->db->from('bookcopy');
+                $this->db->where('BookId', $book_id);
+                $copy = $this->db->get()->row();
+                if (!empty($copy)) {
+                    $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
+                        , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => $copy->BookCopyStatus
+                        , 'approval_status' => $result->approval_status);
+                }else {
+                    $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
+                        , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => '0'
+                        , 'approval_status' => $result->approval_status);
+                }                
+            }if ($type == 'journal') {
+                $this->db->select('*');
+                $this->db->from('journalcopy');
+                $this->db->where('JournalId', $book_id);
+                $copy = $this->db->get()->row();
+                if (!empty($copy)) {
+                    $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
+                        , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => $copy->JournalCopyStatus
+                        , 'approval_status' => $result->approval_status);
+                } else {
+                    $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
+                        , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => '0'
+                        , 'approval_status' => $result->approval_status);
+                }
+            }if ($type == 'thesis') {
+                $this->db->select('*');
+                $this->db->from('thesiscopy');
+                $this->db->where('ThesisID', $book_id);
+                $copy = $this->db->get()->row();
+                if (!empty($copy)) {
+                    $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
+                        , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => $copy->ThesisCopyStatus
+                        , 'approval_status' => $result->approval_status);
+                } else {
+                    $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
+                        , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => '0'
+                        , 'approval_status' => $result->approval_status);
+                }
+            }if ($type == 'report') {
+                $this->db->select('*');
+                $this->db->from('reportcopy');
+                $this->db->where('ReportId', $book_id);
+                $copy = $this->db->get()->row();
+                if (!empty($copy)) {
+                    $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
+                        , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => $copy->ReportCopyStatus
+                        , 'approval_status' => $result->approval_status);
+                } else {
+                    $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
+                        , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => '0'
+                        , 'approval_status' => $result->approval_status);
+                }
+            }
+        }
+        return $sql;
+    }
+
+    ///////////////////////////////////////////////////////////
     function select_book_info($Info, $option) {
         if ($option == 'book') {
             $this->db->select('*');

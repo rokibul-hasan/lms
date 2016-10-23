@@ -53,7 +53,7 @@ class Circulation extends CI_Controller {
         $date_to = $this->input->get('date_to');
         $btn_submit = $this->input->get('btn_submit');
         if (isset($btn_submit)) {
-            $data['search_issue_info'] = $this->Circulation_model->search_issue_info($user_id,$issue_return,$date_from,$date_to);
+            $data['search_issue_info'] = $this->Circulation_model->search_issue_info($user_id, $issue_return, $date_from, $date_to);
         } else {
             $data['issue_info'] = $this->Circulation_model->issue();
 //echo'<pre>';print_r($data);exit();
@@ -63,6 +63,15 @@ class Circulation extends CI_Controller {
         $data['Title'] = 'Issue & Return';
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'circulation/issue_table', $data);
+    }
+
+    function issue_confirmation() {
+        $data['issue_info'] = $this->Circulation_model->issue_confirmation();
+        $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
+        $data['Section'] = 'Circulation Section';
+        $data['Title'] = 'Issue Confirmation';
+        $data['base_url'] = base_url();
+        $this->load->view($this->config->item('ADMIN_THEME') . 'circulation/issue_pending', $data);
     }
 
     function userissuetable() {

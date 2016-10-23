@@ -112,6 +112,7 @@
             <li><a href="<?= site_url('circulation/fine_calculation'); ?>"><i class="fa fa-calculator"></i> Fine Calculation</a></li>
             <li><a href="<?= site_url('circulation/book_issue'); ?>"><i class="fa fa-mail-forward"></i> Issue </a></li>            
             <li><a href="<?= site_url('circulation/book_return'); ?>"><i class="fa fa-mail-reply"></i> Return</a></li>            
+            <li><a href="<?= site_url('circulation/issue_confirmation'); ?>"><i class="fa fa-check-circle"></i> Issue Confirmation</a></li>            
             <li><a href="<?= site_url('circulation/issuetable'); ?>"><i class="fa fa-table"></i> Issue & Return Table</a></li>            
         </ul>
     </li>
