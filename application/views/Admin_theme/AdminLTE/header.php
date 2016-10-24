@@ -30,7 +30,7 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="<?php echo $theme_asset_url ?>dist/css/skins/_all-skins.min.css">
-        
+
         <script type="text/javascript">
             function printDiv(divName) {
                 var printContents = document.getElementById(divName).innerHTML;
@@ -42,12 +42,18 @@
                 document.body.innerHTML = originalContents;
             }
         </script>
-        
+
         <style type="text/css">
             body {
                 text-transform: capitalize;
             }
             input[type="text"] {
+                width: 100%!important;
+            }
+            .form-input-box input[type="text"]{
+                width: 265%!important;
+            }
+            .chosen-search input[type="text"]{
                 width: 100%!important;
             }
             .tools a {
@@ -82,7 +88,7 @@
                 #test{visibility: visible;}
 
             }
-            
+
             @media only print{
                 .report-logo-for-print{
                     display: block;
@@ -95,21 +101,21 @@
                     display:none;
                 }
                 .page_break_after{page-break-after: always;}
-                
+
                 #table_custom .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
                     border: 1px solid #222!important;
                 }
-               .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
+                .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
 
-                border:1px solid #222!important;
-            }
+                    border:1px solid #222!important;
+                }
                 body table,body tr,body td,body th,body tbody,body thead,.table,.table-bordered {
                     border: 1px solid #222!important;
                 }
                 body .table-bordered{
                     border:1px solid #222!important;
                 }
-           }
+            }
         </style>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -129,77 +135,76 @@
 
             <?php endforeach; ?>
     </head>
-    
-<body class="hold-transition skin-blue sidebar-mini">
-    <div class="loding">
-        <p>Loading........</p>        
-    </div>
-<div class="wrapper">
 
-  <!-- Main Header -->
-  <header class="main-header">
-
-    <!-- Logo -->
-    <a href="<?= site_url('Admin'); ?>" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><?php echo $this->config->item('SITETITLE'); ?></span>
-      <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><small><?php echo $this->config->item('SITETITLE'); ?></small></span>
-    </a>
-
-    <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
-      <!-- Navbar Right Menu -->
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-            <li><a href="<?= site_url('frontpage'); ?>" target="_blank"><i class="fa fa-external-link"></i> <span>View Front Page</span></a></li>
-                <?php if($_SESSION['user_type'] != 3) { ?>
-             <li><a href="<?= site_url('userdashboard'); ?>" target="_blank"><i class="fa fa-external-link"></i> <span>View User Panel</span></a></li>
-                <?php } ?>
-
-
-          <!-- User Account Menu -->
-          <li class="dropdown user user-menu">
-            <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="hidden-xs"><i class="fa fa-user"></i> User :<strong> <?php echo $_SESSION['username']; ?></strong></span>
-            </a>
-
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  
-   <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel" style="height:70px">
-        <div class="pull-left image">
-          
+    <body class="hold-transition skin-blue sidebar-mini">
+        <div class="loding">
+            <p>Loading........</p>        
         </div>
-        <div class="pull-left info" >
-          <p><?php echo $_SESSION['username']; ?></p>
-          <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-        </div>
-      </div>
-      <!-- /.search form -->
-      <?php include_once 'sidebar_common.php';?>
-      
-    </section>
-    <!-- /.sidebar -->
-  </aside>
-  
+        <div class="wrapper">
+
+            <!-- Main Header -->
+            <header class="main-header">
+
+                <!-- Logo -->
+                <a href="<?= site_url('Admin'); ?>" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><?php echo $this->config->item('SITETITLE'); ?></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><small><?php echo $this->config->item('SITETITLE'); ?></small></span>
+                </a>
+
+                <!-- Header Navbar -->
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <li><a href="<?= site_url('frontpage'); ?>" target="_blank"><i class="fa fa-external-link"></i> <span>View Front Page</span></a></li>
+                            <?php if ($_SESSION['user_type'] != 3) { ?>
+                                <li><a href="<?= site_url('userdashboard'); ?>" target="_blank"><i class="fa fa-external-link"></i> <span>View User Panel</span></a></li>
+                            <?php } ?>
+
+
+                            <!-- User Account Menu -->
+                            <li class="dropdown user user-menu">
+                                <!-- Menu Toggle Button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="hidden-xs"><i class="fa fa-user"></i> User :<strong> <?php echo $_SESSION['username']; ?></strong></span>
+                                </a>
+
+                            </li>
+                            <!-- Control Sidebar Toggle Button -->
+                            <li>
+                                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+
+                    <!-- Sidebar user panel (optional) -->
+                    <div class="user-panel" style="height:70px">
+                        <div class="pull-left image">
+
+                        </div>
+                        <div class="pull-left info" >
+                            <p><?php echo $_SESSION['username']; ?></p>
+                            <!-- Status -->
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                    <!-- /.search form -->
+                    <?php include_once 'sidebar_common.php'; ?>
+
+                </section>
+                <!-- /.sidebar -->
+            </aside>

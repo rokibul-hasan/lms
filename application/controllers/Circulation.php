@@ -69,7 +69,7 @@ class Circulation extends CI_Controller {
         $data['issue_info'] = $this->Circulation_model->issue_confirmation();
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
         $data['Section'] = 'Circulation Section';
-        $data['Title'] = 'Issue Confirmation';
+        $data['Title'] = 'Borrow Request';
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'circulation/issue_pending', $data);
     }
@@ -126,7 +126,7 @@ class Circulation extends CI_Controller {
         $user_type = $this->session->userdata('user_type');
         if ($user_type == '1') {
             $this->load->model('checkuser');
-            redirect('circulation/issuetable');
+            redirect('circulation/issue_confirmation');
         } else if ($user_type == '4') {
             redirect('circulation/userissuetable');
         }
@@ -136,11 +136,11 @@ class Circulation extends CI_Controller {
         $approved_by = $_SESSION['user_id'];
         $status = $this->input->post('approval_status');
         $data['site_name'] = $this->config->item('website_name', 'tank_auth');
-        if($status == 2){
-             $this->_send_email('Success_email', $data['new_email'], $data);
-        }else if($status == 3){
-             $this->_send_email('cancel_email', $data['new_email'], $data);
-        }
+//        if($status == 2){
+//             $this->_send_email('Success_email', $data['new_email'], $data);
+//        }else if($status == 3){
+//             $this->_send_email('cancel_email', $data['new_email'], $data);
+//        }
         
         $IssueReturnId = $this->input->post('IssueReturnId');
         $this->db->set('approval_status',$status);

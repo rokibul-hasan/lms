@@ -100,16 +100,16 @@
                             <?php
                             if (empty($search_issue_info)) {
                                 ?>
-                            <div class="button">
-                                <a href="<?php echo site_url('circulation/book_issue'); ?>" class="btn btn-warning"><i class="fa fa-mail-forward"></i> Issue </a>
-                                <a href="<?php echo site_url('circulation/book_return'); ?>" class="btn btn-danger"><i class="fa  fa-mail-reply"></i> Return</a>
-                            </div>
-                            <?php
-                            $message = $this->session->userdata('message');
-                            if (isset($message)) {
-                                echo $message;
-                            }
-                            $this->session->unset_userdata('message');
+                                <div class="button">
+                                    <a href="<?php echo site_url('circulation/book_issue'); ?>" class="btn btn-warning"><i class="fa fa-mail-forward"></i> Issue </a>
+                                    <a href="<?php echo site_url('circulation/book_return'); ?>" class="btn btn-danger"><i class="fa  fa-mail-reply"></i> Return</a>
+                                </div>
+                                <?php
+                                $message = $this->session->userdata('message');
+                                if (isset($message)) {
+                                    echo $message;
+                                }
+                                $this->session->unset_userdata('message');
 //                            if (empty($search_issue_info)) {
                                 ?>
                                 <div class="table-responsive">
@@ -127,7 +127,7 @@
                                                 <th>Return Date</th>
                                                 <th>Fine/Penalty-BDT</th>
                                                 <th>Is Returned</th>
-                                                <!--<th>Approval Status</th>-->
+                                                <th>Approval Status</th>
                                             </tr>
                                         </thead>
 
@@ -143,44 +143,19 @@
                                                     <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
                                                     <td><?php echo date('Y-m-d', strtotime($issue->IssueDate)); ?></td>
                                                     <td><?php echo date('Y-m-d', strtotime($issue->ExpiryDate)); ?></td>
-                                                    <!--<td><?php // echo $issue->BookCopyStatus;      ?></td>-->
+                                                    <!--<td><?php // echo $issue->BookCopyStatus;         ?></td>-->
                                                     <td><?php echo $issue->ReturnDate; ?></td>
                                                     <td><?php echo $issue->Fine; ?></td>
                                                     <td><?php echo ($issue->ReturnOrNot == 1) ? '<span class="bg-green">Yes</span>' : '<span class="bg-red">No</span>'; ?></td>
-                                                    <!--<td><?php
+                                                    <td><?php
                                                         if ($issue->approval_status == 2) {
                                                             echo '<span class="bg-green">Accepted</span>';
                                                         } elseif ($issue->approval_status == 3) {
                                                             echo '<span class="bg-red">Canceled</span>';
-                                                        } else {
-                                                            ?> 
-                                                            <form class="formforstatus" method="post" action="<?php echo site_url('circulation/issue_approval'); ?>">
-                            <!--                                           <input type="hidden" name="amount_transaction" value="<?php echo $row->amount; ?>">
-                                                                   <input type="hidden" name="account_number" value="<?php echo $row->id_bank_account; ?>"/>
-                                                                   <input type="hidden" name="transaction_type" value="<?php echo $row->id_trnsaction_type; ?>"/>-->
-
-                                                          <!--       <input type="hidden" name="IssueReturnId" value="<?php echo $issue->IssueReturnId; ?>">
-                                                                Accepted <input type="radio" name="approval_status" value="2" <?php
-                                                                if ($issue->approval_status == 2) {
-                                                                    echo 'checked';
-                                                                }
-                                                                ?> >
-                                                                Canceled <input type="radio" name="approval_status" value="3"  <?php
-                                                                if ($issue->approval_status == 3) {
-                                                                    echo 'checked';
-                                                                }
-                                                                ?>>
-                                                                Pending <input type="radio" name="approval_status" value="1"  <?php
-                                                                if ($issue->approval_status == 1) {
-                                                                    echo 'checked';
-                                                                }
-                                                                ?>>
-                                                                <a href="#"  class="btn btn-warning save_status">Update</a>
-                                                            </form>
-                                                        <?php } ?>
-                                                    </td>-->
+                                                        }
+                                                        ?></td>
                                                 </tr>
-                                            <?php } ?>
+    <?php } ?>
                                         </tbody>
 
                                     </table>
@@ -234,7 +209,7 @@
                                                                 echo 'Accepted';
                                                             } elseif ($issue->approval_status == 3) {
                                                                 echo 'Canceled';
-                                                            }elseif ($issue->approval_status == 1) {
+                                                            } elseif ($issue->approval_status == 1) {
                                                                 echo 'Pending';
                                                             }
                                                             ?>
@@ -244,20 +219,20 @@
                                                 }
                                                 ?>
 
-<!--                                                <tr style="font-weight: bold">
-                                                    <td>Total :</td>
-                                                    <td><?php echo $sum_total_amount; ?></td>
-                                                    <td></td>
+                <!--                                                <tr style="font-weight: bold">
+                                                                    <td>Total :</td>
+                                                                    <td><?php echo $sum_total_amount; ?></td>
+                                                                    <td></td>
 
 
-                                                </tr>-->
+                                                                </tr>-->
                                             </tbody>
                                         </table>
 
                                     </div>
 
                                 </div>
-                            <?php } ?>
+<?php } ?>
                         </div>
                     </div>
                 </div>

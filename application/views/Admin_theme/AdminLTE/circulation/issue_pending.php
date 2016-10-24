@@ -49,12 +49,7 @@
                                             <th>Member Name</th>
                                             <th style="display:none"></th>
                                             <th>Resource Type</th>
-                                            <th>Issue Date</th>
-                                            <th>Expiry Date</th>
-                                            <th>Return Date</th>
                                             <th>Total Number of Copy</th>
-                                            <th>Fine/Penalty-BDT</th>
-                                            <th>Is Returned</th>
                                             <th>Approval Status</th>
                                         </tr>
                                     </thead>
@@ -68,13 +63,8 @@
                                                 <td><?php echo $issue['Title']; ?></td>
                                                 <td><?php echo $issue['username']; ?></td>
                                                 <td style="display:none;"><?php echo $issue['IssueReturnId']; ?></td>
-                                                <td style="text-transform: uppercase;"><?php echo $issue['type']; ?></td>
-                                                <td><?php echo (date('d/m/Y', strtotime($issue['IssueDate']))== '01/01/1970')?'':date('d/m/Y', strtotime($issue['IssueDate'])); ?></td>
-                                                <td><?php echo (date('d/m/Y', strtotime($issue['ExpiryDate']))== '01/01/1970')?'':date('d/m/Y', strtotime($issue['ExpiryDate'])); ?></td>
-                                                <td><?php echo (date('d/m/Y', strtotime($issue['ReturnDate']))== '01/01/1970')?'':date('d/m/Y', strtotime($issue['ReturnDate'])); ?></td>
+                                                <td style="text-transform: uppercase;"><?php echo $issue['type']; ?></td>                                                
                                                 <td><?php echo $issue['total_copy']; ?></td>
-                                                <td><?php echo $issue['Fine']; ?></td>
-                                                <td><?php echo ($issue['ReturnOrNot'] == 1) ? '<span class="bg-green">Yes</span>' : '<span class="bg-red">No</span>'; ?></td>
                                                 <td><?php
                                                     if ($issue['approval_status'] == 2) {
                                                         echo '<span class="bg-green">Accepted</span>';

@@ -186,6 +186,7 @@
 
 <?php include_once 'footer.php'; ?>
 <script type="text/javascript">
+    $(".loding").hide();
     $('#ban_reason').hide();
     $('#banned').change(function () {
         var select = $("#banned option:selected").val();
