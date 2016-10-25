@@ -15,5 +15,6 @@
     <li><a href="<?= site_url('userdashboard'); ?>"><i class="fa fa-search"></i> <span>Search Your Resource</span></a></li>
     <li><a href="<?= site_url('circulation/userissuetable?link=pending_request'); ?>"><i class="fa fa-book"></i> <span>My Requested Book</span></a></li>
     <li><a href="<?=site_url('circulation/userissuetable')?>"><i class="fa fa-retweet"></i> <span>My Circulation History</span></a></li>
+    <!--<li><a href="<?=site_url('circulation/issue_confirmation')?>"><i class="fa fa-check-circle"></i> <span>Borrow Request</span></a></li>-->
     <li><a href="<?= site_url('login/logout'); ?>"><i class="fa fa-power-off"></i> <span>Logout</span></a></li>
 </ul>

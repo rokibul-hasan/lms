@@ -55,12 +55,12 @@
                             </div>
                             <div class="col-md-6 ">
                                 <div class="form-group ">
-                                    <label class="col-md-3">Issue/Return:</label>
+                                    <label class="col-md-3">Is Returned?:</label>
                                     <div class="col-md-9">
                                         <select name="issue_return" id="" class="form-control select2">
-                                            <option value="">Select Issue/Return</option>
-                                            <option value="1">Issue</option>
-                                            <option value="2">Return</option>
+                                            <option value="">Select Is Returned?</option>
+                                            <option value="1">Yes</option>
+                                            <option value="2">No</option>
                                         </select>
                                     </div>
                                 </div>
@@ -141,8 +141,8 @@
                                                     <td><?php echo $issue->username; ?></td>
                                                     <td style="display:none;"><?php echo $issue->IssueReturnId; ?></td>
                                                     <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
-                                                    <td><?php echo date('Y-m-d', strtotime($issue->IssueDate)); ?></td>
-                                                    <td><?php echo date('Y-m-d', strtotime($issue->ExpiryDate)); ?></td>
+                                                    <td><?php echo $issue->IssueDate; ?></td>
+                                                    <td><?php echo $issue->ExpiryDate; ?></td>
                                                     <!--<td><?php // echo $issue->BookCopyStatus;         ?></td>-->
                                                     <td><?php echo $issue->ReturnDate; ?></td>
                                                     <td><?php echo $issue->Fine; ?></td>

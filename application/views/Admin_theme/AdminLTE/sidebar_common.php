@@ -130,8 +130,9 @@
             </span>
         </a> 
         <ul class="treeview-menu">
-            <li><a href="<?= site_url('user/user_type'); ?>"><i class="fa fa-user"></i> <span>Member Type</span></a></li>
             <li><a href="<?= site_url('user'); ?>"><i class="fa fa-group"></i> <span>Member</span></a></li>
+            <li><a href="<?= site_url('user/user_type'); ?>"><i class="fa fa-user"></i> <span>Member Type</span></a></li>
+            
 <!--            <li><a href="http://lms.xeroneit.net/admin/generate_id"><i class="fa fa-credit-card"></i> <span>Generate member ID</span></a></li>-->
         </ul>
     </li> 

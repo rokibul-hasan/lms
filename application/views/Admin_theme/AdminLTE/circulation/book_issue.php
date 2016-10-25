@@ -39,9 +39,9 @@
                                     if ($user_type == '1') {
                                         ?>
                                         <select class="form-control  select2" name="UserId" id="select2">
-                                            <option value="">Select User</option>
+                                            <option value="blank">Select User</option>
                                             <?php foreach ($get_users as $user) { ?>
-                                                <option value="<?php echo $user->id; ?>"><?php echo $user->username; ?></option>
+                                                <option value="<?php echo $user->id; ?>"><?php echo $user->username; ?></option>                                                
                                             <?php } ?>
                                         </select>
                                         <?php
@@ -57,7 +57,7 @@
                                 <label for="inputEmail3" class="col-md-2 control-label">Resource Type</label>
                                 <div class="col-md-10">
                                     <select class="form-control  select2" name="type" id="option">
-                                        <option value="">Select Type</option>
+                                        <option value="blank">Select Type</option>
                                         <option value="book">Book</option>
                                         <option value="journel">Journal</option>
                                         <option value="report">Report</option>
@@ -69,7 +69,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-md-2 col-sm-2 control-label">Search</label>
                                 <div class="col-md-10 col-sm-10">
-                                    <input class="form-control" id="book" placeholder="Type Id / Title / Accession Number" type="text" autocomplete="off">
+                                    <input class="form-control" id="book" placeholder="Type Id / Title / Accession Number" type="text" autocomplete="off" required="">
                                     <div id="book_list"></div>
                                     <!--search result-->
                                     <div id="book_preview" class="text-center" style="margin-top: 20px;">
@@ -108,7 +108,6 @@
 </style>
 
 <script type="text/javascript">
-    
     $('#book_preview').hide();
     $('#option').change(function () {
         $('#book').val('');
@@ -116,6 +115,17 @@
         $(".loding").show();
         $(".loding").fadeOut(2000);
     });
+    
+    $('#new_issue_submit').click(function () {
+            if (document.getElementsByName('UserId')[0].value == 'blank') {
+                alert('Please Select User !');
+                return false;
+            }
+            if (document.getElementsByName('type')[0].value == 'blank') {
+                alert('Please Select Resource Type !');
+                return false;
+            }
+        });
     
 //    book search 
 
@@ -157,22 +167,23 @@
                 dataType: 'text',
                 type: 'POST',
                 success: function (data) {
+                    console.log(data);
 //                    alert(data);
                     $('#banner').show();
                     var bookList = $.parseJSON(data);
                     $.each(bookList, function (i, bookname) {
                         var banner = '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Title</label><div class="col-sm-10"><span><b>' + bookname['Title'] + '</b></span></div></div>';                                                
                         if (name == 'book') {
-                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy</label><div class="col-sm-10"><span><b>' + bookname['BookCopyStatus'] + '</b></span></div></div>';
+                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + bookname['BookCopyStatus'] + '</b></span></div></div>';
                             $('#id').val(bookname['BookId']);
                         } else if (name == 'journel') {
-                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy</label><div class="col-sm-10"><span><b>' + bookname['JournalCopyStatus'] + '</b></span></div></div>';
+                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + bookname['JournalCopyStatus'] + '</b></span></div></div>';
                             $('#id').val(bookname['JournalId']);
                         } else if (name == 'report') {
-                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy</label><div class="col-sm-10"><span><b>' + bookname['ReportCopyStatus'] + '</b></span></div></div>';
+                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + bookname['ReportCopyStatus'] + '</b></span></div></div>';
                             $('#id').val(bookname['ReportId']);
                         } else if (name == 'thesis') {
-                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy</label><div class="col-sm-10"><span><b>' + bookname['ThesisCopyStatus'] + '</b></span></div></div>';
+                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + bookname['ThesisCopyStatus'] + '</b></span></div></div>';
                             $('#id').val(bookname['Thesisid']);
                         }
                         if (bookname['Banner'] == '') {

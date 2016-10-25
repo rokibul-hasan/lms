@@ -49,7 +49,7 @@
                                             <th>Member Name</th>
                                             <th style="display:none"></th>
                                             <th>Resource Type</th>
-                                            <th>Total Number of Copy</th>
+                                            <th>Total Number of Copy Remaining</th>
                                             <th>Approval Status</th>
                                         </tr>
                                     </thead>
@@ -78,6 +78,7 @@
                                                                <input type="hidden" name="transaction_type" value="<?php echo $row->id_trnsaction_type; ?>"/>-->
 
                                                             <input type="hidden" name="IssueReturnId" value="<?php echo $issue['IssueReturnId']; ?>">
+                                                            <input type="hidden" name="email" value="<?php echo $issue['email']; ?>">
                                                             Accepted <input type="radio" name="approval_status" value="2" <?php
                                                             if ($issue['approval_status'] == 2) {
                                                                 echo 'checked';

@@ -49,6 +49,7 @@ class Circulation extends CI_Controller {
         $data['users_info'] = $this->db->where('activated', '1')->get('users')->result();
         $user_id = $this->input->get('member_id');
         $issue_return = $this->input->get('issue_return');
+        
         $date_from = $this->input->get('date_from');
         $date_to = $this->input->get('date_to');
         $btn_submit = $this->input->get('btn_submit');
@@ -66,12 +67,19 @@ class Circulation extends CI_Controller {
     }
 
     function issue_confirmation() {
+        $user_type = $this->session->userdata('user_type');
         $data['issue_info'] = $this->Circulation_model->issue_confirmation();
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
         $data['Section'] = 'Circulation Section';
         $data['Title'] = 'Borrow Request';
         $data['base_url'] = base_url();
-        $this->load->view($this->config->item('ADMIN_THEME') . 'circulation/issue_pending', $data);
+        if ($user_type == '4') {
+            $user_id = $this->session->userdata('user_id');
+            $data['user_request'] = $this->Circulation_model->user_request($user_id);
+            $this->load->view($this->config->item('ADMIN_THEME') . 'member/user_pending', $data);
+        } else {
+            $this->load->view($this->config->item('ADMIN_THEME') . 'circulation/issue_pending', $data);
+        }
     }
 
     function userissuetable() {
@@ -112,21 +120,27 @@ class Circulation extends CI_Controller {
     }
 
     function new_issue() {
-
         $btn = $this->input->post('btn');
+        $user_type = $this->session->userdata('user_type');
         if (isset($btn)) {
 //            print_r($_POST);
             $this->Circulation_model->save_new_issue($_POST);
             $id = $this->input->post('Id');
             $type = $this->input->post('type');
             $this->Counter_model->count_issue_book($id, $type);
+            if ($user_type == '1') {
+//                $email = $this->db->get_where('users', array('id' => $id))->row()->email;
+//                $data['site_name'] = $this->config->item('website_name', 'tank_auth');
+//                $data['new_email'] = $email;
+//                $this->_send_email('Success_email', $data['new_email'], $data);
+            }
         }
         $sdata['message'] = '<div class = "alert alert-success" id="message"><button type = "button" class = "close" data-dismiss = "alert"><i class = " fa fa-times"></i></button><p><strong><i class = "ace-icon fa fa-check"></i></strong> Data is Successfully Saved!</p></div>';
         $this->session->set_userdata($sdata);
-        $user_type = $this->session->userdata('user_type');
+
         if ($user_type == '1') {
             $this->load->model('checkuser');
-            redirect('circulation/issue_confirmation');
+            redirect('circulation/issuetable');
         } else if ($user_type == '4') {
             redirect('circulation/userissuetable');
         }
@@ -136,17 +150,18 @@ class Circulation extends CI_Controller {
         $approved_by = $_SESSION['user_id'];
         $status = $this->input->post('approval_status');
         $data['site_name'] = $this->config->item('website_name', 'tank_auth');
-//        if($status == 2){
-//             $this->_send_email('Success_email', $data['new_email'], $data);
-//        }else if($status == 3){
-//             $this->_send_email('cancel_email', $data['new_email'], $data);
+        $data['new_email'] = $this->input->post('email');
+//        if ($status == 2) {
+//            $this->_send_email('Success_email', $data['new_email'], $data);
+//        } else if ($status == 3) {
+//            $this->_send_email('cancel_email', $data['new_email'], $data);
 //        }
-        
+
         $IssueReturnId = $this->input->post('IssueReturnId');
-        $this->db->set('approval_status',$status);
-        $this->db->set('ApprovedBy',$approved_by);
-        $this->db->set('IssueDate',Date('Y-m-d H:i:s'));
-        $this->db->where('IssueReturnId',$IssueReturnId);
+        $this->db->set('approval_status', $status);
+        $this->db->set('ApprovedBy', $approved_by);
+        $this->db->set('IssueDate', Date('Y-m-d H:i:s'));
+        $this->db->where('IssueReturnId', $IssueReturnId);
         $this->db->update('issuereturn');
         if ($status == 2) {
             $data = '<span class="bg-green">Accepted</span>';
@@ -210,7 +225,7 @@ class Circulation extends CI_Controller {
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'circulation/requested_new_issue', $data);
     }
-    
+
     /**
      * Send email message of given type (activate, forgot_password, etc.)
      *

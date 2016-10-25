@@ -82,7 +82,7 @@ class User extends CI_Controller {
                 ->set_subject('Member Type')
                 ->display_as('UserId', 'Member Name')
                 ->set_relation('UserId', 'users', 'username')
-                ->field_type('Type', 'dropdown', array('1' => 'Super Admin', '2' => 'IT Manager', '3' => 'Employee', '4' => 'User'))
+                ->field_type('Type', 'dropdown', array('1' => 'Super Admin', '3' => 'Employee', '4' => 'User'))
                 ->order_by('UserTypeId', 'desc');
         $output = $crud->render();
         $data['glosary'] = $output;
