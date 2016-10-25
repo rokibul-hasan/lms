@@ -7,6 +7,7 @@ if (isset($thesis_list)) {
             echo '<h2 class="text-center">No Records Found</h2>';
         } else {
             ?>
+        <input class="only_print pull-right btn btn-primary" style="margin-bottom: 10px;" type="button"  onClick="window.print()"  value="Print"/>
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
@@ -18,7 +19,7 @@ if (isset($thesis_list)) {
                                 <th>Year of Publication</th>
                     <!--            <th>Place of Publication</th>-->
                                 <th>Department</th>
-                                <th>Action</th>
+                                <th class="only_print">Action</th>
                             </tr>
                             <?php
                             foreach ($thesis_list as $thesis_info) {
@@ -29,7 +30,7 @@ if (isset($thesis_list)) {
                                 echo "<td>{$thesis_info->yearofaward}</td>";
 //            echo "<td>{$book_info->PlaceOfPublication}</td>";
                                 echo "<td>{$thesis_info->department}</td>";
-                                echo '<td><form action="' . site_url('userdashboard') . '" method="post">';
+                                echo '<td class="only_print"><form action="' . site_url('userdashboard') . '" method="post">';
                                 echo '<button type="submit" value="Details"  name="btn_thesis_search" class="btn btn-sm btn-primary">Details</button>';
                                 echo '<input type="hidden"  name="thesisid" value="' . $thesis_info->Thesisid . '" />';
                                 echo '</form></td>';
@@ -56,6 +57,8 @@ if (isset($thesis_list)) {
         $bookid = $thesis_info->ID;
         $book_cover = $thesis_info->Banner;
         $file_link = $thesis_info->Ebook;
+        $remaining_copy = $thesis_info->ThesisCopyStatus - $max_issue ;
+        if($remaining_copy < 0){$remaining_copy = 0;} 
     }
     ?>
         <div class="col-md-12">
@@ -79,6 +82,7 @@ if (isset($thesis_list)) {
                             <i class="fa fa-map"></i>&nbsp; <strong>Address  :</strong> <?= $Address ?><br>
                             <i class="fa fa-book"></i>&nbsp; <strong>Page :</strong> <?= $page ?><br>
                             <i class="fa fa-book"></i>&nbsp; <strong>Year of Award  :</strong> <?= $publish_year ?><br>
+                            <i class="fa fa-hourglass-end"></i>&nbsp;<strong>Total Number of Copy Remaining : </strong><?= $remaining_copy ?> <br />
                             <i class="fa fa-pencil"></i>&nbsp; <strong> Abstract  :</strong> <?= $Abstract ?>&nbsp;                      
                         </div>
                     </div>
@@ -138,7 +142,7 @@ if (isset($thesis_list)) {
                                 <input type="hidden" value="<?= $bookid; ?>" name="Id" />
                                 <input type="hidden" value="<?= $user_id; ?>" name="UserId" />
                                 <input type="hidden" value="thesis" name="type"/>
-                                <input type="submit"  class="btn btn-danger btn-flat btn-block" id="lend" name="btn" value="Lend"/>
+                                <input type="submit"  class="btn btn-danger btn-flat btn-block" id="lend" name="btn" value="Borrow"/>
 
                             </form>
                         </div>

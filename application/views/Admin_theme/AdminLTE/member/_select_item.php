@@ -1,5 +1,5 @@
 
-<div class="col-md-4">
+<div class="col-md-4 only_print">
     <form action="" method="post" class="form-inline type_form">
         <div class="form-group col-md-12">
             <label for="" >Select Resource Type: </label>

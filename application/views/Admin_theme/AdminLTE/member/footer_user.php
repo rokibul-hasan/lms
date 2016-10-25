@@ -4,7 +4,7 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-      Anything you want
+        <p>Developed by <a href="<?php echo $this->config->config['DEVELOPER']['website']; ?>"><?php echo $this->config->config['DEVELOPER']['name']; ?></a></p>
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.

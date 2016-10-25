@@ -81,6 +81,7 @@
                             </div>
                             <div id="banner">
                             </div>
+                            <div id="failure"></div>
                             <input id="new_issue_submit" name="btn" class="btn btn-success btn-lg pull-right" data-dismiss="modal" value="Issue" style="display:bock;" type="submit">
                         </form>
                     </div>
@@ -145,7 +146,7 @@
                     $('#book_list').fadeIn();
                     $('#book_list').html(data);
                     if (data == '') {
-                        $('#book_list').html('<span class="bg-red">No Books Available</span>');
+                        $('#book_list').html('<span class="bg-red">No Books Available</span>');                        
                     }
                 },
                 error: function () {
@@ -167,23 +168,38 @@
                 dataType: 'text',
                 type: 'POST',
                 success: function (data) {
-                    console.log(data);
+                    if(data =='[]'){
+                        $('#failure').html('<h2 class="text-center">No items Exist</h2>');
+                        $('#new_issue_submit').hide();
+                    }
+//                    console.log(data);
 //                    alert(data);
                     $('#banner').show();
                     var bookList = $.parseJSON(data);
-                    $.each(bookList, function (i, bookname) {
+//                    alert(bookList.max_issue);
+                    var totalIssue = bookList.max_issue;
+                    $.each(bookList.get_resource_info, function (i, bookname) {
+                        
                         var banner = '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Title</label><div class="col-sm-10"><span><b>' + bookname['Title'] + '</b></span></div></div>';                                                
                         if (name == 'book') {
-                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + bookname['BookCopyStatus'] + '</b></span></div></div>';
+                            var remainCopy = bookname['BookCopyStatus'] - totalIssue;
+                            if(remainCopy < 0){ remainCopy = 0;}
+                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + remainCopy + '</b></span></div></div>';
                             $('#id').val(bookname['BookId']);
                         } else if (name == 'journel') {
-                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + bookname['JournalCopyStatus'] + '</b></span></div></div>';
+                            var remainCopy = bookname['JournalCopyStatus'] - totalIssue;
+                            if(remainCopy < 0){ remainCopy = 0;}
+                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + remainCopy + '</b></span></div></div>';
                             $('#id').val(bookname['JournalId']);
                         } else if (name == 'report') {
-                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + bookname['ReportCopyStatus'] + '</b></span></div></div>';
+                            var remainCopy = bookname['ReportCopyStatus'] - totalIssue;
+                            if(remainCopy < 0){ remainCopy = 0;}
+                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + remainCopy + '</b></span></div></div>';
                             $('#id').val(bookname['ReportId']);
                         } else if (name == 'thesis') {
-                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + bookname['ThesisCopyStatus'] + '</b></span></div></div>';
+                            var remainCopy = bookname['ThesisCopyStatus'] - totalIssue;
+                            if(remainCopy < 0){ remainCopy = 0;}
+                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + remainCopy + '</b></span></div></div>';
                             $('#id').val(bookname['Thesisid']);
                         }
                         if (bookname['Banner'] == '') {

@@ -30,16 +30,16 @@
                     <div class="box-header">
                         <?php
                         $attributes = array(
-                            // 'class' => 'form-horizontal',
+                            'class' => 'form-horizontal',
                             'name' => 'form',
                             'method' => 'get');
                         echo form_open('', $attributes)
                         ?>
                         <div class="row">
-                            <div class="col-md-5 ">
+                            <div class="col-md-6 ">
                                 <div class="form-group ">
-                                    <label>Member Name:</label>
-                                    <div>
+                                    <label class="col-md-3">Member Name:</label>
+                                    <div class="col-md-9">
                                         <select name="member_id" id="" class="form-control select2">
                                             <option value="">Select Member Name</option>
                                             <?php
@@ -53,11 +53,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-5 ">
+                            <div class="col-md-6 ">
                                 <div class="form-group ">
-                                    <label>Payment:</label>
-                                    <div >
+                                    <label class="col-md-3">Payment:</label>
+                                    <div class="col-md-9">
                                         <select name="payment" id="" class="form-control select2">
+                                            <option value="">Select Payment</option>
                                             <option value="1">Paid</option>
                                             <option value="0">Unpaid</option>
 
@@ -65,11 +66,70 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2" style="margin-top: 23px;">
-                                <button type="submit" name="btn_submit" value="true" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                                <?= anchor(current_url() . '', '<i class="fa fa-refresh"></i>', ' class="btn btn-success"') ?>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <div class="form-group ">
+                                    <label class="col-md-3">From :</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control datepicker" name="date_from"  placeholder="Add Date" type="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="form-group ">
+                                    <label class="col-md-3">To :</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control datepicker" name="date_to"  placeholder="Add Date" type="">
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <button type="submit" name="btn_submit" value="true" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
+                                <?= anchor(current_url() . '', '<i class="fa fa-refresh"></i> Reset', ' class="btn btn-success"') ?>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!--                        <div class="row">
+                                                    <div class="col-md-5 ">
+                                                        <div class="form-group ">
+                                                            <label>Payment:</label>
+                                                            <div >
+                                                                <select name="payment" id="" class="form-control select2">
+                                                                    <option value="">Select Payment</option>
+                                                                    <option value="1">Paid</option>
+                                                                    <option value="0">Unpaid</option>
+                        
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2" style="margin-top: 23px;">
+                                                        <button type="submit" name="btn_submit" value="true" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        <?= anchor(current_url() . '', '<i class="fa fa-refresh"></i>', ' class="btn btn-success"') ?>
+                                                    </div>
+                                                </div>-->
 
                         <?= form_close(); ?>
                     </div>

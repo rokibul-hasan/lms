@@ -48,7 +48,7 @@
                             <div class="col-md-7">
                                     <label>Search Item:</label>
                                     <div >
-                                        <input type="text" id="book" class="form-control" placeholder = "Type Id / Title" autocomplete="off"/>
+                                        <input type="text" id="book" class="form-control" placeholder = "Type Id / Title" autocomplete="off" required=""/>
                                         <div id="book_list"></div>
                                         <!--search result-->
                                         <div id="book_preview" class="text-center" style="margin-top: 20px;">

@@ -34,6 +34,7 @@ $lang['auth_subject_activate'] = 'Welcome to %s!';
 $lang['auth_subject_forgot_password'] = 'Forgot your password on %s?';
 $lang['auth_subject_reset_password'] = 'Your new password on %s';
 $lang['auth_subject_change_email'] = 'Your new email address on %s';
+$lang['auth_subject_success_email'] = 'Your request on %s';
 
 
 /* End of file tank_auth_lang.php */

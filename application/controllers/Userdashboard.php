@@ -90,12 +90,15 @@ class Userdashboard extends CI_Controller {
         $btn_book_search = $this->input->post('btn_book_search');
         if (isset($btn_book_search)) {
             $id = $this->input->post('bookid'); 
+            $data['max_issue'] = $this->Book_model->get_max_issue($id,'book');
             $data['book_id'] = $this->Book_model->get_book_details($id);
+//            echo '<pre>'; print_r($data['book_id']);exit();
         }
 
         $btn_book_search = $this->input->post('btn_journal_search');
         if (isset($btn_book_search)) {
             $id = $this->input->post('JournalId');
+            $data['max_issue'] = $this->Book_model->get_max_issue($id,'journal');
             $data['journal_id'] = $this->Book_model->get_journal_details($id);
         }
 
@@ -144,12 +147,14 @@ class Userdashboard extends CI_Controller {
         $btn_report_search = $this->input->post('btn_report_search');
         if (isset($btn_report_search)) {
             $id = $this->input->post('ReportId');
+            $data['max_issue'] = $this->Book_model->get_max_issue($id,'report');
             $data['reportd_id'] = $this->Book_model->get_report_details($id);
         }
 
         $btn_thesis_search = $this->input->post('btn_thesis_search');
         if (isset($btn_thesis_search)) {
             $id = $this->input->post('thesisid');
+            $data['max_issue'] = $this->Book_model->get_max_issue($id,'thesis');
             $data['thesis_id'] = $this->Book_model->get_thesis_details($id);
 //            echo '<pre>';
 //            print_r($data['thesis_id']);

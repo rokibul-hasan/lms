@@ -79,11 +79,19 @@
 
                                                             <input type="hidden" name="IssueReturnId" value="<?php echo $issue['IssueReturnId']; ?>">
                                                             <input type="hidden" name="email" value="<?php echo $issue['email']; ?>">
+                                                            <?php if($issue['total_copy'] == '0'){ ?>
+                                                            Accepted <input  type="radio" name="approval_status" value="2" <?php
+                                                            if ($issue['approval_status'] == 2) {
+                                                                echo 'checked';
+                                                            }
+                                                            ?> disabled="">
+                                                            <?php }else{?>
                                                             Accepted <input type="radio" name="approval_status" value="2" <?php
                                                             if ($issue['approval_status'] == 2) {
                                                                 echo 'checked';
                                                             }
                                                             ?> >
+                                                            <?php }?>
                                                             Canceled <input type="radio" name="approval_status" value="3"  <?php
                                                             if ($issue['approval_status'] == 3) {
                                                                 echo 'checked';
@@ -139,6 +147,7 @@
             success: function (data) {
 //                alert(data);
                 form.html(data);
+                window.location.reload(true);
             },
             error: function () {
                 alert('Error on updateing call');
@@ -146,6 +155,7 @@
         });
 
         ev.preventDefault();
+//        window.location.reload(true);
         //$(this).parent().html('updating...');
 
 

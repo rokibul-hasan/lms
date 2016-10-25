@@ -7,8 +7,10 @@ if (isset($book_list)) {
             echo '<h2 class="text-center">No Records Found</h2>';
         } else {
             ?>
+        <input class="only_print pull-right btn btn-primary" style="margin-bottom: 10px;" type="button"  onClick="window.print()"  value="Print"/>
             <div class="row">
                 <div class="col-md-12">
+                    
                     <div class="table-responsive">
                         <table class="table table-bordered table-responsive table-striped">
                             <tr>
@@ -18,7 +20,7 @@ if (isset($book_list)) {
                                 <th>Year of Publication</th>
                     <!--            <th>Place of Publication</th>-->
                                 <th>Publisher Name</th>
-                                <th>Action</th>
+                                <th class="only_print">Action</th>
                             </tr>
                             <?php
                             foreach ($book_list as $book_info) {
@@ -29,7 +31,7 @@ if (isset($book_list)) {
                                 echo "<td>{$book_info->YearOfPublication}</td>";
 //            echo "<td>{$book_info->PlaceOfPublication}</td>";
                                 echo "<td>{$book_info->PublisherName}</td>";
-                                echo '<td><form action="' . site_url('userdashboard') . '" method="post">';
+                                echo '<td class="only_print"><form action="' . site_url('userdashboard') . '" method="post">';
                                 echo '<input type="submit" value="Details" name="btn_book_search" class="btn btn-primary">';
                                 echo '<input type="hidden"  name="bookid" value="' . $book_info->BookId . '" />';
                                 echo '</form></td>';
@@ -61,6 +63,9 @@ if (isset($book_id)) {
         $file_link = $book_info->Ebook;
         $id = $book_info->ID;
         $Abstract = $book_info->Abstract;
+        $remaining_copy = $book_info->BookCopyStatus - $max_issue ;
+        if($remaining_copy < 0){$remaining_copy = 0;} 
+//        die($remaining_copy);
     }
     ?>
     <div class="col-md-12">
@@ -84,7 +89,8 @@ if (isset($book_id)) {
                 <i class="fa fa-book"></i>&nbsp; <strong>Page :</strong> <?= $page ?><br>
                 <i class="fa fa-book"></i>&nbsp; <strong>Year of Published  :</strong> <?= $publish_year ?><br>
                 <i class="fa fa-pencil"></i>&nbsp; <strong> Edition  :</strong> <?= $edition ?><br>
-                <i class="fa fa-book"></i>&nbsp;<strong>Abstract :</strong><?= $Abstract ?>
+                <i class="fa fa-book"></i>&nbsp;<strong>Abstract : </strong><?= $Abstract ?><br>
+                <i class="fa fa-hourglass-end"></i>&nbsp;<strong>Total Number of Copy Remaining : </strong><?= $remaining_copy ?>
             </div>
         </div>
         <div class="col-md-3">
@@ -152,7 +158,7 @@ if (isset($book_id)) {
                     <input type="hidden" value="<?= $bookid; ?>" name="Id" />
                     <input type="hidden" value="<?= $user_id; ?>" name="UserId" />
                     <input type="hidden" value="book" name="type"/>
-                    <input type="submit"  class="btn btn-danger btn-flat btn-block"  name="btn" value="Lend"/>
+                    <input type="submit"  class="btn btn-danger btn-flat btn-block"  name="btn" value="Borrow"/>
 
                 </form>
             </div>

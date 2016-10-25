@@ -44,7 +44,7 @@ class Circulation_model extends CI_Model {
             $condition = "DATE(issuereturn.IssueDate) BETWEEN '$date_from'  AND  '$date_to'";
             $this->db->where($condition);
         }
-        $this->db->order_by('IssueReturnId', 'desc'); 
+        $this->db->order_by('IssueReturnId', 'desc');
         return $this->db->get()->result();
 //        $result = $this->db->last_query();
 //        print_r($result);exit();
@@ -252,10 +252,7 @@ class Circulation_model extends CI_Model {
             $this->db->select('*');
             $this->db->from('book');
             $this->db->join('bookcopy', 'book.BookId = bookcopy.BookId', 'left');
-            $this->db->join('issuereturn','book.BookId = issuereturn.BookId','left');
             $this->db->where('book.BookId', $id);
-            $this->db->where('issuereturn.BookId', $id);
-            $this->db->where('issuereturn.type', 'book');
             return $this->db->get()->result();
         } elseif ($typeName == 'journel') {
             $this->db->select('*');
@@ -278,6 +275,14 @@ class Circulation_model extends CI_Model {
         } else {
             return false;
         }
+    }
+
+    function get_max_issue($Id, $typeName) {
+        $this->db->select('COUNT(*) As total');
+        $this->db->from('issuereturn');
+        $this->db->where('BookId', $Id);
+        $this->db->where('type', $typeName);
+        return $total_issue = $this->db->get()->row()->total;
     }
 
 //add new issue
@@ -395,13 +400,20 @@ class Circulation_model extends CI_Model {
         return $data;
     }
 
-    function search_fine_calculation_by_user_id($user_id, $payment) {
+    function search_fine_calculation_by_user_id($user_id = null, $payment = null , $from = null, $to = null) {
+        $date_from = date('Y-m-d', strtotime($from));
+        $date_to = date('Y-m-d', strtotime($to));
         $data = array();
         $this->db->select('*');
         $this->db->from('issuereturn');
         $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
         $this->db->join('user_type', 'users.id=user_type.UserId', 'left');
-        $this->db->where('issuereturn.UserId', $user_id);
+        if (!empty($user_id)) {
+            $this->db->where('issuereturn.UserId', $user_id);
+        }if ($date_from != '1970-01-01') {
+            $condition = "DATE(issuereturn.IssueDate) BETWEEN '$date_from'  AND  '$date_to'";
+            $this->db->where($condition);
+        }
         if ($payment == '0') {
             $this->db->where('issuereturn.Fine', '0');
         } else if ($payment == '1') {

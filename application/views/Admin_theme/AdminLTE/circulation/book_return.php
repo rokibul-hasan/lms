@@ -40,6 +40,7 @@
 
                                     <th>Title</th>
                                     <th>Resource Type</th>
+                                    <th style="display:none"></th>
                                     <th>Issue Date</th>
                                     <th>Expiry Date</th>           
                                     <th>Fine/Penalty - BDT</th>    
@@ -53,6 +54,7 @@
                                     <tr id="tr_379" class="display_row">
                                         <td><?php echo $issue->Title; ?></td>
                                         <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
+                                        <td style="display:none;"><?php echo $issue->IssueReturnId; ?></td>
                                         <td><?php echo date('Y-m-d', strtotime($issue->IssueDate)); ?></td>
                                         <td><?php echo date('Y-m-d', strtotime($issue->ExpiryDate)); ?></td>
                                         <td><?php echo $issue->Fine; ?></td>
@@ -76,8 +78,8 @@
 <script type="text/javascript">
     $('.datatable').DataTable({
         bFilter: false,
-        "order": [[3, "desc"]],
-//        "ordering": [true,"desc"],
+        "order": [[2, "desc"]],
+        "ordering": [true],
         "autoWidth": true,
     });
 </script>

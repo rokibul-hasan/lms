@@ -21,6 +21,7 @@ class Book_model extends CI_Model {
                 ->join('publisher', 'publisher.PublisherId=book.PublisherId', 'left')
                 ->join('booksubject', 'booksubject.BookId=book.BookId', 'left')
                 ->join('subject', 'booksubject.SubjectId=subject.SubjectId', 'left')
+                ->join('bookcopy','book.BookId=bookcopy.BookId','left')
                 ->where('book.BookId', $id);
         $sql = $this->db->get()->result();
         return $sql;
@@ -32,6 +33,7 @@ class Book_model extends CI_Model {
                 ->join('publisher', 'publisher.PublisherId=journal.PublisherId', 'left')
                 ->join('journalsubject', 'journalsubject.JournalId=journal.JournalId', 'left')
                 ->join('subject', 'journalsubject.SubjectId=subject.SubjectId', 'left')
+                ->join('journalcopy','journal.JournalId=journalcopy.JournalId','left')
                 ->where('journal.JournalId', $id);
         $sql = $this->db->get()->result();
         return $sql;
@@ -42,6 +44,7 @@ class Book_model extends CI_Model {
                 ->from('report')
                 ->join('reportsubject', 'reportsubject.ReportId=report.ReportId', 'left')
                 ->join('subject', 'reportsubject.SubjectId=subject.SubjectId', 'left')
+                ->join('reportcopy','report.ReportId=reportcopy.ReportId','left')
                 ->where('report.ReportId', $id);
         $sql = $this->db->get()->result();
         return $sql;
@@ -54,6 +57,7 @@ class Book_model extends CI_Model {
                 ->join('author', 'author.AuthorId=thesisauthor.AuthorId', 'left')                
                 ->join('thesissubject', 'thesissubject.Thesisid=thesis.Thesisid', 'left')
                 ->join('subject', 'thesissubject.SubjectID=subject.SubjectId', 'left')
+                ->join('thesiscopy','thesis.Thesisid=thesiscopy.ThesisID','left')
                 ->where('thesis.Thesisid', $id);
         $sql = $this->db->get()->result();
         return $sql;
@@ -166,6 +170,14 @@ class Book_model extends CI_Model {
         }
         
         return $data;
+    }
+    
+    function get_max_issue($Id, $typeName) {
+        $this->db->select('COUNT(*) As total');
+        $this->db->from('issuereturn');
+        $this->db->where('BookId', $Id);
+        $this->db->where('type', $typeName);
+        return $total_issue = $this->db->get()->row()->total;
     }
 
 }
