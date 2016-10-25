@@ -16,18 +16,7 @@
         <link rel="stylesheet" href="<?php echo $theme_asset_url ?>dist/css/skins/_all-skins.min.css">
         
         
-        <style type="text/css">
-            
-            .login_button,.registration_button{
-                cursor: pointer;
-            }
-            .body_text p{
-                color: #fff;
-            }
-           .templatemo_topbar .navbar-default .navbar-nav>li>a {
-            font-size: 20px;
-        }
-        </style>     
+     
 <link rel="stylesheet" href="<?=  base_url('asset/front')?>/css/animate.css">
 <link rel="stylesheet" href="<?=  base_url('asset/front')?>/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?=  base_url('asset/front')?>/css/font-awesome.min.css">
@@ -45,6 +34,34 @@
 <script src="<?=  base_url('asset/front')?>/js/jquery.lightbox.js"></script>
 <script src="<?=  base_url('asset/front')?>/js/templatemo_custom.js"></script>
 <script src="<?=  base_url('asset/front')?>/js/responsiveCarousel.min.js"></script>
+        <style type="text/css">
+            
+            .login_button,.registration_button{
+                cursor: pointer;
+            }
+            .body_text p{
+                color: #fff;
+            }
+           .templatemo_topbar .navbar-default .navbar-nav>li>a {
+            font-size: 16px;
+        } 
+        button.navbar-toggle {
+            background: rgba(0,0,0,.5);
+        }
+        @media only screen and (max-width:600px){
+            .templatemo_titlewrappersmall {
+                font-size: 15px;
+            }
+            tr{
+                width:100%!important;
+                margin-top: 10px;
+            }
+            button.btn.btn-primary.btn-lg.btn-flat.btn-block {
+                font-size: 14px;
+            }
+        }
+        </style>
+
 </head>
 <body>
 <!-- header start -->
@@ -134,9 +151,9 @@
 
                 
             </div>
-        </div>
+        </div>  
         <div class="col-md-6" style="border-bottom: 0px solid #d5d5d5">            
-            <div class="pull-right col-md-12 templatemo_marginbot">
+            <div class="col-md-12 templatemo_marginbot">
                 
                         <button type="button" class="btn btn-primary btn-lg btn-flat btn-block" data-toggle="modal" data-target="#myModal1">
                           New User Registration Instruction
