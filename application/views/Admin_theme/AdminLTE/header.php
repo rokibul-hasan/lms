@@ -86,9 +86,13 @@
                 .memo_print_option{margin:0 auto;width:100%;}
                 #print { visibility: hidden;}
                 #test{visibility: visible;}
+                td{font-size:12px;}
+                
 
             }
-
+            @page{
+                margin:15mm 5mm 10mm 5mm;
+            }
             @media only print{
                 .report-logo-for-print{
                     display: block;

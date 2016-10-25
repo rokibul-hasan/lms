@@ -47,7 +47,7 @@ class Book extends ci_controller{
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
     }
-	
+	 
 	    
      public function bookauthor(){
          $crud = new grocery_CRUD();
@@ -57,7 +57,7 @@ class Book extends ci_controller{
                 ->display_as('AuthorId','Author')
                 ->display_as('AuthorTypeId','Author Type')
                 ->set_relation('BookId', 'book', 'Title')
-                ->set_relation('AuthorId', 'author', '{AuthorFirstName} {AuthorMiddleName} {AuthorLastName}')
+                ->set_relation('AuthorId', 'author', '{AuthorFirstName} {AuthorMiddleName} {AuthorLastName} {AuthorCorporateName}')
                 ->set_relation('AuthorTypeId', 'authortype', 'AuthorType')
                 ->order_by('BookAuthorId','desc');
         

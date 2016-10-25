@@ -55,8 +55,15 @@
                 .only_print{display: none;}
                 .memo_print_option{margin:0 auto;width:100%;}
                 #print { visibility: hidden;}
-                #test{visibility: visible;}
+                #test{visibility: visible;} 
+                td{font-size:12px;}
+                
 
+            }
+            
+             @page{
+                width:100%;
+                margin:15mm 5mm 10mm 5mm;
             }
 
             @media only print{

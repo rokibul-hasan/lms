@@ -76,12 +76,12 @@ class Thesis extends CI_Controller{
         public function thesis_author(){
          $crud = new grocery_CRUD();
         $crud->set_table('thesisauthor')
-                ->set_subject('Thesis Author')
+                ->set_subject('Thesis Author') 
                 ->display_as('Thesisid', 'Thesis Name')
                 ->set_relation('Thesisid', 'thesis', 'Title')
                 ->display_as('AuthorID','Author Name')
                 ->display_as('AuthorTypeId','Author Type')
-                ->set_relation('AuthorID', 'author', '{AuthorFirstName} {AuthorMiddleName} {AuthorLastName}')
+                ->set_relation('AuthorID', 'author', '{AuthorFirstName} {AuthorMiddleName} {AuthorLastName} {AuthorCorporateName} ')
                 ->set_relation('AuthorTypeId', 'authortype', 'AuthorType')
                 ;
         $output = $crud->render();
@@ -97,6 +97,7 @@ class Thesis extends CI_Controller{
         $crud->set_table('thesissupervisor')
                 ->set_subject('Thesis Supervisor')
                 ->display_as('Thesisid', 'Thesis Name')
+                
                 ->set_relation('Thesisid', 'thesis', 'Title')
 //                ->display_as('AuthorID','Author Name')
 //                ->display_as('AuthorTypeId','Author Type')

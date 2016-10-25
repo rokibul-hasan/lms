@@ -1,7 +1,7 @@
 <?php
 if (isset($journal_list)) {
     ?>
-    <div style="width:90%;margin:0 auto;overflow-x:scroll">
+    <div style="width:100%;margin:0 auto;">
         <?php
         if (empty($journal_list)) {
             echo '<h2 class="text-center">No Records Found</h2>';
