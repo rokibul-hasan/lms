@@ -11,6 +11,7 @@
  *
  * @author sonjoy
  */
+
 class Book extends ci_controller{
     //put your code here
     function __construct() {
@@ -53,12 +54,15 @@ class Book extends ci_controller{
         $crud->set_table('bookauthor')
                 ->set_subject('Book Author')
                 ->display_as('BookId','Book Name')
-                ->display_as('AuthorId','Author Name')
+                ->display_as('AuthorId','Author')
                 ->display_as('AuthorTypeId','Author Type')
                 ->set_relation('BookId', 'book', 'Title')
-                ->set_relation('AuthorId', 'author', 'AuthorCorporateName')
+                ->set_relation('AuthorId', 'author', '{AuthorFirstName} {AuthorMiddleName} {AuthorLastName}')
                 ->set_relation('AuthorTypeId', 'authortype', 'AuthorType')
                 ->order_by('BookAuthorId','desc');
+        
+//        $crud->callback_add_field('type',array($this,'_callback_author'));
+//        $crud->callback_column('AuthorId',array($this,'_callback_author'));
         $output = $crud->render();
         $data['glosary'] = $output;
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
@@ -66,6 +70,17 @@ class Book extends ci_controller{
         $data['base_url'] = base_url();
         $this->load->view($this->config->item('ADMIN_THEME') . 'item', $data);
     }
+    
+//    public function _callback_author($value,$row){
+//        $this->db->select('AuthorFirstName, AuthorMiddleName, AuthorLastName')
+//                ->from('author')
+//                ->where('AuthorId',$row->AuthorId);
+//        $query = $this->db->get()->result();
+//        foreach ($query as $result){
+//            return "$result->AuthorFirstName $result->AuthorMiddleName $result->AuthorLastName";
+//        }
+//        
+//    }
     
         public function book_category(){
          $crud = new grocery_CRUD();
