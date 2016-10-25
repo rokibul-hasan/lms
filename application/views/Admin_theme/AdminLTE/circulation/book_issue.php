@@ -116,18 +116,18 @@
         $(".loding").show();
         $(".loding").fadeOut(2000);
     });
-    
+
     $('#new_issue_submit').click(function () {
-            if (document.getElementsByName('UserId')[0].value == 'blank') {
-                alert('Please Select User !');
-                return false;
-            }
-            if (document.getElementsByName('type')[0].value == 'blank') {
-                alert('Please Select Resource Type !');
-                return false;
-            }
-        });
-    
+        if (document.getElementsByName('UserId')[0].value == 'blank') {
+            alert('Please Select User !');
+            return false;
+        }
+        if (document.getElementsByName('type')[0].value == 'blank') {
+            alert('Please Select Resource Type !');
+            return false;
+        }
+    });
+
 //    book search 
 
     $('#book').keyup(function () {
@@ -146,7 +146,7 @@
                     $('#book_list').fadeIn();
                     $('#book_list').html(data);
                     if (data == '') {
-                        $('#book_list').html('<span class="bg-red">No Books Available</span>');                        
+                        $('#book_list').html('<span class="bg-red">No Books Available</span>');
                     }
                 },
                 error: function () {
@@ -168,7 +168,7 @@
                 dataType: 'text',
                 type: 'POST',
                 success: function (data) {
-                    if(data =='[]'){
+                    if (data == '[]') {
                         $('#failure').html('<h2 class="text-center">No items Exist</h2>');
                         $('#new_issue_submit').hide();
                     }
@@ -179,27 +179,67 @@
 //                    alert(bookList.max_issue);
                     var totalIssue = bookList.max_issue;
                     $.each(bookList.get_resource_info, function (i, bookname) {
-                        
-                        var banner = '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Title</label><div class="col-sm-10"><span><b>' + bookname['Title'] + '</b></span></div></div>';                                                
+
+                        var banner = '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Title</label><div class="col-sm-10"><span><b>' + bookname['Title'] + '</b></span></div></div>';
                         if (name == 'book') {
                             var remainCopy = bookname['BookCopyStatus'] - totalIssue;
-                            if(remainCopy < 0){ remainCopy = 0;}
-                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + remainCopy + '</b></span></div></div>';
+                            if (remainCopy < 0) {
+                                remainCopy = 0;
+                            }                            
+                                $('#new_issue_submit').click(function () {
+                                    if (remainCopy == 0) {
+                                        alert('Item is not Available !');
+                                        return false;
+                                    }else{
+                                        return true;
+                                    }
+                                });
+                            banner += '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + remainCopy + '</b></span></div></div>';
                             $('#id').val(bookname['BookId']);
                         } else if (name == 'journel') {
                             var remainCopy = bookname['JournalCopyStatus'] - totalIssue;
-                            if(remainCopy < 0){ remainCopy = 0;}
-                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + remainCopy + '</b></span></div></div>';
+                            if (remainCopy < 0) {
+                                remainCopy = 0;
+                            }
+                            $('#new_issue_submit').click(function () {
+                                    if (remainCopy == 0) {
+                                        alert('Item is not Available !');
+                                        return false;
+                                    }else{
+                                        return true;
+                                    }
+                                });
+                            banner += '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + remainCopy + '</b></span></div></div>';
                             $('#id').val(bookname['JournalId']);
                         } else if (name == 'report') {
                             var remainCopy = bookname['ReportCopyStatus'] - totalIssue;
-                            if(remainCopy < 0){ remainCopy = 0;}
-                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + remainCopy + '</b></span></div></div>';
+                            if (remainCopy < 0) {
+                                remainCopy = 0;
+                            }
+                            $('#new_issue_submit').click(function () {
+                                    if (remainCopy == 0) {
+                                        alert('Item is not Available !');
+                                        return false;
+                                    }else{
+                                        return true;
+                                    }
+                                });
+                            banner += '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + remainCopy + '</b></span></div></div>';
                             $('#id').val(bookname['ReportId']);
                         } else if (name == 'thesis') {
                             var remainCopy = bookname['ThesisCopyStatus'] - totalIssue;
-                            if(remainCopy < 0){ remainCopy = 0;}
-                            banner+='<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + remainCopy + '</b></span></div></div>';
+                            if (remainCopy < 0) {
+                                remainCopy = 0;
+                            }
+                            $('#new_issue_submit').click(function () {
+                                    if (remainCopy == 0) {
+                                        alert('Item is not Available !');
+                                        return false;
+                                    }else{
+                                        return true;
+                                    }
+                                });
+                            banner += '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Total Number of Copy Remaining</label><div class="col-sm-10"><span><b>' + remainCopy + '</b></span></div></div>';
                             $('#id').val(bookname['Thesisid']);
                         }
                         if (bookname['Banner'] == '') {

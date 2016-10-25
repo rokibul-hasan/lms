@@ -49,7 +49,7 @@ if (isset($_GET['link']) && $_GET['link'] == 'pending_request') {
                     <?php
                     foreach ($users_info as $user) {
                         ?>
-                                                                <option value="<?php echo $user->id; ?>"><?php echo $user->username; ?></option>
+                                                                        <option value="<?php echo $user->id; ?>"><?php echo $user->username; ?></option>
                         <?php
                     }
                     ?>
@@ -78,12 +78,13 @@ if (isset($_GET['link']) && $_GET['link'] == 'pending_request') {
                             <table class="table table-bordered table-striped datatable" id="usertable">
                                 <thead>
                                     <tr>
-                                        <th style="display:none"></th>
                                         <th>Title</th>
                                         <th>Member Name</th>
-                                        <th>Type</th>
+                                        <th style="display:none"></th>
+                                        <th>Resource Type</th>
                                         <th>Issue Date</th>
                                         <th>Expiry Date</th>
+                                        <!--<th>Total Number of Copy</th>-->
                                         <th>Return Date</th>
                                         <th>Fine/Penalty-BDT</th>
                                         <th>Is Returned</th>
@@ -92,31 +93,33 @@ if (isset($_GET['link']) && $_GET['link'] == 'pending_request') {
                                 </thead>
 
                                 <tbody>
-                                    <?php $i = 1;
-                                    foreach ($issue_info as $issue) { ?>
+                                    <?php
+                                    $i = 1;
+                                    foreach ($issue_info as $issue) {
+                                        ?>
                                         <tr>
-                                            <td style="display:none;"><?php echo $i ?></td>
                                             <td><?php echo $issue->Title; ?></td>
                                             <td><?php echo $issue->username; ?></td>
+                                            <td style="display:none;"><?php echo $issue->IssueReturnId; ?></td>
                                             <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
                                             <td><?php echo $issue->IssueDate; ?></td>
                                             <td><?php echo $issue->ExpiryDate; ?></td>
+                                            <!--<td><?php // echo $issue->BookCopyStatus;          ?></td>-->
                                             <td><?php echo $issue->ReturnDate; ?></td>
                                             <td><?php echo $issue->Fine; ?></td>
                                             <td><?php echo ($issue->ReturnOrNot == 1) ? '<span class="bg-green">Yes</span>' : '<span class="bg-red">No</span>'; ?></td>
                                             <td><?php
                                                 if ($issue->approval_status == 2) {
-                                                    echo '<span class="btn bg-green">Approved</span>';
+                                                    echo '<span class="bg-green">Accepted</span>';
                                                 } elseif ($issue->approval_status == 3) {
-                                                    echo '<span class="btn bg-red">Rejected</span>';
-                                                } else {
-                                                    echo '<span class="btn bg-yellow">Pending</span>';
+                                                    echo '<span class="bg-red">Canceled</span>';
                                                 }
-                                                ?>
-                                            </td>
+                                                ?></td>
                                         </tr>
-    <?php $i++;
-} ?>
+                                        <?php
+                                        $i++;
+                                    }
+                                    ?>
                                 </tbody>
 
                             </table>

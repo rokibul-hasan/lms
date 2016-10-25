@@ -44,10 +44,10 @@
                                 <table class="table table-bordered table-striped datatable">
                                     <thead>
                                         <tr>
-
+                                            <th>Request Date</th>
                                             <th>Title</th>
-                                            <th>Member Name</th>
                                             <th style="display:none"></th>
+                                            <th>Member Name</th>                                            
                                             <th>Resource Type</th>
                                             <th>Total Number of Copy Remaining</th>
                                             <th>Approval Status</th>
@@ -60,9 +60,10 @@
                                         foreach ($issue_info as $issue) {
                                             ?>
                                             <tr>
+                                                <td><?php echo $issue['RequestDate']; ?></td>
                                                 <td><?php echo $issue['Title']; ?></td>
-                                                <td><?php echo $issue['username']; ?></td>
                                                 <td style="display:none;"><?php echo $issue['IssueReturnId']; ?></td>
+                                                <td><?php echo $issue['username']; ?></td>                                                
                                                 <td style="text-transform: uppercase;"><?php echo $issue['type']; ?></td>                                                
                                                 <td><?php echo $issue['total_copy']; ?></td>
                                                 <td><?php
