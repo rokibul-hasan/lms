@@ -249,7 +249,7 @@
                     </div>
 
                     <!-- total report section -->
-                    <div class="row">
+<!--                    <div class="row">
                         <div class="text-center"><h2 style="font-weight:900;">Overall Report</h2></div>
 
 
@@ -268,7 +268,7 @@
                                     More Information <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
-                        </div>
+                        </div>-->
 
 <!--                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
@@ -287,7 +287,7 @@
                         </div>-->
 
 
-                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+<!--                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
                             <div class="small-box bg-blue">
                                 <div class="inner">
@@ -303,7 +303,7 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div>-->
 
 
                     <!-- end of total report section -->
