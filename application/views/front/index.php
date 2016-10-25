@@ -48,6 +48,14 @@
         button.navbar-toggle {
             background: rgba(0,0,0,.5);
         }
+        .slider-caption p {
+            width: 75%;
+        }
+        @media only screen and (max-width:1000px) and (min-width:601px){
+            tr {
+                width: 33%!important;
+            }
+        }
         @media only screen and (max-width:600px){
             .templatemo_titlewrappersmall {
                 font-size: 15px;
