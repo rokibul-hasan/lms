@@ -2,6 +2,8 @@
 include_once 'header_user.php';
 if (isset($_GET['link']) && $_GET['link'] == 'pending_request') {
     $link = 'pending_request';
+}else{
+    $link = '';
 }
 ?>
 
@@ -96,6 +98,7 @@ if (isset($_GET['link']) && $_GET['link'] == 'pending_request') {
                                     <?php
                                     $i = 1;
                                     foreach ($issue_info as $issue) {
+                                        
                                         ?>
                                         <tr>
                                             <td><?php echo $issue->Title; ?></td>
@@ -110,9 +113,11 @@ if (isset($_GET['link']) && $_GET['link'] == 'pending_request') {
                                             <td><?php echo ($issue->ReturnOrNot == 1) ? '<span class="bg-green">Yes</span>' : '<span class="bg-red">No</span>'; ?></td>
                                             <td><?php
                                                 if ($issue->approval_status == 2) {
-                                                    echo '<span class="bg-green">Accepted</span>';
+                                                    echo '<span class="btn_custom bg-green">Accepted</span>';
                                                 } elseif ($issue->approval_status == 3) {
-                                                    echo '<span class="bg-red">Canceled</span>';
+                                                    echo '<span class="btn_custom bg-red">Canceled</span>';
+                                                }elseif ($issue->approval_status == 1) {
+                                                    echo '<span class="bg-yellow btn">Pending</span>';
                                                 }
                                                 ?></td>
                                         </tr>
@@ -143,26 +148,26 @@ if (isset($_GET['link']) && $_GET['link'] == 'pending_request') {
     }
 </style>
 <script type="text/javascript">
-
-
-
-
     var link = "<?php echo $link; ?>";
-
+    
     if (link == 'pending_request') {
+        //$('.datatable').DataTable();
 
-        $('td>.btn.bg-green').parent('td').parent('tr').hide();
+        $('td>.btn_custom.bg-green').parent('td').parent('tr').hide();
 
-        $('td>.btn.bg-red').parent('td').parent('tr').hide();
+        $('td>.btn_custom.bg-red').parent('td').parent('tr').hide();        
+            
+    }else{
+        $('td>.bg-yellow.btn').parent('td').parent('tr').hide();  
+        $('.datatable').DataTable({
+            bFilter: false,
+            "ordering": true
+        });
+        
     }
-
-
-    $('.datatable').DataTable({
-        bFilter: false,
-        "ordering": true,
-        //"order": [[1, "desc"]]
-    });
-
+    
+            
+    
 
 
 
