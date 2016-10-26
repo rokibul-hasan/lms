@@ -9,7 +9,7 @@
 /**
  * Description of Circulation
  *
- * @author sonjoy
+ * @author sonjoy 
  */
 class Circulation extends CI_Controller {
 
@@ -20,7 +20,7 @@ class Circulation extends CI_Controller {
         $this->load->library('tank_auth');
         if (!$this->tank_auth->is_logged_in()) {         //not logged in
             redirect('login');
-            return 0;
+            return 0; 
         }
         $this->load->library('grocery_CRUD');
 
