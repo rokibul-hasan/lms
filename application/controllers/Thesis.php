@@ -81,7 +81,7 @@ class Thesis extends CI_Controller{
                 ->set_relation('Thesisid', 'thesis', 'Title')
                 ->display_as('AuthorID','Author Name')
                 ->display_as('AuthorTypeId','Author Type')
-                ->set_relation('AuthorID', 'author', '{AuthorFirstName} {AuthorMiddleName} {AuthorLastName} {AuthorCorporateName} ')
+                ->set_relation('AuthorID', 'author', '{AuthorFirstName} {AuthorMiddleName} {AuthorLastName}')
                 ->set_relation('AuthorTypeId', 'authortype', 'AuthorType')
                 ;
         $output = $crud->render();
