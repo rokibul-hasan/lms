@@ -190,7 +190,7 @@ class Circulation extends CI_Controller {
         } else {
             $data = 'Pending';
         }
-        die($data);
+//        die($data);
         echo json_encode($data);
     }
 
