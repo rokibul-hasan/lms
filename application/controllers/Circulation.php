@@ -110,12 +110,13 @@ class Circulation extends CI_Controller {
         $user_id = $this->input->get('member_id');
         $data['date_range'] = $this->input->get('date_range');
         $date = explode('-', $data['date_range']);
-        $from = '';$to = '';
+        $from = '';
+        $to = '';
         if ($data['date_range'] != '') {
             $from = $date[0];
             $to = $date[1];
         }
-        
+
         if (isset($btn_submit)) {
             $data['get_issue_book'] = $this->Circulation_model->get_issue_book_by_item($user_id, $from, $to);
         } else {
@@ -145,12 +146,13 @@ class Circulation extends CI_Controller {
             $this->Circulation_model->save_new_issue($_POST);
             $id = $this->input->post('Id');
             $type = $this->input->post('type');
+            $UserId = $this->input->post('UserId');
             $this->Counter_model->count_issue_book($id, $type);
             if ($user_type == '1') {
-//                $email = $this->db->get_where('users', array('id' => $id))->row()->email;
-//                $data['site_name'] = $this->config->item('website_name', 'tank_auth');
-//                $data['new_email'] = $email;
-//                $this->_send_email('Success_email', $data['new_email'], $data);
+                $email = $this->db->get_where('users', array('id' => $UserId))->row();
+                $data['site_name'] = $this->config->item('website_name', 'tank_auth');
+                $data['new_email'] = $email->email;
+                $this->_send_email('succes_email', $data['new_email'], $data);
             }
         }
         $sdata['message'] = '<div class = "alert alert-success" id="message"><button type = "button" class = "close" data-dismiss = "alert"><i class = " fa fa-times"></i></button><p><strong><i class = "ace-icon fa fa-check"></i></strong> Data is Successfully Saved!</p></div>';
@@ -167,15 +169,14 @@ class Circulation extends CI_Controller {
     function issue_approval() {
         $approved_by = $_SESSION['user_id'];
         $status = $this->input->post('approval_status');
-        die($approved_by);
         $email['site_name'] = $this->config->item('website_name', 'tank_auth');
         $email['new_email'] = $this->input->post('email');
+        //die($email['site_name']);
         if ($status == 2) {
-            $this->_send_email('success_email', $data['new_email'], $email);
+            $this->_send_email('succes_email', $email['new_email'], $email);
         } else if ($status == 3) {
-            $this->_send_email('cancel_email', $data['new_email'], $email);
+            $this->_send_email('cancel_email', $email['new_email'], $email);
         }
-
         $IssueReturnId = $this->input->post('IssueReturnId');
         $this->db->set('approval_status', $status);
         $this->db->set('ApprovedBy', $approved_by);
@@ -189,6 +190,7 @@ class Circulation extends CI_Controller {
         } else {
             $data = 'Pending';
         }
+        die($data);
         echo json_encode($data);
     }
 
