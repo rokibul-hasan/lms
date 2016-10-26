@@ -31,10 +31,11 @@ $lang['auth_message_unregistered'] = 'Your account has been deleted...';
 // Email subjects
 $lang['auth_subject_welcome'] = 'Welcome to %s!';
 $lang['auth_subject_activate'] = 'Welcome to %s!';
-$lang['auth_subject_forgot_password'] = 'Forgot your password on %s?';
-$lang['auth_subject_reset_password'] = 'Your new password on %s';
-$lang['auth_subject_change_email'] = 'Your new email address on %s';
-$lang['auth_subject_success_email'] = 'Your request on %s';
+$lang['auth_subject_forgot_password'] = 'SAC Online Library Information System Forgot your password on %s?';
+$lang['auth_subject_reset_password'] = 'SAC Online Library Information System %s';
+$lang['auth_subject_change_email'] = 'Attention Please!%s';
+$lang['auth_subject_succes_email'] = 'Attention Please!%s';
+$lang['auth_subject_cancel_email'] = 'Attention Please!%s';
 
 
 /* End of file tank_auth_lang.php */

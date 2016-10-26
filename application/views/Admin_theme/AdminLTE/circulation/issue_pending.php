@@ -80,6 +80,7 @@
 
                                                             <input type="hidden" name="IssueReturnId" value="<?php echo $issue['IssueReturnId']; ?>">
                                                             <input type="hidden" name="email" value="<?php echo $issue['email']; ?>">
+                                                            <input type="hidden" name="title" value="<?php echo $issue['Title']; ?>">
                                                             <?php if($issue['total_copy'] == '0'){ ?>
                                                             Accepted <input  type="radio" name="approval_status" value="2" <?php
                                                             if ($issue['approval_status'] == 2) {
@@ -151,8 +152,8 @@
                 window.location.reload(true);
             },
             error: function (er) {
-//                alert('Error on updateing call');
-                alert(er);
+                alert('Error on updateing call');
+//                alert(er);
             }
         });
 

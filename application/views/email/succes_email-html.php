@@ -8,21 +8,23 @@
 <td width="5%"></td>
 <td align="left" width="95%" style="font: 13px/18px Arial, Helvetica, sans-serif;">
 <h2 style="font: normal 20px/23px Arial, Helvetica, sans-serif; margin: 0; padding: 0 0 18px; color: black;">Congratulation !</h2>
-Thanks for joining <?php echo $site_name; ?>. Your Request has been accepted!.<br />
+  Your Request for resource " <?php echo $item; ?> " just accepted !!.<br />
+<br />
+Now you can collect your resource from librarian within next 24 hours.
 <br />
 <!--<big style="font: 16px/18px Arial, Helvetica, sans-serif;"><b><a href="<?php echo site_url('/auth/login/'); ?>" style="color: #3366cc;">Go to <?php echo $site_name; ?> now!</a></b></big><br />-->
 <br />
-<!--Link doesn't work? Copy the following link to your browser address bar:<br />-->
-<!--<nobr><a href="<?php echo site_url('/auth/login/'); ?>" style="color: #3366cc;"><?php echo site_url('/auth/login/'); ?></a></nobr><br />-->
+
+Thanks for using SAC Online Library Management System.
 <br />
 <br />
-<?php // if (strlen($username) > 0) { ?>Your username: <?php // echo $username; ?><br /><?php // } ?>
-Your email address: <?php // echo $email; ?><br />
+
 <?php /* Your password: <?php echo $password; ?><br /> */ ?>
 <br />
 <br />
-Have fun!<br />
-The <?php echo $site_name; ?> Team
+Regards
+<br />
+<?php echo $site_name; ?> Team
 </td>
 </tr>
 </table>

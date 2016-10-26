@@ -8,21 +8,21 @@
 <td width="5%"></td>
 <td align="left" width="95%" style="font: 13px/18px Arial, Helvetica, sans-serif;">
 <h2 style="font: normal 20px/23px Arial, Helvetica, sans-serif; margin: 0; padding: 0 0 18px; color: black;">Sorry !</h2>
- Your Request has been Canceled!.<br />
+ Your Request for resource " <?php echo $item; ?> " just rejected !.<br />
+<br />
+You may request it again after some days .
 <br />
 <!--<big style="font: 16px/18px Arial, Helvetica, sans-serif;"><b><a href="<?php echo site_url('/auth/login/'); ?>" style="color: #3366cc;">Go to <?php echo $site_name; ?> now!</a></b></big><br />-->
+<br />
+Thanks for using SAC Online Library Management System.
 <br />
 <!--Link doesn't work? Copy the following link to your browser address bar:<br />-->
 <!--<nobr><a href="<?php echo site_url('/auth/login/'); ?>" style="color: #3366cc;"><?php echo site_url('/auth/login/'); ?></a></nobr><br />-->
 <br />
 <br />
-<?php // if (strlen($username) > 0) { ?>Your username: <?php // echo $username; ?><br /><?php // } ?>
-Your email address: <?php // echo $email; ?><br />
-<?php /* Your password: <?php echo $password; ?><br /> */ ?>
+Regards
 <br />
-<br />
-Have fun!<br />
-The <?php echo $site_name; ?> Team
+ <?php echo $site_name; ?> Team
 </td>
 </tr>
 </table>
