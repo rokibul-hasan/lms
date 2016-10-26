@@ -43,6 +43,8 @@ public function issue_rejected(){
      public function today_issued(){
          
         return $this->db->where('DATE(IssueDate)=DATE(NOW())')
+                
+                ->where('approval_status','2')
                 ->count_all_results('issuereturn');         
      }    
      
@@ -54,12 +56,14 @@ public function issue_rejected(){
      
      public function this_month_issued(){
          return $this->db->where('MONTH(IssueDate)=MONTH(NOW()) AND YEAR(IssueDate)=YEAR(NOW())')
+                 
+                ->where('approval_status','2')
                 ->count_all_results('issuereturn');  
      }
      
      
      public function this_month_returned(){
-         return $this->db->where('MONTH(ReturnDate)=MONTH(NOW()) AND YEAR(ReturnDate)=YEAR(NOW())')
+         return $this->db->where('MONTH(ReturnDate)=MONTH(NOW()) AND YEAR(ReturnDate)=YEAR(NOW()) AND ReturnOrNot=1')
                 ->count_all_results('issuereturn');  
      }
      
@@ -74,18 +78,28 @@ public function issue_rejected(){
     
     public function total_issued_book(){
         return $this->db->from('issuereturn')
-                ->where('type','book')->count_all_results();
+                ->where('type','book')
+                ->where('ReturnOrNot','2')
+                ->where('approval_status','2')
+                ->count_all_results();
     }
     public function total_issued_journal(){
         return $this->db->from('issuereturn')
-                ->where('type','journal')->count_all_results();
+                ->where('type','journal')
+                ->where('ReturnOrNot','2')
+                ->where('approval_status','2')
+                ->count_all_results();
     }
     public function total_issued_thesis(){
         return $this->db->from('issuereturn')
+                ->where('ReturnOrNot','2')
+                ->where('approval_status','2')
                 ->where('type','thesis')->count_all_results();
     }
     public function total_issued_report(){
         return $this->db->from('issuereturn')
+                ->where('ReturnOrNot','2')
+                ->where('approval_status','2')
                 ->where('type','report')->count_all_results();
     }
     public function total_rejected_book(){
