@@ -18,8 +18,8 @@
             <li class="active"><?= $Title ?></li>
         </ol>
     </section>
-    
-    
+
+
 
     <!-- Main content -->
     <section class="content">
@@ -33,6 +33,40 @@
 
                             Current Circulation - Member : Member        </h3>
                     </div>
+                    <?php
+                    $attributes = array(
+                        'class' => 'form-horizontal',
+                        'name' => 'form',
+                        'method' => 'get');
+                    echo form_open('', $attributes)
+                    ?>
+                    <div class="box-header" style="margin: 20px 0;">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-2">
+                                <div class="form-group ">
+                                    <label class="col-md-3">Item Name:</label>
+                                    <div class="col-md-9">
+                                        <select name="item_id" id="" class="form-control select2">
+                                            <option value="">Select Item Name</option>
+                                            <?php
+                                            foreach ($get_items as $item) {
+                                                ?>
+                                                <option value="<?php echo $item->IssueReturnId; ?>"><?php echo $item->Title; ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="submit" name="btn_submit" value="true" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                <?= anchor(current_url() . '', '<i class="fa fa-refresh"></i>', ' class="btn btn-success"') ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?= form_close(); ?>
+
                     <div class="box-body table-responsive" id="display_div">
 
                         <table  class="table table-bordered  table-zebra table-hover table-stripped background_white datatable">

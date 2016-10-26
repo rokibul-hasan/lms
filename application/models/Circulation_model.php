@@ -50,6 +50,23 @@ class Circulation_model extends CI_Model {
 //        print_r($result);exit();
     }
 
+    public function search_issue_info_by_user_id($user_id) {
+//        $date_from = date('Y-m-d', strtotime($from));
+//        $date_to = date('Y-m-d', strtotime($to));
+        $this->db->select('*');
+        $this->db->from('issuereturn');
+        $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
+//        $this->db->where('issuereturn.approval_status', 2);
+//        $this->db->or_where('issuereturn.approval_status', 3);               
+
+        $this->db->where('issuereturn.UserId', $user_id);
+
+        $this->db->order_by('IssueReturnId', 'desc');
+        return $this->db->get()->result();
+//        $result = $this->db->last_query();
+//        print_r($result);exit();
+    }
+
 ////////////////////////issue confirmation///////////////////////////
     function issue_confirmation() {
         $this->db->select('*');
@@ -80,11 +97,11 @@ class Circulation_model extends CI_Model {
 
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => $remaining_copy
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
                 } else {
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => '0'
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
                 }
             }if ($type == 'journal') {
                 $this->db->select('COUNT(*) As total');
@@ -103,11 +120,11 @@ class Circulation_model extends CI_Model {
 
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => $remaining_copy
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
                 } else {
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => '0'
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
                 }
             }if ($type == 'thesis') {
                 $this->db->select('COUNT(*) As total');
@@ -126,11 +143,11 @@ class Circulation_model extends CI_Model {
 
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => $remaining_copy
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
                 } else {
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => '0'
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
                 }
             }if ($type == 'report') {
                 $this->db->select('COUNT(*) As total');
@@ -148,11 +165,11 @@ class Circulation_model extends CI_Model {
                     ($remaining_copy >= 0) ? $remaining_copy : $remaining_copy = '0';
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => $remaining_copy
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
                 } else {
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => '0'
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
                 }
             }
         }
@@ -341,6 +358,9 @@ class Circulation_model extends CI_Model {
             $data['approval_status'] = '2';
             $data['ApprovedBy'] = $_SESSION['user_id'];
         }
+//        if($user_type == '4'){
+            $data['RequestDate'] = Date('Y-m-d H:i:s');
+//        }
         $this->db->insert('issuereturn', $data);
         return true;
     }
@@ -350,6 +370,15 @@ class Circulation_model extends CI_Model {
         $this->db->from('issuereturn');
         $this->db->where('ReturnOrNot', '2');
         $this->db->where('approval_status', '2');
+        return $this->db->get()->result();
+    }
+
+    function get_issue_book_by_item($item_id) {
+        $this->db->select('*');
+        $this->db->from('issuereturn');
+        $this->db->where('ReturnOrNot', '2');
+        $this->db->where('approval_status', '2');
+        $this->db->where('IssueReturnId', $item_id);
         return $this->db->get()->result();
     }
 
@@ -372,6 +401,7 @@ class Circulation_model extends CI_Model {
     }
 
     function fine_calculation() {
+//        $this->load->model('users');
         $data = array();
         $this->db->select('*');
         $this->db->from('issuereturn');
@@ -394,13 +424,13 @@ class Circulation_model extends CI_Model {
             } else {
                 $total_fine = $fine->Fine * $total_day;
             }
-            $data[] = array('username' => $result->username, 'Title' => $result->Title, 'Fine' => $total_fine, 'Find_paid' => $result->Fine, 'IssueReturnId' => $result->IssueReturnId); //            
+            $data[] = array('username' => $result->username, 'Title' => $result->Title, 'Fine' => $total_fine, 'Find_paid' => $result->Fine, 'IssueReturnId' => $result->IssueReturnId, 'issueDate' => $result->IssueDate); //            
         }
 //        print_r($data);exit();
         return $data;
     }
 
-    function search_fine_calculation_by_user_id($user_id = null, $payment = null , $from = null, $to = null) {
+    function search_fine_calculation_by_user_id($user_id = null, $payment = null, $from = null, $to = null) {
         $date_from = date('Y-m-d', strtotime($from));
         $date_to = date('Y-m-d', strtotime($to));
         $data = array();
@@ -431,7 +461,7 @@ class Circulation_model extends CI_Model {
             } else {
                 $total_fine = $fine->Fine * $total_day;
             }
-            $data[] = array('username' => $result->username, 'Title' => $result->Title, 'Fine' => $total_fine, 'Find_paid' => $result->Fine, 'IssueReturnId' => $result->IssueReturnId); //            
+            $data[] = array('username' => $result->username, 'Title' => $result->Title, 'Fine' => $total_fine, 'Find_paid' => $result->Fine, 'IssueReturnId' => $result->IssueReturnId, 'issueDate' => $result->IssueDate); //            
         }
 //        print_r($data);exit();
         return $data;
@@ -440,6 +470,11 @@ class Circulation_model extends CI_Model {
     function get_all_request_issue() {
         $userId = $this->session->userdata('user_id');
         return $this->db->where('UserId', $userId)->get('issuereturn')->result();
+    }
+
+    function get_items() {
+        $this->db->distinct('Title,IssueReturnId');
+        return $this->db->get('issuereturn')->result();
     }
 
 }

@@ -34,7 +34,7 @@ class Circulation extends CI_Controller {
                 ->set_subject('Circulation Settings')
                 ->display_as('UserType', 'Member Type')
 //                ->set_relation('UserTypeId', 'user_type', 'Type')
-                ->field_type('UserType', 'dropdown', array('1' => 'Super Admin',  '3' => 'Employee', '4' => 'User'))
+                ->field_type('UserType', 'dropdown', array('1' => 'Super Admin', '3' => 'Employee', '4' => 'User'))
                 ->order_by('CirculationId', 'desc');
         $output = $crud->render();
         $data['glosary'] = $output;
@@ -49,7 +49,7 @@ class Circulation extends CI_Controller {
         $data['users_info'] = $this->db->where('activated', '1')->get('users')->result();
         $user_id = $this->input->get('member_id');
         $issue_return = $this->input->get('issue_return');
-        
+
         $date_from = $this->input->get('date_from');
         $date_to = $this->input->get('date_to');
         $btn_submit = $this->input->get('btn_submit');
@@ -104,7 +104,15 @@ class Circulation extends CI_Controller {
     }
 
     function book_return() {
-        $data['get_issue_book'] = $this->Circulation_model->get_issue_book();
+        $btn_submit = $this->input->get('btn_submit');
+        $item_id = $this->input->get('item_id');
+        if (isset($btn_submit)) {
+            $data['get_issue_book'] = $this->Circulation_model->get_issue_book_by_item($item_id);
+        } else {
+            $data['get_issue_book'] = $this->Circulation_model->get_issue_book();
+        }
+        $data['get_items'] = $this->Circulation_model->get_items();
+        
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
         $data['Section'] = 'Circulation Section';
         $data['Title'] = 'Return';
@@ -151,11 +159,11 @@ class Circulation extends CI_Controller {
         $status = $this->input->post('approval_status');
         $data['site_name'] = $this->config->item('website_name', 'tank_auth');
         $data['new_email'] = $this->input->post('email');
-        if ($status == 2) {
-            $this->_send_email('success_email', $data['new_email'], $data);
-        } else if ($status == 3) {
-            $this->_send_email('cancel_email', $data['new_email'], $data);
-        }
+//        if ($status == 2) {
+//            $this->_send_email('success_email', $data['new_email'], $data);
+//        } else if ($status == 3) {
+//            $this->_send_email('cancel_email', $data['new_email'], $data);
+//        }
 
         $IssueReturnId = $this->input->post('IssueReturnId');
         $this->db->set('approval_status', $status);
@@ -203,13 +211,14 @@ class Circulation extends CI_Controller {
     }
 
     function fine_calculation() {
-        $date_from = $this->input->get('date_from');
-        $date_to = $this->input->get('date_to');
+        $this->load->model('users');
+        $data['date_from'] = $this->input->get('date_from');
+        $data['date_to'] = $this->input->get('date_to');
         $data['users_info'] = $this->db->where('activated', '1')->get('users')->result();
         $user_id = $this->input->get('member_id');
         $payment = $this->input->get('payment');
         if (isset($user_id)) {
-            $data['fine_calculation'] = $this->Circulation_model->search_fine_calculation_by_user_id($user_id, $payment,$date_from,$date_to);
+            $data['fine_calculation_after_search'] = $this->Circulation_model->search_fine_calculation_by_user_id($user_id, $payment, $data['date_from'], $data['date_to']);
         } else {
             $data['fine_calculation'] = $this->Circulation_model->fine_calculation();
         }
