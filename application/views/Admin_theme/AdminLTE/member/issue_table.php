@@ -148,6 +148,9 @@ if (isset($_GET['link']) && $_GET['link'] == 'pending_request') {
     }
 </style>
 <script type="text/javascript">
+       setTimeout(function () {
+        $('#message').fadeOut();
+    }, 1000);
     var link = "<?php echo $link; ?>";
     
     if (link == 'pending_request') {

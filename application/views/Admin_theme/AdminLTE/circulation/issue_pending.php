@@ -150,8 +150,9 @@
                 form.html(data);
                 window.location.reload(true);
             },
-            error: function () {
-                alert('Error on updateing call');
+            error: function (er) {
+//                alert('Error on updateing call');
+                alert(er);
             }
         });
 
