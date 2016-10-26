@@ -14,6 +14,7 @@
 class Welcome extends CI_Controller{
     //put your code here
     function index(){
-        echo 'something';
+       mail('rokibulhasan.356@gmail.com', 'My Subject', 'message test messaage');
+        echo 'success';
     }
 }
