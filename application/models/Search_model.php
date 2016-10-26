@@ -134,8 +134,10 @@ class Search_model extends CI_Model {
 //         print_r($Organizations);exit();
 //        die($limit_offset);
         $conditions = array();
+        
+        
         if (!empty($reportTitle)) {
-            array_push($reportTitle, "`Title` LIKE  '%$reportTitle%'");
+            array_push($conditions, "`Title` LIKE  '%$reportTitle%'");
         }
         if (!empty($Organizations)) {
             $Organization_coditions = array();
