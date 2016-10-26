@@ -176,7 +176,8 @@ class Book_model extends CI_Model {
         $this->db->select('COUNT(*) As total');
         $this->db->from('issuereturn');
         $this->db->where('BookId', $Id);
-        $this->db->where('type', $typeName);
+        $this->db->where('type', $typeName);        
+        $this->db->where('approval_status ','2');
         return $total_issue = $this->db->get()->row()->total;
     }
 

@@ -84,6 +84,7 @@ class Circulation_model extends CI_Model {
                 $this->db->from('issuereturn');
                 $this->db->where('BookId', $book_id);
                 $this->db->where('type', 'book');
+                $this->db->where('approval_status ', '2');
                 $total_issue = $this->db->get()->row()->total;
                 $this->db->select('*');
                 $this->db->from('bookcopy');
@@ -97,17 +98,18 @@ class Circulation_model extends CI_Model {
 
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => $remaining_copy
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email, 'RequestDate' => $result->RequestDate);
                 } else {
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => '0'
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email, 'RequestDate' => $result->RequestDate);
                 }
             }if ($type == 'journal') {
                 $this->db->select('COUNT(*) As total');
                 $this->db->from('issuereturn');
                 $this->db->where('BookId', $book_id);
                 $this->db->where('type', 'journal');
+                $this->db->where('approval_status ', '2');
                 $total_issue = $this->db->get()->row()->total;
                 $this->db->select('*');
                 $this->db->from('journalcopy');
@@ -120,17 +122,18 @@ class Circulation_model extends CI_Model {
 
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => $remaining_copy
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email, 'RequestDate' => $result->RequestDate);
                 } else {
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => '0'
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email, 'RequestDate' => $result->RequestDate);
                 }
             }if ($type == 'thesis') {
                 $this->db->select('COUNT(*) As total');
                 $this->db->from('issuereturn');
                 $this->db->where('BookId', $book_id);
                 $this->db->where('type', 'thesis');
+                $this->db->where('approval_status ', '2');
                 $total_issue = $this->db->get()->row()->total;
                 $this->db->select('*');
                 $this->db->from('thesiscopy');
@@ -143,17 +146,18 @@ class Circulation_model extends CI_Model {
 
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => $remaining_copy
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email, 'RequestDate' => $result->RequestDate);
                 } else {
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => '0'
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email, 'RequestDate' => $result->RequestDate);
                 }
             }if ($type == 'report') {
                 $this->db->select('COUNT(*) As total');
                 $this->db->from('issuereturn');
                 $this->db->where('BookId', $book_id);
                 $this->db->where('type', 'report');
+                $this->db->where('approval_status ', '2');
                 $total_issue = $this->db->get()->row()->total;
                 $this->db->select('*');
                 $this->db->from('reportcopy');
@@ -165,16 +169,17 @@ class Circulation_model extends CI_Model {
                     ($remaining_copy >= 0) ? $remaining_copy : $remaining_copy = '0';
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => $remaining_copy
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email, 'RequestDate' => $result->RequestDate);
                 } else {
                     $sql[] = array('Title' => $result->Title, 'username' => $result->username, 'IssueReturnId' => $result->IssueReturnId, 'type' => $result->type, 'IssueDate' => $result->IssueDate
                         , 'ExpiryDate' => $result->ExpiryDate, 'ReturnDate' => $result->ReturnDate, 'Fine' => $result->Fine, 'ReturnOrNot' => $result->ReturnOrNot, 'total_copy' => '0'
-                        , 'approval_status' => $result->approval_status, 'email' => $result->email,'RequestDate' => $result->RequestDate);
+                        , 'approval_status' => $result->approval_status, 'email' => $result->email, 'RequestDate' => $result->RequestDate);
                 }
             }
         }
         return $sql;
     }
+    
 
     ///////////////////////////////////////////////////////////
     //////////////////////user pending/////////////
@@ -299,6 +304,7 @@ class Circulation_model extends CI_Model {
         $this->db->from('issuereturn');
         $this->db->where('BookId', $Id);
         $this->db->where('type', $typeName);
+        $this->db->where('approval_status ', '2');
         return $total_issue = $this->db->get()->row()->total;
     }
 
@@ -359,7 +365,7 @@ class Circulation_model extends CI_Model {
             $data['ApprovedBy'] = $_SESSION['user_id'];
         }
 //        if($user_type == '4'){
-            $data['RequestDate'] = Date('Y-m-d H:i:s');
+        $data['RequestDate'] = Date('Y-m-d H:i:s');
 //        }
         $this->db->insert('issuereturn', $data);
         return true;
@@ -368,17 +374,26 @@ class Circulation_model extends CI_Model {
     function get_issue_book() {
         $this->db->select('*');
         $this->db->from('issuereturn');
-        $this->db->where('ReturnOrNot', '2');
-        $this->db->where('approval_status', '2');
+        $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
+        $this->db->where('issuereturn.ReturnOrNot', '2');
+        $this->db->where('issuereturn.approval_status', '2');
         return $this->db->get()->result();
     }
 
-    function get_issue_book_by_item($item_id) {
+    function get_issue_book_by_item($user_id = null, $from = null, $to = null) {
+        $date_from = date('Y-m-d', strtotime($from));
+        $date_to = date('Y-m-d', strtotime($to));
         $this->db->select('*');
         $this->db->from('issuereturn');
-        $this->db->where('ReturnOrNot', '2');
-        $this->db->where('approval_status', '2');
-        $this->db->where('IssueReturnId', $item_id);
+        $this->db->join('users', 'issuereturn.UserId=users.id', 'left');
+        $this->db->where('issuereturn.ReturnOrNot', '2');
+        $this->db->where('issuereturn.approval_status', '2');
+        if (!empty($user_id)) {
+            $this->db->where('UserId', $user_id);
+        }if ($date_from != '1970-01-01') {
+            $condition = "DATE(issuereturn.IssueDate) BETWEEN '$date_from'  AND  '$date_to'";
+            $this->db->where($condition);
+        }
         return $this->db->get()->result();
     }
 
@@ -470,11 +485,6 @@ class Circulation_model extends CI_Model {
     function get_all_request_issue() {
         $userId = $this->session->userdata('user_id');
         return $this->db->where('UserId', $userId)->get('issuereturn')->result();
-    }
-
-    function get_items() {
-        $this->db->distinct('Title,IssueReturnId');
-        return $this->db->get('issuereturn')->result();
     }
 
 }

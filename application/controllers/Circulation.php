@@ -26,6 +26,8 @@ class Circulation extends CI_Controller {
 
         $this->load->model('Circulation_model');
         $this->load->model('Counter_model');
+        $this->load->library('tank_auth');
+        $this->lang->load('tank_auth');
     }
 
     function index() {
@@ -105,14 +107,22 @@ class Circulation extends CI_Controller {
 
     function book_return() {
         $btn_submit = $this->input->get('btn_submit');
-        $item_id = $this->input->get('item_id');
+        $user_id = $this->input->get('member_id');
+        $data['date_range'] = $this->input->get('date_range');
+        $date = explode('-', $data['date_range']);
+        $from = '';$to = '';
+        if ($data['date_range'] != '') {
+            $from = $date[0];
+            $to = $date[1];
+        }
+        
         if (isset($btn_submit)) {
-            $data['get_issue_book'] = $this->Circulation_model->get_issue_book_by_item($item_id);
+            $data['get_issue_book'] = $this->Circulation_model->get_issue_book_by_item($user_id, $from, $to);
         } else {
             $data['get_issue_book'] = $this->Circulation_model->get_issue_book();
         }
-        $data['get_items'] = $this->Circulation_model->get_items();
-        
+        $data['users_info'] = $this->db->where('activated', '1')->get('users')->result();
+
         $data['theme_asset_url'] = base_url() . $this->config->item('THEME_ASSET');
         $data['Section'] = 'Circulation Section';
         $data['Title'] = 'Return';
@@ -157,13 +167,14 @@ class Circulation extends CI_Controller {
     function issue_approval() {
         $approved_by = $_SESSION['user_id'];
         $status = $this->input->post('approval_status');
-        $data['site_name'] = $this->config->item('website_name', 'tank_auth');
-        $data['new_email'] = $this->input->post('email');
-//        if ($status == 2) {
-//            $this->_send_email('success_email', $data['new_email'], $data);
-//        } else if ($status == 3) {
-//            $this->_send_email('cancel_email', $data['new_email'], $data);
-//        }
+        die($approved_by);
+        $email['site_name'] = $this->config->item('website_name', 'tank_auth');
+        $email['new_email'] = $this->input->post('email');
+        if ($status == 2) {
+            $this->_send_email('success_email', $data['new_email'], $email);
+        } else if ($status == 3) {
+            $this->_send_email('cancel_email', $data['new_email'], $email);
+        }
 
         $IssueReturnId = $this->input->post('IssueReturnId');
         $this->db->set('approval_status', $status);
@@ -254,7 +265,7 @@ class Circulation extends CI_Controller {
         $this->email->to($email);
         $this->email->subject(sprintf($this->lang->line('auth_subject_' . $type), $this->config->item('website_name', 'tank_auth')));
         $this->email->message($this->load->view('email/' . $type . '-html', $data, TRUE));
-//        $this->email->set_alt_message($this->load->view('email/' . $type . '-txt', $data, TRUE));
+        $this->email->set_alt_message($this->load->view('email/' . $type . '-txt', $data, TRUE));
         $this->email->send();
     }
 
