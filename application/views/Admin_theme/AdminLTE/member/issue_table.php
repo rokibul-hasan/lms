@@ -2,7 +2,7 @@
 include_once 'header_user.php';
 if (isset($_GET['link']) && $_GET['link'] == 'pending_request') {
     $link = 'pending_request';
-}else{
+} else {
     $link = '';
 }
 ?>
@@ -51,7 +51,7 @@ if (isset($_GET['link']) && $_GET['link'] == 'pending_request') {
                     <?php
                     foreach ($users_info as $user) {
                         ?>
-                                                                        <option value="<?php echo $user->id; ?>"><?php echo $user->username; ?></option>
+                                                                            <option value="<?php echo $user->id; ?>"><?php echo $user->username; ?></option>
                         <?php
                     }
                     ?>
@@ -98,7 +98,6 @@ if (isset($_GET['link']) && $_GET['link'] == 'pending_request') {
                                     <?php
                                     $i = 1;
                                     foreach ($issue_info as $issue) {
-                                        
                                         ?>
                                         <tr>
                                             <td><?php echo $issue->Title; ?></td>
@@ -107,19 +106,19 @@ if (isset($_GET['link']) && $_GET['link'] == 'pending_request') {
                                             <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
                                             <td><?php echo $issue->IssueDate; ?></td>
                                             <td><?php echo $issue->ExpiryDate; ?></td>
-                                            <!--<td><?php // echo $issue->BookCopyStatus;          ?></td>-->
+                                            <!--<td><?php // echo $issue->BookCopyStatus;           ?></td>-->
                                             <td><?php echo $issue->ReturnDate; ?></td>
                                             <td><?php echo $issue->Fine; ?></td>
                                             <td><?php echo ($issue->ReturnOrNot == 1) ? '<span class="bg-green">Yes</span>' : '<span class="bg-red">No</span>'; ?></td>
                                             <td><?php
-                                                if ($issue->approval_status == 2) {
-                                                    echo '<span class="btn_custom bg-green">Accepted</span>';
-                                                } elseif ($issue->approval_status == 3) {
-                                                    echo '<span class="btn_custom bg-red">Canceled</span>';
-                                                }elseif ($issue->approval_status == 1) {
-                                                    echo '<span class="bg-yellow btn">Pending</span>';
-                                                }
-                                                ?></td>
+                                    if ($issue->approval_status == 2) {
+                                        echo '<span class="btn_custom bg-green">Accepted</span>';
+                                    } elseif ($issue->approval_status == 3) {
+                                        echo '<span class="btn_custom bg-red">Canceled</span>';
+                                    } elseif ($issue->approval_status == 1) {
+                                        echo '<span class="bg-yellow btn">Pending</span>';
+                                    }
+                                        ?></td>
                                         </tr>
                                         <?php
                                         $i++;
@@ -148,29 +147,31 @@ if (isset($_GET['link']) && $_GET['link'] == 'pending_request') {
     }
 </style>
 <script type="text/javascript">
-       setTimeout(function () {
+    setTimeout(function () {
         $('#message').fadeOut();
     }, 1000);
     var link = "<?php echo $link; ?>";
-    
+
     if (link == 'pending_request') {
         //$('.datatable').DataTable();
 
         $('td>.btn_custom.bg-green').parent('td').parent('tr').hide();
 
-        $('td>.btn_custom.bg-red').parent('td').parent('tr').hide();        
-            
-    }else{
-        $('td>.bg-yellow.btn').parent('td').parent('tr').hide();  
+        $('td>.btn_custom.bg-red').parent('td').parent('tr').hide();
+
+    } else {
+        $('td>.bg-yellow.btn').parent('td').parent('tr').hide();
         $('.datatable').DataTable({
             bFilter: false,
-            "ordering": true
+            "order": [[2, "desc"]],
+            "ordering": [true],
+            "autoWidth": true,
         });
-        
+
     }
-    
-            
-    
+
+
+
 
 
 

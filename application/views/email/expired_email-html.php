@@ -7,23 +7,24 @@
 <tr>
 <td width="5%"></td>
 <td align="left" width="95%" style="font: 13px/18px Arial, Helvetica, sans-serif;">
-<h2 style="font: normal 20px/23px Arial, Helvetica, sans-serif; margin: 0; padding: 0 0 18px; color: black;">Sorry !</h2>
-
- Your borrowed resouce " <?php echo $item; ?> " from this library will be expired today !!.<br />
+<h2 style="font: normal 20px/23px Arial, Helvetica, sans-serif; margin: 0; padding: 0 0 18px; color: black;">Hi ! <br />Attention Please ! </h2>
+  Your Request for resource " <?php echo $item; ?> " just accepted !!.<br />
 <br />
-We are requsting you to return the resource to the librain within today .
+Now you can collect your resource from librarian within next 24 hours.
 <br />
 <!--<big style="font: 16px/18px Arial, Helvetica, sans-serif;"><b><a href="<?php echo site_url('/auth/login/'); ?>" style="color: #3366cc;">Go to <?php echo $site_name; ?> now!</a></b></big><br />-->
 <br />
+
 Thanks for using SAC Online Library Management System.
 <br />
-<!--Link doesn't work? Copy the following link to your browser address bar:<br />-->
-<!--<nobr><a href="<?php echo site_url('/auth/login/'); ?>" style="color: #3366cc;"><?php echo site_url('/auth/login/'); ?></a></nobr><br />-->
+<br />
+
+<?php /* Your password: <?php echo $password; ?><br /> */ ?>
 <br />
 <br />
 Regards
 <br />
- <?php echo $site_name; ?> Team
+<?php echo $site_name; ?> Team
 </td>
 </tr>
 </table>
