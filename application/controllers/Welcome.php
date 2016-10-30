@@ -65,9 +65,10 @@ Regards
                 $this->db->set('EmailCheck', '1');     
                 $this->db->where('IssueReturnId', $result->IssueReturnId);
                 $this->db->update('issuereturn'); 
-                $success = $this->db->last_query();                
+                
             }
         }
+        echo '<h2>Mail has been sent to those who`s borrowed time has been expired</h2>';
     }
 
 }

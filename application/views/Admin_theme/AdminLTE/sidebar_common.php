@@ -118,7 +118,7 @@
                     </a> 
                     <ul class="treeview-menu">
                         <li><a href="<?= site_url('circulation'); ?>"><i class="fa fa-graduation-cap"></i> Circulation Settings</a></li>
-                        <li><a href="<?= site_url('t'); ?>" target="__blank"><i class="fa fa-list"></i> Manual Request</a></li>
+                        <li><a href="<?= site_url('welcome'); ?>" target="__blank"><i class="fa fa-list"></i> Manual Request</a></li>
                     </ul>
                 </li>
                 <!--</li>-->
