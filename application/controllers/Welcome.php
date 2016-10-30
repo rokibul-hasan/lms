@@ -18,7 +18,20 @@ class Welcome extends CI_Controller {
         $this->lang->load('tank_auth');
     }
     //put your code here
-    function index() {
+  //    corn job link  http://lms.friendsitltd.com/lms/index.php/welcome?send_mail=lskfjwoifdwdkfsdlfiwjodfijwodfij
+    
+
+    function index(){
+        $check_mail = $this->input->get('send_mail');
+        if($check_mail=='lskfjwoifdwdkfsdlfiwjodfijwodfij'){
+            $this->send_mail();
+        }else{
+            echo 'sorry wrong url';
+        }
+        
+    }
+    
+    function send_mail() {
         $results = $this->db->select('*')
                         ->from('issuereturn')
                         ->join('users', 'issuereturn.UserId = users.id', 'left')
@@ -56,8 +69,8 @@ Regards
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 // More headers
-            $headers .= 'From: SAC Online Library Management System <webmaster@your-site.com>' . "\r\n";
-            $headers .= 'Cc: webmaster@your-site.com' . "\r\n";
+            $headers .= 'From: SAC Online Library Management System <support@friendsitltd.com>' . "\r\n";
+            $headers .= 'Cc: noreplay@friendsitltd.com' . "\r\n";
 //            $this->load->view('email/expired_email-html.php', $email)
 
             if ($recent_date > $expiry_date && $email_check == 0) {                   

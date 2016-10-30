@@ -20,7 +20,7 @@ $config['DEVELOPER'] = array(
     );
 
 
-
+$config['EMAIL'] = "support@friendsitltd.com";
 $config['ASSET_FOLDER'] = "asset/";
 $config['ADMIN_THEME'] = 'Admin_theme/AdminLTE/'; //Theme location on view folder
 $config['THEME_ASSET'] = $config['ASSET_FOLDER'] . $config['ADMIN_THEME'];
