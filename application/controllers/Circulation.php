@@ -272,8 +272,8 @@ class Circulation extends CI_Controller {
         $this->email->send();
     }
 
-    function send_accept_email($email,$email_data) {
-            $message = "
+    function send_accept_email($email, $email_data) {
+        $message = "
 <html>
 <head>
 <title>Welcome to SAC Online Library Management System</title>
@@ -289,22 +289,51 @@ Thanks for using SAC Online Library Management System.
 <br />
 <br />
 Regards
-<br />'".$email_data['site_name']."
+<br />'" . $email_data['site_name'] . "
 </body>
 </html>
 ";
 
 // Always set content-type when sending HTML email
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 // More headers
-            $headers .= 'From: SAC Online Library Management System <support@friendsitltd.com>' . "\r\n";
-            $headers .= 'Cc: noreplay@friendsitltd.com' . "\r\n";
+        $headers .= 'From: SAC Online Library Management System <support@friendsitltd.com>' . "\r\n";
+        $headers .= 'Cc: noreplay@friendsitltd.com' . "\r\n";
 //            $this->load->view('email/expired_email-html.php', $email)
 
-                mail("$email", 'SAC Online Library Management System', $message,$headers);
-                
+        mail("$email", 'SAC Online Library Management System', $message, $headers);
+    }
+
+    public function mycontroller($email, $email_data) {
+        $message = "
+<html>
+<head>
+<title>Welcome to SAC Online Library Management System</title>
+</head>
+<body>
+<h2 style='font: normal 20px/23px Arial, Helvetica, sans-serif; margin: 0; padding: 0 0 18px; color: black;'>Congratulation ! </h2>
+Your Request for item '" . $email_data['item'] . "' just accepted !!<br />
+    <br />
+Now you can collect your item from librarian within next 24 hours.
+<br />
+
+Thanks for using SAC Online Library Management System.
+<br />
+<br />
+Regards
+<br />'" . $email_data['site_name'] . "
+</body>
+</html>
+";
+        $this->load->library('email');
+        $this->email->from('sonjoywc@gmail.com', 'SAC Online Library Management System');
+        $this->email->to($email);
+        $this->email->subject('SAC Online Library Management System');
+        $this->email->message($message);
+        $this->email->send();
+        echo '<h2>Mail has been sent to those who`s borrowed item  time has been expired</h2>';
     }
 
 }

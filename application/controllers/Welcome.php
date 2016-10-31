@@ -83,5 +83,15 @@ Regards
         }
         echo '<h2>Mail has been sent to those who`s borrowed time has been expired</h2>';
     }
+    
+    public function mycontroller() {
+        $this->load->library('email');
+        $this->email->from('sonjoywc@gmail.com', 'sonjoy');
+        $this->email->to('sujon.roy420@yahoo.com');
+        $this->email->subject('This is my subject');
+        $this->email->message('This is my message');
+        $this->email->send();
+        echo '<h2>Mail has been sent to those who`s borrowed item  time has been expired</h2>';
+    }
 
 }
