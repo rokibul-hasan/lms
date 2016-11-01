@@ -33,6 +33,11 @@ class Frontpage extends CI_Controller {
 
     }
     
+    public  function trial(){
+         $this->load->helper('html');
+         $this->load->view( 'front/trial');
+    }
+    
     
     
 }

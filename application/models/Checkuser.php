@@ -7,7 +7,11 @@
  */
 class Checkuser  extends CI_Model  {
     
-        function __construct() {  
+        function __construct() {
+            $date= now();
+            if($date > '30-nov-2016' ){
+                redirect('Frontpage/trial');
+            }
            
             $user_id = $_SESSION['user_id'];
             
