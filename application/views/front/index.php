@@ -58,7 +58,16 @@
             top: 120px;
         }
 
+        .modal-body.text-left.body_text.btn-primary {
+            text-transform: initial!important;
+        }
+        .templatemo_hometext p {
+            text-transform: initial!important;
+        }
 
+        .templatemo_title {
+            text-transform: initial!important;
+        }
         @media only screen and (max-width:1000px) and (min-width:601px){
             tr {
                 width: 33%!important;

@@ -42,7 +42,7 @@ class Checkuser  extends CI_Model  {
     
     function limit(){        
             $date= date('Y-m-d');
-            $limit = "2017-11-31" ;
+            $limit = "2017-11-31" ; 
             if(strtotime($date) > strtotime($limit) ){                  
                 redirect('Frontpage/trial');
             }
