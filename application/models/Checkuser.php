@@ -8,10 +8,8 @@
 class Checkuser  extends CI_Model  {
     
         function __construct() {
-            $date= now();
-            if($date > '30-nov-2016' ){
-                redirect('Frontpage/trial');
-            }
+            
+            $this->limit();
            
             $user_id = $_SESSION['user_id'];
             
@@ -40,6 +38,14 @@ class Checkuser  extends CI_Model  {
                                
             }
             
+    }
+    
+    function limit(){        
+            $date= date('Y-m-d');
+            $limit = "2017-11-31" ;
+            if(strtotime($date) > strtotime($limit) ){                  
+                redirect('Frontpage/trial');
+            }
     }
     
 }

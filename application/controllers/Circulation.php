@@ -300,7 +300,7 @@ Regards
 
 // More headers
         $headers .= 'From: SAC Online Library Management System <support@friendsitltd.com>' . "\r\n";
-        $headers .= 'Cc: noreplay@friendsitltd.com' . "\r\n";
+        $headers .= 'Cc: noreplay@friendsitltd.com' . "\r\n"; 
 //            $this->load->view('email/expired_email-html.php', $email)
 
         mail("$email", 'SAC Online Library Management System', $message, $headers);

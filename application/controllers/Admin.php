@@ -15,9 +15,8 @@ class Admin extends CI_Controller {
             redirect('login');
             return 0;
         }
-        $this->load->library('grocery_CRUD');
-
-        $this->load->model('checkuser');
+         $this->load->model('checkuser');
+        $this->load->library('grocery_CRUD');      
        
         $this->load->model('role');
         $this->role->check_access();

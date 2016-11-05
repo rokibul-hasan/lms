@@ -49,7 +49,7 @@ class Welcome extends CI_Controller {
 </head>
 <body>
 <h2 style='font: normal 20px/23px Arial, Helvetica, sans-serif; margin: 0; padding: 0 0 18px; color: black;'>Hi ! <br />Attention Please ! </h2>
-Your borrowed resouce '" . $email['item'] . "' from this library will be expired today !!<br />
+Your borrowed resouce " . $email['item'] . " from this library will be expired today !!<br />
     <br />
 We are requsting you to return the resource to the librain within today .
 <br />
@@ -59,7 +59,7 @@ Thanks for using SAC Online Library Management System.
 <br />
 <br />
 Regards
-<br />'" . $email['site_name'] . "
+<br />" . $email['site_name'] . "
 </body>
 </html>
 ";
