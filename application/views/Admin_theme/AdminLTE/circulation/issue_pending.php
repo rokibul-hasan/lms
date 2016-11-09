@@ -56,6 +56,7 @@
 
                                     <tbody>
                                         <?php
+                                        if($issue_info){
 //                                                                    echo '<pre>'; print_r($issue_info);exit();
                                         foreach ($issue_info as $issue) {
                                             ?>
@@ -109,7 +110,7 @@
     <?php } ?>
                                                 </td>
                                             </tr>
-<?php } ?>
+                                        <?php } }?>
                                     </tbody>
 
                                 </table>

@@ -109,18 +109,7 @@
             </a>
             <ul class="treeview-menu">
                 <!--<li><a href="<?= site_url('circulation/'); ?>"><i class="fa fa-cog"></i> Circulation Settings</a>-->
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-file-pdf-o"></i> <span>Circulation Settings</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a> 
-                    <ul class="treeview-menu">
-                        <li><a href="<?= site_url('circulation'); ?>"><i class="fa fa-graduation-cap"></i> Circulation Settings</a></li>
-                        <li><a href="<?= site_url('welcome'); ?>" target="__blank"><i class="fa fa-list"></i> Manual Request</a></li>
-                    </ul>
-                </li>
+                <li><a href="<?= site_url('circulation'); ?>"><i class="fa fa-graduation-cap"></i> Circulation Settings</a></li>
                 <!--</li>-->
                 <li><a href="<?= site_url('circulation/fine_calculation'); ?>"><i class="fa fa-calculator"></i> Fine Calculation</a></li>
                 <li><a href="<?= site_url('circulation/book_issue'); ?>"><i class="fa fa-mail-forward"></i> Issue </a></li>            

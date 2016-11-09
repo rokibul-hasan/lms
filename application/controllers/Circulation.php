@@ -172,6 +172,10 @@ class Circulation extends CI_Controller {
         $email['site_name'] = $this->config->item('website_name', 'tank_auth');
         $email['new_email'] = $this->input->post('email');
         $email['item'] = $this->input->post('title');
+        
+        $circulation = $this->db->where('UserType', 4)->get('circulation')->row();
+//        $expireDate = date("Y-m-d", strtotime("+" . $circulation->IssueLimitDays . " day"));
+        
         //die($email['site_name']);
         if ($status == 2) {
             $this->send_accept_email($email['new_email'], $email);
@@ -182,6 +186,8 @@ class Circulation extends CI_Controller {
         $this->db->set('approval_status', $status);
         $this->db->set('ApprovedBy', $approved_by);
         $this->db->set('IssueDate', Date('Y-m-d H:i:s'));
+        $this->db->set('IssueDate', Date('Y-m-d H:i:s'));
+        $this->db->set('ExpiryDate', date("Y-m-d 23:59:59", strtotime("+" . $circulation->IssueLimitDays . " day")));
         $this->db->where('IssueReturnId', $IssueReturnId);
         $this->db->update('issuereturn');
         if ($status == 2) {

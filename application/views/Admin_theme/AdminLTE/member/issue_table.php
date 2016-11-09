@@ -105,9 +105,9 @@ if (isset($_GET['link']) && $_GET['link'] == 'pending_request') {
                                             <td style="display:none;"><?php echo $issue->IssueReturnId; ?></td>
                                             <td style="text-transform: uppercase;"><?php echo $issue->type; ?></td>
                                             <td><?php echo $issue->IssueDate; ?></td>
-                                            <td><?php echo $issue->ExpiryDate; ?></td>
+                                            <td><?php echo date("Y-m-d 23:59:59", strtotime($issue->ExpiryDate)) ?></td>
                                             <!--<td><?php // echo $issue->BookCopyStatus;           ?></td>-->
-                                            <td><?php echo $issue->ReturnDate; ?></td>
+                                            <td><?php echo $issue->ReturnDate ?></td>
                                             <td><?php echo $issue->Fine; ?></td>
                                             <td><?php echo ($issue->ReturnOrNot == 1) ? '<span class="bg-green">Yes</span>' : '<span class="bg-red">No</span>'; ?></td>
                                             <td><?php

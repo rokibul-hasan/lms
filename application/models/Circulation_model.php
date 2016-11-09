@@ -177,7 +177,10 @@ class Circulation_model extends CI_Model {
                 }
             }
         }
-        return $sql;
+        if(isset($sql)){
+            return $sql;
+        }
+        
     }
     
 

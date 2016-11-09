@@ -8,7 +8,7 @@
 |--------------------------------------------------------------------------
 */
 $config['website_name'] = 'SAC Online Library Management System';
-$config['webmaster_email'] = 'webmaster@your-site.com';
+$config['webmaster_email'] = 'library@sac.org.bd';
 
 /*
 |--------------------------------------------------------------------------
