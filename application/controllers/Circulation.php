@@ -135,7 +135,7 @@ class Circulation extends CI_Controller {
         $this->Circulation_model->returned_book($book_id);
         $sdata['message'] = '<div class = "alert alert-success" id="message"><button type = "button" class = "close" data-dismiss = "alert"><i class = " fa fa-times"></i></button><p><strong><i class = "ace-icon fa fa-check"></i></strong> Data is Successfully Saved!</p></div>';
         $this->session->set_userdata($sdata);
-        redirect('circulation/issuetable');
+        redirect('circulation/book_return');
     }
 
     function new_issue() {
