@@ -75,9 +75,9 @@
 </div>
 <!-- ./wrapper -->
 <style type="text/css">
-    .sidebar-menu li:hover > ul{
+/*    .sidebar-menu li:hover > ul{
 	display: block;
-}
+}*/
 </style>
 
 <!-- jQuery 2.2.3 -->

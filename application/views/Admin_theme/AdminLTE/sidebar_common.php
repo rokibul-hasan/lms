@@ -6,7 +6,7 @@
     <li class="active"><a href="<?= site_url('Admin'); ?>"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
     <li><a href="<?= site_url('about'); ?>"><i class="fa fa-cogs"></i> <span>Front Page Settings</span></a></li>
 
-    <li class="treeview">
+    <li class="treeview active">
         <a href="#"><i class="fa fa-book"></i> <span>Libraries Essentials</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
