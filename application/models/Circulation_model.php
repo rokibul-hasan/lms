@@ -198,7 +198,7 @@ class Circulation_model extends CI_Model {
 
     function select_book_info($Info, $option) {
         if ($option == 'book') {
-            $this->db->select('*');
+            $this->db->select('*,book.BookId as bookid');
             $this->db->from('book');
             $this->db->join('bookcopy', 'book.BookId = bookcopy.BookId', 'left');
             $this->db->where('book.BookId', $Info);
@@ -210,29 +210,30 @@ class Circulation_model extends CI_Model {
             } else {
                 $table = '<table class="table table-hover table-striped"><tbody>';
                 foreach ($results as $result) {
-                    $table .='<tr><td id="type" name="book"><option value="' . $result->BookId . '">' . $result->Title . ' | Book id-' . $result->BookId . '</option></td></tr>';
+                    $table .='<tr><td id="type" name="book"><option value="' . $result->bookid . '">' . $result->Title . ' | Book id-' . $result->bookid . '</option></td></tr>';
                 }
                 $table .= '</tbody></table>';
             }
         } elseif ($option == 'journel') {
-            $this->db->select('*');
+            $this->db->select('*,journal.JournalId as jourid');
             $this->db->from('journal');
             $this->db->join('journalcopy', 'journal.JournalId = journalcopy.JournalId', 'left');
             $this->db->where('journal.JournalId', $Info);
             $this->db->or_like('journal.Title', $Info);
             $this->db->or_like('journalcopy.AccessionNumber', $Info);
             $results = $this->db->get()->result();
+//            echo '<pre>';print_r($results);exit();
             if (empty($results)) {
                 $table = '<div class = "alert alert-danger">No Book found</div>';
             } else {
                 $table = '<table class="table table-hover table-striped"><tbody>';
                 foreach ($results as $result) {
-                    $table .='<tr><td id="type" name="journel"><option value="' . $result->JournalId . '">' . $result->Title . ' | Journal id-' . $result->JournalId . '</option></td></tr>';
+                    $table .='<tr><td id="type" name="journel"><option value="' . $result->jourid . '">' . $result->Title . ' | Journal id-' . $result->jourid .'('.$result->Year.')'.'</option></td></tr>';
                 }
                 $table .= '</tbody></table>';
             }
         } elseif ($option == 'report') {
-            $this->db->select('*');
+            $this->db->select('*, report.ReportId as report_id');
             $this->db->from('report');
             $this->db->join('reportcopy', 'report.ReportId = reportcopy.ReportId', 'left');
             $this->db->where('report.ReportId', $Info);
@@ -244,12 +245,12 @@ class Circulation_model extends CI_Model {
             } else {
                 $table = '<table class="table table-hover table-striped"><tbody>';
                 foreach ($results as $result) {
-                    $table .='<tr><td id="type" name="report"><option value="' . $result->ReportId . '">' . $result->Title . ' | Report id-' . $result->ReportId . '</option></td></tr>';
+                    $table .='<tr><td id="type" name="report"><option value="' . $result->report_id . '">' . $result->Title . ' | Report id-' . $result->report_id . '</option></td></tr>';
                 }
                 $table .= '</tbody></table>';
             }
         } elseif ($option == 'thesis') {
-            $this->db->select('*');
+            $this->db->select('*, thesis.Thesisid as thesis_id');
             $this->db->from('thesis');
             $this->db->join('thesiscopy', 'thesis.ThesisId = thesiscopy.ThesisId', 'left');
             $this->db->where('thesis.Thesisid', $Info);
@@ -261,7 +262,7 @@ class Circulation_model extends CI_Model {
             } else {
                 $table = '<table class="table table-hover table-striped"><tbody>';
                 foreach ($results as $result) {
-                    $table .='<tr><td id="type" name="thesis"><option value="' . $result->Thesisid . '">' . $result->Title . ' | Thesis id-' . $result->Thesisid . '</option></td></tr>';
+                    $table .='<tr><td id="type" name="thesis"><option value="' . $result->thesis_id . '">' . $result->Title . ' | Thesis id-' . $result->thesis_id . '</option></td></tr>';
                 }
                 $table .= '</tbody></table>';
             }
@@ -358,7 +359,7 @@ class Circulation_model extends CI_Model {
         $data['UserId'] = $this->input->post('UserId');
         $data['Title'] = $info->Title;
 //        $data['IssueDate'] = date('Y-m-d H:i:s');
-        $data['ExpiryDate'] = date('Y-m-d H:i:s',strtotime(" +" . $circulation->IssueLimitDays . " day"));
+        
 //        $data['ExpiryDate'] = date("Y-m-d ", strtotime("+" . $circulation->IssueLimitDays . " day"));
 //        print_r($data['ExpiryDate']);exit();
         $data['ReturnOrNot'] = '2';
@@ -366,6 +367,7 @@ class Circulation_model extends CI_Model {
             $data['IssueDate'] = Date('Y-m-d H:i:s');
             $data['approval_status'] = '2';
             $data['ApprovedBy'] = $_SESSION['user_id'];
+            $data['ExpiryDate'] = date('Y-m-d H:i:s',strtotime(" +" . $circulation->IssueLimitDays . " day"));
         }
 //        if($user_type == '4'){
         $data['RequestDate'] = Date('Y-m-d H:i:s');

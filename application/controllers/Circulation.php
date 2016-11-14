@@ -186,7 +186,6 @@ class Circulation extends CI_Controller {
         $this->db->set('approval_status', $status);
         $this->db->set('ApprovedBy', $approved_by);
         $this->db->set('IssueDate', Date('Y-m-d H:i:s'));
-        $this->db->set('IssueDate', Date('Y-m-d H:i:s'));
         $this->db->set('ExpiryDate', date("Y-m-d 23:59:59", strtotime("+" . $circulation->IssueLimitDays . " day")));
         $this->db->where('IssueReturnId', $IssueReturnId);
         $this->db->update('issuereturn');
