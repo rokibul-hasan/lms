@@ -177,12 +177,10 @@ class Circulation_model extends CI_Model {
                 }
             }
         }
-        if(isset($sql)){
+        if (isset($sql)) {
             return $sql;
         }
-        
     }
-    
 
     ///////////////////////////////////////////////////////////
     //////////////////////user pending/////////////
@@ -228,7 +226,7 @@ class Circulation_model extends CI_Model {
             } else {
                 $table = '<table class="table table-hover table-striped"><tbody>';
                 foreach ($results as $result) {
-                    $table .='<tr><td id="type" name="journel"><option value="' . $result->jourid . '">' . $result->Title . ' | Journal id-' . $result->jourid .'('.$result->Year.')'.'</option></td></tr>';
+                    $table .='<tr><td id="type" name="journel"><option value="' . $result->jourid . '">' . $result->Title . ' | Journal id-' . $result->jourid . '(' . $result->Year . ')' . '</option></td></tr>';
                 }
                 $table .= '</tbody></table>';
             }
@@ -304,10 +302,14 @@ class Circulation_model extends CI_Model {
     }
 
     function get_max_issue($Id, $typeName) {
-        $this->db->select('COUNT(*) As total');
+        $this->db->select('COUNT(IssueReturnId) As total');
         $this->db->from('issuereturn');
         $this->db->where('BookId', $Id);
-        $this->db->where('type', $typeName);
+        if ($typeName == 'journel') {
+            $this->db->where('type', 'journal');
+        } else {
+            $this->db->where('type', $typeName);
+        }
         $this->db->where('approval_status ', '2');
         return $total_issue = $this->db->get()->row()->total;
     }
@@ -359,7 +361,6 @@ class Circulation_model extends CI_Model {
         $data['UserId'] = $this->input->post('UserId');
         $data['Title'] = $info->Title;
 //        $data['IssueDate'] = date('Y-m-d H:i:s');
-        
 //        $data['ExpiryDate'] = date("Y-m-d ", strtotime("+" . $circulation->IssueLimitDays . " day"));
 //        print_r($data['ExpiryDate']);exit();
         $data['ReturnOrNot'] = '2';
@@ -367,7 +368,7 @@ class Circulation_model extends CI_Model {
             $data['IssueDate'] = Date('Y-m-d H:i:s');
             $data['approval_status'] = '2';
             $data['ApprovedBy'] = $_SESSION['user_id'];
-            $data['ExpiryDate'] = date('Y-m-d H:i:s',strtotime(" +" . $circulation->IssueLimitDays . " day"));
+            $data['ExpiryDate'] = date('Y-m-d H:i:s', strtotime(" +" . $circulation->IssueLimitDays . " day"));
         }
 //        if($user_type == '4'){
         $data['RequestDate'] = Date('Y-m-d H:i:s');

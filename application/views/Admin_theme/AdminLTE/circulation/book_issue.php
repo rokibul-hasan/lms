@@ -176,15 +176,14 @@
 //                    alert(data);
                     $('#banner').show();
                     var bookList = $.parseJSON(data);
-//                    alert(bookList.max_issue);
                     var totalIssue = bookList.max_issue;
                     $.each(bookList.get_resource_info, function (i, bookname) {
 
                         var banner = '<div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Title</label><div class="col-sm-10"><span><b>' + bookname['Title'] + '</b></span></div></div>';
                         if (name == 'book') {
                             var remainCopy = bookname['BookCopyStatus'] - totalIssue;
-                            if (remainCopy < 0) {
-                                remainCopy = 0;
+                            if (remainCopy <= 0) {
+                                remainCopy == 0;
                             }                            
                                 $('#new_issue_submit').click(function () {
                                     if (remainCopy == 0) {
@@ -199,7 +198,7 @@
                         } else if (name == 'journel') {
                             var remainCopy = bookname['JournalCopyStatus'] - totalIssue;
                             if (remainCopy < 0) {
-                                remainCopy = 0;
+                                remainCopy == 0;
                             }
                             $('#new_issue_submit').click(function () {
                                     if (remainCopy == 0) {
@@ -214,7 +213,7 @@
                         } else if (name == 'report') {
                             var remainCopy = bookname['ReportCopyStatus'] - totalIssue;
                             if (remainCopy < 0) {
-                                remainCopy = 0;
+                                remainCopy == 0;
                             }
                             $('#new_issue_submit').click(function () {
                                     if (remainCopy == 0) {
@@ -229,7 +228,7 @@
                         } else if (name == 'thesis') {
                             var remainCopy = bookname['ThesisCopyStatus'] - totalIssue;
                             if (remainCopy < 0) {
-                                remainCopy = 0;
+                                remainCopy == 0;
                             }
                             $('#new_issue_submit').click(function () {
                                     if (remainCopy == 0) {
